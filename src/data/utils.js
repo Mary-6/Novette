@@ -39,11 +39,13 @@ function facetLabel(field, v) {
   return String(v);
 }
 
-export function watchFacetValues(list) {
+export function watchFacetValues(list, filters = {}) {
+  const { search = '', priceRange = [null, null], ...facetSel } = filters;
   const map = {};
   for (const [key, field] of Object.entries(FACET_FIELDS)) {
+    const subset = filterWatches(list, { search, priceRange, ...facetSel, [key]: [] });
     const counts = new Map();
-    for (const w of list) {
+    for (const w of subset) {
       const v = w[field];
       if (v == null) continue;
       const vals = Array.isArray(v) ? v : [v];
@@ -51,6 +53,9 @@ export function watchFacetValues(list) {
         const label = facetLabel(field, val);
         counts.set(label, (counts.get(label) || 0) + 1);
       }
+    }
+    for (const s of facetSel[key] || []) {
+      if (!counts.has(s)) counts.set(s, 0);
     }
     map[key] = [...counts.entries()].map(([label, count]) => ({ label, count }));
   }

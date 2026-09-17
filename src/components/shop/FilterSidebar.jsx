@@ -12,17 +12,21 @@ const PRICE_PRESETS = [
   { label: 'Over $20,000', min: 20000, max: null },
 ];
 
+const PRICE_KEY = '__price__';
+
 const GROUPS = [
   { key: 'brands', title: 'Brand', labelFor: (v) => brands.find((b) => b.slug === v)?.name || v },
-  { key: 'families', title: 'Model' },
   { key: 'genders', title: 'Gender' },
   { key: 'types', title: 'Type' },
-  { key: 'conditions', title: 'Condition' },
+  { key: 'families', title: 'Model' },
+  { key: PRICE_KEY },
+  { key: 'references', title: 'Model Number' },
   { key: 'sizes', title: 'Size', sortNumeric: true },
   { key: 'materials', title: 'Case Material' },
   { key: 'dials', title: 'Dial Color' },
   { key: 'decades', title: 'Age' },
   { key: 'boxPapers', title: 'Box & Papers' },
+  { key: 'conditions', title: 'Condition' },
   { key: 'bandTypes', title: 'Band Type' },
   { key: 'bandMaterials', title: 'Band Material' },
   { key: 'nicknames', title: 'Nickname' },
@@ -45,7 +49,34 @@ function Group({ title, children }) {
 
 export default function FilterSidebar({ filters, onChange, source, lockBrand }) {
   const [expanded, setExpanded] = useState({});
-  const facetValues = useMemo(() => watchFacetValues(source), [source]);
+  const facetValues = useMemo(
+    () =>
+      watchFacetValues(source, {
+        search: filters.q,
+        priceRange: [filters.min, filters.max],
+        brands: filters.brands,
+        families: filters.families,
+        references: filters.references,
+        sizes: filters.sizes,
+        materials: filters.materials,
+        dials: filters.dials,
+        decades: filters.decades,
+        boxPapers: filters.boxPapers,
+        conditions: filters.conditions,
+        bandTypes: filters.bandTypes,
+        bandMaterials: filters.bandMaterials,
+        nicknames: filters.nicknames,
+        bezels: filters.bezels,
+        functions: filters.functions,
+        markers: filters.markers,
+        warranty: filters.warranty,
+        genders: filters.genders,
+        types: filters.types,
+      }),
+    [source, filters]
+  );
+
+  const singleBrand = lockBrand || (filters.brands || []).length === 1;
 
   const toggle = (key, val) => {
     const cur = filters[key] || [];
@@ -68,55 +99,68 @@ export default function FilterSidebar({ filters, onChange, source, lockBrand }) 
           className="w-full border border-stone/40 bg-transparent px-3 py-2.5 text-sm outline-none focus:border-gold"
         />
       </Group>
-      <Group title="Price">
-        <div className="space-y-1.5">
-          {PRICE_PRESETS.map((p) => (
-            <button
-              key={p.label}
-              type="button"
-              onClick={() => onChange({ ...filters, min: p.min, max: p.max })}
-              className={`block w-full text-left text-sm transition ${
-                presetActive(p) ? 'font-medium text-gold' : 'text-graphite hover:text-ink'
-              }`}
-            >
-              {p.label}
-            </button>
-          ))}
-        </div>
-        <div className="mt-4 flex items-center gap-2">
-          <input
-            type="number"
-            min="0"
-            placeholder="Min"
-            value={filters.min ?? ''}
-            onChange={(e) =>
-              onChange({ ...filters, min: e.target.value === '' ? null : Number(e.target.value) })
-            }
-            className="w-full min-w-0 border border-stone/40 bg-transparent px-2 py-2 text-sm outline-none focus:border-gold"
-          />
-          <span className="text-stone">–</span>
-          <input
-            type="number"
-            min="0"
-            placeholder="Max"
-            value={filters.max ?? ''}
-            onChange={(e) =>
-              onChange({ ...filters, max: e.target.value === '' ? null : Number(e.target.value) })
-            }
-            className="w-full min-w-0 border border-stone/40 bg-transparent px-2 py-2 text-sm outline-none focus:border-gold"
-          />
-        </div>
-      </Group>
       {GROUPS.map((g) => {
+        if (g.key === PRICE_KEY) {
+          return (
+            <Group key="price" title="Price">
+              <div className="space-y-1.5">
+                {PRICE_PRESETS.map((p) => (
+                  <button
+                    key={p.label}
+                    type="button"
+                    onClick={() => onChange({ ...filters, min: p.min, max: p.max })}
+                    className={`block w-full text-left text-sm transition ${
+                      presetActive(p) ? 'font-medium text-gold' : 'text-graphite hover:text-ink'
+                    }`}
+                  >
+                    {p.label}
+                  </button>
+                ))}
+              </div>
+              <div className="mt-4 flex items-center gap-2">
+                <input
+                  type="number"
+                  min="0"
+                  placeholder="Min"
+                  value={filters.min ?? ''}
+                  onChange={(e) =>
+                    onChange({
+                      ...filters,
+                      min: e.target.value === '' ? null : Number(e.target.value),
+                    })
+                  }
+                  className="w-full min-w-0 border border-stone/40 bg-transparent px-2 py-2 text-sm outline-none focus:border-gold"
+                />
+                <span className="text-stone">–</span>
+                <input
+                  type="number"
+                  min="0"
+                  placeholder="Max"
+                  value={filters.max ?? ''}
+                  onChange={(e) =>
+                    onChange({
+                      ...filters,
+                      max: e.target.value === '' ? null : Number(e.target.value),
+                    })
+                  }
+                  className="w-full min-w-0 border border-stone/40 bg-transparent px-2 py-2 text-sm outline-none focus:border-gold"
+                />
+              </div>
+            </Group>
+          );
+        }
         if (lockBrand && g.key === 'brands') return null;
-        let options = facetValues[g.key] || [];
+        if (g.key === 'references' && !singleBrand) return null;
+        const selected = filters[g.key] || [];
+        let options = (facetValues[g.key] || []).filter(
+          (o) => o.count > 0 || selected.includes(o.label)
+        );
         if (g.sortNumeric)
           options = [...options].sort((a, b) => parseFloat(a.label) - parseFloat(b.label));
         if (g.labelFor) options = options.map((o) => ({ ...o, display: g.labelFor(o.label) }));
         if (!options.length) return null;
         const isOpen = expanded[g.key];
         const shown = isOpen ? options : options.slice(0, COLLAPSED);
-        const selected = filters[g.key] || [];
         return (
           <Group key={g.key} title={g.title}>
             <div className="space-y-0.5">

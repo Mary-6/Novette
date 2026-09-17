@@ -185,7 +185,11 @@ export default function ProductDetail() {
               </p>
               <div className="mt-6 flex items-center gap-3 text-sm text-graphite">
                 <FileBadge size={16} className="text-gold" />
-                {watch.boxPapers}
+                {watch.boxPapers === 'Box Only'
+                  ? 'Complete with original box'
+                  : watch.boxPapers === 'Papers Only'
+                    ? 'Complete with original papers'
+                    : `Complete with ${watch.boxPapers.toLowerCase()}`}
               </div>
               <div className="mt-8 flex flex-col gap-3 sm:flex-row">
                 <Button

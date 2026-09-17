@@ -2408,6 +2408,34 @@ const BEZEL_MAP = {
 };
 const MARKER_MAP = { baton: 'Index', dots: 'Luminous', roman: 'Roman', arabic: 'Arabic' };
 
+const DIAL_RULES = [
+  [/pearl|mother/i, 'Mother-of-Pearl'],
+  [/meteorite/i, 'Meteorite'],
+  [/salmon/i, 'Salmon'],
+  [/champagne/i, 'Champagne'],
+  [/ivory/i, 'Ivory'],
+  [/brown|chocolate|sepia|maple|crimson/i, 'Brown'],
+  [/grey|slate|anthracite|smoke/i, 'Grey'],
+  [/silver|opaline|guilloch|panda|plated/i, 'Silver'],
+  [/green|mint|olive|pistachio/i, 'Green'],
+  [/blue|turquoise/i, 'Blue'],
+  [/white|snow/i, 'White'],
+];
+
+function dialPalette(detail) {
+  for (const [re, palette] of DIAL_RULES) {
+    if (re.test(detail)) return palette;
+  }
+  return 'Black';
+}
+
+const BOX_DIST = [
+  ...Array(15).fill('Box and Papers'),
+  ...Array(5).fill('Meridian Presentation Box'),
+  ...Array(3).fill('Box Only'),
+  ...Array(2).fill('Papers Only'),
+];
+
 function bandTypeOf(w) {
   const b = (w.specs.bracelet || '').toLowerCase();
   if (b.includes('jubilee')) return 'Jubilee';
@@ -2449,7 +2477,7 @@ function functionsOf(w) {
 }
 
 function enrich(w, i) {
-  const sizeMm = parseFloat(w.specs.caseDiameter) || 40;
+  const sizeMm = Math.round((parseFloat(w.specs.caseDiameter) || 40) * 2) / 2;
   const bandMatch = (w.specs.bracelet || '').toLowerCase();
   const bandMaterial =
     w.bandMaterial ||
@@ -2481,7 +2509,7 @@ function enrich(w, i) {
       ) ||
       w.model.split(' ')[0],
     sizeMm,
-    dialColor: w.dialColor || w.specs.dialColor,
+    dialColor: dialPalette(w.dialColor || w.specs.dialColor),
     bandType: w.bandType || bandTypeOf(w),
     bandMaterial,
     bezelType:
@@ -2489,12 +2517,7 @@ function enrich(w, i) {
       (/gem|diamond/i.test(w.specs.caseMaterial) ? 'Gem-set' : BEZEL_MAP[w.art.bezel] || 'Smooth'),
     hourMarkers: w.hourMarkers || MARKER_MAP[w.art.indices] || 'Index',
     functions: functionsOf(w),
-    boxPapers:
-      w.boxPapers === true || w.boxPapers === undefined
-        ? 'Box and Papers'
-        : w.boxPapers === false
-          ? 'Meridian Presentation Box'
-          : w.boxPapers,
+    boxPapers: typeof w.boxPapers === 'string' ? w.boxPapers : BOX_DIST[i % BOX_DIST.length],
     decade: w.decade || `${Math.floor(w.year / 10) * 10}s`,
     warrantyActive:
       w.warrantyActive ?? (w.condition === 'New' || w.condition === 'Unworn' || w.year >= 2021),
