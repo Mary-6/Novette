@@ -1,8 +1,8 @@
 const OPTIONS = [
-  { value: 'popular', label: 'Most popular' },
-  { value: 'newest', label: 'Newest arrivals' },
-  { value: 'price-asc', label: 'Price: low to high' },
-  { value: 'price-desc', label: 'Price: high to low' },
+  { value: 'featured', label: 'Featured' },
+  { value: 'newest', label: 'Newest to Oldest' },
+  { value: 'price-desc', label: 'Price - High to Low' },
+  { value: 'price-asc', label: 'Price - Low to High' },
 ];
 
 export default function SortSelect({ value, onChange, className = '', selectClassName = '' }) {
@@ -19,6 +19,25 @@ export default function SortSelect({ value, onChange, className = '', selectClas
         {OPTIONS.map((o) => (
           <option key={o.value} value={o.value}>
             {o.label}
+          </option>
+        ))}
+      </select>
+    </label>
+  );
+}
+
+export function PerPageSelect({ value, onChange }) {
+  return (
+    <label className="hidden items-center gap-3 text-xs uppercase tracking-[0.2em] text-graphite sm:flex">
+      Per Page
+      <select
+        value={value}
+        onChange={(e) => onChange(Number(e.target.value))}
+        className="border border-stone/40 bg-transparent px-3 py-2.5 text-xs uppercase tracking-[0.15em] outline-none focus:border-gold"
+      >
+        {[24, 48, 96].map((n) => (
+          <option key={n} value={n}>
+            {n}
           </option>
         ))}
       </select>

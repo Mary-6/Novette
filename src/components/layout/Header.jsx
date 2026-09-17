@@ -1,33 +1,80 @@
 import { useState } from 'react';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
-import { Menu, Search, ShoppingBag, X } from 'lucide-react';
+import { ChevronDown, Heart, MapPin, Menu, Phone, Search, ShoppingBag, X } from 'lucide-react';
 import brands from '../../data/brands';
 import collections from '../../data/collections';
+import rolexFamilies from '../../data/rolexFamilies';
+import watches from '../../data/watches';
 import { useCart } from '../../context/CartContext';
+import { useWishlist } from '../../context/WishlistContext';
+import WatchArt from '../watch/WatchArt';
+
+const RESOURCES = [
+  { label: 'Journal', to: '/journal' },
+  { label: 'Buying Guide', to: '/buying-guide' },
+  { label: 'Authenticity Pledge', to: '/authenticity-pledge' },
+  { label: "Buyer's Protection Plan", to: '/buyers-protection-plan' },
+  { label: 'Watch Care', to: '/watch-care' },
+  { label: 'FAQ', to: '/faqs' },
+];
 
 export default function Header() {
   const [drawer, setDrawer] = useState(false);
-  const [searchOpen, setSearchOpen] = useState(false);
+  const [openGroup, setOpenGroup] = useState(null);
   const [q, setQ] = useState('');
   const { count } = useCart();
+  const wishlist = useWishlist();
   const navigate = useNavigate();
+  const featuredRolex = watches.find((w) => w.slug === 'rolex-submariner-date-126610ln');
 
   const submit = (e) => {
     e.preventDefault();
     if (q.trim()) navigate(`/shop?q=${encodeURIComponent(q.trim())}`);
-    setSearchOpen(false);
     setDrawer(false);
   };
 
   const linkCls = ({ isActive }) =>
-    `text-xs uppercase tracking-[0.2em] transition hover:text-gold ${isActive ? 'text-gold' : ''}`;
+    `text-xs uppercase tracking-[0.18em] transition hover:text-gold ${isActive ? 'text-gold' : ''}`;
+
+  const searchInput = (
+    <form
+      onSubmit={submit}
+      className="flex items-center gap-2 rounded-full border border-graphite bg-charcoal px-4 py-2"
+    >
+      <Search size={15} className="shrink-0 text-stone" />
+      <input
+        value={q}
+        onChange={(e) => setQ(e.target.value)}
+        placeholder="Search by brand or model"
+        className="w-full min-w-0 bg-transparent text-sm text-ivory outline-none placeholder:text-stone"
+      />
+    </form>
+  );
 
   return (
     <header className="sticky top-0 z-50 bg-ink text-ivory">
-      <div className="bg-charcoal py-2 text-center text-[10px] uppercase tracking-[0.25em] text-ivory/70">
-        Complimentary insured shipping · 2-year warranty · Authenticated by our master watchmakers
+      <div className="border-b border-graphite bg-charcoal">
+        <div className="container-x flex h-8 items-center justify-between text-[10px] uppercase tracking-[0.22em] text-ivory/60">
+          <p className="truncate">
+            Trusted by 25,000+ Clients · Free Overnight Shipping · 100% Certified Authentic
+          </p>
+          <nav className="hidden items-center gap-5 sm:flex">
+            <Link to="/contact-us" className="transition hover:text-gold">
+              Contact Us
+            </Link>
+            <Link to="/locations" className="flex items-center gap-1 transition hover:text-gold">
+              <MapPin size={10} /> Locations
+            </Link>
+            <Link to="/signup" className="transition hover:text-gold">
+              Sign Up
+            </Link>
+            <Link to="/login" className="transition hover:text-gold">
+              Login
+            </Link>
+          </nav>
+        </div>
       </div>
-      <div className="container-x flex h-16 items-center justify-between">
+      <div className="container-x flex h-16 items-center gap-6">
         <button
           className="lg:hidden"
           onClick={() => setDrawer(true)}
@@ -36,72 +83,147 @@ export default function Header() {
         >
           <Menu size={22} />
         </button>
-        <Link to="/" className="flex items-baseline gap-2">
+        <Link to="/" className="flex shrink-0 items-baseline gap-2">
           <span className="heading-display text-xl tracking-wide sm:text-2xl">
             Sterling <span className="text-gold">Meridian</span>
           </span>
-          <span className="hidden text-[9px] uppercase tracking-[0.3em] text-ivory/50 md:block">
-            Est. 1987
-          </span>
         </Link>
-        <nav className="hidden items-center gap-8 lg:flex">
-          <NavLink to="/shop" className={linkCls}>
-            Shop
-          </NavLink>
+        <nav className="hidden items-center gap-7 lg:flex">
           <div className="group relative">
-            <NavLink to="/brands" className={linkCls}>
-              Brands
+            <NavLink to="/rolex" className={linkCls}>
+              Rolex
             </NavLink>
-            <div className="invisible absolute left-1/2 top-full z-50 mt-4 w-[540px] -translate-x-1/2 bg-charcoal p-6 opacity-0 shadow-2xl transition group-hover:visible group-hover:opacity-100">
-              <div className="grid grid-cols-3 gap-x-6 gap-y-3">
-                {brands.map((b) => (
-                  <Link
-                    key={b.slug}
-                    to={`/brands/${b.slug}`}
-                    className="text-sm text-ivory/80 transition hover:text-gold"
-                  >
-                    {b.name}
+            <div className="invisible absolute left-0 top-full z-50 mt-4 w-[560px] bg-charcoal p-6 opacity-0 shadow-2xl transition group-hover:visible group-hover:opacity-100">
+              <div className="grid grid-cols-[1fr_1fr_150px] gap-6">
+                <div>
+                  <p className="eyebrow mb-3">Model Families</p>
+                  <div className="grid grid-cols-1 gap-2">
+                    {rolexFamilies.map((f) => (
+                      <Link
+                        key={f.slug}
+                        to={`/rolex/${f.slug}`}
+                        className="text-sm text-ivory/80 transition hover:text-gold"
+                      >
+                        {f.name}
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+                <div>
+                  <p className="eyebrow mb-3">Shop Rolex</p>
+                  <div className="flex flex-col gap-2 text-sm text-ivory/80">
+                    <Link to="/shop?brand=rolex&gender=Men" className="transition hover:text-gold">
+                      Shop Men's Rolex
+                    </Link>
+                    <Link
+                      to="/shop?brand=rolex&gender=Women"
+                      className="transition hover:text-gold"
+                    >
+                      Shop Women's Rolex
+                    </Link>
+                    <Link
+                      to="/shop?brand=rolex&condition=Vintage"
+                      className="transition hover:text-gold"
+                    >
+                      Shop Vintage Rolex
+                    </Link>
+                    <Link to="/rolex" className="mt-2 text-gold transition hover:text-goldLight">
+                      View All Rolex
+                    </Link>
+                  </div>
+                </div>
+                {featuredRolex && (
+                  <Link to={`/watches/${featuredRolex.slug}`} className="block">
+                    <WatchArt art={featuredRolex.art} className="w-full" />
                   </Link>
-                ))}
+                )}
               </div>
             </div>
           </div>
           <div className="group relative">
-            <NavLink to="/collections" className={linkCls}>
-              Collections
+            <NavLink to="/shop" className={linkCls}>
+              Luxury Watches
             </NavLink>
-            <div className="invisible absolute left-1/2 top-full z-50 mt-4 w-56 -translate-x-1/2 bg-charcoal p-5 opacity-0 shadow-2xl transition group-hover:visible group-hover:opacity-100">
+            <div className="invisible absolute left-0 top-full z-50 mt-4 w-[560px] bg-charcoal p-6 opacity-0 shadow-2xl transition group-hover:visible group-hover:opacity-100">
+              <div className="grid grid-cols-2 gap-6">
+                <div>
+                  <p className="eyebrow mb-3">Brands</p>
+                  <div className="grid grid-cols-2 gap-x-4 gap-y-2">
+                    {brands.map((b) => (
+                      <Link
+                        key={b.slug}
+                        to={`/brands/${b.slug}`}
+                        className="text-sm text-ivory/80 transition hover:text-gold"
+                      >
+                        {b.name}
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+                <div>
+                  <p className="eyebrow mb-3">Collections</p>
+                  <div className="flex flex-col gap-2">
+                    {collections.map((c) => (
+                      <Link
+                        key={c.slug}
+                        to={`/collections/${c.slug}`}
+                        className="text-sm text-ivory/80 transition hover:text-gold"
+                      >
+                        {c.name}
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <NavLink to="/shop?sort=newest" className={linkCls}>
+            New Arrivals
+          </NavLink>
+          <div className="group relative">
+            <span
+              className={`flex cursor-default items-center gap-1 text-xs uppercase tracking-[0.18em] transition group-hover:text-gold`}
+            >
+              Resources <ChevronDown size={12} />
+            </span>
+            <div className="invisible absolute left-0 top-full z-50 mt-4 w-56 bg-charcoal p-5 opacity-0 shadow-2xl transition group-hover:visible group-hover:opacity-100">
               <div className="flex flex-col gap-3">
-                {collections.map((c) => (
+                {RESOURCES.map((r) => (
                   <Link
-                    key={c.slug}
-                    to={`/collections/${c.slug}`}
+                    key={r.to}
+                    to={r.to}
                     className="text-sm text-ivory/80 transition hover:text-gold"
                   >
-                    {c.name}
+                    {r.label}
                   </Link>
                 ))}
               </div>
             </div>
           </div>
-          <NavLink to="/about" className={linkCls}>
-            About
-          </NavLink>
-          <NavLink to="/contact" className={linkCls}>
-            Contact
-          </NavLink>
         </nav>
-        <div className="flex items-center gap-5">
-          <button
-            onClick={() => setSearchOpen((o) => !o)}
-            aria-label="Search"
-            type="button"
-            className="transition hover:text-gold"
+        <div className="ml-auto hidden w-56 lg:block">{searchInput}</div>
+        <div className="flex items-center gap-4">
+          <a
+            href="tel:+442079460000"
+            aria-label="Call us"
+            className="hidden transition hover:text-gold sm:block"
           >
-            <Search size={19} />
-          </button>
+            <Phone size={18} />
+          </a>
+          <Link
+            to="/wishlist"
+            aria-label="Wishlist"
+            className="relative transition hover:text-gold"
+          >
+            <Heart size={18} />
+            {wishlist.count > 0 && (
+              <span className="absolute -right-2 -top-2 flex h-4 w-4 items-center justify-center rounded-full bg-gold text-[9px] font-semibold text-ink">
+                {wishlist.count}
+              </span>
+            )}
+          </Link>
           <Link to="/cart" aria-label="Cart" className="relative transition hover:text-gold">
-            <ShoppingBag size={19} />
+            <ShoppingBag size={18} />
             {count > 0 && (
               <span className="absolute -right-2 -top-2 flex h-4 w-4 items-center justify-center rounded-full bg-gold text-[9px] font-semibold text-ink">
                 {count}
@@ -110,25 +232,11 @@ export default function Header() {
           </Link>
         </div>
       </div>
-      {searchOpen && (
-        <form onSubmit={submit} className="border-t border-graphite bg-charcoal py-3">
-          <div className="container-x flex items-center gap-3">
-            <Search size={16} className="text-stone" />
-            <input
-              autoFocus
-              value={q}
-              onChange={(e) => setQ(e.target.value)}
-              placeholder="Search brand, model or reference…"
-              className="w-full bg-transparent text-sm text-ivory outline-none placeholder:text-stone"
-            />
-          </div>
-        </form>
-      )}
       {drawer && (
         <div className="fixed inset-0 z-50 lg:hidden">
           <div className="absolute inset-0 bg-ink/70" onClick={() => setDrawer(false)} />
           <div className="absolute left-0 top-0 h-full w-80 max-w-[85vw] overflow-y-auto bg-charcoal p-6">
-            <div className="mb-8 flex items-center justify-between">
+            <div className="mb-6 flex items-center justify-between">
               <span className="heading-display text-lg">
                 Sterling <span className="text-gold">Meridian</span>
               </span>
@@ -136,45 +244,67 @@ export default function Header() {
                 <X size={20} />
               </button>
             </div>
-            <form
-              onSubmit={submit}
-              className="mb-6 flex items-center gap-2 border-b border-graphite pb-3"
-            >
-              <Search size={16} className="text-stone" />
-              <input
-                value={q}
-                onChange={(e) => setQ(e.target.value)}
-                placeholder="Search watches…"
-                className="w-full bg-transparent text-sm outline-none placeholder:text-stone"
-              />
-            </form>
-            <nav className="flex flex-col gap-4 text-sm uppercase tracking-[0.2em]">
-              <Link to="/shop" onClick={() => setDrawer(false)}>
-                Shop
+            <div className="mb-6">{searchInput}</div>
+            {[
+              {
+                label: 'Shop',
+                links: [
+                  { label: 'All Watches', to: '/shop' },
+                  ...collections.map((c) => ({ label: c.name, to: `/collections/${c.slug}` })),
+                ],
+              },
+              {
+                label: 'Rolex',
+                links: [
+                  { label: 'All Rolex', to: '/rolex' },
+                  ...rolexFamilies.map((f) => ({ label: f.name, to: `/rolex/${f.slug}` })),
+                ],
+              },
+              {
+                label: 'Brands',
+                links: [
+                  { label: 'All Brands', to: '/brands' },
+                  ...brands.map((b) => ({ label: b.name, to: `/brands/${b.slug}` })),
+                ],
+              },
+              { label: 'Resources', links: RESOURCES },
+            ].map((g) => (
+              <div key={g.label} className="border-b border-graphite">
+                <button
+                  type="button"
+                  className="flex w-full items-center justify-between py-4 text-sm uppercase tracking-[0.2em]"
+                  onClick={() => setOpenGroup(openGroup === g.label ? null : g.label)}
+                >
+                  {g.label}
+                  <ChevronDown
+                    size={16}
+                    className={`transition ${openGroup === g.label ? 'rotate-180' : ''}`}
+                  />
+                </button>
+                {openGroup === g.label && (
+                  <div className="flex flex-col gap-3 pb-4 text-sm text-ivory/75">
+                    {g.links.map((l) => (
+                      <Link key={l.to} to={l.to} onClick={() => setDrawer(false)}>
+                        {l.label}
+                      </Link>
+                    ))}
+                  </div>
+                )}
+              </div>
+            ))}
+            <div className="mt-6 flex flex-col gap-3 text-sm uppercase tracking-[0.2em]">
+              <Link to="/shop?sort=newest" onClick={() => setDrawer(false)}>
+                New Arrivals
               </Link>
-              <Link to="/brands" onClick={() => setDrawer(false)}>
-                Brands
-              </Link>
-              <Link to="/collections" onClick={() => setDrawer(false)}>
-                Collections
-              </Link>
-              <Link to="/about" onClick={() => setDrawer(false)}>
-                About
-              </Link>
-              <Link to="/contact" onClick={() => setDrawer(false)}>
-                Contact
+              <Link to="/wishlist" onClick={() => setDrawer(false)}>
+                Wishlist
               </Link>
               <Link to="/cart" onClick={() => setDrawer(false)}>
                 Cart
               </Link>
-            </nav>
-            <p className="eyebrow mb-3 mt-8">Brands</p>
-            <div className="grid grid-cols-2 gap-2 text-sm text-ivory/75">
-              {brands.map((b) => (
-                <Link key={b.slug} to={`/brands/${b.slug}`} onClick={() => setDrawer(false)}>
-                  {b.name}
-                </Link>
-              ))}
+              <Link to="/contact-us" onClick={() => setDrawer(false)}>
+                Contact Us
+              </Link>
             </div>
           </div>
         </div>

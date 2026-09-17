@@ -1,16 +1,15 @@
 import { X } from 'lucide-react';
-import { brandBySlug, formatPrice } from '../../data/utils';
+import brands from '../../data/brands';
+import { formatPrice } from '../../data/utils';
 
-export default function ActiveFilters({ filters, onChange }) {
+const DISPLAY = {
+  brands: (v) => brands.find((b) => b.slug === v)?.name || v,
+};
+
+export default function ActiveFilters({ filters, onChange, hideKeys = [] }) {
   const chips = [];
   if (filters.q)
-    chips.push({ label: `“${filters.q}”`, clear: () => onChange({ ...filters, q: '' }) });
-  (filters.brands || []).forEach((b) =>
-    chips.push({
-      label: brandBySlug(b)?.name || b,
-      clear: () => onChange({ ...filters, brands: filters.brands.filter((x) => x !== b) }),
-    })
-  );
+    chips.push({ label: `"${filters.q}"`, clear: () => onChange({ ...filters, q: '' }) });
   if (filters.min != null || filters.max != null)
     chips.push({
       label: `${filters.min != null ? formatPrice(filters.min) : 'Up to'} – ${
@@ -18,14 +17,24 @@ export default function ActiveFilters({ filters, onChange }) {
       }`,
       clear: () => onChange({ ...filters, min: null, max: null }),
     });
-  ['genders', 'types', 'conditions'].forEach((key) =>
-    (filters[key] || []).forEach((v) =>
+  Object.keys(filters).forEach((key) => {
+    if (['q', 'min', 'max', 'brands'].includes(key) || hideKeys.includes(key)) return;
+    const vals = filters[key];
+    if (!Array.isArray(vals)) return;
+    vals.forEach((v) =>
       chips.push({
-        label: v,
-        clear: () => onChange({ ...filters, [key]: filters[key].filter((x) => x !== v) }),
+        label: DISPLAY[key]?.(v) || v,
+        clear: () => onChange({ ...filters, [key]: vals.filter((x) => x !== v) }),
       })
-    )
-  );
+    );
+  });
+  if (!hideKeys.includes('brands'))
+    (filters.brands || []).forEach((b) =>
+      chips.push({
+        label: brands.find((x) => x.slug === b)?.name || b,
+        clear: () => onChange({ ...filters, brands: filters.brands.filter((x) => x !== b) }),
+      })
+    );
 
   if (!chips.length) return null;
   return (
