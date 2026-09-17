@@ -53,10 +53,13 @@ export function sortWatches(list, sort = 'popular') {
 
 export function getRelated(watches, watch, n = 4) {
   const others = watches.filter((w) => w.id !== watch.id);
-  const sameBrand = others.filter((w) => w.brandSlug === watch.brandSlug);
-  const sameType = others.filter((w) => w.brandSlug !== watch.brandSlug && w.type === watch.type);
-  const rest = others.filter((w) => w.brandSlug !== watch.brandSlug && w.type !== watch.type);
-  return [...sameBrand, ...sameType, ...rest]
-    .sort((a, b) => b.popularity - a.popularity)
-    .slice(0, n);
+  const byPopularity = (a, b) => b.popularity - a.popularity;
+  const sameBrand = others.filter((w) => w.brandSlug === watch.brandSlug).sort(byPopularity);
+  const sameType = others
+    .filter((w) => w.brandSlug !== watch.brandSlug && w.type === watch.type)
+    .sort(byPopularity);
+  const rest = others
+    .filter((w) => w.brandSlug !== watch.brandSlug && w.type !== watch.type)
+    .sort(byPopularity);
+  return [...sameBrand, ...sameType, ...rest].slice(0, n);
 }

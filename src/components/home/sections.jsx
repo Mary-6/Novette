@@ -24,7 +24,7 @@ export function Hero() {
             Pre-owned and new watches from the world&apos;s great maisons — each authenticated,
             serviced and warranted by our master watchmakers.
           </p>
-          <div className="mt-10 flex flex-wrap gap-4">
+          <div className="mt-10 flex flex-col gap-4 sm:flex-row">
             <Button to="/shop" variant="gold">
               Shop the collection
             </Button>
@@ -36,7 +36,7 @@ export function Hero() {
               Explore brands
             </Button>
           </div>
-          <div className="mt-12 flex gap-10 text-xs uppercase tracking-[0.2em] text-ivory/50">
+          <div className="mt-12 flex flex-wrap gap-x-8 gap-y-2 text-[10px] uppercase tracking-[0.2em] text-ivory/50 sm:text-xs">
             <span>40-Point Authentication</span>
             <span>2-Year Warranty</span>
             <span>Insured Delivery</span>
