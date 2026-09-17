@@ -48,11 +48,11 @@ export function ShopLayout({ eyebrow, title, intro, source, lockBrand = false, t
           <div className="grid gap-12 lg:grid-cols-[260px_1fr]">
             <div className="hidden lg:block">{sidebar}</div>
             <div>
-              <div className="mb-6 flex items-center justify-between gap-4">
-                <p className="text-xs uppercase tracking-[0.2em] text-stone">
+              <div className="mb-6">
+                <p className="mb-4 text-xs uppercase tracking-[0.2em] text-stone lg:mb-0">
                   {list.length} {list.length === 1 ? 'timepiece' : 'timepieces'}
                 </p>
-                <div className="flex items-center gap-4">
+                <div className="flex items-center gap-3 lg:-mt-6 lg:justify-end">
                   <button
                     type="button"
                     onClick={() => setDrawer(true)}
@@ -60,7 +60,12 @@ export function ShopLayout({ eyebrow, title, intro, source, lockBrand = false, t
                   >
                     <SlidersHorizontal size={14} /> Filters
                   </button>
-                  <SortSelect value={sort} onChange={setSort} />
+                  <SortSelect
+                    value={sort}
+                    onChange={setSort}
+                    className="flex-1"
+                    selectClassName="w-full lg:w-auto"
+                  />
                 </div>
               </div>
               <ActiveFilters filters={filters} onChange={setFilters} />

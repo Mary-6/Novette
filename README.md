@@ -1,16 +1,45 @@
-# React + Vite
+# Sterling Meridian
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+A luxury watch e-commerce storefront for a fictional established retailer — "Fine Timepieces,
+Est. 1987, London & New York" — offering new, unworn, pre-owned and vintage watches from 15
+maisons. The catalogue is browsable by shop, brand and curated collections, with filtering,
+sorting, cart persistence and a three-step demo checkout. All product imagery is rendered by an
+original parameterized SVG illustration component — there are no external image dependencies.
 
-Currently, two official plugins are available:
+## Stack
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- Vite + React 18 (JavaScript)
+- React Router v6
+- Tailwind CSS v3.4 (PostCSS + Autoprefixer)
+- ESLint (flat config) + Prettier
+- lucide-react for icons
 
-## React Compiler
+## Commands
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+```bash
+npm install        # install dependencies
+npm run dev        # start the Vite dev server
+npm run build      # production build to dist/
+npm run preview    # preview the production build
+npm run lint       # ESLint
+npm run format     # Prettier --write
+npm run format:check  # Prettier --check
+```
 
-## Expanding the Oxlint configuration
+## Folder structure
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+```
+src/
+  data/          static catalogue data (brands, 60 watches, collections, reviews, FAQ) + utils
+  context/       CartContext (items, subtotal, localStorage persistence, toast)
+  hooks/         useReveal (scroll animations), useShop (URL-synced filters)
+  components/
+    layout/      Header, Footer, PageHero, Breadcrumbs
+    ui/          Button, Badge, SectionHeading, Accordion, ScrollToTop
+    watch/       WatchArt (parameterized SVG renderer), WatchCard, WatchGrid, ProductGallery
+    shop/        FilterSidebar, SortSelect, ActiveFilters
+    home/        home page sections
+    brand/       BrandCard
+  pages/         route pages (Home, Shop, ProductDetail, Brands, Collections, Cart,
+               Checkout, Confirmation, About, Contact, NotFound)
+```
