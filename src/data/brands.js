@@ -1,3 +1,5 @@
+import brandContent from './brandContent';
+
 const brands = [
   {
     slug: 'rolex',
@@ -151,4 +153,6 @@ const brands = [
   },
 ];
 
-export default brands;
+const merged = brands.map((b) => ({ ...b, ...(brandContent[b.slug] || {}) }));
+
+export default merged;

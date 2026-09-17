@@ -35,6 +35,24 @@ const reviews = [
     rating: 5,
     text: 'Second purchase from Sterling Meridian and the standard has not slipped. Their warranty service on my first watch was handled in days, not months.',
   },
+  {
+    name: 'Tom Beckett',
+    location: 'Austin, TX',
+    rating: 5,
+    text: 'The item number system makes reordering painless, and every watch arrives with a condition report that reads like a lab file. Exactly what a serious buyer wants.',
+  },
+  {
+    name: 'Priya Nair',
+    location: 'Toronto, CA',
+    rating: 5,
+    text: 'Bought a Lady-Datejust for my mother. The overnight delivery was complimentary, the sizing perfect, and the gift presentation far beyond what I expected.',
+  },
+  {
+    name: 'Henrik Dahl',
+    location: 'Copenhagen, DK',
+    rating: 5,
+    text: 'Transparent pricing and honest grading. The vintage GMT I received had every flaw disclosed in advance — there were none left to discover.',
+  },
 ];
 
 export default reviews;

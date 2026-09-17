@@ -67,6 +67,7 @@ const watches = [
     brandSlug: 'rolex',
     model: 'GMT-Master II "Pepsi"',
     reference: '126710BLRO',
+    nickname: 'Pepsi',
     price: 21900,
     year: 2022,
     type: 'GMT',
@@ -142,6 +143,559 @@ const watches = [
       functions: 'Hours, minutes, small seconds, chronograph',
     },
     art: { dial: '#f2efe6', bezel: 'tachymeter', indices: 'baton', chrono: true, date: false },
+  }),
+  w({
+    id: 'rlx-05',
+    slug: 'rolex-submariner-kermit-16610lv',
+    brandSlug: 'rolex',
+    model: 'Submariner Date "Kermit"',
+    reference: '16610LV',
+    price: 16800,
+    year: 2004,
+    type: 'Dive',
+    material: 'Oystersteel',
+    nickname: 'Kermit',
+    popularity: 90,
+    addedAt: d(2025, 9, 27),
+    description:
+      'The 50th-anniversary Submariner — green aluminium bezel over a maxi dial — earned its Kermit nickname instantly and its classic status since.\n\nA 2004 example with a richly faded insert, solid case and full set.',
+    specs: {
+      caseDiameter: '40mm',
+      caseMaterial: 'Oystersteel',
+      caliber: 'Rolex 3135',
+      powerReserve: '48 hours',
+      waterResistance: '300m',
+      bracelet: 'Oyster bracelet, Oystersteel',
+      dialColor: 'Black',
+      functions: 'Hours, minutes, seconds, date',
+    },
+    art: { dial: '#0d1113', bezel: 'dive', indices: 'dots', strap: 'bracelet' },
+  }),
+  w({
+    id: 'rlx-06',
+    slug: 'rolex-submariner-5513-vintage',
+    brandSlug: 'rolex',
+    model: 'Submariner',
+    reference: '5513',
+    price: 19500,
+    year: 1972,
+    type: 'Dive',
+    material: 'Oystersteel',
+    condition: 'Vintage',
+    decade: '1970s',
+    popularity: 85,
+    addedAt: d(2025, 3, 30),
+    description:
+      'The reference 5513 carried the Submariner through three decades — this 1972 example wears a gorgeous matte dial with tritium plots aged to pumpkin.\n\nFreshly serviced movement, period-correct bezel insert, and a folded Oyster bracelet.',
+    specs: {
+      caseDiameter: '40mm',
+      caseMaterial: 'Oystersteel',
+      caliber: 'Rolex 1520',
+      powerReserve: '48 hours',
+      waterResistance: '200m (as rated)',
+      bracelet: 'Folded Oyster bracelet',
+      dialColor: 'Black matte',
+      functions: 'Hours, minutes, seconds',
+    },
+    art: { dial: '#16181a', bezel: 'dive', indices: 'dots', strap: 'bracelet', date: false },
+  }),
+  w({
+    id: 'rlx-07',
+    slug: 'rolex-gmt-master-1675-vintage',
+    brandSlug: 'rolex',
+    model: 'GMT-Master "Pepsi"',
+    reference: '1675',
+    price: 24500,
+    year: 1968,
+    type: 'GMT',
+    material: 'Oystersteel',
+    condition: 'Vintage',
+    decade: '1960s',
+    nickname: 'Pepsi',
+    popularity: 87,
+    addedAt: d(2025, 2, 25),
+    description:
+      'The jet-age original — a 1968 GMT-Master with the iconic blue-and-red insert, aged lume and the honest wear of a watch that crossed oceans for a living.\n\nUnpolished case, correct small-hand configuration, service complete.',
+    specs: {
+      caseDiameter: '40mm',
+      caseMaterial: 'Oystersteel',
+      caliber: 'Rolex 1570',
+      powerReserve: '48 hours',
+      waterResistance: '50m (as rated)',
+      bracelet: 'Jubilee bracelet, Oystersteel',
+      dialColor: 'Black matte',
+      functions: 'Hours, minutes, seconds, date, GMT',
+    },
+    art: { dial: '#16181a', bezel: 'dive', indices: 'dots', strap: 'bracelet' },
+  }),
+  w({
+    id: 'rlx-08',
+    slug: 'rolex-gmt-master-ii-batman-126710blnr',
+    brandSlug: 'rolex',
+    model: 'GMT-Master II "Batman"',
+    reference: '126710BLNR',
+    price: 18900,
+    year: 2024,
+    type: 'GMT',
+    material: 'Oystersteel',
+    condition: 'Unworn',
+    isNew: true,
+    nickname: 'Batman',
+    popularity: 96,
+    addedAt: d(2025, 11, 3),
+    description:
+      'The blue-and-black ceramic GMT on Jubilee — the reference every modern traveller wants. Calibre 3285, jumping local hour, seventy-hour reserve.\n\nUnworn 2024 full set with card, hangtags and both links of bracelet sizing.',
+    specs: {
+      caseDiameter: '40mm',
+      caseMaterial: 'Oystersteel',
+      caliber: 'Rolex 3285',
+      waterResistance: '100m',
+      bracelet: 'Jubilee bracelet, Oystersteel',
+      dialColor: 'Black',
+      functions: 'Hours, minutes, seconds, date, GMT',
+    },
+    art: { dial: '#0d1113', bezel: 'dive', indices: 'dots', strap: 'bracelet' },
+  }),
+  w({
+    id: 'rlx-09',
+    slug: 'rolex-datejust-36-126234',
+    brandSlug: 'rolex',
+    model: 'Datejust 36',
+    reference: '126234',
+    price: 10200,
+    year: 2023,
+    type: 'Dress',
+    material: 'White gold & Oystersteel',
+    gender: 'Unisex',
+    isNew: true,
+    popularity: 91,
+    addedAt: d(2025, 10, 15),
+    description:
+      'The Datejust at its most correct: 36mm, fluted white-gold bezel, Jubilee bracelet and the slate Wimbledon dial with green-outlined Romans.\n\n2023 example in near-new condition with the full set.',
+    specs: {
+      caseDiameter: '36mm',
+      caseMaterial: 'White gold & Oystersteel',
+      caliber: 'Rolex 3235',
+      waterResistance: '100m',
+      bracelet: 'Jubilee bracelet',
+      dialColor: 'Slate',
+      functions: 'Hours, minutes, seconds, date',
+    },
+    art: { dial: '#4a4e55', bezel: 'fluted', indices: 'roman', strap: 'bracelet' },
+  }),
+  w({
+    id: 'rlx-10',
+    slug: 'rolex-datejust-36-16233-vintage',
+    brandSlug: 'rolex',
+    model: 'Datejust 36',
+    reference: '16233',
+    price: 7850,
+    year: 1993,
+    type: 'Dress',
+    material: 'Yellow gold & Oystersteel',
+    condition: 'Vintage',
+    decade: '1990s',
+    popularity: 73,
+    addedAt: d(2025, 4, 17),
+    description:
+      'The quintessential nineties Datejust — champagne tapestry dial, fluted yellow-gold bezel, and a tight Jubilee bracelet in two-tone.\n\n1993 example, freshly serviced, with its original punched papers.',
+    specs: {
+      caseDiameter: '36mm',
+      caseMaterial: 'Yellow gold & Oystersteel',
+      caliber: 'Rolex 3135',
+      powerReserve: '48 hours',
+      waterResistance: '100m',
+      bracelet: 'Jubilee bracelet, two-tone',
+      dialColor: 'Champagne tapestry',
+      functions: 'Hours, minutes, seconds, date',
+    },
+    art: {
+      dial: '#e8d9a8',
+      material: 'gold',
+      bezel: 'fluted',
+      indices: 'baton',
+      strap: 'bracelet',
+    },
+  }),
+  w({
+    id: 'rlx-11',
+    slug: 'rolex-datejust-41-126300',
+    brandSlug: 'rolex',
+    model: 'Datejust 41',
+    reference: '126300',
+    price: 8900,
+    year: 2021,
+    type: 'Dress',
+    material: 'Oystersteel',
+    gender: 'Unisex',
+    popularity: 76,
+    addedAt: d(2025, 5, 9),
+    description:
+      'The smooth-bezel Datejust 41 is the quiet daily wearer of the line — mint-green dial, oyster bracelet, calibre 3235.\n\n2021 example with box, papers and very light wear.',
+    specs: {
+      caseDiameter: '41mm',
+      caseMaterial: 'Oystersteel',
+      caliber: 'Rolex 3235',
+      waterResistance: '100m',
+      bracelet: 'Oyster bracelet, Oystersteel',
+      dialColor: 'Mint green',
+      functions: 'Hours, minutes, seconds, date',
+    },
+    art: { dial: '#a8bfa8', indices: 'baton', strap: 'bracelet' },
+  }),
+  w({
+    id: 'rlx-12',
+    slug: 'rolex-lady-datejust-28-279174',
+    brandSlug: 'rolex',
+    model: 'Lady-Datejust 28',
+    reference: '279174',
+    price: 9200,
+    year: 2023,
+    type: 'Dress',
+    material: 'White gold & Oystersteel',
+    gender: 'Women',
+    condition: 'Unworn',
+    popularity: 77,
+    addedAt: d(2025, 8, 19),
+    description:
+      'The Lady-Datejust in its most versatile spec — 28mm steel case, fluted white-gold bezel, silver sunray dial on Jubilee.\n\nUnworn 2023 full set, unsized bracelet.',
+    specs: {
+      caseDiameter: '28mm',
+      caseMaterial: 'White gold & Oystersteel',
+      caliber: 'Rolex 2236',
+      powerReserve: '55 hours',
+      waterResistance: '100m',
+      bracelet: 'Jubilee bracelet',
+      dialColor: 'Silver sunray',
+      functions: 'Hours, minutes, seconds, date',
+    },
+    art: { dial: '#e6e3db', bezel: 'fluted', indices: 'baton', strap: 'bracelet' },
+  }),
+  w({
+    id: 'rlx-13',
+    slug: 'rolex-daytona-116500ln',
+    brandSlug: 'rolex',
+    model: 'Cosmograph Daytona',
+    reference: '116500LN',
+    price: 32500,
+    year: 2022,
+    type: 'Chronograph',
+    material: 'Oystersteel',
+    isFeatured: true,
+    popularity: 99,
+    addedAt: d(2025, 10, 9),
+    description:
+      'The white-dial ceramic Daytona — the most demanded reference in the modern catalogue, period. Calibre 4130, Cerachrom bezel, panda registers.\n\n2022 full set in collector-grade condition.',
+    specs: {
+      caseDiameter: '40mm',
+      caseMaterial: 'Oystersteel',
+      caliber: 'Rolex 4130',
+      powerReserve: '72 hours',
+      waterResistance: '100m',
+      bracelet: 'Oyster bracelet, Oystersteel',
+      dialColor: 'White',
+      functions: 'Hours, minutes, small seconds, chronograph',
+    },
+    art: { dial: '#f2efe6', bezel: 'tachymeter', indices: 'baton', chrono: true, date: false },
+  }),
+  w({
+    id: 'rlx-14',
+    slug: 'rolex-daytona-two-tone-116503',
+    brandSlug: 'rolex',
+    model: 'Cosmograph Daytona',
+    reference: '116503',
+    price: 21900,
+    year: 2019,
+    type: 'Chronograph',
+    material: 'Yellow gold & Oystersteel',
+    popularity: 83,
+    addedAt: d(2025, 6, 26),
+    description:
+      'The two-tone Daytona remains the smartest route into the reference — same 4130 calibre, champagne dial, and genuine presence on the wrist.\n\n2019 example, unpolished, complete set.',
+    specs: {
+      caseDiameter: '40mm',
+      caseMaterial: 'Yellow gold & Oystersteel',
+      caliber: 'Rolex 4130',
+      powerReserve: '72 hours',
+      waterResistance: '100m',
+      bracelet: 'Oyster bracelet, two-tone',
+      dialColor: 'Champagne',
+      functions: 'Hours, minutes, small seconds, chronograph',
+    },
+    art: { dial: '#e8d9a8', material: 'gold', bezel: 'tachymeter', chrono: true, date: false },
+  }),
+  w({
+    id: 'rlx-15',
+    slug: 'rolex-day-date-40-228238',
+    brandSlug: 'rolex',
+    model: 'Day-Date 40',
+    reference: '228238',
+    price: 44500,
+    year: 2023,
+    type: 'Dress',
+    material: 'Yellow gold',
+    condition: 'Unworn',
+    isFeatured: true,
+    popularity: 89,
+    addedAt: d(2025, 10, 23),
+    description:
+      'The President in solid yellow gold — fluted bezel, champagne dial, the day spelled in full at twelve and the heft only a gold Rolex delivers.\n\nUnworn 2023 set on the concealed-clasp President bracelet.',
+    specs: {
+      caseDiameter: '40mm',
+      caseMaterial: '18k yellow gold',
+      caliber: 'Rolex 3255',
+      waterResistance: '100m',
+      bracelet: 'President bracelet, yellow gold',
+      dialColor: 'Champagne',
+      functions: 'Hours, minutes, seconds, day, date',
+    },
+    art: {
+      dial: '#e3cd9a',
+      material: 'gold',
+      bezel: 'fluted',
+      indices: 'roman',
+      strap: 'bracelet',
+    },
+  }),
+  w({
+    id: 'rlx-16',
+    slug: 'rolex-day-date-36-128235',
+    brandSlug: 'rolex',
+    model: 'Day-Date 36',
+    reference: '128235',
+    price: 37500,
+    year: 2022,
+    type: 'Dress',
+    material: 'Rose gold',
+    gender: 'Unisex',
+    popularity: 74,
+    addedAt: d(2025, 7, 11),
+    description:
+      'Everose gold and a chocolate dial — the warmest, most discreet Day-Date of the modern line.\n\n2022 example on President bracelet, full set.',
+    specs: {
+      caseDiameter: '36mm',
+      caseMaterial: '18k Everose gold',
+      caliber: 'Rolex 3255',
+      waterResistance: '100m',
+      bracelet: 'President bracelet, Everose',
+      dialColor: 'Chocolate',
+      functions: 'Hours, minutes, seconds, day, date',
+    },
+    art: {
+      dial: '#4e3428',
+      material: 'rosegold',
+      bezel: 'fluted',
+      indices: 'roman',
+      strap: 'bracelet',
+    },
+  }),
+  w({
+    id: 'rlx-17',
+    slug: 'rolex-explorer-36-124270',
+    brandSlug: 'rolex',
+    model: 'Explorer 36',
+    reference: '124270',
+    price: 7900,
+    year: 2024,
+    type: 'Sport',
+    material: 'Oystersteel',
+    condition: 'Unworn',
+    isNew: true,
+    popularity: 86,
+    addedAt: d(2025, 11, 6),
+    description:
+      'Back to the original 36mm — the Explorer is the purest sports watch Rolex makes: 3-6-9 numerals, no date, nothing to hide behind.\n\nUnworn 2024 full set.',
+    specs: {
+      caseDiameter: '36mm',
+      caseMaterial: 'Oystersteel',
+      caliber: 'Rolex 3230',
+      waterResistance: '100m',
+      bracelet: 'Oyster bracelet, Oystersteel',
+      dialColor: 'Black',
+      functions: 'Hours, minutes, seconds',
+    },
+    art: { dial: '#0d1113', indices: 'arabic', strap: 'bracelet', date: false },
+  }),
+  w({
+    id: 'rlx-18',
+    slug: 'rolex-explorer-ii-226570',
+    brandSlug: 'rolex',
+    model: 'Explorer II "Polar"',
+    reference: '226570',
+    price: 9850,
+    year: 2023,
+    type: 'GMT',
+    material: 'Oystersteel',
+    popularity: 81,
+    addedAt: d(2025, 8, 5),
+    description:
+      'The polar-dial Explorer II — fixed 24-hour bezel, orange GMT hand and cavern-ready legibility since 1971.\n\n2023 example, very light wear, full set.',
+    specs: {
+      caseDiameter: '42mm',
+      caseMaterial: 'Oystersteel',
+      caliber: 'Rolex 3285',
+      waterResistance: '100m',
+      bracelet: 'Oyster bracelet, Oystersteel',
+      dialColor: 'White',
+      functions: 'Hours, minutes, seconds, date, 24-hour hand',
+    },
+    art: { dial: '#f0ede6', bezel: 'dive', indices: 'dots', strap: 'bracelet' },
+  }),
+  w({
+    id: 'rlx-19',
+    slug: 'rolex-yacht-master-40-126622',
+    brandSlug: 'rolex',
+    model: 'Yacht-Master 40',
+    reference: '126622',
+    price: 14200,
+    year: 2022,
+    type: 'Sport',
+    material: 'Platinum & Oystersteel',
+    popularity: 75,
+    addedAt: d(2025, 5, 26),
+    description:
+      'The Rolesium Yacht-Master pairs a steel case with a solid platinum bezel — the slate dial catches light like nothing else in the line.\n\n2022 example, complete set.',
+    specs: {
+      caseDiameter: '40mm',
+      caseMaterial: 'Platinum & Oystersteel',
+      caliber: 'Rolex 3235',
+      waterResistance: '100m',
+      bracelet: 'Oyster bracelet, Oystersteel',
+      dialColor: 'Slate',
+      functions: 'Hours, minutes, seconds, date',
+    },
+    art: { dial: '#3d4148', bezel: 'dive', indices: 'dots', strap: 'bracelet' },
+  }),
+  w({
+    id: 'rlx-20',
+    slug: 'rolex-sea-dweller-126600',
+    brandSlug: 'rolex',
+    model: 'Sea-Dweller 43',
+    reference: '126600',
+    price: 13900,
+    year: 2021,
+    type: 'Dive',
+    material: 'Oystersteel',
+    popularity: 71,
+    addedAt: d(2025, 4, 6),
+    description:
+      "1,220 metres, helium valve and the red Sea-Dweller signature — the anniversary 43mm that restored the model's proper proportions.\n\n2021 example, full set.",
+    specs: {
+      caseDiameter: '43mm',
+      caseMaterial: 'Oystersteel',
+      caliber: 'Rolex 3235',
+      waterResistance: '1,220m',
+      bracelet: 'Oyster bracelet, Oystersteel',
+      dialColor: 'Black',
+      functions: 'Hours, minutes, seconds, date',
+    },
+    art: { dial: '#0a0c0e', bezel: 'dive', indices: 'dots', strap: 'bracelet' },
+  }),
+  w({
+    id: 'rlx-21',
+    slug: 'rolex-sky-dweller-326934',
+    brandSlug: 'rolex',
+    model: 'Sky-Dweller',
+    reference: '326934',
+    price: 21800,
+    year: 2023,
+    type: 'GMT',
+    material: 'White gold & Oystersteel',
+    condition: 'Unworn',
+    popularity: 82,
+    addedAt: d(2025, 9, 3),
+    description:
+      "Rolex's most complicated watch — annual calendar and dual time zones driven by the Ring Command bezel. Blue dial, the collector's pick.\n\nUnworn 2023 full set.",
+    specs: {
+      caseDiameter: '42mm',
+      caseMaterial: 'White gold & Oystersteel',
+      caliber: 'Rolex 9001',
+      powerReserve: '72 hours',
+      waterResistance: '100m',
+      bracelet: 'Oyster bracelet, Oystersteel',
+      dialColor: 'Bright blue',
+      functions: 'Hours, minutes, seconds, date, annual calendar, dual time',
+    },
+    art: { dial: '#1d4e8f', bezel: 'fluted', indices: 'baton', strap: 'bracelet' },
+  }),
+  w({
+    id: 'rlx-22',
+    slug: 'rolex-oyster-perpetual-41-124300',
+    brandSlug: 'rolex',
+    model: 'Oyster Perpetual 41',
+    reference: '124300',
+    price: 7600,
+    year: 2024,
+    type: 'Sport',
+    material: 'Oystersteel',
+    condition: 'New',
+    isNew: true,
+    gender: 'Unisex',
+    popularity: 84,
+    addedAt: d(2025, 11, 9),
+    description:
+      'The OP in the coveted turquoise-blue — three hands, no date, and the most copied dial of the decade.\n\nNew and unsized, 2024 full set.',
+    specs: {
+      caseDiameter: '41mm',
+      caseMaterial: 'Oystersteel',
+      caliber: 'Rolex 3230',
+      waterResistance: '100m',
+      bracelet: 'Oyster bracelet, Oystersteel',
+      dialColor: 'Turquoise',
+      functions: 'Hours, minutes, seconds',
+    },
+    art: { dial: '#4db8ac', indices: 'baton', strap: 'bracelet', date: false },
+  }),
+  w({
+    id: 'rlx-23',
+    slug: 'rolex-air-king-126900',
+    brandSlug: 'rolex',
+    model: 'Air-King',
+    reference: '126900',
+    price: 7100,
+    year: 2023,
+    type: 'Pilot',
+    material: 'Oystersteel',
+    popularity: 68,
+    addedAt: d(2025, 6, 15),
+    description:
+      'The redesigned Air-King — crown guards, luminous 3-6-9, and the bold minute track lifted straight from a cockpit dial.\n\n2023 example with the full set.',
+    specs: {
+      caseDiameter: '40mm',
+      caseMaterial: 'Oystersteel',
+      caliber: 'Rolex 3230',
+      waterResistance: '100m',
+      bracelet: 'Oyster bracelet, Oystersteel',
+      dialColor: 'Black',
+      functions: 'Hours, minutes, seconds',
+    },
+    art: { dial: '#0d1113', indices: 'arabic', strap: 'bracelet', date: false },
+  }),
+  w({
+    id: 'rlx-24',
+    slug: 'rolex-milgauss-116400gv',
+    brandSlug: 'rolex',
+    model: 'Milgauss GV',
+    reference: '116400GV',
+    price: 11200,
+    year: 2020,
+    type: 'Sport',
+    material: 'Oystersteel',
+    popularity: 70,
+    addedAt: d(2025, 3, 12),
+    description:
+      "The scientist's Rolex — anti-magnetic shielding to a thousand gauss, the green Glace Verte crystal and the lightning-bolt seconds hand.\n\nDiscontinued 2020 example, full set, excellent condition.",
+    specs: {
+      caseDiameter: '40mm',
+      caseMaterial: 'Oystersteel',
+      caliber: 'Rolex 3131',
+      powerReserve: '48 hours',
+      waterResistance: '100m',
+      bracelet: 'Oyster bracelet, Oystersteel',
+      dialColor: 'Z-blue',
+      functions: 'Hours, minutes, seconds',
+    },
+    art: { dial: '#173a5e', indices: 'baton', strap: 'bracelet', date: false },
   }),
   // Patek Philippe
   w({
@@ -1811,4 +2365,144 @@ const watches = [
   }),
 ];
 
-export default watches;
+const FAMILY_BY_BRAND = {
+  rolex: [
+    'GMT-Master II',
+    'GMT-Master',
+    'Submariner',
+    'Lady-Datejust',
+    'Datejust',
+    'Cosmograph Daytona',
+    'Daytona',
+    'Day-Date',
+    'Explorer II',
+    'Explorer',
+    'Yacht-Master',
+    'Sea-Dweller',
+    'Sky-Dweller',
+    'Oyster Perpetual',
+    'Air-King',
+    'Milgauss',
+  ],
+  'patek-philippe': ['Nautilus', 'Aquanaut', 'Calatrava', 'Twenty~4'],
+  'audemars-piguet': ['Royal Oak Offshore', 'Royal Oak', 'Code 11.59'],
+  'richard-mille': ['RM 011', 'RM 035', 'RM 055', 'RM 67-02'],
+  omega: ['Speedmaster', 'Seamaster', 'Constellation'],
+  cartier: ['Santos-Dumont', 'Santos', 'Tank', 'Panthère'],
+  breitling: ['Navitimer', 'Superocean', 'Chronomat', 'Premier'],
+  'tag-heuer': ['Carrera', 'Monaco', 'Aquaracer'],
+  tudor: ['Black Bay', 'Pelagos', 'Prince'],
+  hublot: ['Big Bang', 'Classic Fusion', 'Spirit of Big Bang'],
+  iwc: ['Portugieser', 'Pilot', 'Portofino'],
+  panerai: ['Luminor', 'Submersible', 'Radiomir'],
+  'jaeger-lecoultre': ['Reverso', 'Master', 'Polaris'],
+  'vacheron-constantin': ['Overseas', 'Patrimony', 'Fiftysix', 'Historiques'],
+  'grand-seiko': ['Heritage', 'Elegance'],
+};
+
+const BEZEL_MAP = {
+  smooth: 'Smooth',
+  fluted: 'Fluted',
+  dive: 'Rotating',
+  tachymeter: 'Tachymeter',
+};
+const MARKER_MAP = { baton: 'Index', dots: 'Luminous', roman: 'Roman', arabic: 'Arabic' };
+
+function bandTypeOf(w) {
+  const b = (w.specs.bracelet || '').toLowerCase();
+  if (b.includes('jubilee')) return 'Jubilee';
+  if (b.includes('president')) return 'President';
+  if (b.includes('oyster')) return 'Oyster';
+  if (
+    b.includes('integrated') ||
+    b.includes('link') ||
+    b.includes('manchette') ||
+    b.includes('mesh') ||
+    b.includes('rouleaux') ||
+    b.includes('flat-link') ||
+    b.includes('seven-row') ||
+    b.includes('mono-rang') ||
+    b.includes('riveted') ||
+    b.includes('bracelet')
+  )
+    return 'Integrated';
+  if (w.art.strap === 'rubber') return 'Rubber';
+  return 'Leather';
+}
+
+function functionsOf(w) {
+  const out = new Set(w.functions || []);
+  const f = `${w.specs.functions || ''} ${w.type}`.toLowerCase();
+  if (f.includes('chrono')) out.add('Chronograph');
+  if (
+    f.includes('gmt') ||
+    f.includes('dual time') ||
+    f.includes('second time zone') ||
+    f.includes('24-hour')
+  )
+    out.add('GMT');
+  if (f.includes('annual calendar')) out.add('Annual Calendar');
+  if (f.includes('power reserve')) out.add('Power Reserve');
+  if (f.includes('moonphase')) out.add('Moonphase');
+  out.add(w.art.date === false ? 'No Date' : 'Date');
+  return [...out];
+}
+
+function enrich(w, i) {
+  const sizeMm = parseFloat(w.specs.caseDiameter) || 40;
+  const bandMatch = (w.specs.bracelet || '').toLowerCase();
+  const bandMaterial =
+    w.bandMaterial ||
+    (/gold/.test(bandMatch) || /gold/.test(w.material.toLowerCase())
+      ? 'Gold'
+      : bandMatch.includes('two-tone')
+        ? 'Two-Tone'
+        : bandMatch.includes('leather') ||
+            bandMatch.includes('alligator') ||
+            bandMatch.includes('calf') ||
+            bandMatch.includes('crocodile')
+          ? 'Leather'
+          : bandMatch.includes('rubber') ||
+              bandMatch.includes('tropical') ||
+              bandMatch.includes('caoutchouc')
+            ? 'Rubber'
+            : bandMatch.includes('titanium')
+              ? 'Titanium'
+              : w.art.strap === 'leather'
+                ? 'Leather'
+                : w.art.strap === 'rubber'
+                  ? 'Rubber'
+                  : 'Steel');
+  return {
+    family:
+      w.family ||
+      FAMILY_BY_BRAND[w.brandSlug]?.find((f) =>
+        w.model.toLowerCase().startsWith(f.toLowerCase())
+      ) ||
+      w.model.split(' ')[0],
+    sizeMm,
+    dialColor: w.dialColor || w.specs.dialColor,
+    bandType: w.bandType || bandTypeOf(w),
+    bandMaterial,
+    bezelType:
+      w.bezelType ||
+      (/gem|diamond/i.test(w.specs.caseMaterial) ? 'Gem-set' : BEZEL_MAP[w.art.bezel] || 'Smooth'),
+    hourMarkers: w.hourMarkers || MARKER_MAP[w.art.indices] || 'Index',
+    functions: functionsOf(w),
+    boxPapers:
+      w.boxPapers === true || w.boxPapers === undefined
+        ? 'Box and Papers'
+        : w.boxPapers === false
+          ? 'Meridian Presentation Box'
+          : w.boxPapers,
+    decade: w.decade || `${Math.floor(w.year / 10) * 10}s`,
+    warrantyActive:
+      w.warrantyActive ?? (w.condition === 'New' || w.condition === 'Unworn' || w.year >= 2021),
+    nickname: w.nickname || null,
+    itemNumber: w.itemNumber || `SM-${104500 + i * 733}`,
+  };
+}
+
+const enriched = watches.map((w, i) => ({ ...w, ...enrich(w, i) }));
+
+export default enriched;
