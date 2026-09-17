@@ -13,68 +13,69 @@ const VIEWS = [
 export default function ProductGallery({ watch, art, engraving }) {
   const [active, setActive] = useState(0);
   const [showCredits, setShowCredits] = useState(false);
-  const hasPhotos = watch?.images?.length > 0;
+  const photoCount = watch?.images?.length || 0;
   const creds = imageCredits[watch?.slug] || [];
 
-  if (!hasPhotos) {
-    const view = VIEWS[active] ? VIEWS[active].key : 'front';
-    return (
-      <div>
-        <div className="overflow-hidden bg-sand">
-          <WatchArt art={art} view={view} engraving={engraving} className="aspect-square w-full" />
-        </div>
-        <div className="mt-4 grid grid-cols-4 gap-3">
-          {VIEWS.map((v, i) => (
-            <button
-              key={v.key}
-              type="button"
-              onClick={() => setActive(i)}
-              className={`border bg-sand transition ${
-                view === v.key ? 'border-gold' : 'border-transparent hover:border-stone/40'
-              }`}
-              aria-label={`${v.label} view`}
-            >
-              <WatchArt
-                art={art}
-                view={v.key}
-                engraving={engraving}
-                className="aspect-square w-full"
-              />
-            </button>
-          ))}
-        </div>
-      </div>
-    );
-  }
+  // Real photos first, then WatchArt views fill to 4 slots.
+  const slots = [
+    ...(watch?.images || []).map((img, i) => ({ type: 'photo', index: i, key: img })),
+    ...VIEWS.slice(0, Math.max(0, 4 - photoCount)).map((v, i) => ({
+      type: 'art',
+      view: v.key,
+      label: v.label,
+      key: v.key + i,
+    })),
+  ];
+  const cur = slots[active] || slots[0];
 
   return (
     <div>
       <div className="overflow-hidden bg-sand">
-        <WatchImage watch={watch} index={active} className="aspect-square w-full" />
+        {cur?.type === 'photo' ? (
+          <WatchImage watch={watch} index={cur.index} className="aspect-square w-full" />
+        ) : (
+          <WatchArt
+            art={art}
+            view={cur?.view || 'front'}
+            engraving={engraving}
+            className="aspect-square w-full"
+          />
+        )}
       </div>
       <div className="mt-4 grid grid-cols-4 gap-3">
-        {watch.images.map((img, i) => (
+        {slots.map((s, i) => (
           <button
-            key={img}
+            key={s.key}
             type="button"
             onClick={() => setActive(i)}
             className={`border bg-sand transition ${
               active === i ? 'border-gold' : 'border-transparent hover:border-stone/40'
             }`}
-            aria-label={`Photo ${i + 1}`}
+            aria-label={s.type === 'photo' ? `Photo ${s.index + 1}` : `${s.label} view`}
           >
-            <WatchImage watch={watch} index={i} className="aspect-square w-full" />
+            {s.type === 'photo' ? (
+              <WatchImage watch={watch} index={s.index} className="aspect-square w-full" />
+            ) : (
+              <WatchArt
+                art={art}
+                view={s.view}
+                engraving={engraving}
+                className="aspect-square w-full"
+              />
+            )}
           </button>
         ))}
       </div>
-      <button
-        type="button"
-        onClick={() => setShowCredits((s) => !s)}
-        className="mt-3 text-[11px] uppercase tracking-[0.15em] text-stone underline-offset-4 transition hover:text-gold"
-      >
-        Photo credits {showCredits ? '–' : '+'}
-      </button>
-      {showCredits && (
+      {creds.length > 0 && (
+        <button
+          type="button"
+          onClick={() => setShowCredits((s) => !s)}
+          className="mt-3 text-[11px] uppercase tracking-[0.15em] text-stone underline-offset-4 transition hover:text-gold"
+        >
+          Photo credits {showCredits ? '–' : '+'}
+        </button>
+      )}
+      {showCredits && creds.length > 0 && (
         <ul className="mt-2 space-y-1.5 text-xs text-graphite">
           {creds.map((c, i) => (
             <li key={i}>
@@ -91,9 +92,11 @@ export default function ProductGallery({ watch, art, engraving }) {
           ))}
         </ul>
       )}
-      <p className="mt-2 text-[11px] text-stone">
-        Photos via Wikimedia Commons — representative of the model shown.
-      </p>
+      {creds.length > 0 && (
+        <p className="mt-2 text-[11px] text-stone">
+          Photos via Wikimedia Commons — representative of the model shown.
+        </p>
+      )}
     </div>
   );
 }

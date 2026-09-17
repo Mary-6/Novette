@@ -29,7 +29,7 @@ const OK_LICENSE =
   /^(Public domain|CC0|CC BY( |-)SA?|CC BY-SA|CC BY)(?!.*(NC|ND|Non-free|Fair use))/i;
 const BAD_LICENSE = /(NC|ND|Non-free|Fair use|noncommercial)/i;
 const BAD_NAME =
-  /logo|drawing|\.svg|diagram|advert|poster|\bbox\b|ad_|ad-|sketch|stamp|coin|map\b/i;
+  /logo|drawing|\.svg|diagram|advert|poster|\bbox\b|ad_|ad-|sketch|stamp|coin|map\b|boutique|store|shop|building|facade|sign\b|statue|bust\b|clock|tower|boat|yacht|sail|aircraft|plane|jet\b|airshow|car\b|racing|race\b|horse|nebula|cluster|galaxy|chart|graph|painting|portrait|bag\b|document|patent|receipt|directory|window|stained/i;
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 const brandName = (slug) => BRAND_NAMES[slug] || slug;
@@ -100,10 +100,16 @@ for (const w of watches) {
     `"${brand}" "${w.model}"`,
     `"${brand}" "${w.family}"`,
     `${brand} ${w.family}`,
-    `${brand} watch`,
-    `${brand} wristwatch`,
     `${w.model} ${w.reference} watch`,
   ];
+  const brandRe = new RegExp(brand.split(' ')[0], 'i');
+  const topicWords = `${w.model} ${w.family}`
+    .toLowerCase()
+    .replace(/[^a-z0-9 ]/g, ' ')
+    .split(/\s+/)
+    .filter((t) => t.length > 2);
+  const onTopic = (title) =>
+    brandRe.test(title) && topicWords.some((t) => title.toLowerCase().includes(t));
   const hits = [];
   const seen = new Set();
   const usedQueries = [];
@@ -112,7 +118,7 @@ for (const w of watches) {
     const results = await search(q);
     usedQueries.push(q);
     for (const r of results) {
-      if (!seen.has(r.title)) {
+      if (!seen.has(r.title) && onTopic(r.title)) {
         seen.add(r.title);
         hits.push(r);
       }
