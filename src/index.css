@@ -1,0 +1,36 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-ivory font-sans text-ink antialiased;
+  }
+}
+
+@layer components {
+  .container-x {
+    @apply mx-auto max-w-7xl px-4 sm:px-6 lg:px-8;
+  }
+  .btn-primary {
+    @apply bg-ink px-7 py-3.5 text-xs uppercase tracking-[0.2em] text-ivory transition hover:bg-gold hover:text-ink;
+  }
+  .btn-outline {
+    @apply border border-ink px-7 py-3.5 text-xs uppercase tracking-[0.2em] text-ink transition hover:bg-ink hover:text-ivory;
+  }
+  .btn-gold {
+    @apply bg-gold px-7 py-3.5 text-xs uppercase tracking-[0.2em] text-ink transition hover:bg-ink hover:text-gold;
+  }
+  .eyebrow {
+    @apply text-[11px] uppercase tracking-[0.3em] text-gold;
+  }
+  .heading-display {
+    @apply font-display;
+  }
+  .reveal {
+    @apply translate-y-6 opacity-0 transition-all duration-700 ease-out;
+  }
+  .reveal.is-visible {
+    @apply translate-y-0 opacity-100;
+  }
+}
