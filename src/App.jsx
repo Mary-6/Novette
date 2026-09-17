@@ -1,16 +1,40 @@
-import { Route, Routes } from 'react-router-dom';
+import { Navigate, Route, Routes } from 'react-router-dom';
 import Layout from './pages/Layout';
 import Home from './pages/Home';
 import Shop from './pages/Shop';
 import ProductDetail from './pages/ProductDetail';
-import { BrandsIndex, BrandPage } from './pages/Brands';
+import { BrandsIndex, BrandPage, RolexFamilyPage, RolexHub } from './pages/Brands';
 import { CollectionsIndex, CollectionPage } from './pages/Collections';
 import Cart from './pages/Cart';
 import Checkout from './pages/Checkout';
 import Confirmation from './pages/Confirmation';
-import About from './pages/About';
 import Contact from './pages/Contact';
+import InfoPage from './pages/Info';
+import { JournalIndex, JournalArticle } from './pages/Journal';
+import { Login, Signup } from './pages/Account';
+import Wishlist from './pages/Wishlist';
 import NotFound from './pages/NotFound';
+
+const INFO_SLUGS = [
+  'about-us',
+  'why-buy-from-us',
+  'authenticity-pledge',
+  'buyers-protection-plan',
+  'shipping-info',
+  'international-shipping',
+  'return-policy',
+  'warranty',
+  'payment-methods',
+  'faqs',
+  'locations',
+  'trust-and-compliance',
+  'privacy-policy',
+  'terms-and-conditions',
+  'buying-guide',
+  'watch-care',
+  'sitemap',
+  'accessibility',
+];
 
 export default function App() {
   return (
@@ -18,16 +42,28 @@ export default function App() {
       <Route element={<Layout />}>
         <Route path="/" element={<Home />} />
         <Route path="/shop" element={<Shop />} />
+        <Route path="/new-arrivals" element={<Navigate to="/shop?sort=newest" replace />} />
         <Route path="/watches/:slug" element={<ProductDetail />} />
         <Route path="/brands" element={<BrandsIndex />} />
         <Route path="/brands/:slug" element={<BrandPage />} />
+        <Route path="/rolex" element={<RolexHub />} />
+        <Route path="/rolex/:family" element={<RolexFamilyPage />} />
         <Route path="/collections" element={<CollectionsIndex />} />
         <Route path="/collections/:slug" element={<CollectionPage />} />
+        <Route path="/journal" element={<JournalIndex />} />
+        <Route path="/journal/:slug" element={<JournalArticle />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/checkout" element={<Checkout />} />
         <Route path="/checkout/confirmation" element={<Confirmation />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/contact" element={<Contact />} />
+        <Route path="/about" element={<Navigate to="/about-us" replace />} />
+        <Route path="/contact" element={<Navigate to="/contact-us" replace />} />
+        <Route path="/contact-us" element={<Contact />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
+        <Route path="/wishlist" element={<Wishlist />} />
+        {INFO_SLUGS.map((slug) => (
+          <Route key={slug} path={`/${slug}`} element={<InfoPage slug={slug} />} />
+        ))}
         <Route path="*" element={<NotFound />} />
       </Route>
     </Routes>

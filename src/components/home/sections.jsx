@@ -1,45 +1,57 @@
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, BadgeCheck, ShieldCheck, Star, Truck, Watch } from 'lucide-react';
+import {
+  ArrowRight,
+  BadgeCheck,
+  ChevronLeft,
+  ChevronRight,
+  Clock,
+  LineChart,
+  Star,
+  Truck,
+  Watch,
+} from 'lucide-react';
 import watches from '../../data/watches';
 import brands from '../../data/brands';
 import collections from '../../data/collections';
+import rolexFamilies from '../../data/rolexFamilies';
 import reviews from '../../data/reviews';
+import articles from '../../data/journal';
 import WatchArt from '../watch/WatchArt';
 import WatchGrid from '../watch/WatchGrid';
 import SectionHeading from '../ui/SectionHeading';
 import Button from '../ui/Button';
 
 export function Hero() {
-  const hero = watches.find((w) => w.slug === 'patek-philippe-nautilus-5711-1a');
+  const hero = watches.find((w) => w.slug === 'rolex-submariner-date-126610ln');
   return (
     <section className="bg-ink text-ivory">
       <div className="container-x grid items-center gap-12 py-20 lg:grid-cols-2 lg:py-28">
         <div>
-          <p className="eyebrow mb-5">Fine Timepieces · Est. 1987 · London & New York</p>
+          <p className="eyebrow mb-5">The Pre-Owned</p>
           <h1 className="heading-display text-5xl font-medium leading-[1.05] sm:text-6xl lg:text-7xl">
-            Time, <span className="italic text-gold">Curated.</span>
+            Luxury Watch <span className="italic text-gold">Exchange</span>
           </h1>
           <p className="mt-6 max-w-md text-base leading-relaxed text-ivory/70">
-            Pre-owned and new watches from the world&apos;s great maisons — each authenticated,
-            serviced and warranted by our master watchmakers.
+            Authenticated pre-owned and new timepieces from the world&apos;s great maisons — priced
+            by real market data, warrantied for two years, shipped overnight on us.
           </p>
           <div className="mt-10 flex flex-col gap-4 sm:flex-row">
-            <Button to="/shop" variant="gold">
-              Shop the collection
+            <Button to="/rolex" variant="gold" className="rounded-full">
+              Buy a Rolex
             </Button>
             <Button
-              to="/brands"
+              to="/shop"
               variant="outline"
-              className="border-ivory/40 text-ivory hover:bg-ivory hover:text-ink"
+              className="rounded-full border-ivory/40 text-ivory hover:bg-ivory hover:text-ink"
             >
-              Explore brands
+              Shop Luxury Watches
             </Button>
           </div>
           <div className="mt-12 flex flex-wrap gap-x-8 gap-y-2 text-[10px] uppercase tracking-[0.2em] text-ivory/50 sm:text-xs">
+            <span>25,000+ Clients</span>
             <span>40-Point Authentication</span>
-            <span>2-Year Warranty</span>
-            <span>Insured Delivery</span>
+            <span>Est. 1987</span>
           </div>
         </div>
         <div className="mx-auto w-full max-w-md">
@@ -53,134 +65,26 @@ export function Hero() {
   );
 }
 
-export function FeaturedWatches() {
-  const list = watches.filter((w) => w.isFeatured).slice(0, 4);
+export function BrandStrip() {
   return (
-    <section className="py-20 lg:py-28">
+    <section className="border-b border-stone/25 py-10">
       <div className="container-x">
-        <SectionHeading
-          eyebrow="Handpicked"
-          title="Featured Timepieces"
-          action={
-            <Button to="/shop" variant="outline">
-              View all
-            </Button>
-          }
-        />
-        <WatchGrid watches={list} />
-      </div>
-    </section>
-  );
-}
-
-export function NewArrivals() {
-  const list = watches.filter((w) => w.isNew).slice(0, 4);
-  return (
-    <section className="bg-sand py-20 lg:py-28">
-      <div className="container-x">
-        <SectionHeading
-          eyebrow="Just In"
-          title="New Arrivals"
-          action={
-            <Button to="/shop?sort=newest" variant="outline">
-              View all
-            </Button>
-          }
-        />
-        <WatchGrid watches={list} />
-      </div>
-    </section>
-  );
-}
-
-export function FeaturedBrands() {
-  return (
-    <section className="py-20 lg:py-28">
-      <div className="container-x">
-        <SectionHeading
-          eyebrow="The Houses"
-          title="Featured Brands"
-          action={
-            <Button to="/brands" variant="outline">
-              View all brands
-            </Button>
-          }
-        />
-        <div className="grid grid-cols-2 gap-px border border-stone/25 bg-stone/25 sm:grid-cols-3 lg:grid-cols-5">
-          {brands.map((b) => (
-            <Link
-              key={b.slug}
-              to={`/brands/${b.slug}`}
-              className="group flex flex-col items-center justify-center gap-1 bg-ivory px-4 py-8 text-center transition hover:bg-sand"
-            >
-              <span className="heading-display text-lg leading-tight group-hover:text-goldDark sm:text-xl">
-                {b.name}
-              </span>
-              <span className="text-[9px] uppercase tracking-[0.3em] text-stone">
-                Est. {b.founded}
-              </span>
-            </Link>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-export function PopularWatches() {
-  const list = [...watches].sort((a, b) => b.popularity - a.popularity).slice(0, 4);
-  return (
-    <section className="bg-ink py-20 text-ivory lg:py-28">
-      <div className="container-x">
-        <SectionHeading eyebrow="Most Coveted" title="Popular Right Now" light />
-        <WatchGrid watches={list} />
-      </div>
-    </section>
-  );
-}
-
-export function CollectionsShowcase() {
-  const showcase = collections.filter((c) =>
-    ['mens-watches', 'womens-watches', 'vintage-watches', 'dive-watches'].includes(c.slug)
-  );
-  return (
-    <section className="py-20 lg:py-28">
-      <div className="container-x">
-        <SectionHeading
-          eyebrow="Curated Edits"
-          title="Shop by Collection"
-          action={
-            <Button to="/collections" variant="outline">
-              All collections
-            </Button>
-          }
-        />
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {showcase.map((c, i) => {
-            const sample = watches.filter(c.filter)[
-              i % Math.max(1, watches.filter(c.filter).length)
-            ];
+        <p className="eyebrow mb-6 text-center">Fifteen Maisons</p>
+        <div className="-mx-4 flex gap-8 overflow-x-auto px-4 pb-4 sm:justify-normal">
+          {brands.map((b) => {
+            const sample = watches.find((w) => w.brandSlug === b.slug);
             return (
-              <Link key={c.slug} to={`/collections/${c.slug}`} className="group block">
-                <div className="overflow-hidden bg-sand">
-                  {sample && (
-                    <WatchArt
-                      art={sample.art}
-                      view="angle"
-                      className="aspect-[3/4] w-full transition-transform duration-500 group-hover:scale-105"
-                    />
-                  )}
+              <Link
+                key={b.slug}
+                to={`/brands/${b.slug}`}
+                className="group flex w-24 shrink-0 flex-col items-center gap-2 text-center"
+              >
+                <div className="h-16 w-16 overflow-hidden rounded-full bg-sand">
+                  {sample && <WatchArt art={sample.art} view="detail" className="h-full w-full" />}
                 </div>
-                <div className="mt-4 flex items-center justify-between">
-                  <div>
-                    <p className="eyebrow">{c.eyebrow}</p>
-                    <p className="heading-display mt-1 text-xl">{c.name}</p>
-                  </div>
-                  <ArrowRight
-                    size={18}
-                    className="text-gold transition group-hover:translate-x-1"
-                  />
-                </div>
+                <span className="text-[10px] uppercase tracking-[0.15em] text-graphite transition group-hover:text-goldDark">
+                  {b.name}
+                </span>
               </Link>
             );
           })}
@@ -190,39 +94,283 @@ export function CollectionsShowcase() {
   );
 }
 
-export function TrustSection() {
+export function RolexFamiliesSection() {
+  return (
+    <section className="py-20 lg:py-28">
+      <div className="container-x">
+        <SectionHeading
+          eyebrow="The Crown"
+          title="Shop Rolex Watches"
+          action={
+            <Button to="/rolex" variant="outline" className="rounded-full">
+              View All Models
+            </Button>
+          }
+        />
+        <div className="grid grid-cols-2 gap-6 sm:grid-cols-3 lg:grid-cols-6">
+          {rolexFamilies.slice(0, 6).map((f) => (
+            <Link key={f.slug} to={`/rolex/${f.slug}`} className="group block text-center">
+              <div className="overflow-hidden bg-sand">
+                <WatchArt
+                  art={{ ...f.heroArt }}
+                  view="angle"
+                  className="aspect-[3/4] w-full transition-transform duration-500 group-hover:scale-105"
+                />
+              </div>
+              <p className="heading-display mt-4 text-lg group-hover:text-goldDark">{f.name}</p>
+            </Link>
+          ))}
+        </div>
+        <div className="mt-10 text-center sm:hidden">
+          <Button to="/rolex" variant="outline" className="rounded-full">
+            View All Models
+          </Button>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+export function NewArrivals() {
+  const freshCount = watches.filter((w) => w.isNew).length;
+  const list = [...watches].sort((a, b) => new Date(b.addedAt) - new Date(a.addedAt)).slice(0, 6);
+  return (
+    <section className="bg-sand py-20 lg:py-28">
+      <div className="container-x">
+        <SectionHeading
+          eyebrow={`${freshCount} added this week`}
+          title="New Arrivals"
+          action={
+            <Button to="/shop?sort=newest" variant="outline" className="rounded-full">
+              Shop New Arrivals
+            </Button>
+          }
+        />
+        <WatchGrid watches={list} className="lg:grid-cols-3 xl:grid-cols-6" />
+      </div>
+    </section>
+  );
+}
+
+export function CollectionsCarousel() {
+  const ref = useRef(null);
+  const scroll = (dir) => ref.current?.scrollBy({ left: dir * 320, behavior: 'smooth' });
+  return (
+    <section className="py-20 lg:py-28">
+      <div className="container-x">
+        <div className="mb-12 flex items-end justify-between">
+          <div>
+            <p className="eyebrow mb-3">Curated Edits</p>
+            <h2 className="heading-display text-3xl font-medium sm:text-4xl lg:text-5xl">
+              Shop Collections
+            </h2>
+          </div>
+          <div className="flex gap-2">
+            <button
+              type="button"
+              onClick={() => scroll(-1)}
+              className="flex h-10 w-10 items-center justify-center rounded-full border border-stone/40 transition hover:border-gold"
+              aria-label="Previous"
+            >
+              <ChevronLeft size={16} />
+            </button>
+            <button
+              type="button"
+              onClick={() => scroll(1)}
+              className="flex h-10 w-10 items-center justify-center rounded-full border border-stone/40 transition hover:border-gold"
+              aria-label="Next"
+            >
+              <ChevronRight size={16} />
+            </button>
+          </div>
+        </div>
+      </div>
+      <div
+        ref={ref}
+        className="flex snap-x snap-mandatory gap-6 overflow-x-auto px-4 pb-4 sm:px-6 lg:px-[max(2rem,calc((100vw-80rem)/2+2rem))]"
+      >
+        {collections.map((c) => {
+          const sample = watches.filter(c.filter)[0];
+          return (
+            <Link
+              key={c.slug}
+              to={`/collections/${c.slug}`}
+              className="group w-64 shrink-0 snap-start"
+            >
+              <div className="overflow-hidden bg-sand">
+                {sample && (
+                  <WatchArt
+                    art={sample.art}
+                    view="angle"
+                    className="aspect-[3/4] w-full transition-transform duration-500 group-hover:scale-105"
+                  />
+                )}
+              </div>
+              <p className="eyebrow mt-4">{c.eyebrow}</p>
+              <p className="heading-display mt-1 text-xl">{c.name}</p>
+            </Link>
+          );
+        })}
+      </div>
+    </section>
+  );
+}
+
+export function MarketIndex() {
+  return (
+    <section className="bg-ink py-20 text-ivory lg:py-28">
+      <div className="container-x grid items-center gap-10 lg:grid-cols-[auto_1fr_auto]">
+        <LineChart size={56} className="text-gold" strokeWidth={1} />
+        <div>
+          <p className="eyebrow mb-3">Pricing Intelligence</p>
+          <h2 className="heading-display text-3xl font-medium sm:text-4xl">
+            The Meridian Market Index
+          </h2>
+          <p className="mt-4 max-w-2xl text-sm leading-relaxed text-ivory/70">
+            Each quarter our analysts publish an internal measure of the certified pre-owned market
+            — built from our completed sales, verified dealer transactions and observed auction
+            results. It reads what watches actually change hands for, not what sellers ask.
+          </p>
+          <p className="mt-3 max-w-2xl text-sm leading-relaxed text-ivory/70">
+            It is why every price on this site is the same whether you call, visit, or check out at
+            midnight — and why our listings move with the market rather than against it.
+          </p>
+        </div>
+        <Button to="/journal/meridian-market-index" variant="gold" className="rounded-full">
+          View Report
+        </Button>
+      </div>
+    </section>
+  );
+}
+
+export function JournalPreview() {
+  return (
+    <section className="py-20 lg:py-28">
+      <div className="container-x">
+        <SectionHeading
+          eyebrow="Editorial"
+          title="From the Journal"
+          action={
+            <Button to="/journal" variant="outline" className="rounded-full">
+              View All
+            </Button>
+          }
+        />
+        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+          {articles.slice(0, 6).map((a) => (
+            <Link
+              key={a.slug}
+              to={`/journal/${a.slug}`}
+              className="group block border border-stone/25 p-8 transition hover:border-gold"
+            >
+              <p className="eyebrow">{a.category}</p>
+              <p className="heading-display mt-3 text-2xl leading-snug group-hover:text-goldDark">
+                {a.title}
+              </p>
+              <p className="mt-3 text-sm leading-relaxed text-graphite">{a.dek}</p>
+              <p className="mt-5 flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-goldDark">
+                {a.readTime} <ArrowRight size={12} />
+              </p>
+            </Link>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+export function PromiseSection() {
   const items = [
     {
-      icon: BadgeCheck,
-      title: 'Master Authentication',
-      text: 'Every timepiece passes a 40-point inspection by our master watchmakers before listing.',
-    },
-    {
-      icon: ShieldCheck,
-      title: 'Two-Year Warranty',
-      text: 'Movement and functions are covered for a full two years — serviced in our own atelier.',
-    },
-    {
-      icon: Truck,
-      title: 'Insured Worldwide Shipping',
-      text: 'Discreet packaging, full-value insurance and signature delivery, complimentary over $5,000.',
+      icon: LineChart,
+      title: 'Pricing Transparency',
+      text: 'Every price is set against the Meridian Market Index — real transactions, not asking prices.',
     },
     {
       icon: Watch,
-      title: 'Concierge Service',
-      text: 'Speak with a specialist in London or New York for sourcing, sizing and private viewings.',
+      title: 'Real-Time Inventory',
+      text: 'Every listing is physically in our vault, authenticated and ready to ship today.',
+    },
+    {
+      icon: Truck,
+      title: 'Free Overnight Shipping',
+      text: 'Insured, discreet and signature-required — complimentary overnight on every order.',
+      to: '/shipping-info',
+    },
+    {
+      icon: BadgeCheck,
+      title: 'Authentication Pledge',
+      text: 'A 40-point bench inspection and a signed certificate on every watch.',
+      to: '/authenticity-pledge',
     },
   ];
   return (
     <section className="bg-sand py-20 lg:py-28">
-      <div className="container-x grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
-        {items.map((it) => (
-          <div key={it.title} className="reveal">
-            <it.icon size={26} className="text-gold" strokeWidth={1.5} />
-            <p className="mt-4 text-sm font-medium uppercase tracking-[0.2em]">{it.title}</p>
-            <p className="mt-3 text-sm leading-relaxed text-graphite">{it.text}</p>
+      <div className="container-x">
+        <SectionHeading eyebrow="Our Word" title="Our Promise" />
+        <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
+          {items.map((it) => (
+            <div key={it.title} className="reveal">
+              <it.icon size={26} className="text-gold" strokeWidth={1.5} />
+              <p className="mt-4 text-sm font-medium uppercase tracking-[0.2em]">{it.title}</p>
+              <p className="mt-3 text-sm leading-relaxed text-graphite">{it.text}</p>
+              {it.to && (
+                <Link
+                  to={it.to}
+                  className="mt-3 inline-block text-xs uppercase tracking-[0.2em] text-goldDark underline-offset-4 hover:underline"
+                >
+                  Learn more
+                </Link>
+              )}
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+export function AboutBlock() {
+  return (
+    <section className="py-20 lg:py-28">
+      <div className="container-x grid gap-12 lg:grid-cols-2">
+        <div className="reveal">
+          <p className="eyebrow mb-3">About Sterling Meridian</p>
+          <h2 className="heading-display text-3xl font-medium sm:text-4xl lg:text-5xl">
+            Our Story
+          </h2>
+          <div className="mt-6 space-y-4 text-sm leading-relaxed text-graphite">
+            <p>
+              Founded in 1987 as a Mayfair atelier restoring vintage Rolex, Sterling Meridian grew
+              from a two-bench workshop into a luxury watch exchange trusted by more than 25,000
+              clients.
+            </p>
+            <p>
+              We moved online in 2004 and opened our Madison Avenue boutique in 2015, but the rule
+              has never changed: nothing is offered that our own watchmakers haven&apos;t opened,
+              inspected and certified.
+            </p>
+            <p>
+              Every listing is priced against the Meridian Market Index, shipped fully insured, and
+              covered by a two-year warranty — because a fine watch should be the safest purchase
+              you make all year.
+            </p>
           </div>
-        ))}
+          <Button to="/about-us" variant="outline" className="mt-8 rounded-full">
+            Read our story
+          </Button>
+        </div>
+        <blockquote className="reveal flex flex-col justify-center border border-stone/25 bg-sand p-10">
+          <p className="heading-display text-2xl italic leading-relaxed text-graphite">
+            “A watch outlives trends and owners alike. Our job is simply to deserve the trust of
+            whoever wears it next.”
+          </p>
+          <footer className="mt-6 text-xs uppercase tracking-[0.25em]">
+            Eleanor Whitcombe
+            <span className="block mt-1 text-stone">Founder & Chairwoman</span>
+          </footer>
+        </blockquote>
       </div>
     </section>
   );
@@ -230,26 +378,94 @@ export function TrustSection() {
 
 export function Reviews() {
   return (
-    <section className="py-20 lg:py-28">
+    <section id="reviews" className="bg-ink py-20 text-ivory lg:py-28">
       <div className="container-x">
-        <SectionHeading eyebrow="Client Voices" title="Trusted Worldwide" />
-        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-          {reviews.map((r) => (
-            <figure key={r.name} className="reveal border border-stone/25 p-8">
+        <SectionHeading eyebrow="25,000+ Clients" title="What Clients Are Saying" light />
+        <div className="grid gap-8 md:grid-cols-3">
+          {reviews.slice(0, 3).map((r) => (
+            <figure key={r.name} className="reveal border border-graphite p-8">
               <div className="flex gap-1 text-gold">
                 {Array.from({ length: r.rating }).map((_, i) => (
                   <Star key={i} size={14} fill="currentColor" strokeWidth={0} />
                 ))}
               </div>
-              <blockquote className="mt-4 text-sm leading-relaxed text-graphite">
+              <blockquote className="mt-4 text-sm leading-relaxed text-ivory/80">
                 “{r.text}”
               </blockquote>
               <figcaption className="mt-5 text-xs uppercase tracking-[0.2em]">
-                {r.name} <span className="text-stone">· {r.location}</span>
+                {r.name} <span className="text-ivory/40">· {r.location}</span>
               </figcaption>
             </figure>
           ))}
         </div>
+      </div>
+    </section>
+  );
+}
+
+export function WhyShop() {
+  const points = [
+    'Every watch authenticated by master watchmakers, in-house',
+    'Pricing set by the Meridian Market Index — real transaction data',
+    'Real-time inventory: listed means in our vault and ready',
+    'Free insured overnight shipping, signature on delivery',
+    'Two-year warranty serviced on our own benches',
+    '14-day returns, prepaid insured label included',
+  ];
+  return (
+    <section className="py-20 lg:py-28">
+      <div className="container-x max-w-4xl">
+        <SectionHeading eyebrow="The Difference" title="Why Shop at Sterling Meridian?" />
+        <ul className="grid gap-x-12 gap-y-5 sm:grid-cols-2">
+          {points.map((p) => (
+            <li key={p} className="reveal flex items-start gap-3 text-sm text-graphite">
+              <Clock size={15} className="mt-0.5 shrink-0 text-gold" />
+              {p}
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+  );
+}
+
+export function PopularSearches() {
+  const cols = [
+    ['Rolex Submariner', 'Rolex Datejust 36', 'Rolex GMT-Master II'],
+    ['Omega Speedmaster', 'Omega Seamaster 300M'],
+    ['Cartier Santos', 'Cartier Tank', 'Cartier Panthère'],
+    ['Patek Nautilus', 'Patek Aquanaut'],
+    ['AP Royal Oak', 'Tudor Black Bay 58', 'Vacheron Overseas'],
+  ];
+  const [open, setOpen] = useState(false);
+  return (
+    <section className="border-t border-stone/25 py-16">
+      <div className="container-x">
+        <button
+          type="button"
+          onClick={() => setOpen((o) => !o)}
+          className="flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-graphite transition hover:text-gold"
+        >
+          Popular Searches <span className="text-gold">{open ? '–' : '+'}</span>
+        </button>
+        {open && (
+          <div className="mt-6 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-5">
+            {cols.map((col, i) => (
+              <ul key={i} className="space-y-2 text-sm text-graphite">
+                {col.map((s) => (
+                  <li key={s}>
+                    <Link
+                      to={`/shop?q=${encodeURIComponent(s)}`}
+                      className="transition hover:text-goldDark"
+                    >
+                      {s}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            ))}
+          </div>
+        )}
       </div>
     </section>
   );
@@ -262,7 +478,9 @@ export function Newsletter() {
     <section className="bg-ink py-20 text-ivory lg:py-28">
       <div className="container-x max-w-2xl text-center">
         <p className="eyebrow mb-4">The Meridian List</p>
-        <h2 className="heading-display text-4xl font-medium sm:text-5xl">First to know.</h2>
+        <h2 className="heading-display text-4xl font-medium sm:text-5xl">
+          Timeless Style, Delivered.
+        </h2>
         <p className="mt-4 text-sm text-ivory/60">
           New arrivals, private offerings and market notes — once a month, never more.
         </p>

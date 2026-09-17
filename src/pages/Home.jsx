@@ -1,14 +1,18 @@
 import useReveal from '../hooks/useReveal';
 import {
-  CollectionsShowcase,
-  FeaturedBrands,
-  FeaturedWatches,
+  AboutBlock,
+  BrandStrip,
+  CollectionsCarousel,
   Hero,
+  JournalPreview,
+  MarketIndex,
   NewArrivals,
   Newsletter,
-  PopularWatches,
+  PopularSearches,
+  PromiseSection,
   Reviews,
-  TrustSection,
+  RolexFamiliesSection,
+  WhyShop,
 } from '../components/home/sections';
 
 export default function Home() {
@@ -16,13 +20,17 @@ export default function Home() {
   return (
     <>
       <Hero />
-      <FeaturedWatches />
+      <BrandStrip />
+      <RolexFamiliesSection />
       <NewArrivals />
-      <FeaturedBrands />
-      <PopularWatches />
-      <CollectionsShowcase />
-      <TrustSection />
+      <CollectionsCarousel />
+      <MarketIndex />
+      <JournalPreview />
+      <PromiseSection />
+      <AboutBlock />
       <Reviews />
+      <WhyShop />
+      <PopularSearches />
       <Newsletter />
     </>
   );
