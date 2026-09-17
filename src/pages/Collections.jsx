@@ -3,7 +3,7 @@ import collections from '../data/collections';
 import watches from '../data/watches';
 import PageHero from '../components/layout/PageHero';
 import Button from '../components/ui/Button';
-import WatchArt from '../components/watch/WatchArt';
+import WatchImage from '../components/watch/WatchImage';
 import { ShopLayout } from './Shop';
 import useReveal from '../hooks/useReveal';
 
@@ -26,10 +26,10 @@ export function CollectionsIndex() {
               <Link key={c.slug} to={`/collections/${c.slug}`} className="group block">
                 <div className="overflow-hidden bg-sand">
                   {sample && (
-                    <WatchArt
-                      art={sample.art}
+                    <WatchImage
+                      watch={sample}
                       view="angle"
-                      className="aspect-[3/4] w-full transition-transform duration-500 group-hover:scale-105"
+                      className="aspect-[4/5] w-full transition-transform duration-500 group-hover:scale-105"
                     />
                   )}
                 </div>

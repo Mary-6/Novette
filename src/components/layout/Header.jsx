@@ -7,7 +7,7 @@ import rolexFamilies from '../../data/rolexFamilies';
 import watches from '../../data/watches';
 import { useCart } from '../../context/CartContext';
 import { useWishlist } from '../../context/WishlistContext';
-import WatchArt from '../watch/WatchArt';
+import WatchImage from '../watch/WatchImage';
 
 const RESOURCES = [
   { label: 'Journal', to: '/journal' },
@@ -134,7 +134,7 @@ export default function Header() {
                 </div>
                 {featuredRolex && (
                   <Link to={`/watches/${featuredRolex.slug}`} className="block">
-                    <WatchArt art={featuredRolex.art} className="w-full" />
+                    <WatchImage watch={featuredRolex} className="w-full" />
                   </Link>
                 )}
               </div>

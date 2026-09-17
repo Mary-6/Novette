@@ -11,7 +11,7 @@ import BrandCard from '../components/brand/BrandCard';
 import Button from '../components/ui/Button';
 import Accordion from '../components/ui/Accordion';
 import SectionHeading from '../components/ui/SectionHeading';
-import WatchArt from '../components/watch/WatchArt';
+import WatchImage from '../components/watch/WatchImage';
 import { ShopLayout } from './Shop';
 import { useShopFilters } from '../hooks/useShop';
 import useReveal from '../hooks/useReveal';
@@ -131,13 +131,13 @@ function BrandLongForm({ brand }) {
       ? rolexFamilies.map((f) => ({
           name: f.name,
           to: `/rolex/${f.slug}`,
-          art: watches.find((w) => w.brandSlug === 'rolex' && w.family === f.name)?.art,
+          watch: watches.find((w) => w.brandSlug === 'rolex' && w.family === f.name),
           count: source.filter((w) => w.family === f.name).length,
         }))
       : [...new Set(source.map((w) => w.model))].map((m) => ({
           name: m,
           to: `/shop?brand=${brand.slug}&q=${encodeURIComponent(m)}`,
-          art: source.find((w) => w.model === m)?.art,
+          watch: source.find((w) => w.model === m),
           count: source.filter((w) => w.model === m).length,
         }));
 
@@ -209,11 +209,11 @@ function BrandLongForm({ brand }) {
             {models.map((m) => (
               <Link key={m.name} to={m.to} className="group block">
                 <div className="overflow-hidden bg-sand">
-                  {m.art && (
-                    <WatchArt
-                      art={m.art}
+                  {m.watch && (
+                    <WatchImage
+                      watch={m.watch}
                       view="angle"
-                      className="aspect-[3/4] w-full transition-transform duration-500 group-hover:scale-105"
+                      className="aspect-[4/5] w-full transition-transform duration-500 group-hover:scale-105"
                     />
                   )}
                 </div>

@@ -155,6 +155,7 @@ export default function ProductDetail() {
           />
           <div className="grid gap-12 lg:grid-cols-2">
             <ProductGallery
+              watch={watch}
               art={watch.art}
               engraving={`${brand.name.toUpperCase()} · ${watch.reference}`}
             />

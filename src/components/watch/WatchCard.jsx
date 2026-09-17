@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { Heart } from 'lucide-react';
-import WatchArt from './WatchArt';
+import WatchImage from './WatchImage';
 import Badge from '../ui/Badge';
 import { brandBySlug, formatPrice } from '../../data/utils';
 import { useWishlist } from '../../context/WishlistContext';
@@ -13,9 +13,9 @@ export default function WatchCard({ watch }) {
     <div className="group relative">
       <Link to={`/watches/${watch.slug}`} className="block">
         <div className="relative overflow-hidden bg-sand">
-          <WatchArt
-            art={watch.art}
-            className="aspect-[3/4] w-full transition-transform duration-500 group-hover:scale-105"
+          <WatchImage
+            watch={watch}
+            className="aspect-[4/5] w-full transition-transform duration-500 group-hover:scale-105"
           />
           <div className="absolute left-3 top-3 flex flex-col items-start gap-1.5">
             <Badge>{watch.condition}</Badge>

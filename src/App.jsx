@@ -13,6 +13,7 @@ import InfoPage from './pages/Info';
 import { JournalIndex, JournalArticle } from './pages/Journal';
 import { Login, Signup } from './pages/Account';
 import Wishlist from './pages/Wishlist';
+import ImageCredits from './pages/ImageCredits';
 import NotFound from './pages/NotFound';
 
 const INFO_SLUGS = [
@@ -35,6 +36,8 @@ const INFO_SLUGS = [
   'sitemap',
   'accessibility',
 ];
+
+// /image-credits is a dedicated page (not data-driven).
 
 export default function App() {
   return (
@@ -61,6 +64,7 @@ export default function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/wishlist" element={<Wishlist />} />
+        <Route path="/image-credits" element={<ImageCredits />} />
         {INFO_SLUGS.map((slug) => (
           <Route key={slug} path={`/${slug}`} element={<InfoPage slug={slug} />} />
         ))}

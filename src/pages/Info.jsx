@@ -319,6 +319,7 @@ function SitemapBody() {
         ['Privacy Policy', '/privacy-policy'],
         ['Terms & Conditions', '/terms-and-conditions'],
         ['Accessibility', '/accessibility'],
+        ['Image Credits', '/image-credits'],
       ],
     },
   ];

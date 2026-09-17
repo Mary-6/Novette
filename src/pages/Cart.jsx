@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import { Minus, Plus, Trash2 } from 'lucide-react';
 import { FREE_SHIPPING_THRESHOLD, STANDARD_SHIPPING, useCart } from '../context/CartContext';
 import { brandBySlug, formatPrice } from '../data/utils';
-import WatchArt from '../components/watch/WatchArt';
+import WatchImage from '../components/watch/WatchImage';
 import Button from '../components/ui/Button';
 import PageHero from '../components/layout/PageHero';
 
@@ -38,7 +38,7 @@ export default function Cart() {
               return (
                 <div key={it.watchId} className="flex gap-6 py-6">
                   <Link to={`/watches/${it.watch.slug}`} className="w-24 shrink-0 bg-sand sm:w-28">
-                    <WatchArt art={it.watch.art} className="aspect-[3/4] w-full" />
+                    <WatchImage watch={it.watch} className="aspect-[4/5] w-full" />
                   </Link>
                   <div className="flex flex-1 flex-col">
                     <p className="text-[10px] uppercase tracking-[0.25em] text-stone">

@@ -2,7 +2,7 @@ import { useMemo, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { FREE_SHIPPING_THRESHOLD, STANDARD_SHIPPING, useCart } from '../context/CartContext';
 import { brandBySlug, formatPrice } from '../data/utils';
-import WatchArt from '../components/watch/WatchArt';
+import WatchImage from '../components/watch/WatchImage';
 import Button from '../components/ui/Button';
 import PageHero from '../components/layout/PageHero';
 
@@ -336,7 +336,7 @@ export default function Checkout() {
               {items.map((it) => (
                 <li key={it.watchId} className="flex items-center gap-4">
                   <div className="w-14 shrink-0 bg-ivory">
-                    <WatchArt art={it.watch.art} className="aspect-[3/4] w-full" />
+                    <WatchImage watch={it.watch} className="aspect-[4/5] w-full" />
                   </div>
                   <div className="flex-1 text-sm">
                     <p className="heading-display leading-snug">{it.watch.model}</p>

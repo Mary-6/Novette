@@ -17,7 +17,7 @@ import collections from '../../data/collections';
 import rolexFamilies from '../../data/rolexFamilies';
 import reviews from '../../data/reviews';
 import articles from '../../data/journal';
-import WatchArt from '../watch/WatchArt';
+import WatchImage from '../watch/WatchImage';
 import WatchGrid from '../watch/WatchGrid';
 import SectionHeading from '../ui/SectionHeading';
 import Button from '../ui/Button';
@@ -55,7 +55,7 @@ export function Hero() {
           </div>
         </div>
         <div className="mx-auto w-full max-w-md">
-          <WatchArt art={hero.art} className="w-full" />
+          <WatchImage watch={hero} className="w-full" />
         </div>
       </div>
       <div className="container-x pb-10">
@@ -80,7 +80,7 @@ export function BrandStrip() {
                 className="group flex w-24 shrink-0 flex-col items-center gap-2 text-center"
               >
                 <div className="h-16 w-16 overflow-hidden rounded-full bg-sand">
-                  {sample && <WatchArt art={sample.art} view="detail" className="h-full w-full" />}
+                  {sample && <WatchImage watch={sample} view="detail" className="h-full w-full" />}
                 </div>
                 <span className="text-[10px] uppercase tracking-[0.15em] text-graphite transition group-hover:text-goldDark">
                   {b.name}
@@ -108,18 +108,23 @@ export function RolexFamiliesSection() {
           }
         />
         <div className="grid grid-cols-2 gap-6 sm:grid-cols-3 lg:grid-cols-6">
-          {rolexFamilies.slice(0, 6).map((f) => (
-            <Link key={f.slug} to={`/rolex/${f.slug}`} className="group block text-center">
-              <div className="overflow-hidden bg-sand">
-                <WatchArt
-                  art={{ ...f.heroArt }}
-                  view="angle"
-                  className="aspect-[3/4] w-full transition-transform duration-500 group-hover:scale-105"
-                />
-              </div>
-              <p className="heading-display mt-4 text-lg group-hover:text-goldDark">{f.name}</p>
-            </Link>
-          ))}
+          {rolexFamilies.slice(0, 6).map((f) => {
+            const rep = watches.find((w) => w.family === f.name);
+            return (
+              <Link key={f.slug} to={`/rolex/${f.slug}`} className="group block text-center">
+                <div className="overflow-hidden bg-sand">
+                  {rep && (
+                    <WatchImage
+                      watch={rep}
+                      view="angle"
+                      className="aspect-[4/5] w-full transition-transform duration-500 group-hover:scale-105"
+                    />
+                  )}
+                </div>
+                <p className="heading-display mt-4 text-lg group-hover:text-goldDark">{f.name}</p>
+              </Link>
+            );
+          })}
         </div>
         <div className="mt-10 text-center sm:hidden">
           <Button to="/rolex" variant="outline" className="rounded-full">
@@ -199,10 +204,10 @@ export function CollectionsCarousel() {
             >
               <div className="overflow-hidden bg-sand">
                 {sample && (
-                  <WatchArt
-                    art={sample.art}
+                  <WatchImage
+                    watch={sample}
                     view="angle"
-                    className="aspect-[3/4] w-full transition-transform duration-500 group-hover:scale-105"
+                    className="aspect-[4/5] w-full transition-transform duration-500 group-hover:scale-105"
                   />
                 )}
               </div>

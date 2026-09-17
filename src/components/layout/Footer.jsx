@@ -139,6 +139,9 @@ export default function Footer() {
             <Link to="/accessibility" className="transition hover:text-gold">
               Accessibility
             </Link>
+            <Link to="/image-credits" className="transition hover:text-gold">
+              Image Credits
+            </Link>
           </nav>
         </div>
       </div>
