@@ -33,16 +33,16 @@ export function Hero() {
         />
         <div className="absolute inset-0 bg-gradient-to-r from-ink via-ink/70 to-transparent to-45%" />
       </div>
-      <div className="absolute inset-x-0 top-0 h-[58%] sm:hidden">
+      <div className="relative h-[46vh] overflow-hidden sm:hidden">
         <img
           src="/images/hero-speedmaster.jpg"
           alt=""
           aria-hidden="true"
           className="kenburns h-full w-full object-cover object-[center_40%]"
         />
+        <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-ink to-transparent" />
       </div>
-      <div className="absolute inset-x-0 bottom-0 h-[60%] bg-gradient-to-t from-ink via-ink/85 to-transparent sm:hidden" />
-      <div className="container-x relative flex min-h-[92vh] flex-col justify-end pb-16 sm:min-h-[80vh] sm:justify-center sm:py-32">
+      <div className="container-x relative flex flex-col pb-16 pt-6 sm:min-h-[80vh] sm:justify-center sm:py-32">
         <p className="eyebrow mb-5">Sterling Meridian · Est. 1987</p>
         <h1 className="heading-display max-w-2xl text-5xl font-medium leading-[1.05] sm:text-6xl lg:text-7xl">
           Timeless Luxury. <span className="italic text-gold">Iconic Timepieces.</span>
