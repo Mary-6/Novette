@@ -1,8 +1,6 @@
 const tones = {
   New: 'bg-ink text-ivory',
   Unworn: 'bg-gold text-ink',
-  'Pre-Owned': 'bg-graphite text-ivory',
-  Vintage: 'bg-sand text-ink border border-stone/40',
   'In Stock': 'bg-emerald-900/10 text-emerald-900',
   Reserved: 'bg-amber-700/10 text-amber-800',
   'Coming Soon': 'bg-graphite/10 text-graphite',

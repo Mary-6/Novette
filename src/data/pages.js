@@ -208,7 +208,7 @@ const pages = {
       },
       {
         heading: 'Grading & description',
-        body: 'Condition grades reflect our bench assessment at the time of listing. Vintage pieces are sold as examined; age-related wear consistent with the described condition is expected and disclosed.',
+        body: 'Condition grades reflect our bench assessment at the time of listing. Heritage pieces are presented unworn or freshly serviced; era-appropriate originality is assessed and disclosed on every certificate.',
       },
       {
         heading: 'Liability',

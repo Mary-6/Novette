@@ -37,4 +37,21 @@
   .reveal.is-visible {
     @apply translate-y-0 opacity-100;
   }
+  .kenburns {
+    animation: kenburns 20s ease-in-out infinite alternate;
+  }
+  @keyframes kenburns {
+    from {
+      transform: scale(1);
+    }
+    to {
+      transform: scale(1.12);
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .kenburns {
+    animation: none;
+  }
 }

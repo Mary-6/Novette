@@ -42,7 +42,7 @@ function FeatureChips({ brand }) {
     { label: 'Gold', to: `/shop?brand=${brand.slug}&material=Yellow gold&material=Rose gold` },
     { label: 'Two-Tone', to: `/shop?brand=${brand.slug}&bandmat=Two-Tone` },
     { label: 'Steel', to: `/shop?brand=${brand.slug}&bandmat=Steel` },
-    { label: 'Vintage', to: `/shop?brand=${brand.slug}&condition=Vintage` },
+    { label: 'Heritage', to: `/shop?brand=${brand.slug}&decade=1960s,1970s,1980s,1990s,2000s` },
     { label: 'Chronograph', to: `/shop?brand=${brand.slug}&func=Chronograph` },
     { label: 'Date', to: `/shop?brand=${brand.slug}&func=Date` },
   ];
@@ -66,7 +66,7 @@ function FamilyChips({ brand }) {
   const quick = [
     { label: "Men's", genders: ['Men', 'Unisex'] },
     { label: "Women's", genders: ['Women'] },
-    { label: 'Vintage', conditions: ['Vintage'] },
+    { label: 'Heritage', decades: ['1960s', '1970s', '1980s', '1990s', '2000s'] },
   ];
   const families =
     brand.slug === 'rolex'
@@ -85,7 +85,7 @@ function FamilyChips({ brand }) {
         {quick.map((c) => {
           const on =
             (c.genders && JSON.stringify(filters.genders) === JSON.stringify(c.genders)) ||
-            (c.conditions && JSON.stringify(filters.conditions) === JSON.stringify(c.conditions));
+            (c.decades && JSON.stringify(filters.decades) === JSON.stringify(c.decades));
           return (
             <button
               key={c.label}
@@ -94,8 +94,8 @@ function FamilyChips({ brand }) {
               onClick={() =>
                 apply(
                   on
-                    ? { genders: [], conditions: [] }
-                    : { genders: c.genders || [], conditions: c.conditions || [] }
+                    ? { genders: [], decades: [] }
+                    : { genders: c.genders || [], decades: c.decades || [] }
                 )
               }
             >

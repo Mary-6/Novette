@@ -92,8 +92,8 @@ function AboutBody() {
             <div className="space-y-5 text-sm leading-relaxed text-graphite">
               <p>
                 Sterling Meridian was founded in 1987 as a two-bench atelier in Mayfair restoring
-                vintage Rolex — the watches dealers had written off. Clients began asking the
-                workshop to find pieces for them, and then to stand behind them.
+                earlier Rolex references — the watches dealers had written off. Clients began asking
+                the workshop to find pieces for them, and then to stand behind them.
               </p>
               <p>
                 In 2004 the atelier moved online, carrying its rule with it: nothing is offered that

@@ -50,7 +50,7 @@ const articles = [
     date: '2025-08-19',
     body: [
       'Ask any boutique for the steel sports watch on their poster and you will hear the same word: waitlist. Some of that scarcity is genuine — high-end movements take time, and a handful of references genuinely outstrip production. But much of it is allocation arithmetic: desirable pieces are reserved for established purchase histories.',
-      'The certified pre-owned market exists to close that gap. The same watch, the same reference, often unworn — available today, priced by supply and demand rather than retail theatre. Sometimes that means a premium; increasingly, it means a discount.',
+      'The certified unworn market exists to close that gap. The same watch, the same reference, often unworn — available today, priced by supply and demand rather than retail theatre. Sometimes that means a premium; increasingly, it means a discount.',
       'Prices on the most-hyped references have corrected substantially from their peaks, which is healthy for collectors. A watch bought to be worn should be judged on condition and completeness, not on the fever chart of the month it was purchased.',
       'Our advice is unchanged since 1987: buy the watch you want, at a price verified against the market, from someone who will stand behind it. The waitlist is a queue; it is not a queue for anything better.',
     ],
@@ -105,7 +105,7 @@ const articles = [
     readTime: '6 min read',
     date: '2025-11-10',
     body: [
-      'Every quarter our analysts publish the Meridian Market Index — an internal measure of the certified pre-owned market built from our own completed sales, verified dealer transactions and observed auction results. It is not sentiment and it is not asking prices; it is what watches actually changed hands for.',
+      'Every quarter our analysts publish the Meridian Market Index — an internal measure of the certified market built from our own completed sales, verified dealer transactions and observed auction results. It is not sentiment and it is not asking prices; it is what watches actually changed hands for.',
       'This quarter the Index tells a familiar story: the speculative premium on the most-hyped steel sports references continues to compress toward retail, while the strongest performers were the quiet categories — two-tone dress watches, mid-size cases under 36mm, and vintage pieces with exceptional provenance.',
       'Gold watches in particular outperformed the Index average for the fourth consecutive quarter, tracking both bullion prices and a broader taste shift toward warmth on the wrist. Meanwhile, well-documented vintage divers with original dials remain genuinely scarce — supply, not demand, is their constraint.',
       'We publish the Index because an informed buyer is a better client. Every price on this site is set against it, which is why our listings carry the same figure whether you call, visit, or checkout at midnight.',

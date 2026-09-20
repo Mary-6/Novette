@@ -23,43 +23,92 @@ import SectionHeading from '../ui/SectionHeading';
 import Button from '../ui/Button';
 
 export function Hero() {
-  const hero = watches.find((w) => w.slug === 'rolex-submariner-date-126610ln');
   return (
-    <section className="bg-ink text-ivory">
-      <div className="container-x grid items-center gap-12 py-20 lg:grid-cols-2 lg:py-28">
-        <div>
-          <p className="eyebrow mb-5">The Pre-Owned</p>
-          <h1 className="heading-display text-5xl font-medium leading-[1.05] sm:text-6xl lg:text-7xl">
-            Luxury Watch <span className="italic text-gold">Exchange</span>
-          </h1>
-          <p className="mt-6 max-w-md text-base leading-relaxed text-ivory/70">
-            Authenticated pre-owned and new timepieces from the world&apos;s great maisons — priced
-            by real market data, warrantied for two years, shipped overnight on us.
-          </p>
-          <div className="mt-10 flex flex-col gap-4 sm:flex-row">
-            <Button to="/rolex" variant="gold" className="rounded-full">
-              Buy a Rolex
-            </Button>
-            <Button
-              to="/shop"
-              variant="outline"
-              className="rounded-full border-ivory/40 text-ivory hover:bg-ivory hover:text-ink"
-            >
-              Shop Luxury Watches
-            </Button>
-          </div>
-          <div className="mt-12 flex flex-wrap gap-x-8 gap-y-2 text-[10px] uppercase tracking-[0.2em] text-ivory/50 sm:text-xs">
-            <span>25,000+ Clients</span>
-            <span>40-Point Authentication</span>
-            <span>Est. 1987</span>
-          </div>
+    <section className="relative overflow-hidden bg-ink text-ivory">
+      <img
+        src="/images/watches/rolex-submariner-date-126610ln/1.jpg"
+        alt="Rolex Submariner Date"
+        className="kenburns absolute inset-0 h-full w-full object-cover"
+      />
+      <div className="absolute inset-0 bg-gradient-to-r from-ink via-ink/80 to-ink/20" />
+      <div className="absolute inset-0 bg-gradient-to-t from-ink/80 via-transparent to-ink/40" />
+      <div className="container-x relative flex min-h-[80vh] flex-col justify-center py-24 lg:py-32">
+        <p className="eyebrow mb-5">Sterling Meridian · Est. 1987</p>
+        <h1 className="heading-display max-w-2xl text-5xl font-medium leading-[1.05] sm:text-6xl lg:text-7xl">
+          Timeless Luxury. <span className="italic text-gold">Iconic Timepieces.</span>
+        </h1>
+        <p className="mt-6 max-w-lg text-base leading-relaxed text-ivory/75">
+          A curated collection of new and unworn watches from the world&apos;s great maisons — every
+          piece inspected, timed and certified by our master horologists before it reaches your
+          wrist.
+        </p>
+        <div className="mt-10 flex flex-col gap-4 sm:flex-row">
+          <Button to="/shop" variant="gold" className="rounded-full">
+            Shop the Collection
+          </Button>
+          <Button
+            to="/rolex"
+            variant="outline"
+            className="rounded-full border-ivory/40 text-ivory hover:bg-ivory hover:text-ink"
+          >
+            Explore Rolex
+          </Button>
         </div>
-        <div className="mx-auto w-full max-w-md">
-          <WatchImage watch={hero} className="w-full" />
+        <div className="mt-14 flex flex-wrap gap-x-8 gap-y-2 text-[10px] uppercase tracking-[0.2em] text-ivory/55 sm:text-xs">
+          <span>25,000+ Clients</span>
+          <span>40-Point Authentication</span>
+          <span>Est. 1987</span>
         </div>
       </div>
-      <div className="container-x pb-10">
-        <div className="h-px bg-gold/40" />
+    </section>
+  );
+}
+
+const INTRO_POINTS = [
+  'Inspected, timed and verified in-house',
+  'Free insured overnight delivery',
+  'Access to rare, waitlist-only references',
+  'Two-year warranty beyond manufacturer terms',
+];
+
+export function HeritageIntro() {
+  return (
+    <section className="py-20 lg:py-28">
+      <div className="container-x grid items-center gap-12 lg:grid-cols-2">
+        <div className="reveal">
+          <p className="eyebrow mb-3">The Meridian Standard</p>
+          <h2 className="heading-display text-3xl font-medium sm:text-4xl lg:text-5xl">
+            Where Heritage Meets Modern Elegance
+          </h2>
+          <div className="mt-6 space-y-4 text-sm leading-relaxed text-graphite">
+            <p>
+              For nearly four decades Sterling Meridian has brought together the world&apos;s most
+              legendary watches for collectors who value precision, heritage and lasting value —
+              each reference chosen for the story it will carry onto the next wrist.
+            </p>
+            <p>
+              Every watch undergoes a multi-point inspection by our certified horologists: serial
+              numbers, movement and provenance verified against our records before listing. One
+              hundred percent certified authentic — always.
+            </p>
+          </div>
+          <ul className="mt-8 space-y-3">
+            {INTRO_POINTS.map((p) => (
+              <li key={p} className="flex items-start gap-3 text-sm text-graphite">
+                <BadgeCheck size={16} className="mt-0.5 shrink-0 text-gold" />
+                {p}
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="reveal border border-gold/60 p-2">
+          <img
+            src="/images/watches/patek-philippe-nautilus-5711-1a/1.jpg"
+            alt="Patek Philippe Nautilus"
+            loading="lazy"
+            className="aspect-[4/5] w-full object-cover"
+          />
+        </div>
       </div>
     </section>
   );
@@ -232,9 +281,10 @@ export function MarketIndex() {
             The Meridian Market Index
           </h2>
           <p className="mt-4 max-w-2xl text-sm leading-relaxed text-ivory/70">
-            Each quarter our analysts publish an internal measure of the certified pre-owned market
-            — built from our completed sales, verified dealer transactions and observed auction
-            results. It reads what watches actually change hands for, not what sellers ask.
+            Each quarter our analysts publish an internal measure of the certified market for new
+            and unworn watches — built from our completed sales, verified dealer transactions and
+            observed auction results. It reads what watches actually change hands for, not what
+            sellers ask.
           </p>
           <p className="mt-3 max-w-2xl text-sm leading-relaxed text-ivory/70">
             It is why every price on this site is the same whether you call, visit, or check out at
@@ -290,30 +340,30 @@ export function PromiseSection() {
     {
       icon: LineChart,
       title: 'Pricing Transparency',
-      text: 'Every price is set against the Meridian Market Index — real transactions, not asking prices.',
+      text: 'Every price is set against the Meridian Market Index — measured, transparent and fair.',
     },
     {
       icon: Watch,
       title: 'Real-Time Inventory',
-      text: 'Every listing is physically in our vault, authenticated and ready to ship today.',
+      text: 'Every listing is physically in our vault — inspected, timed and ready to ship today.',
     },
     {
       icon: Truck,
       title: 'Free Overnight Shipping',
-      text: 'Insured, discreet and signature-required — complimentary overnight on every order.',
+      text: 'Insured, discreet and signature-required — complimentary overnight delivery on us.',
       to: '/shipping-info',
     },
     {
       icon: BadgeCheck,
       title: 'Authentication Pledge',
-      text: 'A 40-point bench inspection and a signed certificate on every watch.',
+      text: 'A 40-point bench inspection and a signed certificate accompany every timepiece.',
       to: '/authenticity-pledge',
     },
   ];
   return (
     <section className="bg-sand py-20 lg:py-28">
       <div className="container-x">
-        <SectionHeading eyebrow="Our Word" title="Our Promise" />
+        <SectionHeading eyebrow="Our Word" title="The Assurance of Excellence" />
         <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
           {items.map((it) => (
             <div key={it.title} className="reveal">
@@ -347,8 +397,8 @@ export function AboutBlock() {
           </h2>
           <div className="mt-6 space-y-4 text-sm leading-relaxed text-graphite">
             <p>
-              Founded in 1987 as a Mayfair atelier restoring vintage Rolex, Sterling Meridian grew
-              from a two-bench workshop into a luxury watch exchange trusted by more than 25,000
+              Founded in 1987 as a Mayfair atelier restoring earlier Rolex references, Sterling
+              Meridian grew from a two-bench workshop into a destination trusted by more than 25,000
               clients.
             </p>
             <p>
@@ -420,7 +470,7 @@ export function WhyShop() {
   return (
     <section className="py-20 lg:py-28">
       <div className="container-x max-w-4xl">
-        <SectionHeading eyebrow="The Difference" title="Why Shop at Sterling Meridian?" />
+        <SectionHeading eyebrow="The Difference" title="The Standard of Absolute Quality" />
         <ul className="grid gap-x-12 gap-y-5 sm:grid-cols-2">
           {points.map((p) => (
             <li key={p} className="reveal flex items-start gap-3 text-sm text-graphite">

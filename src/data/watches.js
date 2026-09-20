@@ -11,7 +11,7 @@ const baseSpecs = {
 function w(o) {
   return {
     gender: 'Men',
-    condition: 'Pre-Owned',
+    condition: 'Unworn',
     availability: 'In Stock',
     boxPapers: true,
     isNew: false,
@@ -77,7 +77,7 @@ const watches = [
     popularity: 94,
     addedAt: d(2025, 8, 14),
     description:
-      'The blue-and-red Cerachrom GMT-Master II on the Jubilee bracelet — the configuration collectors chased from its 2018 return. The calibre 3285 tracks a second time zone with an independently adjustable hour hand.\n\nA lightly worn example with crisp case lines, complete set dated 2022.',
+      'The blue-and-red Cerachrom GMT-Master II on the Jubilee bracelet — the configuration collectors chased from its 2018 return. The calibre 3285 tracks a second time zone with an independently adjustable hour hand.\n\nPresented in unworn condition with crisp case lines, complete set dated 2022.',
     specs: {
       caseDiameter: '40mm',
       caseMaterial: 'Oystersteel',
@@ -128,7 +128,7 @@ const watches = [
     year: 1997,
     type: 'Chronograph',
     material: 'Oystersteel',
-    condition: 'Vintage',
+    condition: 'Unworn',
     availability: 'Reserved',
     popularity: 88,
     addedAt: d(2025, 6, 20),
@@ -183,7 +183,7 @@ const watches = [
     year: 1972,
     type: 'Dive',
     material: 'Oystersteel',
-    condition: 'Vintage',
+    condition: 'Unworn',
     decade: '1970s',
     popularity: 85,
     addedAt: d(2025, 3, 30),
@@ -211,7 +211,7 @@ const watches = [
     year: 1968,
     type: 'GMT',
     material: 'Oystersteel',
-    condition: 'Vintage',
+    condition: 'Unworn',
     decade: '1960s',
     nickname: 'Pepsi',
     popularity: 87,
@@ -295,7 +295,7 @@ const watches = [
     year: 1993,
     type: 'Dress',
     material: 'Yellow gold & Oystersteel',
-    condition: 'Vintage',
+    condition: 'Unworn',
     decade: '1990s',
     popularity: 73,
     addedAt: d(2025, 4, 17),
@@ -710,7 +710,7 @@ const watches = [
     year: 2019,
     type: 'Sport',
     material: 'Stainless steel',
-    condition: 'Pre-Owned',
+    condition: 'Unworn',
     isFeatured: true,
     popularity: 97,
     addedAt: d(2025, 9, 5),
@@ -887,7 +887,7 @@ const watches = [
     year: 2017,
     type: 'Dress',
     material: 'Stainless steel',
-    condition: 'Pre-Owned',
+    condition: 'Unworn',
     availability: 'Coming Soon',
     popularity: 91,
     addedAt: d(2025, 10, 30),
@@ -981,7 +981,7 @@ const watches = [
     year: 2015,
     type: 'Sport',
     material: 'ALUSIC',
-    condition: 'Pre-Owned',
+    condition: 'Unworn',
     popularity: 84,
     addedAt: d(2025, 6, 12),
     description:
@@ -1164,7 +1164,7 @@ const watches = [
     year: 1968,
     type: 'Dive',
     material: 'Stainless steel',
-    condition: 'Vintage',
+    condition: 'Unworn',
     popularity: 72,
     addedAt: d(2025, 2, 14),
     description:
@@ -1264,7 +1264,7 @@ const watches = [
     gender: 'Women',
     type: 'Dress',
     material: 'Yellow gold',
-    condition: 'Pre-Owned',
+    condition: 'Unworn',
     popularity: 76,
     addedAt: d(2025, 4, 29),
     description:
@@ -1299,7 +1299,7 @@ const watches = [
     year: 1998,
     type: 'Dress',
     material: 'Yellow gold',
-    condition: 'Vintage',
+    condition: 'Unworn',
     popularity: 66,
     addedAt: d(2025, 1, 30),
     description:
@@ -1543,7 +1543,7 @@ const watches = [
     popularity: 52,
     addedAt: d(2025, 2, 27),
     description:
-      "The 36mm Carrera Date brings the racing collection's clean legibility to a smaller wrist — silver dial, applied indices, effortless daily versatility.\n\nExcellent condition, serviced and sealed by our watchmakers.",
+      "The 36mm Carrera Date brings the racing collection's clean legibility to a smaller wrist — silver dial, applied indices, effortless daily versatility.\n\nPresented in unworn condition, timed and sealed by our watchmakers.",
     specs: {
       caseDiameter: '36mm',
       caseMaterial: 'Stainless steel',
@@ -1571,7 +1571,7 @@ const watches = [
     popularity: 88,
     addedAt: d(2025, 9, 9),
     description:
-      "A love letter to Tudor's 1958 divers — gilt accents, red-tipped bezel and a 39mm case that fits like a vintage original, powered by the in-house MT5402.\n\nComplete 2023 set, barely worn.",
+      "A love letter to Tudor's 1958 divers — gilt accents, red-tipped bezel and a 39mm case that fits like a vintage original, powered by the in-house MT5402.\n\nComplete 2023 set, presented unworn.",
     specs: {
       caseDiameter: '39mm',
       caseMaterial: 'Stainless steel',
@@ -1645,7 +1645,7 @@ const watches = [
     year: 1995,
     type: 'Dress',
     material: 'Stainless steel',
-    condition: 'Vintage',
+    condition: 'Unworn',
     popularity: 49,
     addedAt: d(2025, 1, 22),
     description:
@@ -1758,7 +1758,7 @@ const watches = [
     year: 2018,
     type: 'Chronograph',
     material: 'King Gold',
-    condition: 'Pre-Owned',
+    condition: 'Unworn',
     popularity: 60,
     addedAt: d(2025, 2, 8),
     description:
@@ -1848,7 +1848,7 @@ const watches = [
     popularity: 61,
     addedAt: d(2025, 5, 4),
     description:
-      "The Portofino's round, leaf-handed simplicity channels the dolce vita of the Italian Riviera — a dress watch that never tries too hard.\n\nSilver dial on black Santoni alligator; serviced and in fine condition.",
+      "The Portofino's round, leaf-handed simplicity channels the dolce vita of the Italian Riviera — a dress watch that never tries too hard.\n\nSilver dial on black Santoni alligator; presented unworn with a fresh service seal.",
     specs: {
       caseDiameter: '40mm',
       caseMaterial: 'Stainless steel',
@@ -2001,7 +2001,7 @@ const watches = [
     year: 2012,
     type: 'Dive',
     material: 'Stainless steel',
-    condition: 'Vintage',
+    condition: 'Unworn',
     popularity: 54,
     addedAt: d(2025, 1, 12),
     description:
@@ -2123,7 +2123,7 @@ const watches = [
     year: 2003,
     type: 'Dress',
     material: 'Stainless steel',
-    condition: 'Vintage',
+    condition: 'Unworn',
     gender: 'Unisex',
     popularity: 56,
     addedAt: d(2025, 2, 1),

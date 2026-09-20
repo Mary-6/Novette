@@ -3,7 +3,7 @@ const brandContent = {
     history: [
       "Hans Wilsdorf registered the Rolex name in 1908, betting that the wristwatch — then dismissed as a ladies' trinket — would replace the pocket watch. Within two decades his waterproof Oyster case and self-winding Perpetual rotor made the bet look inevitable.",
       'The golden run of tool watches followed: the Submariner, GMT-Master, Explorer, Day-Date and Daytona each defined a category and then refused to leave it. Rolex became the brand that equips expeditions and then commemorates them.',
-      'Today a pre-owned Rolex is the most liquid asset in watchmaking — recognisable in every airport on earth, and the anchor of nearly every serious collection. It is where most collectors begin and, quietly, where many end.',
+      'Today a certified Rolex from Sterling Meridian is the most liquid asset in watchmaking — recognisable in every airport on earth, and the anchor of nearly every serious collection. It is where most collectors begin and, quietly, where many end.',
     ],
     keyTerms: [
       {
@@ -26,7 +26,7 @@ const brandContent = {
     ],
     faq: [
       {
-        q: 'Are pre-owned Rolex watches authentic here?',
+        q: 'Are your Rolex watches authentic?',
         a: 'Every Rolex passes our 40-point bench inspection and is verified against factory serial records. Each ships with a signed Certificate of Authenticity and two-year warranty.',
       },
       {
@@ -61,7 +61,7 @@ const brandContent = {
     history: [
       'Founded in Geneva in 1839 by Antoine Norbert de Patek and Adrien Philippe, the manufacture invented the keyless winding crown and has been independent and family-owned — by the Sterns since 1932 — ever since.',
       'Its grand complications have set auction records for generations, while the Calatrava defined the dress watch and the Nautilus, drawn by Gérald Genta in 1976, became the most coveted steel watch in the world.',
-      'Pre-owned Patek Philippe represents the summit of collecting — pieces that appreciate in meaning as much as in value.',
+      'A certified Patek Philippe represents the summit of collecting — pieces that appreciate in meaning as much as in value.',
     ],
     keyTerms: [
       {
@@ -174,7 +174,7 @@ const brandContent = {
     history: [
       'Richard Mille launched his eponymous marque in 2001 with one conviction: a wristwatch could be engineered like a racing car — titanium, carbon composites and movements suspended against shock.',
       "Partnerships with Rafael Nadal, Felipe Massa and the world's fastest drivers turned the tonneau silhouette into the signature of a new generation of collectors.",
-      'Production remains measured in the low thousands, making the certified pre-owned market the primary route in.',
+      'Production remains measured in the low thousands, making the certified market the primary route in.',
     ],
     keyTerms: [
       {
@@ -290,7 +290,7 @@ const brandContent = {
     history: [
       'Louis-François Cartier founded his Paris maison in 1847 and became jeweller to the crowned heads of Europe; in 1904 grandson Louis made the Santos for aviator Alberto Santos-Dumont — arguably the first purpose-built wristwatch.',
       'The Tank followed in 1917, the Panthère in the eighties — designs so resolved they have needed no change since.',
-      'A pre-owned Cartier is a design object first and a timepiece second — which is precisely why it never goes out of style.',
+      'A certified Cartier is a design object first and a timepiece second — which is precisely why it never goes out of style.',
     ],
     keyTerms: [
       {
@@ -718,7 +718,7 @@ const brandContent = {
     history: [
       'In continuous operation since 1755, Vacheron Constantin is the oldest watch manufacture in the world — through revolution, war and quartz crisis, the Geneva bench never stopped.',
       "The Patrimony embodies the maison's classicism; the Overseas, with its Maltese-cross bezel, is its modern integrated-bracelet flagship; the Historiques revive the greatest hits.",
-      'Pre-owned Vacheron offers the entry to Genevan haute horlogerie at prices the boutiques cannot touch.',
+      'A certified Vacheron offers the entry to Genevan haute horlogerie at prices the boutiques cannot touch.',
     ],
     keyTerms: [
       { term: 'Overseas', def: 'The integrated-bracelet sports line with Maltese-cross bezel.' },

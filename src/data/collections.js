@@ -41,11 +41,11 @@ const collections = [
   },
   {
     slug: 'vintage-watches',
-    name: 'Vintage Watches',
+    name: 'Heritage Watches',
     eyebrow: 'Pieces with Provenance',
     description:
-      'Watches with history in their dials — each vintage piece selected for originality, condition and character.',
-    filter: (w) => w.condition === 'Vintage',
+      'Earlier references with history in their dials — heritage pieces presented unworn or fully serviced, selected for originality and character.',
+    filter: (w) => w.year < 2010,
   },
   {
     slug: 'dive-watches',

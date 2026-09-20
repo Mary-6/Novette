@@ -122,10 +122,10 @@ export default function Header() {
                       Shop Women's Rolex
                     </Link>
                     <Link
-                      to="/shop?brand=rolex&condition=Vintage"
+                      to="/shop?brand=rolex&decade=1960s,1970s,1980s,1990s,2000s"
                       className="transition hover:text-gold"
                     >
-                      Shop Vintage Rolex
+                      Shop Heritage Rolex
                     </Link>
                     <Link to="/rolex" className="mt-2 text-gold transition hover:text-goldLight">
                       View All Rolex

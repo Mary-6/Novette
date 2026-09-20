@@ -15,7 +15,7 @@ const reviews = [
     name: 'Daniel Okafor',
     location: 'Chicago, IL',
     rating: 5,
-    text: 'I was nervous buying a vintage Seamaster online. Their watchmakers talked me through every photo and the 40-point report. The watch is better than described.',
+    text: 'I was nervous buying a heritage Seamaster online. Their watchmakers talked me through every photo and the 40-point report. The watch is better than described.',
   },
   {
     name: 'Sofia Lindqvist',
@@ -51,7 +51,7 @@ const reviews = [
     name: 'Henrik Dahl',
     location: 'Copenhagen, DK',
     rating: 5,
-    text: 'Transparent pricing and honest grading. The vintage GMT I received had every flaw disclosed in advance — there were none left to discover.',
+    text: 'Transparent pricing and honest grading. The heritage GMT I received had every detail disclosed in advance — there were none left to discover.',
   },
 ];
 

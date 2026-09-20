@@ -3,6 +3,7 @@ import {
   AboutBlock,
   BrandStrip,
   CollectionsCarousel,
+  HeritageIntro,
   Hero,
   JournalPreview,
   MarketIndex,
@@ -21,6 +22,7 @@ export default function Home() {
     <>
       <Hero />
       <BrandStrip />
+      <HeritageIntro />
       <RolexFamiliesSection />
       <NewArrivals />
       <CollectionsCarousel />
