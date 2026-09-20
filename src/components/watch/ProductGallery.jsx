@@ -43,7 +43,7 @@ export default function ProductGallery({ watch, art, engraving }) {
   return (
     <div>
       <div className="relative overflow-hidden bg-sand">
-        {cur?.type === 'photo' ? (
+        {cur?.type === 'photo' || cur?.type === 'visualization' ? (
           <WatchImage watch={watch} index={cur.index} className="aspect-square w-full" />
         ) : (
           <WatchArt
