@@ -1,4 +1,5 @@
 import watchImages from './watchImages.js';
+import visualizationImages from './visualizationImages.js';
 
 const d = (y, m, day) => new Date(Date.UTC(y, m - 1, day)).toISOString();
 
@@ -2531,7 +2532,10 @@ function enrich(w, i) {
 const enriched = watches.map((w, i) => ({
   ...w,
   ...enrich(w, i),
-  images: watchImages[w.slug] || [],
+  images: watchImages[w.slug] || visualizationImages[w.slug] || [],
+  imageKinds: (watchImages[w.slug] || visualizationImages[w.slug] || []).map((src) =>
+    src.includes('/visualization') ? 'visualization' : 'photo'
+  ),
 }));
 
 export default enriched;

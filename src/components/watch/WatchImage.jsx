@@ -7,6 +7,7 @@ export default function WatchImage({ watch, index = 0, className = '', view, alt
   const src = watch?.images?.[index];
   const brand = brandBySlug(watch?.brandSlug);
   const name = `${brand?.name || ''} ${watch?.model || ''}`.trim();
+  const isVisualization = src?.includes('/visualization');
   if (!src || failed) {
     return (
       <WatchArt
@@ -20,8 +21,8 @@ export default function WatchImage({ watch, index = 0, className = '', view, alt
   return (
     <img
       src={src}
-      alt={alt || name}
-      title={alt || `Photograph of ${name}`}
+      alt={alt || (isVisualization ? `Studio model visualization of ${name}` : name)}
+      title={alt || (isVisualization ? 'Studio model visualization' : `Photograph of ${name}`)}
       loading="lazy"
       onError={() => setFailed(true)}
       className={`${className} object-cover`}
