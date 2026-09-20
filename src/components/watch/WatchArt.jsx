@@ -337,6 +337,7 @@ export default function WatchArt({
   view = 'front',
   engraving = 'STERLING MERIDIAN',
   className = '',
+  label = 'Watch illustration',
 }) {
   const uid = useId().replace(/:/g, '');
   const mat = materials[art.material] || materials.steel;
@@ -700,7 +701,7 @@ export default function WatchArt({
   const transform = view === 'angle' ? 'rotate(-8 150 215) skewX(-6) translate(-12 0)' : undefined;
 
   return (
-    <svg viewBox={viewBox} className={className} role="img" aria-label="Watch illustration">
+    <svg viewBox={viewBox} className={className} role="img" aria-label={label}>
       <defs>
         <radialGradient id={`b${uid}`} cx="50%" cy="42%" r="72%">
           <stop offset="0%" stopColor="#fbf9f5" />

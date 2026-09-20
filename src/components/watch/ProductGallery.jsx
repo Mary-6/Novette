@@ -28,9 +28,15 @@ export default function ProductGallery({ watch, art, engraving }) {
   ];
   const cur = slots[active] || slots[0];
 
+  const brandName = watch?.brandSlug ? watch.brandSlug.replace(/-/g, ' ') : '';
+  const cap = (s) =>
+    s.type === 'photo'
+      ? `Photograph of ${brandName} ${watch.model}`
+      : 'Illustrated model representation';
+
   return (
     <div>
-      <div className="overflow-hidden bg-sand">
+      <div className="relative overflow-hidden bg-sand">
         {cur?.type === 'photo' ? (
           <WatchImage watch={watch} index={cur.index} className="aspect-square w-full" />
         ) : (
@@ -39,9 +45,16 @@ export default function ProductGallery({ watch, art, engraving }) {
             view={cur?.view || 'front'}
             engraving={engraving}
             className="aspect-square w-full"
+            label={`Illustrated representation of ${brandName} ${watch?.model || ''}`}
           />
         )}
+        <span className="absolute bottom-3 left-3 bg-ink/70 px-2 py-0.5 text-[9px] uppercase tracking-[0.15em] text-ivory/80">
+          {photoCount ? 'Verified model photo' : 'Model illustration'}
+        </span>
       </div>
+      <p className="mt-1.5 text-[10px] uppercase tracking-[0.15em] text-stone">
+        {cur ? cap(cur) : ''}
+      </p>
       <div className="mt-4 grid grid-cols-4 gap-3">
         {slots.map((s, i) => (
           <button

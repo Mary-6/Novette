@@ -1,328 +1,223 @@
 export default {
   'rolex-submariner-date-126610ln': [
-    '/images/watches/rolex-submariner-date-126610ln/1.jpg',
-    '/images/watches/rolex-submariner-date-126610ln/2.jpg',
-    '/images/watches/rolex-submariner-date-126610ln/3.jpg',
+    '/images/watches/rolex-submariner-date-126610ln/1.jpg'
   ],
   'rolex-gmt-master-ii-pepsi-126710blro': [
-    '/images/watches/rolex-gmt-master-ii-pepsi-126710blro/1.jpg',
-    '/images/watches/rolex-gmt-master-ii-pepsi-126710blro/2.jpg',
-    '/images/watches/rolex-gmt-master-ii-pepsi-126710blro/3.jpg',
-    '/images/watches/rolex-gmt-master-ii-pepsi-126710blro/4.jpg',
+    '/images/watches/rolex-gmt-master-ii-pepsi-126710blro/1.jpg'
   ],
   'rolex-datejust-31-two-tone-278273': [
     '/images/watches/rolex-datejust-31-two-tone-278273/1.jpg',
-    '/images/watches/rolex-datejust-31-two-tone-278273/2.jpg',
-    '/images/watches/rolex-datejust-31-two-tone-278273/3.jpg',
-    '/images/watches/rolex-datejust-31-two-tone-278273/4.jpg',
+    '/images/watches/rolex-datejust-31-two-tone-278273/2.jpg'
   ],
   'rolex-daytona-16520-vintage': [
-    '/images/watches/rolex-daytona-16520-vintage/1.jpg',
-    '/images/watches/rolex-daytona-16520-vintage/2.jpg',
-    '/images/watches/rolex-daytona-16520-vintage/3.jpg',
-    '/images/watches/rolex-daytona-16520-vintage/4.jpg',
+    '/images/watches/rolex-daytona-16520-vintage/1.jpg'
   ],
   'rolex-submariner-kermit-16610lv': [
     '/images/watches/rolex-submariner-kermit-16610lv/1.jpg',
-    '/images/watches/rolex-submariner-kermit-16610lv/2.jpg',
-    '/images/watches/rolex-submariner-kermit-16610lv/3.jpg',
-    '/images/watches/rolex-submariner-kermit-16610lv/4.jpg',
-  ],
-  'rolex-submariner-5513-vintage': [
-    '/images/watches/rolex-submariner-5513-vintage/1.jpg',
-    '/images/watches/rolex-submariner-5513-vintage/2.jpg',
+    '/images/watches/rolex-submariner-kermit-16610lv/2.jpg'
   ],
   'rolex-gmt-master-1675-vintage': [
-    '/images/watches/rolex-gmt-master-1675-vintage/1.jpg',
-    '/images/watches/rolex-gmt-master-1675-vintage/2.jpg',
-    '/images/watches/rolex-gmt-master-1675-vintage/3.jpg',
-    '/images/watches/rolex-gmt-master-1675-vintage/4.jpg',
+    '/images/watches/rolex-gmt-master-1675-vintage/1.jpg'
   ],
   'rolex-gmt-master-ii-batman-126710blnr': [
     '/images/watches/rolex-gmt-master-ii-batman-126710blnr/1.jpg',
-    '/images/watches/rolex-gmt-master-ii-batman-126710blnr/2.jpg',
-    '/images/watches/rolex-gmt-master-ii-batman-126710blnr/3.jpg',
+    '/images/watches/rolex-gmt-master-ii-batman-126710blnr/2.jpg'
   ],
   'rolex-datejust-36-126234': [
     '/images/watches/rolex-datejust-36-126234/1.jpg',
     '/images/watches/rolex-datejust-36-126234/2.jpg',
     '/images/watches/rolex-datejust-36-126234/3.jpg',
-    '/images/watches/rolex-datejust-36-126234/4.jpg',
+    '/images/watches/rolex-datejust-36-126234/4.jpg'
   ],
   'rolex-datejust-36-16233-vintage': [
     '/images/watches/rolex-datejust-36-16233-vintage/1.jpg',
     '/images/watches/rolex-datejust-36-16233-vintage/2.jpg',
     '/images/watches/rolex-datejust-36-16233-vintage/3.jpg',
-    '/images/watches/rolex-datejust-36-16233-vintage/4.jpg',
+    '/images/watches/rolex-datejust-36-16233-vintage/4.jpg'
   ],
   'rolex-datejust-41-126300': [
     '/images/watches/rolex-datejust-41-126300/1.jpg',
     '/images/watches/rolex-datejust-41-126300/2.jpg',
-    '/images/watches/rolex-datejust-41-126300/3.jpg',
-  ],
-  'rolex-lady-datejust-28-279174': [
-    '/images/watches/rolex-lady-datejust-28-279174/1.jpg',
-    '/images/watches/rolex-lady-datejust-28-279174/2.jpg',
+    '/images/watches/rolex-datejust-41-126300/3.jpg'
   ],
   'rolex-daytona-116500ln': [
-    '/images/watches/rolex-daytona-116500ln/1.jpg',
-    '/images/watches/rolex-daytona-116500ln/2.jpg',
-    '/images/watches/rolex-daytona-116500ln/3.jpg',
+    '/images/watches/rolex-daytona-116500ln/1.jpg'
   ],
   'rolex-daytona-two-tone-116503': [
     '/images/watches/rolex-daytona-two-tone-116503/1.jpg',
-    '/images/watches/rolex-daytona-two-tone-116503/2.jpg',
+    '/images/watches/rolex-daytona-two-tone-116503/2.jpg'
   ],
   'rolex-day-date-40-228238': [
     '/images/watches/rolex-day-date-40-228238/1.jpg',
-    '/images/watches/rolex-day-date-40-228238/2.jpg',
+    '/images/watches/rolex-day-date-40-228238/2.jpg'
   ],
   'rolex-day-date-36-128235': [
     '/images/watches/rolex-day-date-36-128235/1.jpg',
-    '/images/watches/rolex-day-date-36-128235/2.jpg',
+    '/images/watches/rolex-day-date-36-128235/2.jpg'
   ],
   'rolex-explorer-36-124270': [
     '/images/watches/rolex-explorer-36-124270/1.jpg',
-    '/images/watches/rolex-explorer-36-124270/2.jpg',
+    '/images/watches/rolex-explorer-36-124270/2.jpg'
   ],
   'rolex-explorer-ii-226570': [
     '/images/watches/rolex-explorer-ii-226570/1.jpg',
     '/images/watches/rolex-explorer-ii-226570/2.jpg',
-    '/images/watches/rolex-explorer-ii-226570/3.jpg',
+    '/images/watches/rolex-explorer-ii-226570/3.jpg'
   ],
   'rolex-yacht-master-40-126622': [
-    '/images/watches/rolex-yacht-master-40-126622/1.jpg',
-    '/images/watches/rolex-yacht-master-40-126622/2.jpg',
+    '/images/watches/rolex-yacht-master-40-126622/1.jpg'
   ],
   'rolex-sea-dweller-126600': [
     '/images/watches/rolex-sea-dweller-126600/1.jpg',
-    '/images/watches/rolex-sea-dweller-126600/2.jpg',
-    '/images/watches/rolex-sea-dweller-126600/3.jpg',
+    '/images/watches/rolex-sea-dweller-126600/2.jpg'
   ],
   'rolex-sky-dweller-326934': [
-    '/images/watches/rolex-sky-dweller-326934/1.jpg',
-    '/images/watches/rolex-sky-dweller-326934/2.jpg',
-    '/images/watches/rolex-sky-dweller-326934/3.jpg',
+    '/images/watches/rolex-sky-dweller-326934/1.jpg'
   ],
   'rolex-oyster-perpetual-41-124300': [
-    '/images/watches/rolex-oyster-perpetual-41-124300/1.jpg',
-    '/images/watches/rolex-oyster-perpetual-41-124300/2.jpg',
-    '/images/watches/rolex-oyster-perpetual-41-124300/3.jpg',
+    '/images/watches/rolex-oyster-perpetual-41-124300/1.jpg'
   ],
-  'rolex-air-king-126900': ['/images/watches/rolex-air-king-126900/1.jpg'],
+  'rolex-air-king-126900': [
+    '/images/watches/rolex-air-king-126900/1.jpg'
+  ],
   'rolex-milgauss-116400gv': [
     '/images/watches/rolex-milgauss-116400gv/1.jpg',
     '/images/watches/rolex-milgauss-116400gv/2.jpg',
-    '/images/watches/rolex-milgauss-116400gv/3.jpg',
+    '/images/watches/rolex-milgauss-116400gv/3.jpg'
   ],
   'patek-philippe-nautilus-5711-1a': [
     '/images/watches/patek-philippe-nautilus-5711-1a/1.jpg',
     '/images/watches/patek-philippe-nautilus-5711-1a/2.jpg',
     '/images/watches/patek-philippe-nautilus-5711-1a/3.jpg',
-    '/images/watches/patek-philippe-nautilus-5711-1a/4.jpg',
+    '/images/watches/patek-philippe-nautilus-5711-1a/4.jpg'
   ],
   'patek-philippe-aquanaut-5167a': [
-    '/images/watches/patek-philippe-aquanaut-5167a/1.jpg',
-    '/images/watches/patek-philippe-aquanaut-5167a/2.jpg',
+    '/images/watches/patek-philippe-aquanaut-5167a/1.jpg'
   ],
   'patek-philippe-calatrava-6119r': [
     '/images/watches/patek-philippe-calatrava-6119r/1.jpg',
     '/images/watches/patek-philippe-calatrava-6119r/2.jpg',
-    '/images/watches/patek-philippe-calatrava-6119r/3.jpg',
-    '/images/watches/patek-philippe-calatrava-6119r/4.jpg',
+    '/images/watches/patek-philippe-calatrava-6119r/3.jpg'
   ],
-  'patek-philippe-twenty-4-4910-10a': ['/images/watches/patek-philippe-twenty-4-4910-10a/1.jpg'],
   'audemars-piguet-royal-oak-15500st': [
-    '/images/watches/audemars-piguet-royal-oak-15500st/1.jpg',
-    '/images/watches/audemars-piguet-royal-oak-15500st/2.jpg',
-    '/images/watches/audemars-piguet-royal-oak-15500st/3.jpg',
-    '/images/watches/audemars-piguet-royal-oak-15500st/4.jpg',
+    '/images/watches/audemars-piguet-royal-oak-15500st/1.jpg'
   ],
   'audemars-piguet-royal-oak-offshore-26470st': [
     '/images/watches/audemars-piguet-royal-oak-offshore-26470st/1.jpg',
-    '/images/watches/audemars-piguet-royal-oak-offshore-26470st/2.jpg',
+    '/images/watches/audemars-piguet-royal-oak-offshore-26470st/2.jpg'
   ],
   'audemars-piguet-royal-oak-jumbo-15202st': [
     '/images/watches/audemars-piguet-royal-oak-jumbo-15202st/1.jpg',
     '/images/watches/audemars-piguet-royal-oak-jumbo-15202st/2.jpg',
-    '/images/watches/audemars-piguet-royal-oak-jumbo-15202st/3.jpg',
-    '/images/watches/audemars-piguet-royal-oak-jumbo-15202st/4.jpg',
+    '/images/watches/audemars-piguet-royal-oak-jumbo-15202st/3.jpg'
   ],
   'audemars-piguet-code-1159-15210bc': [
-    '/images/watches/audemars-piguet-code-1159-15210bc/1.jpg',
-    '/images/watches/audemars-piguet-code-1159-15210bc/2.jpg',
-  ],
-  'richard-mille-rm-011-felipe-massa': [
-    '/images/watches/richard-mille-rm-011-felipe-massa/1.jpg',
-    '/images/watches/richard-mille-rm-011-felipe-massa/2.jpg',
-  ],
-  'richard-mille-rm-035-rafael-nadal': [
-    '/images/watches/richard-mille-rm-035-rafael-nadal/1.jpg',
-    '/images/watches/richard-mille-rm-035-rafael-nadal/2.jpg',
-  ],
-  'richard-mille-rm-055-bubba-watson': [
-    '/images/watches/richard-mille-rm-055-bubba-watson/1.jpg',
-    '/images/watches/richard-mille-rm-055-bubba-watson/2.jpg',
-  ],
-  'richard-mille-rm-67-02-sprint': [
-    '/images/watches/richard-mille-rm-67-02-sprint/1.jpg',
-    '/images/watches/richard-mille-rm-67-02-sprint/2.jpg',
+    '/images/watches/audemars-piguet-code-1159-15210bc/1.jpg'
   ],
   'omega-speedmaster-moonwatch-31030425001001': [
     '/images/watches/omega-speedmaster-moonwatch-31030425001001/1.jpg',
     '/images/watches/omega-speedmaster-moonwatch-31030425001001/2.jpg',
-    '/images/watches/omega-speedmaster-moonwatch-31030425001001/3.jpg',
+    '/images/watches/omega-speedmaster-moonwatch-31030425001001/3.jpg'
   ],
   'omega-seamaster-diver-300m-21030422003001': [
     '/images/watches/omega-seamaster-diver-300m-21030422003001/1.jpg',
     '/images/watches/omega-seamaster-diver-300m-21030422003001/2.jpg',
-    '/images/watches/omega-seamaster-diver-300m-21030422003001/3.jpg',
-    '/images/watches/omega-seamaster-diver-300m-21030422003001/4.jpg',
+    '/images/watches/omega-seamaster-diver-300m-21030422003001/3.jpg'
   ],
   'omega-seamaster-300-vintage-165024': [
     '/images/watches/omega-seamaster-300-vintage-165024/1.jpg',
     '/images/watches/omega-seamaster-300-vintage-165024/2.jpg',
     '/images/watches/omega-seamaster-300-vintage-165024/3.jpg',
-    '/images/watches/omega-seamaster-300-vintage-165024/4.jpg',
+    '/images/watches/omega-seamaster-300-vintage-165024/4.jpg'
   ],
-  'cartier-santos-wssa0018': ['/images/watches/cartier-santos-wssa0018/1.jpg'],
+  'cartier-santos-wssa0018': [
+    '/images/watches/cartier-santos-wssa0018/1.jpg'
+  ],
   'cartier-tank-must-wsta0041': [
     '/images/watches/cartier-tank-must-wsta0041/1.jpg',
     '/images/watches/cartier-tank-must-wsta0041/2.jpg',
     '/images/watches/cartier-tank-must-wsta0041/3.jpg',
-    '/images/watches/cartier-tank-must-wsta0041/4.jpg',
+    '/images/watches/cartier-tank-must-wsta0041/4.jpg'
   ],
   'cartier-panthere-wgpn0007': [
     '/images/watches/cartier-panthere-wgpn0007/1.jpg',
-    '/images/watches/cartier-panthere-wgpn0007/2.jpg',
+    '/images/watches/cartier-panthere-wgpn0007/2.jpg'
   ],
   'cartier-santos-dumont-vintage-1575': [
     '/images/watches/cartier-santos-dumont-vintage-1575/1.jpg',
     '/images/watches/cartier-santos-dumont-vintage-1575/2.jpg',
-    '/images/watches/cartier-santos-dumont-vintage-1575/3.jpg',
+    '/images/watches/cartier-santos-dumont-vintage-1575/3.jpg'
   ],
   'breitling-navitimer-b01-41-ab0139211l1a1': [
     '/images/watches/breitling-navitimer-b01-41-ab0139211l1a1/1.jpg',
-    '/images/watches/breitling-navitimer-b01-41-ab0139211l1a1/2.jpg',
-    '/images/watches/breitling-navitimer-b01-41-ab0139211l1a1/3.jpg',
-    '/images/watches/breitling-navitimer-b01-41-ab0139211l1a1/4.jpg',
+    '/images/watches/breitling-navitimer-b01-41-ab0139211l1a1/2.jpg'
   ],
   'breitling-superocean-heritage-57': [
     '/images/watches/breitling-superocean-heritage-57/1.jpg',
-    '/images/watches/breitling-superocean-heritage-57/2.jpg',
-    '/images/watches/breitling-superocean-heritage-57/3.jpg',
+    '/images/watches/breitling-superocean-heritage-57/2.jpg'
   ],
   'breitling-chronomat-b01-42': [
     '/images/watches/breitling-chronomat-b01-42/1.jpg',
     '/images/watches/breitling-chronomat-b01-42/2.jpg',
-    '/images/watches/breitling-chronomat-b01-42/3.jpg',
+    '/images/watches/breitling-chronomat-b01-42/3.jpg'
   ],
-  'breitling-premier-b09-pistachio': ['/images/watches/breitling-premier-b09-pistachio/1.jpg'],
+  'breitling-premier-b09-pistachio': [
+    '/images/watches/breitling-premier-b09-pistachio/1.jpg'
+  ],
   'tag-heuer-carrera-glassbox-cbs2210': [
     '/images/watches/tag-heuer-carrera-glassbox-cbs2210/1.jpg',
-    '/images/watches/tag-heuer-carrera-glassbox-cbs2210/2.jpg',
-    '/images/watches/tag-heuer-carrera-glassbox-cbs2210/3.jpg',
-    '/images/watches/tag-heuer-carrera-glassbox-cbs2210/4.jpg',
+    '/images/watches/tag-heuer-carrera-glassbox-cbs2210/2.jpg'
   ],
   'tag-heuer-monaco-caw211p': [
     '/images/watches/tag-heuer-monaco-caw211p/1.jpg',
     '/images/watches/tag-heuer-monaco-caw211p/2.jpg',
-    '/images/watches/tag-heuer-monaco-caw211p/3.jpg',
-    '/images/watches/tag-heuer-monaco-caw211p/4.jpg',
+    '/images/watches/tag-heuer-monaco-caw211p/3.jpg'
   ],
   'tag-heuer-aquaracer-wbp201b': [
     '/images/watches/tag-heuer-aquaracer-wbp201b/1.jpg',
     '/images/watches/tag-heuer-aquaracer-wbp201b/2.jpg',
-    '/images/watches/tag-heuer-aquaracer-wbp201b/3.jpg',
-    '/images/watches/tag-heuer-aquaracer-wbp201b/4.jpg',
+    '/images/watches/tag-heuer-aquaracer-wbp201b/3.jpg'
   ],
   'tag-heuer-carrera-date-wbn2311': [
     '/images/watches/tag-heuer-carrera-date-wbn2311/1.jpg',
     '/images/watches/tag-heuer-carrera-date-wbn2311/2.jpg',
-    '/images/watches/tag-heuer-carrera-date-wbn2311/3.jpg',
+    '/images/watches/tag-heuer-carrera-date-wbn2311/3.jpg'
   ],
   'tudor-black-bay-58-79030n': [
     '/images/watches/tudor-black-bay-58-79030n/1.jpg',
     '/images/watches/tudor-black-bay-58-79030n/2.jpg',
-    '/images/watches/tudor-black-bay-58-79030n/3.jpg',
+    '/images/watches/tudor-black-bay-58-79030n/3.jpg'
   ],
   'tudor-pelagos-39-25407n': [
     '/images/watches/tudor-pelagos-39-25407n/1.jpg',
-    '/images/watches/tudor-pelagos-39-25407n/2.jpg',
+    '/images/watches/tudor-pelagos-39-25407n/2.jpg'
   ],
-  'hublot-big-bang-unico-441': ['/images/watches/hublot-big-bang-unico-441/1.jpg'],
-  'iwc-portugieser-chronograph-371605': [
-    '/images/watches/iwc-portugieser-chronograph-371605/1.jpg',
-    '/images/watches/iwc-portugieser-chronograph-371605/2.jpg',
-    '/images/watches/iwc-portugieser-chronograph-371605/3.jpg',
+  'iwc-pilots-mark-xx-328201': [
+    '/images/watches/iwc-pilots-mark-xx-328201/1.jpg'
   ],
-  'iwc-pilots-mark-xx-328201': ['/images/watches/iwc-pilots-mark-xx-328201/1.jpg'],
-  'iwc-portofino-iw356502': ['/images/watches/iwc-portofino-iw356502/1.jpg'],
-  'iwc-portugieser-automatic-500705': ['/images/watches/iwc-portugieser-automatic-500705/1.jpg'],
-  'panerai-luminor-marina-pam01312': [
-    '/images/watches/panerai-luminor-marina-pam01312/1.jpg',
-    '/images/watches/panerai-luminor-marina-pam01312/2.jpg',
-    '/images/watches/panerai-luminor-marina-pam01312/3.jpg',
-    '/images/watches/panerai-luminor-marina-pam01312/4.jpg',
+  'iwc-portofino-iw356502': [
+    '/images/watches/iwc-portofino-iw356502/1.jpg'
   ],
-  'panerai-luminor-due-pam01249': ['/images/watches/panerai-luminor-due-pam01249/1.jpg'],
-  'panerai-submersible-pam00959': [
-    '/images/watches/panerai-submersible-pam00959/1.jpg',
-    '/images/watches/panerai-submersible-pam00959/2.jpg',
-  ],
-  'panerai-radiomir-vintage-pam00380': [
-    '/images/watches/panerai-radiomir-vintage-pam00380/1.jpg',
-    '/images/watches/panerai-radiomir-vintage-pam00380/2.jpg',
-    '/images/watches/panerai-radiomir-vintage-pam00380/3.jpg',
+  'iwc-portugieser-automatic-500705': [
+    '/images/watches/iwc-portugieser-automatic-500705/1.jpg'
   ],
   'jaeger-lecoultre-reverso-tribute-3978480': [
     '/images/watches/jaeger-lecoultre-reverso-tribute-3978480/1.jpg',
-    '/images/watches/jaeger-lecoultre-reverso-tribute-3978480/2.jpg',
-    '/images/watches/jaeger-lecoultre-reverso-tribute-3978480/3.jpg',
+    '/images/watches/jaeger-lecoultre-reverso-tribute-3978480/2.jpg'
   ],
   'jaeger-lecoultre-master-ultra-thin-1368420': [
     '/images/watches/jaeger-lecoultre-master-ultra-thin-1368420/1.jpg',
     '/images/watches/jaeger-lecoultre-master-ultra-thin-1368420/2.jpg',
-    '/images/watches/jaeger-lecoultre-master-ultra-thin-1368420/3.jpg',
-    '/images/watches/jaeger-lecoultre-master-ultra-thin-1368420/4.jpg',
-  ],
-  'jaeger-lecoultre-polaris-9068670': [
-    '/images/watches/jaeger-lecoultre-polaris-9068670/1.jpg',
-    '/images/watches/jaeger-lecoultre-polaris-9068670/2.jpg',
-    '/images/watches/jaeger-lecoultre-polaris-9068670/3.jpg',
+    '/images/watches/jaeger-lecoultre-master-ultra-thin-1368420/3.jpg'
   ],
   'jaeger-lecoultre-reverso-classique-vintage-250886': [
     '/images/watches/jaeger-lecoultre-reverso-classique-vintage-250886/1.jpg',
-    '/images/watches/jaeger-lecoultre-reverso-classique-vintage-250886/2.jpg',
+    '/images/watches/jaeger-lecoultre-reverso-classique-vintage-250886/2.jpg'
   ],
   'vacheron-constantin-patrimony-85180': [
-    '/images/watches/vacheron-constantin-patrimony-85180/1.jpg',
+    '/images/watches/vacheron-constantin-patrimony-85180/1.jpg'
   ],
   'vacheron-constantin-fiftysix-4600e': [
-    '/images/watches/vacheron-constantin-fiftysix-4600e/1.jpg',
-  ],
-  'vacheron-constantin-historiques-222': [
-    '/images/watches/vacheron-constantin-historiques-222/1.jpg',
-    '/images/watches/vacheron-constantin-historiques-222/2.jpg',
-  ],
-  'grand-seiko-snowflake-sbga211': [
-    '/images/watches/grand-seiko-snowflake-sbga211/1.jpg',
-    '/images/watches/grand-seiko-snowflake-sbga211/2.jpg',
-    '/images/watches/grand-seiko-snowflake-sbga211/3.jpg',
-  ],
-  'grand-seiko-sbgh269-japanese-maple': [
-    '/images/watches/grand-seiko-sbgh269-japanese-maple/1.jpg',
-    '/images/watches/grand-seiko-sbgh269-japanese-maple/2.jpg',
-    '/images/watches/grand-seiko-sbgh269-japanese-maple/3.jpg',
-    '/images/watches/grand-seiko-sbgh269-japanese-maple/4.jpg',
-  ],
-  'grand-seiko-sbgm221-gmt': [
-    '/images/watches/grand-seiko-sbgm221-gmt/1.jpg',
-    '/images/watches/grand-seiko-sbgm221-gmt/2.jpg',
-  ],
-  'grand-seiko-sbga415-taisetsu': [
-    '/images/watches/grand-seiko-sbga415-taisetsu/1.jpg',
-    '/images/watches/grand-seiko-sbga415-taisetsu/2.jpg',
-    '/images/watches/grand-seiko-sbga415-taisetsu/3.jpg',
-  ],
+    '/images/watches/vacheron-constantin-fiftysix-4600e/1.jpg'
+  ]
 };
