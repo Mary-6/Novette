@@ -2532,8 +2532,8 @@ function enrich(w, i) {
 const enriched = watches.map((w, i) => ({
   ...w,
   ...enrich(w, i),
-  images: watchImages[w.slug] || visualizationImages[w.slug] || [],
-  imageKinds: (watchImages[w.slug] || visualizationImages[w.slug] || []).map((src) =>
+  images: visualizationImages[w.slug] || watchImages[w.slug] || [],
+  imageKinds: (visualizationImages[w.slug] || watchImages[w.slug] || []).map((src) =>
     src.includes('/visualization') ? 'visualization' : 'photo'
   ),
 }));

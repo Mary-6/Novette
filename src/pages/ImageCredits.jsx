@@ -13,9 +13,10 @@ export default function ImageCredits() {
     <>
       <PageHero eyebrow="Attribution" title="Image Credits">
         <p>
-          Product photography is sourced from Wikimedia Commons under free licenses. Each image is
-          credited to its author and linked to its file page. Studio model visualizations are
-          original digital renders and are identified on product pages.
+          Current catalogue galleries use original studio model visualizations, identified on
+          product pages as "Studio model visualization". Licensed source photos retained in the
+          project are credited below — each image is credited to its author and linked to its file
+          page.
         </p>
       </PageHero>
       <section className="py-16 lg:py-24">
