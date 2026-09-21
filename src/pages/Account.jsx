@@ -1,6 +1,7 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Eye, EyeOff } from 'lucide-react';
+import { useAuth } from '../context/AuthContext';
 import PageHero from '../components/layout/PageHero';
 import useReveal from '../hooks/useReveal';
 
@@ -9,10 +10,12 @@ const inputCls =
 
 function AuthForm({ mode }) {
   const isSignup = mode === 'signup';
+  const { login, signup } = useAuth();
+  const navigate = useNavigate();
+  const location = useLocation();
   const [form, setForm] = useState({ name: '', email: '', password: '', remember: true });
   const [showPassword, setShowPassword] = useState(false);
   const [errors, setErrors] = useState({});
-  const [done, setDone] = useState(false);
 
   const submit = (e) => {
     e.preventDefault();
@@ -21,20 +24,11 @@ function AuthForm({ mode }) {
     if (!/.+@.+\..+/.test(form.email)) errs.email = 'Enter a valid email';
     if (form.password.length < 8) errs.password = 'At least 8 characters';
     setErrors(errs);
-    if (!Object.keys(errs).length) setDone(true);
+    if (Object.keys(errs).length) return;
+    const action = isSignup ? signup : login;
+    action({ name: form.name, email: form.email, remember: isSignup ? true : form.remember });
+    navigate(location.state?.from || '/');
   };
-
-  if (done) {
-    return (
-      <div className="border border-gold/50 bg-sand p-8 text-center">
-        <p className="heading-display text-2xl">Accounts are coming soon.</p>
-        <p className="mt-3 text-sm text-graphite">
-          This is a demo — no account was created and nothing was sent. Our concierge can set up
-          your file by phone or email in the meantime.
-        </p>
-      </div>
-    );
-  }
 
   return (
     <form onSubmit={submit} className="space-y-5" noValidate>
@@ -106,12 +100,17 @@ function AuthForm({ mode }) {
       <button type="submit" className="btn-primary w-full">
         {isSignup ? 'Create account' : 'Log in'}
       </button>
+      <p className="text-center text-xs text-stone">
+        Demo account — details are stored only in this browser.
+      </p>
     </form>
   );
 }
 
 export function Login() {
   useReveal([]);
+  const { user, isAuthed, logout } = useAuth();
+  const location = useLocation();
   return (
     <>
       <PageHero eyebrow="Your Account" title="Welcome back.">
@@ -119,7 +118,28 @@ export function Login() {
       </PageHero>
       <section className="py-20">
         <div className="container-x max-w-md">
-          <AuthForm mode="login" />
+          {isAuthed ? (
+            <div className="border border-gold/50 bg-sand p-8 text-center">
+              <p className="heading-display text-2xl">You're signed in as {user.name}.</p>
+              <div className="mt-6 flex flex-col gap-3">
+                <Link to="/" className="btn-primary">
+                  Continue shopping
+                </Link>
+                <button type="button" onClick={logout} className="btn-outline">
+                  Log out
+                </button>
+              </div>
+            </div>
+          ) : (
+            <>
+              {location.state?.openChat && (
+                <p className="mb-6 border border-gold/60 bg-sand px-4 py-3 text-sm text-graphite">
+                  Please log in to start a live chat with our concierge.
+                </p>
+              )}
+              <AuthForm mode="login" />
+            </>
+          )}
           <p className="mt-6 text-center text-sm text-graphite">
             New to Aurelian Watches?{' '}
             <Link to="/signup" className="text-goldDark underline underline-offset-2">

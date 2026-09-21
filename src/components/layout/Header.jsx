@@ -6,6 +6,7 @@ import collections from '../../data/collections';
 import rolexFamilies from '../../data/rolexFamilies';
 import watches from '../../data/watches';
 import { useCart } from '../../context/CartContext';
+import { useAuth } from '../../context/AuthContext';
 import { useWishlist } from '../../context/WishlistContext';
 import WatchImage from '../watch/WatchImage';
 import Logo from '../ui/Logo';
@@ -24,6 +25,7 @@ export default function Header() {
   const [openGroup, setOpenGroup] = useState(null);
   const [q, setQ] = useState('');
   const { count } = useCart();
+  const { user, isAuthed, logout } = useAuth();
   const wishlist = useWishlist();
   const navigate = useNavigate();
   const featuredRolex = watches.find((w) => w.slug === 'rolex-submariner-date-126610ln');
@@ -66,12 +68,27 @@ export default function Header() {
             <Link to="/locations" className="flex items-center gap-1 transition hover:text-gold">
               <MapPin size={10} /> Locations
             </Link>
-            <Link to="/signup" className="transition hover:text-gold">
-              Sign Up
-            </Link>
-            <Link to="/login" className="transition hover:text-gold">
-              Login
-            </Link>
+            {isAuthed ? (
+              <>
+                <span className="text-ivory/80">Hi, {user.name.split(' ')[0]}</span>
+                <button
+                  type="button"
+                  onClick={logout}
+                  className="uppercase tracking-[0.22em] transition hover:text-gold"
+                >
+                  Log out
+                </button>
+              </>
+            ) : (
+              <>
+                <Link to="/signup" className="transition hover:text-gold">
+                  Sign Up
+                </Link>
+                <Link to="/login" className="transition hover:text-gold">
+                  Login
+                </Link>
+              </>
+            )}
           </nav>
         </div>
       </div>
