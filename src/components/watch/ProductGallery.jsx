@@ -14,7 +14,8 @@ export default function ProductGallery({ watch, art, engraving }) {
   const [active, setActive] = useState(0);
   const [showCredits, setShowCredits] = useState(false);
   const photoCount = watch?.images?.length || 0;
-  const creds = imageCredits[watch?.slug] || [];
+  const hasPhotos = (watch?.imageKinds || []).includes('photo');
+  const creds = hasPhotos ? imageCredits[watch?.slug] || [] : [];
 
   // Real photos first, then WatchArt views fill to 4 slots.
   const slots = [
@@ -23,7 +24,7 @@ export default function ProductGallery({ watch, art, engraving }) {
       index: i,
       key: img,
     })),
-    ...VIEWS.slice(0, Math.max(0, 4 - photoCount)).map((v, i) => ({
+    ...VIEWS.slice(0, Math.max(0, 8 - photoCount)).map((v, i) => ({
       type: 'art',
       view: v.key,
       label: v.label,
