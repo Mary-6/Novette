@@ -136,7 +136,7 @@ export function Hero() {
             />
           </div>
         ))}
-        <div className="absolute inset-0 hidden bg-gradient-to-r from-ink via-ink/60 to-transparent sm:block" />
+        <div className="absolute inset-0 hidden bg-gradient-to-r from-ink via-ink/70 to-transparent to-65% sm:block" />
         <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-ink to-transparent sm:hidden" />
         <div className="absolute bottom-8 right-8 hidden items-center gap-5 sm:flex">
           <Link
@@ -163,7 +163,7 @@ export function Hero() {
       </div>
       <div className="container-x relative flex flex-col pb-16 pt-6 sm:absolute sm:inset-0 sm:justify-center sm:py-0">
         <p className="eyebrow mb-5">Sterling Meridian · Est. 1987</p>
-        <h1 className="heading-display max-w-2xl text-5xl font-medium leading-[1.05] sm:text-6xl lg:text-7xl">
+        <h1 className="heading-display max-w-xl text-5xl font-medium leading-[1.05] sm:text-6xl lg:max-w-2xl lg:text-7xl">
           Timeless Luxury. <span className="italic text-gold">Iconic Timepieces.</span>
         </h1>
         <p className="mt-6 max-w-[560px] text-base leading-relaxed text-ivory/85">
