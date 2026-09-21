@@ -6,6 +6,7 @@ import Button from '../components/ui/Button';
 import WatchImage from '../components/watch/WatchImage';
 import { ShopLayout } from './Shop';
 import useReveal from '../hooks/useReveal';
+import visualizationImages from '../data/visualizationImages';
 
 export function CollectionsIndex() {
   useReveal([]);
@@ -71,7 +72,7 @@ export function CollectionPage() {
       title={collection.name}
       intro={<p>{collection.description}</p>}
       source={source}
-      tone="dark"
+      heroImage={visualizationImages[source[0]?.slug]?.[7]}
     />
   );
 }

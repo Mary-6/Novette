@@ -38,7 +38,7 @@ export function ShopLayout({
   intro,
   source,
   lockBrand = false,
-  tone = 'dark',
+  heroImage,
   chips,
   afterHero,
   children,
@@ -67,7 +67,7 @@ export function ShopLayout({
   return (
     <>
       {title && (
-        <PageHero eyebrow={eyebrow} title={title} tone={tone}>
+        <PageHero eyebrow={eyebrow} title={title} image={heroImage}>
           {intro}
         </PageHero>
       )}
@@ -179,7 +179,6 @@ export default function Shop() {
       title="Shop Luxury Watches"
       intro="Every watch below has been authenticated, inspected and warranted by Aurelian Watches. Browse by maison, or search by model and reference."
       source={watches}
-      tone="dark"
     />
   );
 }

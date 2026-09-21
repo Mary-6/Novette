@@ -13,6 +13,7 @@ import Accordion from '../components/ui/Accordion';
 import SectionHeading from '../components/ui/SectionHeading';
 import WatchImage from '../components/watch/WatchImage';
 import { ShopLayout } from './Shop';
+import visualizationImages from '../data/visualizationImages';
 import { useShopFilters } from '../hooks/useShop';
 import useReveal from '../hooks/useReveal';
 
@@ -275,7 +276,7 @@ function BrandView({ brand, family }) {
     <ShopLayout
       eyebrow={`${brand.country} · Est. ${brand.founded}`}
       title={family ? `Rolex ${family.name}` : `${brand.name} Watches`}
-      tone={brand.heroTone}
+      heroImage={visualizationImages[source[0]?.slug]?.[7]}
       intro={
         <div>
           <p className="italic">{family ? '' : brand.tagline}</p>
