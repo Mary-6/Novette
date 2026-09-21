@@ -53,7 +53,7 @@ export function Hero() {
         preload="metadata"
         aria-hidden="true"
       />
-      <div className="absolute inset-0 -z-10 bg-gradient-to-t from-ink/85 via-ink/25 to-ink/10" />
+      <div className="absolute inset-0 -z-10 bg-gradient-to-t from-ink via-ink/60 to-ink/10 sm:from-ink/85 sm:via-ink/25" />
       <div className="container-x relative pb-14 pt-40 sm:pb-20">
         <p className="eyebrow mb-4">New &amp; Unworn Luxury Watches</p>
         <h1 className="heading-display max-w-3xl text-5xl font-medium leading-[1.05] sm:text-6xl lg:text-7xl">
