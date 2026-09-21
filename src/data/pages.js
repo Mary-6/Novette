@@ -10,7 +10,7 @@ const pages = {
     sections: [
       {
         heading: 'Prices set by data, not theatre',
-        body: 'Every listing is priced against the Meridian Market Index — our internal measure of real, completed transactions. The same watch carries the same price whether you browse at midnight or walk into the boutique.',
+        body: 'Every listing is priced against the Aurelian Market Index — our internal measure of real, completed transactions. The same watch carries the same price whether you browse at midnight or walk into the boutique.',
       },
       {
         heading: 'Real-time inventory',
@@ -40,7 +40,7 @@ const pages = {
       },
       {
         heading: 'Backed for two years',
-        body: 'Every certified watch ships with a signed Sterling Meridian Certificate of Authenticity and a two-year warranty on the movement and its functions — serviced in-house, not outsourced.',
+        body: 'Every certified watch ships with a signed Aurelian Watches Certificate of Authenticity and a two-year warranty on the movement and its functions — serviced in-house, not outsourced.',
       },
     ],
   },
@@ -118,7 +118,7 @@ const pages = {
   },
   warranty: {
     eyebrow: 'Two Years',
-    title: 'Sterling Meridian Warranty',
+    title: 'Aurelian Watches Warranty',
     sections: [
       {
         heading: 'Coverage',
@@ -172,7 +172,7 @@ const pages = {
       },
       {
         heading: 'AML & KYC',
-        body: 'Sterling Meridian complies with anti-money-laundering regulations in every jurisdiction we serve. High-value transactions may require identity verification before release.',
+        body: 'Aurelian Watches complies with anti-money-laundering regulations in every jurisdiction we serve. High-value transactions may require identity verification before release.',
       },
       {
         heading: 'Data & privacy',
@@ -190,11 +190,11 @@ const pages = {
       },
       {
         heading: 'How we use it',
-        body: 'Your information is used to fulfil orders, provide concierge service, and — only with consent — send the Meridian List newsletter. We never sell client data.',
+        body: 'Your information is used to fulfil orders, provide concierge service, and — only with consent — send the Aurelian List newsletter. We never sell client data.',
       },
       {
         heading: 'Your rights',
-        body: 'You may request a copy, correction, or deletion of your personal data at any time by writing to privacy@sterlingmeridian.com.',
+        body: 'You may request a copy, correction, or deletion of your personal data at any time by writing to privacy@aurelianwatches.com.',
       },
     ],
   },
@@ -250,7 +250,7 @@ const pages = {
       },
       {
         heading: 'Feedback',
-        body: 'If you encounter a barrier, write to accessibility@sterlingmeridian.com or call the concierge — we will respond within two business days and offer an accessible alternative.',
+        body: 'If you encounter a barrier, write to accessibility@aurelianwatches.com or call the concierge — we will respond within two business days and offer an accessible alternative.',
       },
     ],
   },

@@ -12,7 +12,7 @@ export default function ImageCredits() {
     <>
       <PageHero eyebrow="Attribution" title="Image Credits">
         <p>
-          Product imagery is original Sterling Meridian studio photography; licensed source
+          Product imagery is original Aurelian Watches studio photography; licensed source
           photographs retained in the project are credited below — each image is credited to its
           author and linked to its file page.
         </p>

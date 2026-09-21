@@ -23,7 +23,7 @@ export function BrandsIndex() {
       <PageHero eyebrow="The Houses" title="Our Brands">
         <p>
           Fifteen maisons, from Geneva&apos;s grande maisons to Japan&apos;s quiet masters — each
-          piece authenticated by Sterling Meridian&apos;s watchmakers.
+          piece authenticated by Aurelian Watches&apos;s watchmakers.
         </p>
       </PageHero>
       <section className="py-20 lg:py-28">
@@ -145,7 +145,7 @@ function BrandLongForm({ brand }) {
     <>
       <section className="border-t border-stone/25 py-20">
         <div className="container-x">
-          <SectionHeading eyebrow="The Sterling Meridian Standard" title="Why Choose Us" />
+          <SectionHeading eyebrow="The Aurelian Watches Standard" title="Why Choose Us" />
           <div className="grid gap-8 md:grid-cols-3">
             {brand.whyChoose?.map((w) => (
               <div key={w.title} className="reveal border border-stone/25 p-8">

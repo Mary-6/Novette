@@ -91,7 +91,7 @@ function AboutBody() {
             <SectionHeading eyebrow="Our Story" title="From a Mayfair bench to two cities." />
             <div className="space-y-5 text-sm leading-relaxed text-graphite">
               <p>
-                Sterling Meridian was founded in 1987 as a two-bench atelier in Mayfair restoring
+                Aurelian Watches was founded in 1987 as a two-bench atelier in Mayfair restoring
                 earlier Rolex references — the watches dealers had written off. Clients began asking
                 the workshop to find pieces for them, and then to stand behind them.
               </p>
@@ -223,7 +223,7 @@ const GUIDE = [
   ],
   [
     'Check provenance',
-    'Every Sterling Meridian listing is registry-checked and provenance-verified before it reaches the site.',
+    'Every Aurelian Watches listing is registry-checked and provenance-verified before it reaches the site.',
   ],
   [
     'Wear it first',
@@ -353,7 +353,7 @@ export default function InfoPage({ slug }) {
   const intro = {
     'why-buy-from-us': 'Four principles that separate a trustworthy exchange from a listing board.',
     'authenticity-pledge':
-      'What it means, precisely, when we say a watch is Sterling Meridian certified.',
+      'What it means, precisely, when we say a watch is Aurelian Watches certified.',
     'buyers-protection-plan':
       'Every order is covered from payment to the first day on your wrist — and beyond.',
     'shipping-info': 'Discreet, insured and fast — how every watch reaches its wrist.',

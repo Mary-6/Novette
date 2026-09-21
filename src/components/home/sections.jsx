@@ -22,148 +22,41 @@ import WatchGrid from '../watch/WatchGrid';
 import SectionHeading from '../ui/SectionHeading';
 import Button from '../ui/Button';
 
-const HERO_SLIDES = [
-  {
-    src: '/images/hero-1-speedmaster.jpg',
-    brand: 'Omega',
-    model: 'Speedmaster Moonwatch Professional',
-    slug: 'omega-speedmaster-moonwatch-31030425001001',
-  },
-  {
-    src: '/images/hero-2-submariner.jpg',
-    brand: 'Rolex',
-    model: 'Submariner Date',
-    slug: 'rolex-submariner-date-126610ln',
-  },
-  {
-    src: '/images/hero-3-nautilus.jpg',
-    brand: 'Patek Philippe',
-    model: 'Nautilus',
-    slug: 'patek-philippe-nautilus-5711-1a',
-  },
-  {
-    src: '/images/hero-4-royal-oak.jpg',
-    brand: 'Audemars Piguet',
-    model: 'Royal Oak Selfwinding',
-    slug: 'audemars-piguet-royal-oak-15500st',
-  },
-  {
-    src: '/images/hero-5-daytona-gold.jpg',
-    brand: 'Rolex',
-    model: 'Cosmograph Daytona',
-    slug: 'rolex-daytona-two-tone-116503',
-  },
-  {
-    src: '/images/hero-6-reverso.jpg',
-    brand: 'Jaeger-LeCoultre',
-    model: 'Reverso Tribute Small Seconds',
-    slug: 'jaeger-lecoultre-reverso-tribute-3978480',
-  },
-];
-
-function HeroControls({ index, go, step }) {
-  return (
-    <>
-      <button
-        type="button"
-        aria-label="Previous slide"
-        onClick={() => step(-1)}
-        className="flex h-9 w-9 items-center justify-center rounded-full border border-ivory/40 text-ivory/80 transition hover:border-gold hover:text-gold"
-      >
-        <ChevronLeft size={16} />
-      </button>
-      <div className="flex items-center gap-2">
-        {HERO_SLIDES.map((s, i) => (
-          <button
-            key={s.slug}
-            type="button"
-            aria-label={`Show ${s.brand} ${s.model}`}
-            onClick={() => go(i)}
-            className={`h-1.5 rounded-full transition-all ${
-              i === index ? 'w-6 bg-gold' : 'w-1.5 bg-ivory/40 hover:bg-ivory/70'
-            }`}
-          />
-        ))}
-      </div>
-      <button
-        type="button"
-        aria-label="Next slide"
-        onClick={() => step(1)}
-        className="flex h-9 w-9 items-center justify-center rounded-full border border-ivory/40 text-ivory/80 transition hover:border-gold hover:text-gold"
-      >
-        <ChevronRight size={16} />
-      </button>
-    </>
-  );
-}
-
 export function Hero() {
-  const [index, setIndex] = useState(0);
-  const [paused, setPaused] = useState(false);
-  const slide = HERO_SLIDES[index];
-  const go = (i) => setIndex(((i % HERO_SLIDES.length) + HERO_SLIDES.length) % HERO_SLIDES.length);
-  const step = (d) => go(index + d);
+  const videoRef = useRef(null);
 
   useEffect(() => {
-    const t = setInterval(() => {
-      if (!paused && !document.hidden) setIndex((i) => (i + 1) % HERO_SLIDES.length);
-    }, 6000);
-    return () => clearInterval(t);
-  }, [paused]);
+    const el = videoRef.current;
+    if (!el) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      el.pause();
+      return;
+    }
+    el.muted = true;
+    el.play().catch(() => {});
+  }, []);
 
   return (
     <section
-      className="relative overflow-hidden bg-ink text-ivory"
-      onMouseEnter={() => setPaused(true)}
-      onMouseLeave={() => setPaused(false)}
+      className="relative isolate flex items-end overflow-hidden bg-ink text-ivory"
+      style={{ minHeight: 'max(520px, calc(100svh - 6rem))' }}
     >
-      <div className="relative h-[60vh] sm:h-[80vh]">
-        {HERO_SLIDES.map((s, i) => (
-          <div
-            key={s.slug}
-            className={`absolute inset-0 transition-opacity duration-[1200ms] ease-out ${
-              i === index ? 'opacity-100' : 'opacity-0'
-            }`}
-            aria-hidden={i !== index}
-          >
-            <img
-              src={s.src}
-              alt={`${s.brand} ${s.model}`}
-              decoding="async"
-              loading={i === 0 ? 'eager' : 'lazy'}
-              fetchpriority={i === 0 ? 'high' : undefined}
-              className={`h-full w-full object-cover ${i === index ? 'kenburns' : ''}`}
-            />
-          </div>
-        ))}
-        <div className="absolute inset-0 hidden bg-gradient-to-r from-ink via-ink/70 to-transparent to-65% sm:block" />
-        <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-ink to-transparent sm:hidden" />
-        <div className="absolute bottom-8 right-8 hidden items-center gap-5 rounded-full bg-ink/70 py-2 pl-6 pr-2 backdrop-blur-sm sm:flex">
-          <Link
-            key={slide.slug}
-            to={`/watches/${slide.slug}`}
-            className="group text-right transition-opacity duration-[1200ms]"
-          >
-            <span className="eyebrow block">Now showing</span>
-            <span className="heading-display text-lg italic text-ivory/90 transition group-hover:text-gold">
-              {slide.brand} {slide.model}
-            </span>
-          </Link>
-          <HeroControls index={index} go={go} step={step} />
-        </div>
-      </div>
-      <div className="container-x flex items-center justify-between gap-4 bg-ink py-4 sm:hidden">
-        <Link to={`/watches/${slide.slug}`} className="group">
-          <span className="eyebrow block">Now showing</span>
-          <span className="heading-display text-base italic text-ivory/90 group-hover:text-gold">
-            {slide.brand} {slide.model}
-          </span>
-        </Link>
-        <HeroControls index={index} go={go} step={step} />
-      </div>
-      <div className="container-x relative flex flex-col pb-16 pt-6 sm:absolute sm:inset-0 sm:justify-center sm:py-0">
-        <p className="eyebrow mb-5">Sterling Meridian · Est. 1987</p>
-        <h1 className="heading-display max-w-xl text-5xl font-medium leading-[1.05] sm:text-6xl lg:text-7xl">
+      <video
+        ref={videoRef}
+        className="absolute inset-0 -z-10 h-full w-full object-cover"
+        src="/images/hero-reel.mp4"
+        poster="/images/hero-reel-poster.jpg"
+        autoPlay
+        muted
+        loop
+        playsInline
+        preload="metadata"
+        aria-hidden="true"
+      />
+      <div className="absolute inset-0 -z-10 bg-gradient-to-t from-ink/85 via-ink/25 to-ink/10" />
+      <div className="container-x relative pb-14 pt-40 sm:pb-20">
+        <p className="eyebrow mb-4">New &amp; Unworn Luxury Watches</p>
+        <h1 className="heading-display max-w-3xl text-5xl font-medium leading-[1.05] sm:text-6xl lg:text-7xl">
           Timeless Luxury. <span className="italic text-gold">Iconic Timepieces.</span>
         </h1>
         <p className="mt-6 max-w-[560px] text-base leading-relaxed text-ivory/85">
@@ -171,21 +64,20 @@ export function Hero() {
           and certified by our master horologists.
         </p>
         <div className="mt-10 flex flex-col gap-4 sm:flex-row">
-          <Button to="/shop" variant="gold" className="rounded-full">
+          <Button
+            to="/shop"
+            variant="outline"
+            className="rounded-full border-ivory/50 text-ivory hover:bg-ivory hover:text-ink"
+          >
             Shop the Collection
           </Button>
           <Button
             to="/rolex"
             variant="outline"
-            className="rounded-full border-ivory/40 text-ivory hover:bg-ivory hover:text-ink"
+            className="rounded-full border-ivory/50 text-ivory hover:bg-ivory hover:text-ink"
           >
             Explore Rolex
           </Button>
-        </div>
-        <div className="mt-14 flex flex-wrap gap-x-8 gap-y-2 text-[10px] uppercase tracking-[0.2em] text-ivory/55 sm:text-xs">
-          <span>25,000+ Clients</span>
-          <span>40-Point Authentication</span>
-          <span>Est. 1987</span>
         </div>
       </div>
     </section>
@@ -204,13 +96,13 @@ export function HeritageIntro() {
     <section className="py-20 lg:py-28">
       <div className="container-x grid items-center gap-12 lg:grid-cols-2">
         <div className="reveal">
-          <p className="eyebrow mb-3">The Meridian Standard</p>
+          <p className="eyebrow mb-3">The Aurelian Standard</p>
           <h2 className="heading-display text-3xl font-medium sm:text-4xl lg:text-5xl">
             Where Heritage Meets Modern Elegance
           </h2>
           <div className="mt-6 space-y-4 text-sm leading-relaxed text-graphite">
             <p>
-              For nearly four decades Sterling Meridian has brought together the world&apos;s most
+              For nearly four decades Aurelian Watches has brought together the world&apos;s most
               legendary watches for collectors who value precision, heritage and lasting value —
               each reference chosen for the story it will carry onto the next wrist.
             </p>
@@ -406,7 +298,7 @@ export function MarketIndex() {
         <div>
           <p className="eyebrow mb-3">Pricing Intelligence</p>
           <h2 className="heading-display text-3xl font-medium sm:text-4xl">
-            The Meridian Market Index
+            The Aurelian Market Index
           </h2>
           <p className="mt-4 max-w-2xl text-sm leading-relaxed text-ivory/70">
             Each quarter our analysts publish an internal measure of the certified market for new
@@ -419,7 +311,7 @@ export function MarketIndex() {
             midnight — and why our listings move with the market rather than against it.
           </p>
         </div>
-        <Button to="/journal/meridian-market-index" variant="gold" className="rounded-full">
+        <Button to="/journal/aurelian-market-index" variant="gold" className="rounded-full">
           View Report
         </Button>
       </div>
@@ -468,7 +360,7 @@ export function PromiseSection() {
     {
       icon: LineChart,
       title: 'Pricing Transparency',
-      text: 'Every price is set against the Meridian Market Index — measured, transparent and fair.',
+      text: 'Every price is set against the Aurelian Market Index — measured, transparent and fair.',
     },
     {
       icon: Watch,
@@ -519,14 +411,14 @@ export function AboutBlock() {
     <section className="py-20 lg:py-28">
       <div className="container-x grid gap-12 lg:grid-cols-2">
         <div className="reveal">
-          <p className="eyebrow mb-3">About Sterling Meridian</p>
+          <p className="eyebrow mb-3">About Aurelian Watches</p>
           <h2 className="heading-display text-3xl font-medium sm:text-4xl lg:text-5xl">
             Our Story
           </h2>
           <div className="mt-6 space-y-4 text-sm leading-relaxed text-graphite">
             <p>
-              Founded in 1987 as a Mayfair atelier restoring earlier Rolex references, Sterling
-              Meridian grew from a two-bench workshop into a destination trusted by more than 25,000
+              Founded in 1987 as a Mayfair atelier restoring earlier Rolex references, Aurelian
+              Watches grew from a two-bench workshop into a destination trusted by more than 25,000
               clients.
             </p>
             <p>
@@ -535,7 +427,7 @@ export function AboutBlock() {
               inspected and certified.
             </p>
             <p>
-              Every listing is priced against the Meridian Market Index, shipped fully insured, and
+              Every listing is priced against the Aurelian Market Index, shipped fully insured, and
               covered by a two-year warranty — because a fine watch should be the safest purchase
               you make all year.
             </p>
@@ -589,7 +481,7 @@ export function Reviews() {
 export function WhyShop() {
   const points = [
     'Every watch authenticated by master watchmakers, in-house',
-    'Pricing set by the Meridian Market Index — real transaction data',
+    'Pricing set by the Aurelian Market Index — real transaction data',
     'Real-time inventory: listed means in our vault and ready',
     'Free insured overnight shipping, signature on delivery',
     'Two-year warranty serviced on our own benches',
@@ -660,7 +552,7 @@ export function Newsletter() {
   return (
     <section className="bg-ink py-20 text-ivory lg:py-28">
       <div className="container-x max-w-2xl text-center">
-        <p className="eyebrow mb-4">The Meridian List</p>
+        <p className="eyebrow mb-4">The Aurelian List</p>
         <h2 className="heading-display text-4xl font-medium sm:text-5xl">
           Timeless Style, Delivered.
         </h2>

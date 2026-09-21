@@ -91,7 +91,7 @@ export function Login() {
         <div className="container-x max-w-md">
           <AuthForm mode="login" />
           <p className="mt-6 text-center text-sm text-graphite">
-            New to Sterling Meridian?{' '}
+            New to Aurelian Watches?{' '}
             <Link to="/signup" className="text-goldDark underline underline-offset-2">
               Create an account
             </Link>
@@ -106,7 +106,7 @@ export function Signup() {
   useReveal([]);
   return (
     <>
-      <PageHero eyebrow="Your Account" title="Join the Meridian List.">
+      <PageHero eyebrow="Your Account" title="Join the Aurelian List.">
         <p>Create an account to save watches, manage alerts and check out faster.</p>
       </PageHero>
       <section className="py-20">

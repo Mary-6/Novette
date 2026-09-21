@@ -211,7 +211,7 @@ export default function Shop() {
     <ShopLayout
       eyebrow="The Collection"
       title="Shop Luxury Watches"
-      intro="Every watch below has been authenticated, inspected and warranted by Sterling Meridian. Filter by maison, complication and condition."
+      intro="Every watch below has been authenticated, inspected and warranted by Aurelian Watches. Filter by maison, complication and condition."
       source={watches}
       tone="dark"
     />

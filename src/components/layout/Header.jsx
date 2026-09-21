@@ -85,7 +85,7 @@ export default function Header() {
         </button>
         <Link to="/" className="flex shrink-0 items-baseline gap-2">
           <span className="heading-display text-xl tracking-wide sm:text-2xl">
-            Sterling <span className="text-gold">Meridian</span>
+            Aurelian <span className="text-gold">Watches</span>
           </span>
         </Link>
         <nav className="hidden items-center gap-7 lg:flex">
@@ -238,7 +238,7 @@ export default function Header() {
           <div className="absolute left-0 top-0 h-full w-80 max-w-[85vw] overflow-y-auto bg-charcoal p-6">
             <div className="mb-6 flex items-center justify-between">
               <span className="heading-display text-lg">
-                Sterling <span className="text-gold">Meridian</span>
+                Aurelian <span className="text-gold">Watches</span>
               </span>
               <button onClick={() => setDrawer(false)} aria-label="Close menu" type="button">
                 <X size={20} />

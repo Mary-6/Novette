@@ -1,4 +1,4 @@
-# Sterling Meridian
+# Aurelian Watches
 
 A luxury watch exchange storefront for a fictional established retailer — "Fine Timepieces,
 Est. 1987, London & New York" — offering new, unworn, pre-owned and vintage watches from 15

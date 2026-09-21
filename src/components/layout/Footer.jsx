@@ -76,10 +76,10 @@ export default function Footer() {
               <li className="flex items-center gap-2">
                 <Mail size={14} className="text-gold" />
                 <a
-                  href="mailto:concierge@sterlingmeridian.com"
+                  href="mailto:concierge@aurelianwatches.com"
                   className="transition hover:text-gold"
                 >
-                  concierge@sterlingmeridian.com
+                  concierge@aurelianwatches.com
                 </a>
               </li>
               <li className="text-ivory/50">Mon–Sat · 10:00–18:00 local</li>
@@ -114,7 +114,7 @@ export default function Footer() {
           </div>
           <div>
             <p className="heading-display text-2xl">
-              Sterling <span className="text-gold">Meridian</span>
+              Aurelian <span className="text-gold">Watches</span>
             </p>
             <p className="mt-1 text-[10px] uppercase tracking-[0.3em] text-ivory/50">
               Fine Timepieces · Est. 1987
@@ -126,7 +126,7 @@ export default function Footer() {
           </div>
         </div>
         <div className="mt-14 flex flex-col items-center justify-between gap-4 border-t border-graphite pt-8 text-xs text-ivory/40 sm:flex-row">
-          <p>© {new Date().getFullYear()} Sterling Meridian Ltd. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} Aurelian Watches Ltd. All rights reserved.</p>
           <nav className="flex gap-6">
             <Link to="/privacy-policy" className="transition hover:text-gold">
               Privacy
