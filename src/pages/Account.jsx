@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { Eye, EyeOff } from 'lucide-react';
 import PageHero from '../components/layout/PageHero';
 import useReveal from '../hooks/useReveal';
 
@@ -8,7 +9,8 @@ const inputCls =
 
 function AuthForm({ mode }) {
   const isSignup = mode === 'signup';
-  const [form, setForm] = useState({ name: '', email: '', password: '' });
+  const [form, setForm] = useState({ name: '', email: '', password: '', remember: true });
+  const [showPassword, setShowPassword] = useState(false);
   const [errors, setErrors] = useState({});
   const [done, setDone] = useState(false);
 
@@ -65,14 +67,42 @@ function AuthForm({ mode }) {
         <label className="mb-1.5 block text-xs uppercase tracking-[0.2em] text-graphite">
           Password
         </label>
-        <input
-          className={inputCls}
-          type="password"
-          value={form.password}
-          onChange={(e) => setForm({ ...form, password: e.target.value })}
-        />
+        <div className="relative">
+          <input
+            className={`${inputCls} pr-12`}
+            type={showPassword ? 'text' : 'password'}
+            autoComplete={isSignup ? 'new-password' : 'current-password'}
+            value={form.password}
+            onChange={(e) => setForm({ ...form, password: e.target.value })}
+          />
+          <button
+            type="button"
+            onClick={() => setShowPassword((s) => !s)}
+            aria-label={showPassword ? 'Hide password' : 'Show password'}
+            aria-pressed={showPassword}
+            className="absolute inset-y-0 right-0 flex w-12 items-center justify-center text-graphite transition hover:text-gold"
+          >
+            {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
+          </button>
+        </div>
         {errors.password && <p className="mt-1 text-xs text-red-700">{errors.password}</p>}
       </div>
+      {!isSignup && (
+        <div className="flex items-center justify-between text-sm">
+          <label className="flex cursor-pointer items-center gap-2.5 text-graphite">
+            <input
+              type="checkbox"
+              checked={form.remember}
+              onChange={(e) => setForm({ ...form, remember: e.target.checked })}
+              className="h-4 w-4 cursor-pointer appearance-none border border-stone/60 bg-transparent transition checked:border-gold checked:bg-gold"
+            />
+            Remember me
+          </label>
+          <Link to="/contact-us" className="text-goldDark underline underline-offset-2">
+            Forgot password?
+          </Link>
+        </div>
+      )}
       <button type="submit" className="btn-primary w-full">
         {isSignup ? 'Create account' : 'Log in'}
       </button>
