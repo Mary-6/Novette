@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Mail, Phone } from 'lucide-react';
+import Logo from '../ui/Logo';
 
 const COLUMNS = [
   {
@@ -113,9 +114,7 @@ export default function Footer() {
             )}
           </div>
           <div>
-            <p className="heading-display text-2xl">
-              Aurelian <span className="text-gold">Watches</span>
-            </p>
+            <Logo size="lg" />
             <p className="mt-1 text-[10px] uppercase tracking-[0.3em] text-ivory/50">
               Fine Timepieces · Est. 1987
             </p>

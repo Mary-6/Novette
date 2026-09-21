@@ -8,6 +8,7 @@ import watches from '../../data/watches';
 import { useCart } from '../../context/CartContext';
 import { useWishlist } from '../../context/WishlistContext';
 import WatchImage from '../watch/WatchImage';
+import Logo from '../ui/Logo';
 
 const RESOURCES = [
   { label: 'Journal', to: '/journal' },
@@ -83,11 +84,7 @@ export default function Header() {
         >
           <Menu size={22} />
         </button>
-        <Link to="/" className="flex shrink-0 items-baseline gap-2">
-          <span className="heading-display text-xl tracking-wide sm:text-2xl">
-            Aurelian <span className="text-gold">Watches</span>
-          </span>
-        </Link>
+        <Logo />
         <nav className="hidden items-center gap-7 lg:flex">
           <div className="group relative">
             <NavLink to="/rolex" className={linkCls}>
@@ -237,9 +234,7 @@ export default function Header() {
           <div className="absolute inset-0 bg-ink/70" onClick={() => setDrawer(false)} />
           <div className="absolute left-0 top-0 h-full w-80 max-w-[85vw] overflow-y-auto bg-charcoal p-6">
             <div className="mb-6 flex items-center justify-between">
-              <span className="heading-display text-lg">
-                Aurelian <span className="text-gold">Watches</span>
-              </span>
+              <Logo size="sm" />
               <button onClick={() => setDrawer(false)} aria-label="Close menu" type="button">
                 <X size={20} />
               </button>
