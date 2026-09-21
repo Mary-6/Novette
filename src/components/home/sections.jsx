@@ -54,16 +54,16 @@ export function Hero() {
         aria-hidden="true"
       />
       <div className="absolute inset-0 -z-10 bg-gradient-to-t from-ink via-ink/60 to-ink/10 sm:from-ink/85 sm:via-ink/25" />
-      <div className="container-x relative pb-14 pt-40 sm:pb-20">
+      <div className="container-x relative flex w-full flex-col items-center pb-14 pt-40 text-center sm:pb-16">
         <p className="eyebrow mb-4">New &amp; Unworn Luxury Watches</p>
-        <h1 className="heading-display max-w-3xl text-5xl font-medium leading-[1.05] sm:text-6xl lg:text-7xl">
+        <h1 className="heading-display max-w-4xl text-5xl font-medium leading-[1.05] sm:text-6xl lg:text-7xl">
           Timeless Luxury. <span className="italic text-gold">Iconic Timepieces.</span>
         </h1>
         <p className="mt-6 max-w-[560px] text-base leading-relaxed text-ivory/85">
           New and unworn watches from the world&apos;s great maisons — every piece inspected, timed
           and certified by our master horologists.
         </p>
-        <div className="mt-10 flex flex-col gap-4 sm:flex-row">
+        <div className="mt-10 flex w-full flex-col gap-4 sm:w-auto sm:flex-row sm:justify-center">
           <Button
             to="/shop"
             variant="outline"
