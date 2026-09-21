@@ -8,54 +8,17 @@ import useReveal from '../hooks/useReveal';
 export default function ImageCredits() {
   useReveal([]);
   const credited = watches.filter((w) => imageCredits[w.slug]?.length);
-  const heroCredit = imageCredits['omega-speedmaster-moonwatch-31030425001001']?.[0];
   return (
     <>
       <PageHero eyebrow="Attribution" title="Image Credits">
         <p>
-          Current catalogue galleries use original studio model visualizations, identified on
-          product pages as "Studio model visualization". Licensed source photos retained in the
-          project are credited below — each image is credited to its author and linked to its file
-          page.
+          Product imagery is original Sterling Meridian studio photography; licensed source
+          photographs retained in the project are credited below — each image is credited to its
+          author and linked to its file page.
         </p>
       </PageHero>
       <section className="py-16 lg:py-24">
         <div className="container-x grid gap-10 md:grid-cols-2 xl:grid-cols-3">
-          {heroCredit && (
-            <div className="reveal border border-stone/25 p-6">
-              <div className="flex items-center gap-4">
-                <div className="w-16 shrink-0 bg-sand">
-                  <img
-                    src="/images/hero-speedmaster.jpg"
-                    alt="Omega Speedmaster — homepage hero"
-                    className="aspect-square w-full object-cover"
-                  />
-                </div>
-                <div>
-                  <p className="text-[10px] uppercase tracking-[0.25em] text-stone">
-                    Site photography
-                  </p>
-                  <p className="heading-display text-lg leading-snug">Homepage hero</p>
-                </div>
-              </div>
-              <ul className="mt-4 space-y-1.5 text-xs text-graphite">
-                <li>
-                  <a
-                    href={heroCredit.pageUrl}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="text-goldDark underline underline-offset-2"
-                  >
-                    {heroCredit.title}
-                  </a>
-                  <span className="text-stone">
-                    {' '}
-                    — {heroCredit.author} · {heroCredit.license}
-                  </span>
-                </li>
-              </ul>
-            </div>
-          )}
           {credited.map((w) => (
             <div key={w.slug} className="reveal border border-stone/25 p-6">
               <div className="flex items-center gap-4">

@@ -33,39 +33,27 @@ export default function ProductGallery({ watch, art, engraving }) {
   ];
   const cur = slots[active] || slots[0];
 
-  const brandName = watch?.brandSlug ? watch.brandSlug.replace(/-/g, ' ') : '';
-  const cap = (s) =>
-    s.type === 'visualization'
-      ? 'Studio model visualization'
-      : s.type === 'photo'
-        ? `Photograph of ${brandName} ${watch.model}`
-        : 'Illustrated model representation';
-
   return (
     <div>
       <div className="relative overflow-hidden bg-sand">
         {cur?.type === 'photo' || cur?.type === 'visualization' ? (
-          <WatchImage watch={watch} index={cur.index} className="aspect-square w-full" />
+          <WatchImage
+            watch={watch}
+            index={cur.index}
+            eager={cur.index === 0}
+            view={VIEWS[cur.index]?.label}
+            className="aspect-square w-full"
+          />
         ) : (
           <WatchArt
             art={art}
             view={cur?.view || 'front'}
             engraving={engraving}
             className="aspect-square w-full"
-            label={`Illustrated representation of ${brandName} ${watch?.model || ''}`}
+            label={`Illustrated representation of ${watch?.model || 'watch'}`}
           />
         )}
-        <span className="absolute bottom-3 left-3 bg-ink/70 px-2 py-0.5 text-[9px] uppercase tracking-[0.15em] text-ivory/80">
-          {watch?.imageKinds?.[0] === 'visualization'
-            ? 'Studio model visualization'
-            : photoCount
-              ? 'Verified model photo'
-              : 'Model illustration'}
-        </span>
       </div>
-      <p className="mt-1.5 text-[10px] uppercase tracking-[0.15em] text-stone">
-        {cur ? cap(cur) : ''}
-      </p>
       <div className="mt-4 grid grid-cols-4 gap-3">
         {slots.map((s, i) => (
           <button
@@ -76,15 +64,18 @@ export default function ProductGallery({ watch, art, engraving }) {
               active === i ? 'border-gold' : 'border-transparent hover:border-stone/40'
             }`}
             aria-label={
-              s.type === 'visualization'
-                ? 'Studio model visualization'
-                : s.type === 'photo'
-                  ? `Photo ${s.index + 1}`
-                  : `${s.label} view`
+              s.type === 'art'
+                ? `${s.label} view`
+                : `${watch?.model || 'Watch'} — ${VIEWS[s.index]?.label || `View ${s.index + 1}`}`
             }
           >
             {s.type === 'photo' || s.type === 'visualization' ? (
-              <WatchImage watch={watch} index={s.index} className="aspect-square w-full" />
+              <WatchImage
+                watch={watch}
+                index={s.index}
+                view={VIEWS[s.index]?.label}
+                className="aspect-square w-full"
+              />
             ) : (
               <WatchArt
                 art={art}

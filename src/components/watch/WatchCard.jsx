@@ -21,13 +21,6 @@ export default function WatchCard({ watch }) {
             <Badge>{watch.condition}</Badge>
             {watch.availability !== 'In Stock' && <Badge>{watch.availability}</Badge>}
           </div>
-          <span className="absolute bottom-3 left-3 bg-ink/70 px-2 py-0.5 text-[9px] uppercase tracking-[0.15em] text-ivory/80">
-            {watch.imageKinds?.[0] === 'visualization'
-              ? 'Studio model visualization'
-              : watch.images?.length
-                ? 'Verified model photo'
-                : 'Model illustration'}
-          </span>
           <div className="absolute inset-x-0 bottom-0 translate-y-full bg-ink/90 px-4 py-3 text-center text-[11px] uppercase tracking-[0.25em] text-ivory transition-transform duration-300 group-hover:translate-y-0">
             View details
           </div>

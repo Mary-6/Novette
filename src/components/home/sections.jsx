@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import {
   ArrowRight,
@@ -22,27 +22,146 @@ import WatchGrid from '../watch/WatchGrid';
 import SectionHeading from '../ui/SectionHeading';
 import Button from '../ui/Button';
 
-export function Hero() {
+const HERO_SLIDES = [
+  {
+    src: '/images/hero-1-speedmaster.jpg',
+    brand: 'Omega',
+    model: 'Speedmaster Moonwatch Professional',
+    slug: 'omega-speedmaster-moonwatch-31030425001001',
+  },
+  {
+    src: '/images/hero-2-submariner.jpg',
+    brand: 'Rolex',
+    model: 'Submariner Date',
+    slug: 'rolex-submariner-date-126610ln',
+  },
+  {
+    src: '/images/hero-3-nautilus.jpg',
+    brand: 'Patek Philippe',
+    model: 'Nautilus',
+    slug: 'patek-philippe-nautilus-5711-1a',
+  },
+  {
+    src: '/images/hero-4-royal-oak.jpg',
+    brand: 'Audemars Piguet',
+    model: 'Royal Oak Selfwinding',
+    slug: 'audemars-piguet-royal-oak-15500st',
+  },
+  {
+    src: '/images/hero-5-daytona-gold.jpg',
+    brand: 'Rolex',
+    model: 'Cosmograph Daytona',
+    slug: 'rolex-daytona-two-tone-116503',
+  },
+  {
+    src: '/images/hero-6-reverso.jpg',
+    brand: 'Jaeger-LeCoultre',
+    model: 'Reverso Tribute Small Seconds',
+    slug: 'jaeger-lecoultre-reverso-tribute-3978480',
+  },
+];
+
+function HeroControls({ index, go, step }) {
   return (
-    <section className="relative overflow-hidden bg-ink text-ivory">
-      <div className="absolute inset-y-0 right-0 hidden w-[62%] sm:block">
-        <img
-          src="/images/hero-speedmaster.jpg"
-          alt="Omega Speedmaster Moonwatch"
-          className="kenburns h-full w-full object-cover object-center"
-        />
-        <div className="absolute inset-0 bg-gradient-to-r from-ink via-ink/70 to-transparent to-45%" />
+    <>
+      <button
+        type="button"
+        aria-label="Previous slide"
+        onClick={() => step(-1)}
+        className="flex h-9 w-9 items-center justify-center rounded-full border border-ivory/40 text-ivory/80 transition hover:border-gold hover:text-gold"
+      >
+        <ChevronLeft size={16} />
+      </button>
+      <div className="flex items-center gap-2">
+        {HERO_SLIDES.map((s, i) => (
+          <button
+            key={s.slug}
+            type="button"
+            aria-label={`Show ${s.brand} ${s.model}`}
+            onClick={() => go(i)}
+            className={`h-1.5 rounded-full transition-all ${
+              i === index ? 'w-6 bg-gold' : 'w-1.5 bg-ivory/40 hover:bg-ivory/70'
+            }`}
+          />
+        ))}
       </div>
-      <div className="relative h-[46vh] overflow-hidden sm:hidden">
-        <img
-          src="/images/hero-speedmaster.jpg"
-          alt=""
-          aria-hidden="true"
-          className="kenburns h-full w-full object-cover object-[center_40%]"
-        />
-        <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-ink to-transparent" />
+      <button
+        type="button"
+        aria-label="Next slide"
+        onClick={() => step(1)}
+        className="flex h-9 w-9 items-center justify-center rounded-full border border-ivory/40 text-ivory/80 transition hover:border-gold hover:text-gold"
+      >
+        <ChevronRight size={16} />
+      </button>
+    </>
+  );
+}
+
+export function Hero() {
+  const [index, setIndex] = useState(0);
+  const [paused, setPaused] = useState(false);
+  const slide = HERO_SLIDES[index];
+  const go = (i) => setIndex(((i % HERO_SLIDES.length) + HERO_SLIDES.length) % HERO_SLIDES.length);
+  const step = (d) => go(index + d);
+
+  useEffect(() => {
+    const t = setInterval(() => {
+      if (!paused && !document.hidden) setIndex((i) => (i + 1) % HERO_SLIDES.length);
+    }, 6000);
+    return () => clearInterval(t);
+  }, [paused]);
+
+  return (
+    <section
+      className="relative overflow-hidden bg-ink text-ivory"
+      onMouseEnter={() => setPaused(true)}
+      onMouseLeave={() => setPaused(false)}
+    >
+      <div className="relative h-[60vh] sm:h-[80vh]">
+        {HERO_SLIDES.map((s, i) => (
+          <div
+            key={s.slug}
+            className={`absolute inset-0 transition-opacity duration-[1200ms] ease-out ${
+              i === index ? 'opacity-100' : 'opacity-0'
+            }`}
+            aria-hidden={i !== index}
+          >
+            <img
+              src={s.src}
+              alt={`${s.brand} ${s.model}`}
+              decoding="async"
+              loading={i === 0 ? 'eager' : 'lazy'}
+              fetchpriority={i === 0 ? 'high' : undefined}
+              className={`h-full w-full object-cover ${i === index ? 'kenburns' : ''}`}
+            />
+          </div>
+        ))}
+        <div className="absolute inset-0 hidden bg-gradient-to-r from-ink via-ink/60 to-transparent sm:block" />
+        <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-ink to-transparent sm:hidden" />
+        <div className="absolute bottom-8 right-8 hidden items-center gap-5 sm:flex">
+          <Link
+            key={slide.slug}
+            to={`/watches/${slide.slug}`}
+            className="group text-right transition-opacity duration-[1200ms]"
+          >
+            <span className="eyebrow block">Now showing</span>
+            <span className="heading-display text-lg italic text-ivory/90 transition group-hover:text-gold">
+              {slide.brand} {slide.model}
+            </span>
+          </Link>
+          <HeroControls index={index} go={go} step={step} />
+        </div>
       </div>
-      <div className="container-x relative flex flex-col pb-16 pt-6 sm:min-h-[80vh] sm:justify-center sm:py-32">
+      <div className="container-x flex items-center justify-between gap-4 bg-ink py-4 sm:hidden">
+        <Link to={`/watches/${slide.slug}`} className="group">
+          <span className="eyebrow block">Now showing</span>
+          <span className="heading-display text-base italic text-ivory/90 group-hover:text-gold">
+            {slide.brand} {slide.model}
+          </span>
+        </Link>
+        <HeroControls index={index} go={go} step={step} />
+      </div>
+      <div className="container-x relative flex flex-col pb-16 pt-6 sm:absolute sm:inset-0 sm:justify-center sm:py-0">
         <p className="eyebrow mb-5">Sterling Meridian · Est. 1987</p>
         <h1 className="heading-display max-w-2xl text-5xl font-medium leading-[1.05] sm:text-6xl lg:text-7xl">
           Timeless Luxury. <span className="italic text-gold">Iconic Timepieces.</span>
