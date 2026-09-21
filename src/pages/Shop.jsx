@@ -1,5 +1,5 @@
-import { useMemo, useState } from 'react';
-import { ChevronLeft, ChevronRight, SlidersHorizontal, X } from 'lucide-react';
+import { useMemo } from 'react';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 import watches from '../data/watches';
 import { filterWatches, sortWatches } from '../data/utils';
 import { useShopFilters } from '../hooks/useShop';
@@ -7,7 +7,6 @@ import useReveal from '../hooks/useReveal';
 import PageHero from '../components/layout/PageHero';
 import Breadcrumbs from '../components/layout/Breadcrumbs';
 import WatchGrid from '../components/watch/WatchGrid';
-import FilterSidebar from '../components/shop/FilterSidebar';
 import SortSelect, { PerPageSelect } from '../components/shop/SortSelect';
 import ActiveFilters from '../components/shop/ActiveFilters';
 import Button from '../components/ui/Button';
@@ -46,7 +45,6 @@ export function ShopLayout({
 }) {
   const { filters, setFilters, sort, setSort, perPage, setPerPage, page, setPage } =
     useShopFilters();
-  const [drawer, setDrawer] = useState(false);
   useReveal([filters, sort, page]);
 
   const list = useMemo(
@@ -65,9 +63,6 @@ export function ShopLayout({
 
   const totalPages = Math.max(1, Math.ceil(list.length / perPage));
   const pageItems = list.slice((page - 1) * perPage, page * perPage);
-  const sidebar = (
-    <FilterSidebar filters={filters} onChange={setFilters} source={source} lockBrand={lockBrand} />
-  );
 
   return (
     <>
@@ -81,27 +76,19 @@ export function ShopLayout({
         <div className="container-x">
           <Breadcrumbs items={[{ label: 'Home', to: '/' }, { label: title || 'Shop' }]} />
           {chips}
-          <div className="grid gap-12 lg:grid-cols-[260px_1fr]">
-            <div className="hidden lg:block">{sidebar}</div>
+          <div>
             <div>
-              <div className="mb-6">
-                <p className="mb-4 text-xs uppercase tracking-[0.2em] text-stone lg:mb-0">
+              <div className="mb-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+                <p className="text-xs uppercase tracking-[0.2em] text-stone">
                   {list.length} {list.length === 1 ? 'item' : 'items'}
                 </p>
-                <div className="flex items-center gap-3 lg:-mt-6 lg:justify-end">
-                  <button
-                    type="button"
-                    onClick={() => setDrawer(true)}
-                    className="flex items-center gap-2 border border-stone/40 px-4 py-2.5 text-xs uppercase tracking-[0.15em] lg:hidden"
-                  >
-                    <SlidersHorizontal size={14} /> Filters
-                  </button>
+                <div className="flex items-center gap-3">
                   <PerPageSelect value={perPage} onChange={setPerPage} />
                   <SortSelect
                     value={sort}
                     onChange={setSort}
-                    className="flex-1 lg:flex-none"
-                    selectClassName="w-full lg:w-auto"
+                    className="flex-1 sm:flex-none"
+                    selectClassName="w-full sm:w-auto"
                   />
                 </div>
               </div>
@@ -157,7 +144,7 @@ export function ShopLayout({
                 <div className="py-20 text-center">
                   <p className="heading-display text-3xl">No timepieces match your criteria.</p>
                   <p className="mt-3 text-sm text-graphite">
-                    Adjust the filters, or let our concierge source a piece for you.
+                    Adjust your search, or let our concierge source a piece for you.
                   </p>
                   <Button
                     className="mt-8"
@@ -172,7 +159,7 @@ export function ShopLayout({
                       })
                     }
                   >
-                    Clear filters
+                    Clear search
                   </Button>
                 </div>
               )}
@@ -181,27 +168,6 @@ export function ShopLayout({
         </div>
       </section>
       {children}
-      {drawer && (
-        <div className="fixed inset-0 z-[60] lg:hidden">
-          <div className="absolute inset-0 bg-ink/60" onClick={() => setDrawer(false)} />
-          <div className="absolute bottom-0 left-0 right-0 max-h-[85vh] overflow-y-auto bg-ivory p-6">
-            <div className="mb-2 flex items-center justify-between">
-              <p className="text-xs font-medium uppercase tracking-[0.2em]">Filters</p>
-              <button type="button" onClick={() => setDrawer(false)} aria-label="Close filters">
-                <X size={20} />
-              </button>
-            </div>
-            {sidebar}
-            <button
-              type="button"
-              onClick={() => setDrawer(false)}
-              className="btn-primary mt-4 w-full"
-            >
-              Show {list.length} results
-            </button>
-          </div>
-        </div>
-      )}
     </>
   );
 }
@@ -211,7 +177,7 @@ export default function Shop() {
     <ShopLayout
       eyebrow="The Collection"
       title="Shop Luxury Watches"
-      intro="Every watch below has been authenticated, inspected and warranted by Aurelian Watches. Filter by maison, complication and condition."
+      intro="Every watch below has been authenticated, inspected and warranted by Aurelian Watches. Browse by maison, or search by model and reference."
       source={watches}
       tone="dark"
     />
