@@ -143,6 +143,14 @@ export function reply(text, ctx = {}) {
     };
   }
 
+  const matched = matchWatches(t);
+  const typeHit = TYPE_WORDS.find(([word]) => t.includes(word));
+  let pool = matched.length ? matched : watches;
+  if (typeHit) pool = pool.filter((w) => w.type === typeHit[1]);
+  const scope = matched.length
+    ? `${brands.find((b) => b.slug === matched[0].brandSlug)?.name || ''} `
+    : '';
+
   const priceMatch = t.match(/(?:under|below|less than|max|up to|budget of)\s*\$?\s*([\d,]+)k?/);
   if (priceMatch || has('budget')) {
     const raw = priceMatch?.[1]?.replace(/,/g, '');
@@ -153,31 +161,29 @@ export function reply(text, ctx = {}) {
         text: 'Happy to work to a budget — what ceiling should I keep to? For example "under $15,000".',
       };
     }
-    const list = watches.filter((w) => w.price <= cap).sort((a, b) => b.price - a.price);
+    const list = pool.filter((w) => w.price <= cap).sort((a, b) => b.price - a.price);
     if (!list.length) {
       return {
-        text: `Nothing currently sits under ${formatPrice(cap)} — our catalogue begins just above it. Shall I show our most accessible pieces instead?`,
+        text: `No ${scope}pieces currently sit under ${formatPrice(cap)}. Shall I show our most accessible pieces instead?`,
         options: ['Under $10,000', 'Dress watches', 'Find a watch'],
       };
     }
     return {
-      text: `Here are the finest pieces we hold under ${formatPrice(cap)} — tap one to view.`,
+      text: `Here are the finest ${scope}pieces we hold under ${formatPrice(cap)} — tap one to view.`,
       products: slugs(list.slice(0, 3)),
     };
   }
 
-  const typeHit = TYPE_WORDS.find(([word]) => t.includes(word));
   if (typeHit) {
-    const list = pick(watches.filter((w) => w.type === typeHit[1]));
+    const list = pick(pool);
     if (list.length) {
       return {
-        text: `Here are ${typeHit[1].toLowerCase()} watches from our current holding — tap one to view.`,
+        text: `Here are ${scope}${typeHit[1].toLowerCase()} watches from our current holding — tap one to view.`,
         products: slugs(list),
       };
     }
   }
 
-  const matched = matchWatches(t);
   if (matched.length) {
     const b0 = brands.find((b) => b.slug === matched[0].brandSlug)?.name || 'these';
     return {
