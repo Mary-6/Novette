@@ -22,14 +22,31 @@ import WatchGrid from '../watch/WatchGrid';
 import SectionHeading from '../ui/SectionHeading';
 import Button from '../ui/Button';
 
+const HERO_STILLS = [
+  '/images/hero-1-speedmaster.jpg',
+  '/images/hero-2-submariner.jpg',
+  '/images/hero-3-nautilus.jpg',
+  '/images/hero-4-royal-oak.jpg',
+  '/images/hero-5-daytona-gold.jpg',
+  '/images/hero-6-reverso.jpg',
+];
+
 export function Hero() {
   const videoRef = useRef(null);
+  const [still, setStill] = useState(0);
+  const [videoReady, setVideoReady] = useState(false);
+
+  useEffect(() => {
+    const t = setInterval(() => {
+      if (!document.hidden && !videoReady) setStill((i) => (i + 1) % HERO_STILLS.length);
+    }, 5000);
+    return () => clearInterval(t);
+  }, [videoReady]);
 
   useEffect(() => {
     const el = videoRef.current;
     if (!el) return;
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      el.pause();
       return;
     }
     el.muted = true;
@@ -41,17 +58,35 @@ export function Hero() {
       className="relative isolate flex items-end overflow-hidden bg-ink text-ivory"
       style={{ minHeight: 'max(520px, calc(100svh - 6rem))' }}
     >
+      {HERO_STILLS.map((src, i) => (
+        <img
+          key={src}
+          src={src}
+          alt=""
+          aria-hidden="true"
+          decoding="async"
+          loading={i === 0 ? 'eager' : 'lazy'}
+          fetchpriority={i === 0 ? 'high' : undefined}
+          className={`absolute inset-x-0 top-0 -z-10 h-[68%] w-full object-cover object-center transition-opacity duration-[1500ms] sm:h-full ${
+            i === still ? 'kenburns opacity-100' : 'opacity-0'
+          }`}
+        />
+      ))}
       <video
         ref={videoRef}
-        className="absolute inset-x-0 top-0 -z-10 h-[68%] w-full object-cover object-center sm:h-full"
+        className={`absolute inset-x-0 top-0 -z-10 h-[68%] w-full object-cover object-center transition-opacity duration-1000 sm:h-full ${
+          videoReady ? 'opacity-100' : 'opacity-0'
+        }`}
         src="/images/hero-reel.mp4"
         poster="/images/hero-reel-poster.jpg"
         autoPlay
         muted
         loop
         playsInline
-        preload="metadata"
+        preload="auto"
         aria-hidden="true"
+        onPlaying={() => setVideoReady(true)}
+        onError={() => setVideoReady(false)}
       />
       <div className="absolute inset-0 -z-10 bg-gradient-to-t from-ink from-30% via-ink/70 via-55% to-transparent sm:from-ink/90 sm:from-0% sm:via-ink/40 sm:via-50% sm:to-ink/10" />
       <div className="container-x relative flex w-full flex-col items-center pb-14 pt-40 text-center sm:pb-14">
