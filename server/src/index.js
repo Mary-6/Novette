@@ -321,6 +321,18 @@ async function getSettings() {
 }
 
 app.get(
+  '/api/site-settings',
+  wrap(async (_req, res) => {
+    const s = await getSettings();
+    res.json({
+      announcement: s.announcement || null,
+      contactEmail: s.contactEmail || null,
+      supportPhone: s.supportPhone || '+1 800 555 0148',
+    });
+  })
+);
+
+app.get(
   '/api/shipping-rates',
   wrap(async (_req, res) => {
     const s = await getSettings();
