@@ -21,7 +21,6 @@ const COLUMNS = [
       ['Why Buy From Us', '/why-buy-from-us'],
       ['Authenticity Pledge', '/authenticity-pledge'],
       ["Buyer's Protection Plan", '/buyers-protection-plan'],
-      ['Payment Methods', '/payment-methods'],
       ['Reviews', '/#reviews'],
     ],
   },

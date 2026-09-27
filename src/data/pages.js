@@ -50,7 +50,7 @@ const pages = {
     sections: [
       {
         heading: 'What is covered',
-        body: 'Every order is covered from payment to delivery: full-value transit insurance, signature delivery, and a 14-day return window with a full refund once the watch clears inspection.',
+        body: 'Every order is covered from confirmation to delivery: full-value transit insurance, signature delivery, and a 14-day return window with a full refund once the watch clears inspection.',
       },
       {
         heading: 'Authentication guarantee',
@@ -72,7 +72,7 @@ const pages = {
       },
       {
         heading: 'Timing',
-        body: 'Orders placed before 2pm ET ship the same business day once payment clears. You receive a tracking number and insurance certificate by email the moment the parcel leaves the vault.',
+        body: 'Orders confirmed before 2pm ET ship the same business day. You receive a tracking number and insurance certificate by email the moment the parcel leaves the vault.',
       },
       {
         heading: 'Delivery',
@@ -108,7 +108,7 @@ const pages = {
       },
       {
         heading: 'How to return',
-        body: 'Contact your specialist for an insured, prepaid return label. Once the watch clears bench inspection — typically within two business days — the refund is issued to your original payment method within five business days.',
+        body: 'Contact your specialist for an insured, prepaid return label. Once the watch clears bench inspection — typically within two business days — the refund is issued within five business days.',
       },
       {
         heading: 'Exclusions',
@@ -131,24 +131,6 @@ const pages = {
       {
         heading: 'How warranty service works',
         body: 'Our own watchmakers perform all warranty work. Contact your specialist, ship with our insured label, and most services return within ten business days — never outsourced.',
-      },
-    ],
-  },
-  'payment-methods': {
-    eyebrow: 'Checkout',
-    title: 'Payment Methods',
-    sections: [
-      {
-        heading: 'Accepted methods',
-        body: 'We accept major credit cards and bank wire. Orders over $50,000 are handled by wire through a concierge-managed escrow process for the protection of both parties.',
-      },
-      {
-        heading: 'Financing',
-        body: 'Twelve-month payment plans are available on approved credit for purchases over $5,000 — ask your specialist for terms.',
-      },
-      {
-        heading: 'Currency',
-        body: 'All prices are listed in US dollars. International clients may pay in GBP or EUR at the prevailing rate by arrangement.',
       },
     ],
   },

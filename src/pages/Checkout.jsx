@@ -40,7 +40,6 @@ export default function Checkout() {
     country: '',
     method: 'courier',
   });
-  const [pay, setPay] = useState({ method: 'card', name: '', number: '', expiry: '', cvc: '' });
   const [errors, setErrors] = useState({});
 
   const method = DELIVERY.find((m) => m.id === ship.method);
@@ -51,17 +50,6 @@ export default function Checkout() {
     return method.price;
   }, [items.length, ship.method, subtotal, method.price]);
   const total = subtotal + shipping;
-
-  const formatCard = (v) =>
-    v
-      .replace(/\D/g, '')
-      .slice(0, 16)
-      .replace(/(.{4})/g, '$1 ')
-      .trim();
-  const formatExpiry = (v) => {
-    const d = v.replace(/\D/g, '').slice(0, 4);
-    return d.length > 2 ? `${d.slice(0, 2)}/${d.slice(2)}` : d;
-  };
 
   const validateStep = () => {
     const e = {};
@@ -76,12 +64,6 @@ export default function Checkout() {
       if (!ship.zip.trim()) e.zip = 'Required';
       if (!ship.country.trim()) e.country = 'Required';
     }
-    if (step === 3 && pay.method === 'card') {
-      if (!pay.name.trim()) e.name = 'Required';
-      if (pay.number.replace(/\s/g, '').length !== 16) e.number = 'Enter a 16-digit card number';
-      if (!/^\d{2}\/\d{2}$/.test(pay.expiry)) e.expiry = 'MM/YY';
-      if (!/^\d{3,4}$/.test(pay.cvc)) e.cvc = '3–4 digits';
-    }
     setErrors(e);
     return Object.keys(e).length === 0;
   };
@@ -95,7 +77,6 @@ export default function Checkout() {
         email: info.email,
         customerName: `${info.first} ${info.last}`.trim() || info.email,
         shippingMethod: ship.method === 'express' ? 'express' : 'courier',
-        paymentMethod: pay.method,
         address: { address: ship.address, city: ship.city, zip: ship.zip, country: ship.country },
         items: items.map((it) => ({ watchId: it.watch.id, qty: it.qty })),
       });
@@ -150,7 +131,7 @@ export default function Checkout() {
         <div className="container-x grid gap-12 lg:grid-cols-[1fr_360px]">
           <div>
             <ol className="mb-10 flex gap-6 text-xs uppercase tracking-[0.2em]">
-              {['Information', 'Shipping', 'Payment'].map((s, i) => (
+              {['Information', 'Shipping', 'Review'].map((s, i) => (
                 <li key={s} className={step === i + 1 ? 'text-ink' : 'text-stone'}>
                   <span className="mr-2 text-gold">{i + 1}.</span>
                   {s}
@@ -266,66 +247,30 @@ export default function Checkout() {
 
             {step === 3 && (
               <div className="space-y-6">
-                <p className="border border-gold/40 bg-gold/5 px-4 py-3 text-xs uppercase tracking-[0.2em] text-goldDark">
-                  Demo — no payment is processed
+                <p className="text-sm leading-relaxed text-graphite">
+                  Review your details and place your order. No payment is taken online — a concierge
+                  will confirm availability and contact you to complete your order personally.
                 </p>
-                <div className="flex gap-3">
-                  {['card', 'wire'].map((m) => (
-                    <button
-                      key={m}
-                      type="button"
-                      onClick={() => setPay({ ...pay, method: m })}
-                      className={`flex-1 border px-4 py-3 text-xs uppercase tracking-[0.2em] transition ${
-                        pay.method === m ? 'border-gold bg-sand' : 'border-stone/40'
-                      }`}
-                    >
-                      {m === 'card' ? 'Card' : 'Bank Wire'}
-                    </button>
-                  ))}
+                <div className="bg-sand p-6 text-sm">
+                  <dl className="space-y-2">
+                    <div className="flex justify-between">
+                      <dt className="text-graphite">Contact</dt>
+                      <dd>
+                        {info.first} {info.last} · {info.email}
+                      </dd>
+                    </div>
+                    <div className="flex justify-between">
+                      <dt className="text-graphite">Ship to</dt>
+                      <dd>
+                        {ship.address}, {ship.city} {ship.zip}, {ship.country}
+                      </dd>
+                    </div>
+                    <div className="flex justify-between">
+                      <dt className="text-graphite">Delivery</dt>
+                      <dd>{DELIVERY.find((m) => m.id === ship.method)?.label}</dd>
+                    </div>
+                  </dl>
                 </div>
-                {pay.method === 'card' ? (
-                  <div className="grid gap-5 sm:grid-cols-2">
-                    <div className="sm:col-span-2">
-                      <Field
-                        label="Name on card"
-                        value={pay.name}
-                        onChange={(e) => setPay({ ...pay, name: e.target.value })}
-                        error={errors.name}
-                      />
-                    </div>
-                    <div className="sm:col-span-2">
-                      <Field
-                        label="Card number"
-                        inputMode="numeric"
-                        placeholder="1234 5678 9012 3456"
-                        value={pay.number}
-                        onChange={(e) => setPay({ ...pay, number: formatCard(e.target.value) })}
-                        error={errors.number}
-                      />
-                    </div>
-                    <Field
-                      label="Expiry"
-                      placeholder="MM/YY"
-                      inputMode="numeric"
-                      value={pay.expiry}
-                      onChange={(e) => setPay({ ...pay, expiry: formatExpiry(e.target.value) })}
-                      error={errors.expiry}
-                    />
-                    <Field
-                      label="CVC"
-                      inputMode="numeric"
-                      maxLength={4}
-                      value={pay.cvc}
-                      onChange={(e) => setPay({ ...pay, cvc: e.target.value.replace(/\D/g, '') })}
-                      error={errors.cvc}
-                    />
-                  </div>
-                ) : (
-                  <p className="text-sm leading-relaxed text-graphite">
-                    Bank wire details will be emailed with your order confirmation. Orders are
-                    released once funds clear — typically within one business day.
-                  </p>
-                )}
               </div>
             )}
 

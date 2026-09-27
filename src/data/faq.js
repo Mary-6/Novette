@@ -37,15 +37,10 @@ const faqs = [
   {
     category: 'Returns',
     q: 'How do refunds work?',
-    a: 'Once a return clears inspection, refunds are issued to the original payment method within five business days. Bank-wire orders are refunded by wire.',
+    a: 'Once a return clears inspection, refunds are issued within five business days through our concierge.',
   },
   {
-    category: 'Payment',
-    q: 'Which payment methods do you accept?',
-    a: 'We accept major credit cards and bank wire. High-value orders over $50,000 are handled by wire with a concierge-managed escrow process.',
-  },
-  {
-    category: 'Payment',
+    category: 'Ordering',
     q: 'Can I reserve a watch before purchasing?',
     a: 'Yes — our concierge can hold a piece for 48 hours without obligation. Reserved watches show as such on the site and are released if not confirmed.',
   },

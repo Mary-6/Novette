@@ -287,7 +287,7 @@ const orderSchema = z.object({
   email: emailSchema,
   customerName: z.string().min(2),
   shippingMethod: z.enum(['courier', 'express']),
-  paymentMethod: z.enum(['card', 'wire']),
+  paymentMethod: z.enum(['card', 'wire']).optional(),
   address: z.object({
     address: z.string().min(3),
     city: z.string().min(1),
@@ -351,7 +351,7 @@ app.post(
           shippingPrice,
           subtotal,
           total: subtotal + shippingPrice,
-          paymentMethod: d.paymentMethod,
+          paymentMethod: d.paymentMethod || 'none',
           address: d.address,
           items: { create: lines },
         },

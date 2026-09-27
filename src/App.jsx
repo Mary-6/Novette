@@ -27,7 +27,6 @@ const INFO_SLUGS = [
   'international-shipping',
   'return-policy',
   'warranty',
-  'payment-methods',
   'faqs',
   'locations',
   'trust-and-compliance',
