@@ -158,8 +158,8 @@ export function HeritageIntro() {
         </div>
         <div className="reveal border border-gold/60 p-2">
           <img
-            src="/images/watches/patek-philippe-nautilus-5711-1a/1.jpg"
-            alt="Patek Philippe Nautilus"
+            src="/images/watches/rolex-daytona-two-tone-116503/visualization-lifestyle.jpg"
+            alt="Rolex Cosmograph Daytona two-tone"
             loading="lazy"
             className="aspect-[4/5] w-full object-cover"
           />
