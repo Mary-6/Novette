@@ -1,5 +1,10 @@
 import express from 'express';
 import cors from 'cors';
+import helmet from 'helmet';
+import { rateLimit } from 'express-rate-limit';
+import multer from 'multer';
+import { mkdirSync } from 'fs';
+import path from 'path';
 import cookieParser from 'cookie-parser';
 import bcrypt from 'bcryptjs';
 import { z } from 'zod';
@@ -13,11 +18,19 @@ import {
   requireAdmin,
   makeToken,
 } from './auth.js';
-import { sendMail } from './mail.js';
+import { sendMail, mailTemplate, DEFAULT_TEMPLATES } from './mail.js';
 
 const makeTokenHash = (t) => createHash('sha256').update(t).digest('hex');
 
 const app = express();
+app.use(helmet({ crossOriginResourcePolicy: false }));
+app.set('trust proxy', 1);
+const authLimiter = rateLimit({ windowMs: 15 * 60e3, limit: 30, standardHeaders: true });
+const writeLimiter = rateLimit({ windowMs: 60e3, limit: 120, standardHeaders: true });
+const adminLimiter = rateLimit({ windowMs: 60e3, limit: 300, standardHeaders: true });
+app.use('/api/auth/', authLimiter);
+app.use(['/api/orders', '/api/contact', '/api/newsletter'], writeLimiter);
+app.use('/api/admin/', adminLimiter);
 app.use(cors({ origin: process.env.APP_URL || 'http://localhost:5173', credentials: true }));
 app.use(express.json());
 app.use(cookieParser());
@@ -111,11 +124,11 @@ app.post(
         expiresAt: new Date(Date.now() + 86400e3),
       },
     });
-    await sendMail({
-      to: email,
-      subject: 'Verify your Aurelian Watches account',
-      html: `<p>Welcome to Aurelian Watches, ${user.name}.</p><p>Verify your email: <a href="${process.env.APP_URL}/verify-email?token=${raw}">Confirm account</a></p>`,
+    const vt = await mailTemplate('verify_email', {
+      user,
+      link: `${process.env.APP_URL}/verify-email?token=${raw}`,
     });
+    await sendMail({ to: email, ...vt });
     await issueSession(res, user.id, remember);
     res.status(201).json({ user: publicUser(user) });
   })
@@ -167,11 +180,11 @@ app.post(
             expiresAt: new Date(Date.now() + 3600e3),
           },
         });
-        await sendMail({
-          to: email.data,
-          subject: 'Reset your Aurelian Watches password',
-          html: `<p>Reset link (valid one hour): <a href="${process.env.APP_URL}/reset-password?token=${raw}">Reset password</a></p>`,
+        const rt = await mailTemplate('reset_password', {
+          user,
+          link: `${process.env.APP_URL}/reset-password?token=${raw}`,
         });
+        await sendMail({ to: email.data, ...rt });
       }
     }
     res.json({ ok: true });
@@ -358,11 +371,8 @@ app.post(
         include: { items: true },
       });
     });
-    await sendMail({
-      to: order.email,
-      subject: `Order ${order.number} confirmed — Aurelian Watches`,
-      html: `<p>Thank you, ${order.customerName}.</p><p>Your order <b>${order.number}</b> totalling $${order.total.toLocaleString()} is confirmed. We will email tracking once your timepiece ships fully insured.</p>`,
-    });
+    const oc = await mailTemplate('order_confirm', { order });
+    await sendMail({ to: order.email, ...oc });
     res.status(201).json({ order });
   })
 );
@@ -504,7 +514,146 @@ app.get(
   )
 );
 
+const watchSchema = z.object({
+  slug: z.string().regex(/^[a-z0-9-]+$/),
+  brandSlug: z.string(),
+  model: z.string(),
+  reference: z.string(),
+  nickname: z.string().optional().nullable(),
+  price: z.number().int().min(0),
+  year: z.number().int().min(1900).max(2100),
+  type: z.string(),
+  material: z.string().optional().nullable(),
+  condition: z.string(),
+  gender: z.string().default('Men'),
+  boxPapers: z.boolean().default(false),
+  isNew: z.boolean().default(false),
+  isFeatured: z.boolean().default(false),
+  popularity: z.number().int().min(0).max(100).default(50),
+  addedAt: z.coerce.date().default(() => new Date()),
+  description: z.string().default(''),
+  specs: z.record(z.string()).default({}),
+  inventory: z.number().int().min(0).default(1),
+  id: z.string().optional(),
+});
+
+app.post(
+  '/api/admin/watches',
+  requireAdmin,
+  wrap(async (req, res) => {
+    const data = watchSchema.parse(req.body);
+    const id =
+      data.id ||
+      `${data.brandSlug.slice(0, 3)}-${data.reference.toLowerCase().replace(/[^a-z0-9]/g, '')}`;
+    res.status(201).json(await prisma.watch.create({ data: { ...data, id } }));
+  })
+);
+
+app.delete(
+  '/api/admin/watches/:id',
+  requireAdmin,
+  wrap(async (req, res) => {
+    await prisma.cartItem.deleteMany({ where: { watchId: req.params.id } });
+    await prisma.wishlistItem.deleteMany({ where: { watchId: req.params.id } });
+    await prisma.watch.delete({ where: { id: req.params.id } });
+    res.json({ ok: true });
+  })
+);
+
+app.get(
+  '/api/admin/customers',
+  requireAdmin,
+  wrap(async (_req, res) => {
+    res.json(
+      await prisma.user.findMany({
+        select: {
+          id: true,
+          name: true,
+          email: true,
+          role: true,
+          emailVerifiedAt: true,
+          createdAt: true,
+          _count: { select: { orders: true } },
+        },
+        orderBy: { createdAt: 'desc' },
+      })
+    );
+  })
+);
+
+app.get(
+  '/api/admin/templates',
+  requireAdmin,
+  wrap(async (_req, res) => {
+    const stored = await prisma.emailTemplate.findMany();
+    const byKey = Object.fromEntries(stored.map((t) => [t.key, t]));
+    res.json(
+      Object.keys(DEFAULT_TEMPLATES).map((key) => byKey[key] || { key, ...DEFAULT_TEMPLATES[key] })
+    );
+  })
+);
+
+app.put(
+  '/api/admin/templates/:key',
+  requireAdmin,
+  wrap(async (req, res) => {
+    const data = z.object({ subject: z.string().min(1), html: z.string().min(1) }).parse(req.body);
+    res.json(
+      await prisma.emailTemplate.upsert({
+        where: { key: req.params.key },
+        update: data,
+        create: { key: req.params.key, ...data },
+      })
+    );
+  })
+);
+
+// Watch image upload -> /api/uploads/<file>
+const uploadDir = new URL('../public/uploads', import.meta.url).pathname;
+mkdirSync(uploadDir, { recursive: true });
+const upload = multer({
+  storage: multer.diskStorage({
+    destination: uploadDir,
+    filename: (_req, file, cb) =>
+      cb(null, `${Date.now()}-${file.originalname.replace(/[^a-zA-Z0-9._-]/g, '')}`),
+  }),
+  limits: { fileSize: 8 * 1024 * 1024 },
+  fileFilter: (_req, file, cb) => cb(null, /^image\/(jpeg|png|webp)$/.test(file.mimetype)),
+});
+app.post(
+  '/api/admin/upload',
+  requireAdmin,
+  upload.single('image'),
+  wrap(async (req, res) => {
+    if (!req.file) return res.status(400).json({ error: 'JPEG/PNG/WebP image required' });
+    res.status(201).json({ url: `/api/uploads/${path.basename(req.file.path)}` });
+  })
+);
+app.use('/api/uploads', express.static(uploadDir));
+
 app.get('/api/health', (_req, res) => res.json({ ok: true }));
 
+// Provision admin from env on startup (no seeding of credentials by default)
+async function ensureAdmin() {
+  const email = process.env.ADMIN_EMAIL;
+  const password = process.env.ADMIN_PASSWORD;
+  if (!email || !password) return;
+  const hash = await bcrypt.hash(password, 10);
+  await prisma.user.upsert({
+    where: { email },
+    update: { role: 'admin', passwordHash: hash, emailVerifiedAt: new Date() },
+    create: {
+      name: 'Administrator',
+      email,
+      passwordHash: hash,
+      role: 'admin',
+      emailVerifiedAt: new Date(),
+    },
+  });
+  console.log(`Admin provisioned: ${email}`);
+}
+
 const port = Number(process.env.PORT || 4000);
-app.listen(port, () => console.log(`Aurelian API on http://localhost:${port}`));
+ensureAdmin().then(() =>
+  app.listen(port, () => console.log(`Aurelian API on http://localhost:${port}`))
+);

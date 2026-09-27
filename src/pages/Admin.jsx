@@ -4,26 +4,62 @@ import { useAuth } from '../context/AuthContext';
 import PageHero from '../components/layout/PageHero';
 import { formatPrice } from '../data/utils';
 
+const inputCls =
+  'w-full border border-stone/40 bg-transparent px-3 py-2 text-sm outline-none transition focus:border-gold';
+const TABS = ['stats', 'watches', 'orders', 'customers', 'templates', 'messages'];
+
 export default function Admin() {
   const { user } = useAuth();
   const [tab, setTab] = useState('stats');
   const [stats, setStats] = useState(null);
   const [watches, setWatches] = useState([]);
   const [orders, setOrders] = useState([]);
+  const [customers, setCustomers] = useState([]);
+  const [templates, setTemplates] = useState([]);
+  const [messages, setMessages] = useState([]);
   const [error, setError] = useState(null);
+  const [notice, setNotice] = useState(null);
+  const [creating, setCreating] = useState(false);
+  const [form, setForm] = useState({
+    slug: '',
+    brandSlug: 'rolex',
+    model: '',
+    reference: '',
+    price: 0,
+    year: 2024,
+    type: 'Dress',
+    condition: 'Unworn',
+    description: '',
+    inventory: 1,
+  });
 
-  useEffect(() => {
-    if (user?.role !== 'admin') return;
-    Promise.all([api.adminStats(), api.adminWatches(), api.adminOrders()])
-      .then(([s, w, o]) => {
+  const isAdmin = user?.role === 'admin';
+
+  const load = () => {
+    Promise.all([
+      api.adminStats(),
+      api.adminWatches(),
+      api.adminOrders(),
+      api.adminCustomers(),
+      api.adminTemplates(),
+      api.adminMessages(),
+    ])
+      .then(([s, w, o, c, t, m]) => {
         setStats(s);
         setWatches(w);
         setOrders(o);
+        setCustomers(c);
+        setTemplates(t);
+        setMessages(m);
       })
       .catch((e) => setError(e.message));
-  }, [user]);
+  };
 
-  if (user?.role !== 'admin')
+  useEffect(() => {
+    if (isAdmin) load();
+  }, [isAdmin]);
+
+  if (!isAdmin)
     return (
       <section className="py-32 text-center">
         <h1 className="heading-display text-4xl">Admin only.</h1>
@@ -31,14 +67,52 @@ export default function Admin() {
       </section>
     );
 
+  const saveTemplate = (tpl) =>
+    api
+      .adminSaveTemplate(tpl.key, { subject: tpl.subject, html: tpl.html })
+      .then(() => setNotice(`Template "${tpl.key}" saved`))
+      .catch((e) => setError(e.message));
+
+  const createWatch = async (e) => {
+    e.preventDefault();
+    try {
+      await api.adminCreateWatch({
+        ...form,
+        price: Number(form.price),
+        year: Number(form.year),
+        inventory: Number(form.inventory),
+        specs: {},
+      });
+      setNotice(`${form.model} created`);
+      setCreating(false);
+      load();
+    } catch (err) {
+      setError(err.message || 'Create failed');
+    }
+  };
+
+  const uploadImage = async (watchId, file) => {
+    const r = await api.adminUpload(file);
+    if (r.url) setNotice(`Image uploaded: ${r.url}`);
+  };
+
   return (
     <>
       <PageHero eyebrow="Back Office" title="Store Admin" />
       <section className="py-16">
         <div className="container-x">
-          {error && <p className="mb-6 text-sm text-red-700">{error}</p>}
-          <div className="mb-10 flex gap-6 text-xs uppercase tracking-[0.2em]">
-            {['stats', 'watches', 'orders'].map((t) => (
+          {error && (
+            <p className="mb-6 border border-red-700/30 bg-red-50 px-4 py-3 text-sm text-red-700">
+              {error}
+            </p>
+          )}
+          {notice && (
+            <p className="mb-6 border border-gold/40 bg-gold/5 px-4 py-3 text-sm text-goldDark">
+              {notice}
+            </p>
+          )}
+          <div className="mb-10 flex flex-wrap gap-6 text-xs uppercase tracking-[0.2em]">
+            {TABS.map((t) => (
               <button
                 key={t}
                 type="button"
@@ -49,6 +123,7 @@ export default function Admin() {
               </button>
             ))}
           </div>
+
           {tab === 'stats' && stats && (
             <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-5">
               {Object.entries(stats).map(([k, v]) => (
@@ -59,58 +134,189 @@ export default function Admin() {
               ))}
             </div>
           )}
+
           {tab === 'watches' && (
-            <table className="w-full text-left text-sm">
-              <thead>
-                <tr className="border-b border-stone/30 text-xs uppercase tracking-[0.15em] text-graphite">
-                  <th className="py-3">Watch</th>
-                  <th>Price</th>
-                  <th>Stock</th>
-                  <th>Featured</th>
-                </tr>
-              </thead>
-              <tbody>
-                {watches.map((w) => (
-                  <tr key={w.id} className="border-b border-stone/20">
-                    <td className="py-3">
-                      {w.model} · <span className="text-graphite">{w.reference}</span>
-                    </td>
-                    <td>
-                      <input
-                        type="number"
-                        defaultValue={w.price}
-                        className="w-24 border border-stone/40 px-2 py-1"
-                        onBlur={(e) =>
-                          Number(e.target.value) !== w.price &&
-                          api.adminUpdateWatch(w.id, { price: Number(e.target.value) })
-                        }
-                      />
-                    </td>
-                    <td>
-                      <input
-                        type="number"
-                        defaultValue={w.inventory}
-                        className="w-16 border border-stone/40 px-2 py-1"
-                        onBlur={(e) =>
-                          Number(e.target.value) !== w.inventory &&
-                          api.adminUpdateWatch(w.id, { inventory: Number(e.target.value) })
-                        }
-                      />
-                    </td>
-                    <td>
-                      <input
-                        type="checkbox"
-                        defaultChecked={w.isFeatured}
-                        onChange={(e) =>
-                          api.adminUpdateWatch(w.id, { isFeatured: e.target.checked })
-                        }
-                      />
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+            <>
+              <div className="mb-6 flex justify-end">
+                <button
+                  type="button"
+                  onClick={() => setCreating(!creating)}
+                  className="btn-primary text-xs uppercase tracking-[0.2em]"
+                >
+                  {creating ? 'Cancel' : '+ New watch'}
+                </button>
+              </div>
+              {creating && (
+                <form
+                  onSubmit={createWatch}
+                  className="mb-8 grid gap-4 border border-stone/25 p-6 sm:grid-cols-3"
+                >
+                  {[
+                    ['slug', 'Slug (rolex-xxx-123)'],
+                    ['model', 'Model'],
+                    ['reference', 'Reference'],
+                  ].map(([k, label]) => (
+                    <input
+                      key={k}
+                      required
+                      placeholder={label}
+                      value={form[k]}
+                      onChange={(e) => setForm({ ...form, [k]: e.target.value })}
+                      className={inputCls}
+                    />
+                  ))}
+                  <select
+                    value={form.brandSlug}
+                    onChange={(e) => setForm({ ...form, brandSlug: e.target.value })}
+                    className={inputCls}
+                  >
+                    {[
+                      'rolex',
+                      'patek-philippe',
+                      'audemars-piguet',
+                      'omega',
+                      'cartier',
+                      'tudor',
+                    ].map((b) => (
+                      <option key={b}>{b}</option>
+                    ))}
+                  </select>
+                  <input
+                    type="number"
+                    required
+                    placeholder="Price"
+                    value={form.price}
+                    onChange={(e) => setForm({ ...form, price: e.target.value })}
+                    className={inputCls}
+                  />
+                  <input
+                    type="number"
+                    required
+                    placeholder="Year"
+                    value={form.year}
+                    onChange={(e) => setForm({ ...form, year: e.target.value })}
+                    className={inputCls}
+                  />
+                  <input
+                    type="number"
+                    min={0}
+                    placeholder="Stock"
+                    value={form.inventory}
+                    onChange={(e) => setForm({ ...form, inventory: e.target.value })}
+                    className={inputCls}
+                  />
+                  <select
+                    value={form.type}
+                    onChange={(e) => setForm({ ...form, type: e.target.value })}
+                    className={inputCls}
+                  >
+                    {['Dress', 'Dive', 'Chronograph', 'GMT', 'Sport'].map((t) => (
+                      <option key={t}>{t}</option>
+                    ))}
+                  </select>
+                  <select
+                    value={form.condition}
+                    onChange={(e) => setForm({ ...form, condition: e.target.value })}
+                    className={inputCls}
+                  >
+                    {['New', 'Unworn'].map((c) => (
+                      <option key={c}>{c}</option>
+                    ))}
+                  </select>
+                  <textarea
+                    placeholder="Description"
+                    value={form.description}
+                    onChange={(e) => setForm({ ...form, description: e.target.value })}
+                    className={`${inputCls} sm:col-span-3`}
+                    rows={3}
+                  />
+                  <button type="submit" className="btn-primary sm:col-span-3">
+                    Create watch
+                  </button>
+                </form>
+              )}
+              <div className="overflow-x-auto">
+                <table className="w-full text-left text-sm">
+                  <thead>
+                    <tr className="border-b border-stone/30 text-xs uppercase tracking-[0.15em] text-graphite">
+                      <th className="py-3">Watch</th>
+                      <th>Price</th>
+                      <th>Stock</th>
+                      <th>Featured</th>
+                      <th>Image</th>
+                      <th />
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {watches.map((w) => (
+                      <tr key={w.id} className="border-b border-stone/20">
+                        <td className="py-3">
+                          {w.model} · <span className="text-graphite">{w.reference}</span>
+                        </td>
+                        <td>
+                          <input
+                            type="number"
+                            defaultValue={w.price}
+                            className="w-24 border border-stone/40 px-2 py-1"
+                            onBlur={(e) =>
+                              Number(e.target.value) !== w.price &&
+                              api.adminUpdateWatch(w.id, { price: Number(e.target.value) })
+                            }
+                          />
+                        </td>
+                        <td>
+                          <input
+                            type="number"
+                            defaultValue={w.inventory}
+                            className="w-16 border border-stone/40 px-2 py-1"
+                            onBlur={(e) =>
+                              Number(e.target.value) !== w.inventory &&
+                              api.adminUpdateWatch(w.id, { inventory: Number(e.target.value) })
+                            }
+                          />
+                        </td>
+                        <td>
+                          <input
+                            type="checkbox"
+                            defaultChecked={w.isFeatured}
+                            onChange={(e) =>
+                              api.adminUpdateWatch(w.id, { isFeatured: e.target.checked })
+                            }
+                          />
+                        </td>
+                        <td>
+                          <label className="cursor-pointer text-xs text-goldDark underline">
+                            upload
+                            <input
+                              type="file"
+                              accept="image/*"
+                              className="hidden"
+                              onChange={(e) =>
+                                e.target.files[0] && uploadImage(w.id, e.target.files[0])
+                              }
+                            />
+                          </label>
+                        </td>
+                        <td>
+                          <button
+                            type="button"
+                            className="text-xs text-red-700"
+                            onClick={() =>
+                              window.confirm(`Delete ${w.model}?`) &&
+                              api.adminDeleteWatch(w.id).then(load)
+                            }
+                          >
+                            delete
+                          </button>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </>
           )}
+
           {tab === 'orders' && (
             <table className="w-full text-left text-sm">
               <thead>
@@ -139,6 +345,99 @@ export default function Admin() {
                           </option>
                         ))}
                       </select>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          )}
+
+          {tab === 'customers' && (
+            <table className="w-full text-left text-sm">
+              <thead>
+                <tr className="border-b border-stone/30 text-xs uppercase tracking-[0.15em] text-graphite">
+                  <th className="py-3">Name</th>
+                  <th>Email</th>
+                  <th>Orders</th>
+                  <th>Verified</th>
+                  <th>Joined</th>
+                </tr>
+              </thead>
+              <tbody>
+                {customers.map((c) => (
+                  <tr key={c.id} className="border-b border-stone/20">
+                    <td className="py-3">{c.name}</td>
+                    <td>{c.email}</td>
+                    <td>{c._count.orders}</td>
+                    <td>{c.emailVerifiedAt ? 'Yes' : 'No'}</td>
+                    <td>{new Date(c.createdAt).toLocaleDateString()}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          )}
+
+          {tab === 'templates' && (
+            <div className="space-y-10">
+              {templates.map((t, i) => (
+                <div key={t.key} className="border border-stone/25 p-6">
+                  <p className="eyebrow mb-4">{t.key}</p>
+                  <input
+                    className={`${inputCls} mb-3`}
+                    defaultValue={t.subject}
+                    onChange={(e) =>
+                      setTemplates(
+                        templates.map((x, j) => (j === i ? { ...x, subject: e.target.value } : x))
+                      )
+                    }
+                  />
+                  <textarea
+                    className={`${inputCls} font-mono`}
+                    rows={5}
+                    defaultValue={t.html}
+                    onChange={(e) =>
+                      setTemplates(
+                        templates.map((x, j) => (j === i ? { ...x, html: e.target.value } : x))
+                      )
+                    }
+                  />
+                  <p className="mt-2 text-xs text-stone">
+                    Variables: {'{{user.name}} {{order.number}} {{order.total}} {{link}}'}
+                  </p>
+                  <button
+                    type="button"
+                    onClick={() => saveTemplate(t)}
+                    className="btn-outline mt-4 text-xs uppercase tracking-[0.2em]"
+                  >
+                    Save template
+                  </button>
+                </div>
+              ))}
+            </div>
+          )}
+
+          {tab === 'messages' && (
+            <table className="w-full text-left text-sm">
+              <thead>
+                <tr className="border-b border-stone/30 text-xs uppercase tracking-[0.15em] text-graphite">
+                  <th className="py-3">From</th>
+                  <th>Subject</th>
+                  <th>Message</th>
+                  <th>Date</th>
+                </tr>
+              </thead>
+              <tbody>
+                {messages.map((m) => (
+                  <tr key={m.id} className="border-b border-stone/20 align-top">
+                    <td className="py-3">
+                      {m.name}
+                      <br />
+                      <span className="text-xs text-graphite">{m.email}</span>
+                    </td>
+                    <td>{m.subject || '—'}</td>
+                    <td className="max-w-md text-graphite">{m.message}</td>
+                    <td className="whitespace-nowrap">
+                      {new Date(m.createdAt).toLocaleDateString()}
                     </td>
                   </tr>
                 ))}

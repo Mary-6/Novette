@@ -134,3 +134,11 @@ model NewsletterSubscriber {
   email     String   @unique
   createdAt DateTime @default(now())
 }
+
+model EmailTemplate {
+  id        String   @id @default(cuid())
+  key       String   @unique // order_confirm | verify_email | reset_password
+  subject   String
+  html      String
+  updatedAt DateTime @updatedAt
+}

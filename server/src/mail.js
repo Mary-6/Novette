@@ -1,6 +1,38 @@
 import nodemailer from 'nodemailer';
+import { prisma } from './db.js';
 
 const transport = process.env.SMTP_URL ? nodemailer.createTransport(process.env.SMTP_URL) : null;
+
+export const DEFAULT_TEMPLATES = {
+  order_confirm: {
+    subject: 'Order {{order.number}} confirmed — Aurelian Watches',
+    html: '<p>Thank you, {{order.customerName}}.</p><p>Your order <b>{{order.number}}</b> totalling ${{order.total}} is confirmed. We will email tracking once your timepiece ships fully insured.</p>',
+  },
+  verify_email: {
+    subject: 'Verify your Aurelian Watches account',
+    html: '<p>Welcome to Aurelian Watches, {{user.name}}.</p><p>Verify your email: <a href="{{link}}">Confirm account</a></p>',
+  },
+  reset_password: {
+    subject: 'Reset your Aurelian Watches password',
+    html: '<p>Reset link (valid one hour): <a href="{{link}}">Reset password</a></p>',
+  },
+};
+
+function render(tpl, vars) {
+  return tpl.replace(
+    /\{\{([^}]+)\}\}/g,
+    (_, path) =>
+      path
+        .trim()
+        .split('.')
+        .reduce((o, k) => o?.[k], vars) ?? ''
+  );
+}
+
+export async function mailTemplate(key, vars) {
+  const tpl = (await prisma.emailTemplate.findUnique({ where: { key } })) || DEFAULT_TEMPLATES[key];
+  return { subject: render(tpl.subject, vars), html: render(tpl.html, vars) };
+}
 
 export async function sendMail({ to, subject, html }) {
   if (!transport) {

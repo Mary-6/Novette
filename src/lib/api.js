@@ -38,6 +38,19 @@ export const api = {
   adminUpdateOrder: (id, status) =>
     request(`/admin/orders/${id}`, { method: 'PATCH', body: { status } }),
   adminMessages: () => request('/admin/messages'),
+  adminCreateWatch: (data) => request('/admin/watches', { method: 'POST', body: data }),
+  adminDeleteWatch: (id) => request(`/admin/watches/${id}`, { method: 'DELETE' }),
+  adminCustomers: () => request('/admin/customers'),
+  adminTemplates: () => request('/admin/templates'),
+  adminSaveTemplate: (key, data) =>
+    request(`/admin/templates/${key}`, { method: 'PUT', body: data }),
+  adminUpload: (file) => {
+    const fd = new FormData();
+    fd.append('image', file);
+    return fetch('/api/admin/upload', { method: 'POST', credentials: 'include', body: fd }).then(
+      (r) => r.json()
+    );
+  },
 };
 
 export async function apiAvailable() {
