@@ -9,9 +9,33 @@ export function LogoMark({ className = 'h-9 w-9' }) {
     >
       <circle cx="24" cy="24" r="22" stroke="#C9A24C" strokeWidth="1.5" />
       <circle cx="24" cy="24" r="17.5" stroke="#C9A24C" strokeWidth="0.75" opacity="0.6" />
-      <path d="M24 7v3M41 24h-3M24 41v-3M7 24h3" stroke="#C9A24C" strokeWidth="1.5" />
-      <path d="M19 33V14.5h3.2l6.7 12.2V14.5h3.1V33h-3.2l-6.7-12.2V33H19Z" fill="#C9A24C" />
-      <circle cx="24" cy="24" r="1.4" fill="#C9A24C" />
+      {Array.from({ length: 12 }).map((_, i) => {
+        const a = (i * 30 * Math.PI) / 180;
+        const x1 = 24 + 19.5 * Math.sin(a);
+        const y1 = 24 - 19.5 * Math.cos(a);
+        const x2 = 24 + 22 * Math.sin(a);
+        const y2 = 24 - 22 * Math.cos(a);
+        return (
+          <line
+            key={i}
+            x1={x1}
+            y1={y1}
+            x2={x2}
+            y2={y2}
+            stroke="#C9A24C"
+            strokeWidth={i % 3 === 0 ? 1.6 : 0.9}
+          />
+        );
+      })}
+      <path d="M18.5 32V16h2.4l9 12.5V16h2.6v16h-2.4l-9-12.5V32h-2.6Z" fill="#C9A24C" />
+      <path
+        d="M20 13l4-2.6 4 2.6"
+        stroke="#C9A24C"
+        strokeWidth="1.4"
+        fill="none"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
     </svg>
   );
 }

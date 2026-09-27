@@ -55,7 +55,7 @@ export function AuthProvider({ children }) {
           announce();
           return { user: u };
         } catch (e) {
-          if (e.status) throw e; // real auth error, show it
+          if (e.status && [400, 401, 403, 409, 422, 429].includes(e.status)) throw e; // real auth error, show it
         }
         // API unreachable → browser-only demo session
         const u = {
@@ -77,7 +77,7 @@ export function AuthProvider({ children }) {
           announce();
           return { user: u };
         } catch (e) {
-          if (e.status) throw e;
+          if (e.status && [400, 401, 403, 409, 422, 429].includes(e.status)) throw e;
         }
         const u = {
           name: (name || '').trim() || nameFromEmail(email),
