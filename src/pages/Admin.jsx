@@ -6,7 +6,17 @@ import { formatPrice } from '../data/utils';
 
 const inputCls =
   'w-full border border-stone/40 bg-transparent px-3 py-2 text-sm outline-none transition focus:border-gold';
-const TABS = ['stats', 'watches', 'orders', 'customers', 'templates', 'messages', 'chats'];
+const TABS = [
+  'stats',
+  'watches',
+  'orders',
+  'customers',
+  'subscribers',
+  'templates',
+  'messages',
+  'chats',
+  'settings',
+];
 
 export default function Admin() {
   const { user } = useAuth();
@@ -21,6 +31,9 @@ export default function Admin() {
   const [activeChat, setActiveChat] = useState(null); // {userId, name}
   const [chatThread, setChatThread] = useState([]);
   const [replyDraft, setReplyDraft] = useState('');
+  const [subscribers, setSubscribers] = useState([]);
+  const [settings, setSettings] = useState(null);
+  const [editingId, setEditingId] = useState(null);
   const [error, setError] = useState(null);
   const [notice, setNotice] = useState(null);
   const [creating, setCreating] = useState(false);
@@ -48,8 +61,10 @@ export default function Admin() {
       api.adminTemplates(),
       api.adminMessages(),
       api.adminChats(),
+      api.adminSubscribers(),
+      api.adminSettings(),
     ])
-      .then(([s, w, o, c, t, m, ch]) => {
+      .then(([s, w, o, c, t, m, ch, sub, st]) => {
         setStats(s);
         setWatches(w);
         setOrders(o);
@@ -57,6 +72,8 @@ export default function Admin() {
         setTemplates(t);
         setMessages(m);
         setChats(ch);
+        setSubscribers(sub);
+        setSettings(st);
       })
       .catch((e) => setError(e.message));
   };
@@ -82,18 +99,25 @@ export default function Admin() {
   const createWatch = async (e) => {
     e.preventDefault();
     try {
-      await api.adminCreateWatch({
+      const body = {
         ...form,
         price: Number(form.price),
         year: Number(form.year),
         inventory: Number(form.inventory),
         specs: {},
-      });
-      setNotice(`${form.model} created`);
+      };
+      if (editingId) {
+        await api.adminUpdateWatch(editingId, body);
+        setNotice(`${form.model} updated`);
+      } else {
+        await api.adminCreateWatch(body);
+        setNotice(`${form.model} created`);
+      }
       setCreating(false);
+      setEditingId(null);
       load();
     } catch (err) {
-      setError(err.message || 'Create failed');
+      setError(err.message || 'Save failed');
     }
   };
 
@@ -237,7 +261,7 @@ export default function Admin() {
                     rows={3}
                   />
                   <button type="submit" className="btn-primary sm:col-span-3">
-                    Create watch
+                    {editingId ? 'Save changes' : 'Create watch'}
                   </button>
                 </form>
               )}
@@ -303,7 +327,29 @@ export default function Admin() {
                             />
                           </label>
                         </td>
-                        <td>
+                        <td className="space-x-3 whitespace-nowrap">
+                          <button
+                            type="button"
+                            className="text-xs text-goldDark underline"
+                            onClick={() => {
+                              setCreating(true);
+                              setEditingId(w.id);
+                              setForm({
+                                slug: w.slug,
+                                brandSlug: w.brandSlug,
+                                model: w.model,
+                                reference: w.reference,
+                                price: w.price,
+                                year: w.year,
+                                type: w.type,
+                                condition: w.condition,
+                                description: w.description || '',
+                                inventory: w.inventory,
+                              });
+                            }}
+                          >
+                            edit
+                          </button>
                           <button
                             type="button"
                             className="text-xs text-red-700"
@@ -375,6 +421,7 @@ export default function Admin() {
                   <th>Email</th>
                   <th>Orders</th>
                   <th>Verified</th>
+                  <th>Role</th>
                   <th>Joined</th>
                 </tr>
               </thead>
@@ -385,9 +432,43 @@ export default function Admin() {
                     <td>{c.email}</td>
                     <td>{c._count.orders}</td>
                     <td>{c.emailVerifiedAt ? 'Yes' : 'No'}</td>
+                    <td>
+                      <select
+                        defaultValue={c.role}
+                        className="border border-stone/40 px-2 py-1"
+                        onChange={(e) => api.adminSetUserRole(c.id, e.target.value).then(load)}
+                      >
+                        <option value="customer">customer</option>
+                        <option value="admin">admin</option>
+                      </select>
+                    </td>
                     <td>{new Date(c.createdAt).toLocaleDateString()}</td>
                   </tr>
                 ))}
+              </tbody>
+            </table>
+          )}
+
+          {tab === 'subscribers' && (
+            <table className="w-full text-left text-sm">
+              <thead>
+                <tr className="border-b border-stone/30 text-xs uppercase tracking-[0.15em] text-graphite">
+                  <th className="py-3">Email</th>
+                  <th>Subscribed</th>
+                </tr>
+              </thead>
+              <tbody>
+                {subscribers.map((s) => (
+                  <tr key={s.id} className="border-b border-stone/20">
+                    <td className="py-3">{s.email}</td>
+                    <td>{new Date(s.createdAt).toLocaleDateString()}</td>
+                  </tr>
+                ))}
+                {subscribers.length === 0 && (
+                  <tr>
+                    <td className="py-4 text-graphite">No subscribers yet.</td>
+                  </tr>
+                )}
               </tbody>
             </table>
           )}
@@ -434,7 +515,9 @@ export default function Admin() {
           {tab === 'chats' && (
             <div className="grid gap-6 lg:grid-cols-[280px_1fr]">
               <div className="space-y-2">
-                {chats.length === 0 && <p className="text-sm text-graphite">No conversations yet.</p>}
+                {chats.length === 0 && (
+                  <p className="text-sm text-graphite">No conversations yet.</p>
+                )}
                 {chats.map((c) => (
                   <button
                     key={c.userId}
@@ -464,7 +547,9 @@ export default function Admin() {
               <div className="border border-stone/25 p-4">
                 {activeChat ? (
                   <>
-                    <p className="eyebrow mb-3">{activeChat.name} · {activeChat.email}</p>
+                    <p className="eyebrow mb-3">
+                      {activeChat.name} · {activeChat.email}
+                    </p>
                     <div className="max-h-80 space-y-3 overflow-y-auto pb-3">
                       {chatThread.map((m) => (
                         <p
@@ -516,6 +601,70 @@ export default function Admin() {
             </div>
           )}
 
+          {tab === 'settings' && settings && (
+            <form
+              className="max-w-xl space-y-5"
+              onSubmit={(e) => {
+                e.preventDefault();
+                const fd = new FormData(e.target);
+                api
+                  .adminSaveSettings({
+                    storeName: fd.get('storeName'),
+                    contactEmail: fd.get('contactEmail'),
+                    announcement: fd.get('announcement'),
+                    shipping: settings.shipping || [
+                      {
+                        id: 'courier',
+                        label: 'Insured Courier',
+                        hint: '3–5 business days',
+                        price: 0,
+                      },
+                      {
+                        id: 'express',
+                        label: 'Express Overnight',
+                        hint: 'Order by 2pm ET',
+                        price: 250,
+                      },
+                    ],
+                  })
+                  .then((r) => {
+                    setSettings(r);
+                    setNotice('Settings saved');
+                  })
+                  .catch((err) => setError(err.message));
+              }}
+            >
+              <div>
+                <label className="eyebrow mb-1 block">Store name</label>
+                <input
+                  name="storeName"
+                  defaultValue={settings.storeName || 'Aurelian Watches'}
+                  className={inputCls}
+                />
+              </div>
+              <div>
+                <label className="eyebrow mb-1 block">Contact email</label>
+                <input
+                  name="contactEmail"
+                  defaultValue={settings.contactEmail || 'aurelianwatches@gmail.com'}
+                  className={inputCls}
+                />
+              </div>
+              <div>
+                <label className="eyebrow mb-1 block">Announcement banner</label>
+                <input
+                  name="announcement"
+                  placeholder="e.g. Complimentary insured shipping this week"
+                  defaultValue={settings.announcement || ''}
+                  className={inputCls}
+                />
+              </div>
+              <button type="submit" className="btn-primary">
+                Save settings
+              </button>
+            </form>
+          )}
+
           {tab === 'messages' && (
             <table className="w-full text-left text-sm">
               <thead>
@@ -523,6 +672,7 @@ export default function Admin() {
                   <th className="py-3">From</th>
                   <th>Subject</th>
                   <th>Message</th>
+                  <th>Read</th>
                   <th>Date</th>
                 </tr>
               </thead>

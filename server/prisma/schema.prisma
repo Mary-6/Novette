@@ -41,6 +41,7 @@ model User {
   role            String    @default("customer")
   emailVerifiedAt DateTime?
   sessions        Session[]
+  chatMessages    ChatMessage[]
   cartItems       CartItem[]
   wishlistItems   WishlistItem[]
   orders          Order[]
@@ -127,6 +128,7 @@ model ContactMessage {
   email     String
   subject   String?
   message   String
+  read      Boolean  @default(false)
   createdAt DateTime @default(now())
 }
 
@@ -153,4 +155,10 @@ model ChatMessage {
   readByAdmin Boolean @default(false)
   readByUser  Boolean @default(true)
   createdAt DateTime @default(now())
+}
+
+model SiteSetting {
+  key   String @id
+  value Json
+  updatedAt DateTime @updatedAt
 }

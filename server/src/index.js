@@ -310,18 +310,22 @@ const orderSchema = z.object({
   items: z.array(z.object({ watchId: z.string(), qty: z.number().int().min(1) })).min(1),
 });
 
-const SHIPPING = { courier: 0, express: 250 };
+const DEFAULT_SHIPPING = [
+  { id: 'courier', label: 'Insured Courier', hint: '3–5 business days', price: 0 },
+  { id: 'express', label: 'Express Overnight', hint: 'Next business day', price: 250 },
+];
 
-app.get('/api/shipping-rates', (_req, res) =>
-  res.json([
-    { id: 'courier', label: 'Insured Courier', hint: '3–5 business days', price: 0 },
-    {
-      id: 'express',
-      label: 'Express Overnight',
-      hint: 'Next business day',
-      price: SHIPPING.express,
-    },
-  ])
+async function getSettings() {
+  const rows = await prisma.siteSetting.findMany();
+  return Object.fromEntries(rows.map((r) => [r.key, r.value]));
+}
+
+app.get(
+  '/api/shipping-rates',
+  wrap(async (_req, res) => {
+    const s = await getSettings();
+    res.json(s.shipping || DEFAULT_SHIPPING);
+  })
 );
 
 app.post(
@@ -353,7 +357,9 @@ app.post(
         });
       }
       const shippingPrice =
-        subtotal > 5000 && d.shippingMethod === 'courier' ? 0 : SHIPPING[d.shippingMethod];
+        subtotal > 5000 && d.shippingMethod === 'courier'
+          ? 0
+          : { courier: 0, express: 250 }[d.shippingMethod];
       return tx.order.create({
         data: {
           number: `AW-${String(Math.floor(100000 + Math.random() * 900000))}`,
@@ -458,16 +464,7 @@ app.patch(
   '/api/admin/watches/:id',
   requireAdmin,
   wrap(async (req, res) => {
-    const data = z
-      .object({
-        price: z.number().int().optional(),
-        inventory: z.number().int().min(0).optional(),
-        isFeatured: z.boolean().optional(),
-        condition: z.string().optional(),
-        description: z.string().optional(),
-        popularity: z.number().int().optional(),
-      })
-      .parse(req.body);
+    const data = watchSchema.partial().omit({ slug: true, id: true }).parse(req.body);
     res.json(await prisma.watch.update({ where: { id: req.params.id }, data }));
   })
 );
@@ -524,9 +521,11 @@ app.post(
   requireAuth,
   wrap(async (req, res) => {
     const { body } = z.object({ body: z.string().min(1).max(2000) }).parse(req.body);
-    res.status(201).json(
-      await prisma.chatMessage.create({ data: { userId: req.user.id, from: 'customer', body } })
-    );
+    res
+      .status(201)
+      .json(
+        await prisma.chatMessage.create({ data: { userId: req.user.id, from: 'customer', body } })
+      );
   })
 );
 
@@ -537,14 +536,18 @@ app.get(
     const users = await prisma.user.findMany({
       where: { chatMessages: { some: {} } },
       select: {
-        id: true, name: true, email: true,
+        id: true,
+        name: true,
+        email: true,
         chatMessages: { orderBy: { createdAt: 'desc' }, take: 1 },
         _count: { select: { chatMessages: { where: { from: 'customer', readByAdmin: false } } } },
       },
     });
     res.json(
       users.map((u) => ({
-        userId: u.id, name: u.name, email: u.email,
+        userId: u.id,
+        name: u.name,
+        email: u.email,
         lastMessage: u.chatMessages[0] || null,
         unread: u._count.chatMessages,
       }))
@@ -576,7 +579,13 @@ app.post(
     const { body } = z.object({ body: z.string().min(1).max(2000) }).parse(req.body);
     res.status(201).json(
       await prisma.chatMessage.create({
-        data: { userId: req.params.userId, from: 'concierge', body, readByUser: false, readByAdmin: true },
+        data: {
+          userId: req.params.userId,
+          from: 'concierge',
+          body,
+          readByUser: false,
+          readByAdmin: true,
+        },
       })
     );
   })
@@ -721,6 +730,60 @@ app.post(
   })
 );
 app.use('/api/uploads', express.static(uploadDir));
+
+app.get(
+  '/api/admin/settings',
+  requireAdmin,
+  wrap(async (_req, res) => res.json(await getSettings()))
+);
+
+app.put(
+  '/api/admin/settings',
+  requireAdmin,
+  wrap(async (req, res) => {
+    const data = z.record(z.any()).parse(req.body);
+    for (const [key, value] of Object.entries(data)) {
+      await prisma.siteSetting.upsert({
+        where: { key },
+        update: { value },
+        create: { key, value },
+      });
+    }
+    res.json(await getSettings());
+  })
+);
+
+app.get(
+  '/api/admin/subscribers',
+  requireAdmin,
+  wrap(async (_req, res) =>
+    res.json(await prisma.newsletterSubscriber.findMany({ orderBy: { createdAt: 'desc' } }))
+  )
+);
+
+app.patch(
+  '/api/admin/messages/:id',
+  requireAdmin,
+  wrap(async (req, res) => {
+    const { read } = z.object({ read: z.boolean() }).parse(req.body);
+    res.json(await prisma.contactMessage.update({ where: { id: req.params.id }, data: { read } }));
+  })
+);
+
+app.patch(
+  '/api/admin/users/:id',
+  requireAdmin,
+  wrap(async (req, res) => {
+    const { role } = z.object({ role: z.enum(['customer', 'admin']) }).parse(req.body);
+    res.json(
+      await prisma.user.update({
+        where: { id: req.params.id },
+        data: { role },
+        select: { id: true, email: true, role: true },
+      })
+    );
+  })
+);
 
 app.get('/api/health', (_req, res) => res.json({ ok: true }));
 

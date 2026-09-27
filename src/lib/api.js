@@ -35,8 +35,7 @@ export const api = {
   adminWatches: () => request('/admin/watches'),
   adminUpdateWatch: (id, data) => request(`/admin/watches/${id}`, { method: 'PATCH', body: data }),
   adminOrders: () => request('/admin/orders'),
-  adminUpdateOrder: (id, data) =>
-    request(`/admin/orders/${id}`, { method: 'PATCH', body: data }),
+  adminUpdateOrder: (id, data) => request(`/admin/orders/${id}`, { method: 'PATCH', body: data }),
   adminMessages: () => request('/admin/messages'),
   adminCreateWatch: (data) => request('/admin/watches', { method: 'POST', body: data }),
   adminDeleteWatch: (id) => request(`/admin/watches/${id}`, { method: 'DELETE' }),
@@ -50,6 +49,13 @@ export const api = {
   adminChatThread: (userId) => request(`/admin/chats/${userId}`),
   adminChatReply: (userId, body) =>
     request(`/admin/chats/${userId}`, { method: 'POST', body: { body } }),
+  adminSettings: () => request('/admin/settings'),
+  adminSaveSettings: (data) => request('/admin/settings', { method: 'PUT', body: data }),
+  adminSubscribers: () => request('/admin/subscribers'),
+  adminMarkMessage: (id, read) =>
+    request(`/admin/messages/${id}`, { method: 'PATCH', body: { read } }),
+  adminSetUserRole: (id, role) =>
+    request(`/admin/users/${id}`, { method: 'PATCH', body: { role } }),
   adminUpload: (file) => {
     const fd = new FormData();
     fd.append('image', file);
