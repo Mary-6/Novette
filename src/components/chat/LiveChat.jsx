@@ -11,6 +11,7 @@ import { formatPrice } from '../../data/utils';
 import WatchImage from '../watch/WatchImage';
 import { LogoMark } from '../ui/Logo';
 import { greeting, reply } from './concierge';
+import { api } from '../../lib/api';
 
 const brandName = (w) => brands.find((b) => b.slug === w.brandSlug)?.name || w.brandSlug;
 
@@ -100,6 +101,7 @@ export default function LiveChat() {
   const listRef = useRef(null);
   const inputRef = useRef(null);
   const openRef = useRef(false);
+  const serverRef = useRef(false);
 
   useEffect(() => {
     openRef.current = open;
@@ -107,7 +109,7 @@ export default function LiveChat() {
 
   const storageKey = user ? `aw-chat:${user.email}` : null;
 
-  // Load persisted thread once a user is known
+  // Load persisted thread once a user is known; merge server thread when available
   useEffect(() => {
     if (!storageKey) {
       setMessages([]);
@@ -118,7 +120,58 @@ export default function LiveChat() {
     } catch {
       setMessages([]);
     }
-  }, [storageKey]);
+    if (user?.demo) return;
+    api
+      .chatThread()
+      .then((thread) => {
+        serverRef.current = true;
+        if (thread.length) {
+          setMessages(
+            thread.map((m) => ({
+              from: m.from === 'concierge' ? 'bot' : 'user',
+              text: m.body,
+              time: new Date(m.createdAt).toLocaleTimeString([], {
+                hour: '2-digit',
+                minute: '2-digit',
+              }),
+            }))
+          );
+        }
+      })
+      .catch(() => {});
+    // Poll for concierge replies while logged in
+    const poll = setInterval(() => {
+      if (!serverRef.current) return;
+      api
+        .chatThread()
+        .then((thread) => {
+          setMessages((prev) => {
+            const conciergeMsgs = thread
+              .filter((m) => m.from === 'concierge')
+              .map((m) => ({
+                from: 'bot',
+                text: m.body,
+                time: new Date(m.createdAt).toLocaleTimeString([], {
+                  hour: '2-digit',
+                  minute: '2-digit',
+                }),
+              }));
+            const prevConciergeCount = prev.filter((m) => m.from === 'bot' && m.server !== false).length;
+            if (conciergeMsgs.length > prevConciergeCount) {
+              const merged = [...prev];
+              conciergeMsgs.slice(prevConciergeCount).forEach((m) => {
+                merged.push({ ...m, server: true });
+                if (!openRef.current) setUnread((n) => n + 1);
+              });
+              return merged;
+            }
+            return prev;
+          });
+        })
+        .catch(() => {});
+    }, 8000);
+    return () => clearInterval(poll);
+  }, [storageKey, user?.demo]);
 
   useEffect(() => {
     if (storageKey) localStorage.setItem(storageKey, JSON.stringify(messages));
@@ -183,6 +236,7 @@ export default function LiveChat() {
     if (!msg) return;
     setDraft('');
     setMessages((prev) => [...prev, { from: 'user', text: msg, time: timeNow() }]);
+    if (serverRef.current) api.chatSend(msg).catch(() => {});
     botSay(() => reply(msg, { cart, wishlist, user }));
   };
 
@@ -285,7 +339,7 @@ export default function LiveChat() {
               </button>
             </div>
             <p className="mt-2 text-center text-[10px] text-stone">
-              Concierge hours 9am–9pm GMT · concierge@aurelianwatches.com
+              A live concierge answers here 9am–9pm ET · concierge@aurelianwatches.com
             </p>
           </div>
         </div>

@@ -17,6 +17,7 @@ import Admin from './pages/Admin';
 import Wishlist from './pages/Wishlist';
 import ImageCredits from './pages/ImageCredits';
 import NotFound from './pages/NotFound';
+import RouteSeo from './components/seo/RouteSeo';
 
 const INFO_SLUGS = [
   'about-us',

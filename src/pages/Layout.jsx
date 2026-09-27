@@ -4,6 +4,7 @@ import Header from '../components/layout/Header';
 import Footer from '../components/layout/Footer';
 import ScrollToTop from '../components/ui/ScrollToTop';
 import LiveChat from '../components/chat/LiveChat';
+import RouteSeo from '../components/seo/RouteSeo';
 import { useCart } from '../context/CartContext';
 
 export default function Layout() {
@@ -11,6 +12,7 @@ export default function Layout() {
   return (
     <div className="flex min-h-screen flex-col">
       <ScrollToTop />
+      <RouteSeo />
       <Header />
       <main className="flex-1">
         <Outlet />

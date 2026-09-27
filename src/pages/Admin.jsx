@@ -6,7 +6,7 @@ import { formatPrice } from '../data/utils';
 
 const inputCls =
   'w-full border border-stone/40 bg-transparent px-3 py-2 text-sm outline-none transition focus:border-gold';
-const TABS = ['stats', 'watches', 'orders', 'customers', 'templates', 'messages'];
+const TABS = ['stats', 'watches', 'orders', 'customers', 'templates', 'messages', 'chats'];
 
 export default function Admin() {
   const { user } = useAuth();
@@ -17,6 +17,10 @@ export default function Admin() {
   const [customers, setCustomers] = useState([]);
   const [templates, setTemplates] = useState([]);
   const [messages, setMessages] = useState([]);
+  const [chats, setChats] = useState([]);
+  const [activeChat, setActiveChat] = useState(null); // {userId, name}
+  const [chatThread, setChatThread] = useState([]);
+  const [replyDraft, setReplyDraft] = useState('');
   const [error, setError] = useState(null);
   const [notice, setNotice] = useState(null);
   const [creating, setCreating] = useState(false);
@@ -43,14 +47,16 @@ export default function Admin() {
       api.adminCustomers(),
       api.adminTemplates(),
       api.adminMessages(),
+      api.adminChats(),
     ])
-      .then(([s, w, o, c, t, m]) => {
+      .then(([s, w, o, c, t, m, ch]) => {
         setStats(s);
         setWatches(w);
         setOrders(o);
         setCustomers(c);
         setTemplates(t);
         setMessages(m);
+        setChats(ch);
       })
       .catch((e) => setError(e.message));
   };
@@ -333,11 +339,11 @@ export default function Admin() {
                     <td className="py-3">{o.number}</td>
                     <td>{o.customerName}</td>
                     <td>{formatPrice(o.total)}</td>
-                    <td>
+                    <td className="space-y-2">
                       <select
                         defaultValue={o.status}
                         className="border border-stone/40 px-2 py-1"
-                        onChange={(e) => api.adminUpdateOrder(o.id, e.target.value)}
+                        onChange={(e) => api.adminUpdateOrder(o.id, { status: e.target.value })}
                       >
                         {['pending', 'confirmed', 'shipped', 'delivered', 'cancelled'].map((s) => (
                           <option key={s} value={s}>
@@ -345,6 +351,15 @@ export default function Admin() {
                           </option>
                         ))}
                       </select>
+                      <input
+                        placeholder="Tracking #"
+                        defaultValue={o.trackingNumber || ''}
+                        className="block w-36 border border-stone/40 px-2 py-1"
+                        onBlur={(e) =>
+                          e.target.value !== (o.trackingNumber || '') &&
+                          api.adminUpdateOrder(o.id, { trackingNumber: e.target.value })
+                        }
+                      />
                     </td>
                   </tr>
                 ))}
@@ -413,6 +428,91 @@ export default function Admin() {
                   </button>
                 </div>
               ))}
+            </div>
+          )}
+
+          {tab === 'chats' && (
+            <div className="grid gap-6 lg:grid-cols-[280px_1fr]">
+              <div className="space-y-2">
+                {chats.length === 0 && <p className="text-sm text-graphite">No conversations yet.</p>}
+                {chats.map((c) => (
+                  <button
+                    key={c.userId}
+                    type="button"
+                    onClick={() =>
+                      api.adminChatThread(c.userId).then((t) => {
+                        setActiveChat(c);
+                        setChatThread(t);
+                      })
+                    }
+                    className={`w-full border p-3 text-left text-sm transition ${
+                      activeChat?.userId === c.userId ? 'border-gold bg-gold/5' : 'border-stone/30'
+                    }`}
+                  >
+                    <span className="block font-medium">{c.name}</span>
+                    <span className="block truncate text-xs text-graphite">
+                      {c.lastMessage?.body}
+                    </span>
+                    {c.unread > 0 && (
+                      <span className="mt-1 inline-block rounded-full bg-gold px-2 py-0.5 text-[10px] text-ink">
+                        {c.unread} new
+                      </span>
+                    )}
+                  </button>
+                ))}
+              </div>
+              <div className="border border-stone/25 p-4">
+                {activeChat ? (
+                  <>
+                    <p className="eyebrow mb-3">{activeChat.name} · {activeChat.email}</p>
+                    <div className="max-h-80 space-y-3 overflow-y-auto pb-3">
+                      {chatThread.map((m) => (
+                        <p
+                          key={m.id}
+                          className={`max-w-[80%] px-3 py-2 text-sm ${
+                            m.from === 'concierge'
+                              ? 'ml-auto bg-ink text-ivory'
+                              : 'border border-stone/30 bg-sand'
+                          }`}
+                        >
+                          {m.body}
+                        </p>
+                      ))}
+                    </div>
+                    <div className="mt-3 flex gap-2">
+                      <input
+                        className={inputCls}
+                        placeholder="Reply as concierge…"
+                        value={replyDraft}
+                        onChange={(e) => setReplyDraft(e.target.value)}
+                        onKeyDown={(e) => {
+                          if (e.key === 'Enter' && replyDraft.trim()) {
+                            api.adminChatReply(activeChat.userId, replyDraft.trim()).then((m) => {
+                              setChatThread([...chatThread, m]);
+                              setReplyDraft('');
+                            });
+                          }
+                        }}
+                      />
+                      <button
+                        type="button"
+                        className="btn-primary px-5"
+                        onClick={() => {
+                          if (!replyDraft.trim()) return;
+                          api.adminChatReply(activeChat.userId, replyDraft.trim()).then((m) => {
+                            setChatThread([...chatThread, m]);
+                            setReplyDraft('');
+                          });
+                        }}
+                      >
+                        Send
+                      </button>
+                    </div>
+                  </>
+                ) : (
+                  <p className="text-sm text-graphite">Select a conversation to reply.</p>
+                )}
+              </div>
             </div>
           )}
 

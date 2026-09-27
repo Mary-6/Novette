@@ -16,6 +16,10 @@ export const DEFAULT_TEMPLATES = {
     subject: 'Reset your Aurelian Watches password',
     html: '<p>Reset link (valid one hour): <a href="{{link}}">Reset password</a></p>',
   },
+  order_shipped: {
+    subject: 'Your order {{order.number}} has shipped — Aurelian Watches',
+    html: '<p>Dear {{order.customerName}},</p><p>Your order <b>{{order.number}}</b> has been dispatched fully insured. Tracking reference: <b>{{order.trackingNumber}}</b>.</p><p>A concierge remains at your service.</p>',
+  },
 };
 
 function render(tpl, vars) {

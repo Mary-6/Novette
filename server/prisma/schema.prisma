@@ -95,6 +95,7 @@ model Order {
   user           User?       @relation(fields: [userId], references: [id], onDelete: SetNull)
   email          String
   status         String      @default("pending")
+  trackingNumber String?
   customerName   String
   shippingMethod String
   shippingPrice  Int
@@ -141,4 +142,15 @@ model EmailTemplate {
   subject   String
   html      String
   updatedAt DateTime @updatedAt
+}
+
+model ChatMessage {
+  id        String   @id @default(cuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  from      String // 'customer' or 'concierge'
+  body      String
+  readByAdmin Boolean @default(false)
+  readByUser  Boolean @default(true)
+  createdAt DateTime @default(now())
 }

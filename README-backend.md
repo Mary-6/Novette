@@ -22,3 +22,9 @@ npm run dev                   # Vite on :5173, proxies /api → :4000
 - Admin (role=admin): stats, watch price/inventory/featured edit, order status, messages — UI at `/admin`.
 - Admin seed account: `admin@aurelianwatches.com` / `Aurelian#Admin1` (change for production).
 - Frontend falls back to localStorage/demo mode when the API is unreachable.
+
+### Also added
+- Order history in the account area (`GET /api/orders` rendered on /login when signed in); orders carry `trackingNumber` — setting it + status `shipped` emails the customer via the `order_shipped` template.
+- Live chat persists to DB (`ChatMessage`): customer messages save via `POST /api/chat/messages`; admins reply in the new **chats** tab and replies appear in the widget within ~8s.
+- Per-route `<title>`/meta description via `RouteSeo` (mounted in Layout).
+- Tests: `npm test` (Vitest unit tests) and `npm run test:api` (API smoke — server must be running).

@@ -486,8 +486,99 @@ app.patch(
   '/api/admin/orders/:id',
   requireAdmin,
   wrap(async (req, res) => {
-    const { status } = z.object({ status: z.string() }).parse(req.body);
-    res.json(await prisma.order.update({ where: { id: req.params.id }, data: { status } }));
+    const { status, trackingNumber } = z
+      .object({ status: z.string().optional(), trackingNumber: z.string().optional() })
+      .parse(req.body);
+    const order = await prisma.order.update({
+      where: { id: req.params.id },
+      data: { ...(status && { status }), ...(trackingNumber !== undefined && { trackingNumber }) },
+    });
+    if (status === 'shipped') {
+      const tpl = await mailTemplate('order_shipped', { order });
+      await sendMail({ to: order.email, ...tpl });
+    }
+    res.json(order);
+  })
+);
+
+// Concierge live chat (persisted; admin replies from back office)
+app.get(
+  '/api/chat/thread',
+  requireAuth,
+  wrap(async (req, res) => {
+    const msgs = await prisma.chatMessage.findMany({
+      where: { userId: req.user.id },
+      orderBy: { createdAt: 'asc' },
+      take: 200,
+    });
+    await prisma.chatMessage.updateMany({
+      where: { userId: req.user.id, from: 'concierge', readByUser: false },
+      data: { readByUser: true },
+    });
+    res.json(msgs);
+  })
+);
+
+app.post(
+  '/api/chat/messages',
+  requireAuth,
+  wrap(async (req, res) => {
+    const { body } = z.object({ body: z.string().min(1).max(2000) }).parse(req.body);
+    res.status(201).json(
+      await prisma.chatMessage.create({ data: { userId: req.user.id, from: 'customer', body } })
+    );
+  })
+);
+
+app.get(
+  '/api/admin/chats',
+  requireAdmin,
+  wrap(async (_req, res) => {
+    const users = await prisma.user.findMany({
+      where: { chatMessages: { some: {} } },
+      select: {
+        id: true, name: true, email: true,
+        chatMessages: { orderBy: { createdAt: 'desc' }, take: 1 },
+        _count: { select: { chatMessages: { where: { from: 'customer', readByAdmin: false } } } },
+      },
+    });
+    res.json(
+      users.map((u) => ({
+        userId: u.id, name: u.name, email: u.email,
+        lastMessage: u.chatMessages[0] || null,
+        unread: u._count.chatMessages,
+      }))
+    );
+  })
+);
+
+app.get(
+  '/api/admin/chats/:userId',
+  requireAdmin,
+  wrap(async (req, res) => {
+    const msgs = await prisma.chatMessage.findMany({
+      where: { userId: req.params.userId },
+      orderBy: { createdAt: 'asc' },
+      take: 500,
+    });
+    await prisma.chatMessage.updateMany({
+      where: { userId: req.params.userId, from: 'customer', readByAdmin: false },
+      data: { readByAdmin: true },
+    });
+    res.json(msgs);
+  })
+);
+
+app.post(
+  '/api/admin/chats/:userId',
+  requireAdmin,
+  wrap(async (req, res) => {
+    const { body } = z.object({ body: z.string().min(1).max(2000) }).parse(req.body);
+    res.status(201).json(
+      await prisma.chatMessage.create({
+        data: { userId: req.params.userId, from: 'concierge', body, readByUser: false, readByAdmin: true },
+      })
+    );
   })
 );
 

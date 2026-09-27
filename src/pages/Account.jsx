@@ -1,7 +1,9 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Eye, EyeOff } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
+import { api } from '../lib/api';
+import { formatPrice } from '../data/utils';
 import PageHero from '../components/layout/PageHero';
 import useReveal from '../hooks/useReveal';
 
@@ -121,6 +123,42 @@ function AuthForm({ mode }) {
   );
 }
 
+function OrderHistory() {
+  const [orders, setOrders] = useState(null);
+  useEffect(() => {
+    api
+      .orders()
+      .then(setOrders)
+      .catch(() => setOrders([]));
+  }, []);
+  if (orders === null) return <p className="py-4 text-sm text-graphite">Loading orders…</p>;
+  if (orders.length === 0)
+    return <p className="py-4 text-sm text-graphite">No orders yet.</p>;
+  return (
+    <div className="mt-6 space-y-3 text-left">
+      {orders.map((o) => (
+        <div key={o.id} className="border border-stone/30 p-4 text-sm">
+          <div className="flex items-center justify-between">
+            <span className="font-medium">{o.number}</span>
+            <span className="rounded-full border border-gold/60 px-2.5 py-0.5 text-[10px] uppercase tracking-[0.15em] text-goldDark">
+              {o.status}
+            </span>
+          </div>
+          <p className="mt-1 text-xs text-graphite">
+            {new Date(o.createdAt).toLocaleDateString()} · {o.items?.length ?? ''} item(s) ·{' '}
+            {formatPrice(o.total)}
+          </p>
+          {o.trackingNumber && (
+            <p className="mt-1 text-xs text-graphite">
+              Tracking: <span className="font-medium text-ink">{o.trackingNumber}</span>
+            </p>
+          )}
+        </div>
+      ))}
+    </div>
+  );
+}
+
 export function Login() {
   useReveal([]);
   const { user, isAuthed, logout } = useAuth();
@@ -135,6 +173,12 @@ export function Login() {
           {isAuthed ? (
             <div className="border border-gold/50 bg-sand p-8 text-center">
               <p className="heading-display text-2xl">You're signed in as {user.name}.</p>
+              {!user.demo && (
+                <div className="mt-6">
+                  <p className="eyebrow mb-2 text-left">Order history</p>
+                  <OrderHistory />
+                </div>
+              )}
               <div className="mt-6 flex flex-col gap-3">
                 <Link to="/" className="btn-primary">
                   Continue shopping
