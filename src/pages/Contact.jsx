@@ -5,6 +5,7 @@ import PageHero from '../components/layout/PageHero';
 import SectionHeading from '../components/ui/SectionHeading';
 import Accordion from '../components/ui/Accordion';
 import useReveal from '../hooks/useReveal';
+import { api } from '../lib/api';
 
 const inputCls =
   'w-full border border-stone/40 bg-transparent px-3 py-3 text-sm outline-none transition focus:border-gold';
@@ -20,7 +21,7 @@ export default function Contact() {
   const [errors, setErrors] = useState({});
   const [sent, setSent] = useState(false);
 
-  const submit = (e) => {
+  const submit = async (e) => {
     e.preventDefault();
     const errs = {};
     if (!form.name.trim()) errs.name = 'Required';
@@ -28,7 +29,13 @@ export default function Contact() {
     if (form.message.trim().length < 10)
       errs.message = 'Please tell us a little more (10+ characters)';
     setErrors(errs);
-    if (!Object.keys(errs).length) setSent(true);
+    if (Object.keys(errs).length) return;
+    try {
+      await api.contact(form);
+    } catch {
+      /* API offline — show confirmation anyway so the demo still works */
+    }
+    setSent(true);
   };
 
   return (

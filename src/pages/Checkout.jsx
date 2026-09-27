@@ -4,6 +4,7 @@ import { FREE_SHIPPING_THRESHOLD, STANDARD_SHIPPING, useCart } from '../context/
 import { brandBySlug, formatPrice } from '../data/utils';
 import WatchImage from '../components/watch/WatchImage';
 import Button from '../components/ui/Button';
+import { api } from '../lib/api';
 import PageHero from '../components/layout/PageHero';
 
 const inputCls =
@@ -85,12 +86,36 @@ export default function Checkout() {
     return Object.keys(e).length === 0;
   };
 
-  const next = () => {
+  const next = async () => {
     if (!validateStep()) return;
-    if (step < 3) setStep(step + 1);
-    else {
-      const order = {
-        number: `SM-${Math.floor(100000 + Math.random() * 900000)}`,
+    if (step < 3) return setStep(step + 1);
+    let order;
+    try {
+      const { order: created } = await api.createOrder({
+        email: info.email,
+        customerName: `${info.first} ${info.last}`.trim() || info.email,
+        shippingMethod: ship.method === 'express' ? 'express' : 'courier',
+        paymentMethod: pay.method,
+        address: { address: ship.address, city: ship.city, zip: ship.zip, country: ship.country },
+        items: items.map((it) => ({ watchId: it.watch.id, qty: it.qty })),
+      });
+      order = {
+        number: created.number,
+        items: created.items.map((it) => ({
+          model: it.model,
+          reference: it.reference,
+          brand: brandBySlug(it.brand)?.name || it.brand,
+          qty: it.qty,
+          price: it.price,
+        })),
+        subtotal: created.subtotal,
+        shipping: created.shippingPrice,
+        total: created.total,
+        email: created.email,
+      };
+    } catch {
+      order = {
+        number: `AW-${Math.floor(100000 + Math.random() * 900000)}`,
         items: items.map((it) => ({
           model: it.watch.model,
           reference: it.watch.reference,
@@ -103,9 +128,9 @@ export default function Checkout() {
         total,
         email: info.email,
       };
-      clear();
-      navigate('/checkout/confirmation', { state: { order } });
     }
+    clear();
+    navigate('/checkout/confirmation', { state: { order } });
   };
 
   if (!items.length)

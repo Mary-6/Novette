@@ -1,6 +1,7 @@
 /* eslint-disable react-refresh/only-export-components */
-import { createContext, useContext, useEffect, useMemo, useState } from 'react';
+import { createContext, useContext, useEffect, useMemo, useRef, useState } from 'react';
 import watches from '../data/watches';
+import { api } from '../lib/api';
 
 const CartContext = createContext(null);
 const KEY = 'sm-cart';
@@ -19,6 +20,45 @@ export function CartProvider({ children }) {
 
   useEffect(() => {
     localStorage.setItem(KEY, JSON.stringify(items));
+  }, [items]);
+
+  // Merge server cart when a real session is active; push local changes back up.
+  const syncedRef = useRef(false);
+  useEffect(() => {
+    const sync = async () => {
+      try {
+        const { user } = await api.me();
+        if (!user || user.demo) return;
+        const remote = await api.cart();
+        const merged = new Map();
+        remote.forEach((r) => merged.set(r.watchId, r.qty));
+        items.forEach((i) => merged.set(i.watchId, Math.max(merged.get(i.watchId) || 0, i.qty)));
+        const mergedItems = [...merged.entries()].map(([watchId, qty]) => ({ watchId, qty }));
+        setItems(mergedItems);
+        await api.syncCart(mergedItems);
+        syncedRef.current = true;
+      } catch {
+        syncedRef.current = false;
+      }
+    };
+    sync();
+    const onAuth = () => {
+      syncedRef.current = false;
+      sync();
+    };
+    window.addEventListener('aw-auth-changed', onAuth);
+    return () => window.removeEventListener('aw-auth-changed', onAuth);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  useEffect(() => {
+    if (!syncedRef.current) return;
+    const t = setTimeout(() => {
+      api.syncCart(items.map((i) => ({ watchId: i.watchId, qty: i.qty }))).catch(() => {
+        syncedRef.current = false;
+      });
+    }, 400);
+    return () => clearTimeout(t);
   }, [items]);
 
   useEffect(() => {

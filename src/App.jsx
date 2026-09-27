@@ -12,6 +12,8 @@ import Contact from './pages/Contact';
 import InfoPage from './pages/Info';
 import { JournalIndex, JournalArticle } from './pages/Journal';
 import { Login, Signup } from './pages/Account';
+import { VerifyEmail, ResetPassword, ForgotPassword } from './pages/AuthPages';
+import Admin from './pages/Admin';
 import Wishlist from './pages/Wishlist';
 import ImageCredits from './pages/ImageCredits';
 import NotFound from './pages/NotFound';
@@ -63,6 +65,10 @@ export default function App() {
         <Route path="/contact-us" element={<Contact />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
+        <Route path="/forgot-password" element={<ForgotPassword />} />
+        <Route path="/reset-password" element={<ResetPassword />} />
+        <Route path="/verify-email" element={<VerifyEmail />} />
+        <Route path="/admin" element={<Admin />} />
         <Route path="/wishlist" element={<Wishlist />} />
         <Route path="/image-credits" element={<ImageCredits />} />
         {INFO_SLUGS.map((slug) => (

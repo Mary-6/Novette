@@ -1,0 +1,136 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Watch {
+  id            String   @id
+  slug          String   @unique
+  brandSlug     String
+  model         String
+  reference     String
+  nickname      String?
+  price         Int
+  year          Int
+  type          String
+  material      String?
+  condition     String
+  gender        String
+  boxPapers     Boolean
+  isNew         Boolean
+  isFeatured    Boolean
+  popularity    Int
+  addedAt       DateTime
+  description   String
+  specs         Json
+  inventory     Int      @default(1)
+  orderItems    OrderItem[]
+  cartItems     CartItem[]
+  wishlistItems WishlistItem[]
+}
+
+model User {
+  id              String    @id @default(cuid())
+  name            String
+  email           String    @unique
+  passwordHash    String
+  role            String    @default("customer")
+  emailVerifiedAt DateTime?
+  sessions        Session[]
+  cartItems       CartItem[]
+  wishlistItems   WishlistItem[]
+  orders          Order[]
+  tokens          AuthToken[]
+  createdAt       DateTime  @default(now())
+}
+
+model Session {
+  id         String   @id @default(cuid())
+  token      String   @unique
+  userId     String
+  user       User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  remember   Boolean  @default(true)
+  expiresAt  DateTime
+  createdAt  DateTime @default(now())
+}
+
+model AuthToken {
+  id        String   @id @default(cuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  kind      String // verify_email | reset_password
+  tokenHash String   @unique
+  expiresAt DateTime
+  usedAt    DateTime?
+  createdAt DateTime @default(now())
+}
+
+model CartItem {
+  userId    String
+  user      User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  watchId   String
+  watch     Watch  @relation(fields: [watchId], references: [id], onDelete: Cascade)
+  qty       Int    @default(1)
+  updatedAt DateTime @updatedAt
+  @@id([userId, watchId])
+}
+
+model WishlistItem {
+  userId    String
+  user      User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  watchId   String
+  watch     Watch  @relation(fields: [watchId], references: [id], onDelete: Cascade)
+  createdAt DateTime @default(now())
+  @@id([userId, watchId])
+}
+
+model Order {
+  id             String      @id @default(cuid())
+  number         String      @unique
+  userId         String?
+  user           User?       @relation(fields: [userId], references: [id], onDelete: SetNull)
+  email          String
+  status         String      @default("pending")
+  customerName   String
+  shippingMethod String
+  shippingPrice  Int
+  subtotal       Int
+  total          Int
+  paymentMethod  String
+  address        Json
+  items          OrderItem[]
+  createdAt      DateTime    @default(now())
+  updatedAt      DateTime    @updatedAt
+}
+
+model OrderItem {
+  id        String @id @default(cuid())
+  orderId   String
+  order     Order  @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  watchId   String
+  watch     Watch  @relation(fields: [watchId], references: [id])
+  model     String
+  reference String
+  brand     String
+  qty       Int
+  price     Int
+}
+
+model ContactMessage {
+  id        String   @id @default(cuid())
+  name      String
+  email     String
+  subject   String?
+  message   String
+  createdAt DateTime @default(now())
+}
+
+model NewsletterSubscriber {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  createdAt DateTime @default(now())
+}

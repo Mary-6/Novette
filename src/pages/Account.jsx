@@ -17,7 +17,7 @@ function AuthForm({ mode }) {
   const [showPassword, setShowPassword] = useState(false);
   const [errors, setErrors] = useState({});
 
-  const submit = (e) => {
+  const submit = async (e) => {
     e.preventDefault();
     const errs = {};
     if (isSignup && form.name.trim().length < 2) errs.name = 'Required';
@@ -26,12 +26,26 @@ function AuthForm({ mode }) {
     setErrors(errs);
     if (Object.keys(errs).length) return;
     const action = isSignup ? signup : login;
-    action({ name: form.name, email: form.email, remember: isSignup ? true : form.remember });
-    navigate(location.state?.from || '/');
+    try {
+      await action({
+        name: form.name,
+        email: form.email,
+        password: form.password,
+        remember: isSignup ? true : form.remember,
+      });
+      navigate(location.state?.from || '/', { state: location.state });
+    } catch (e) {
+      setErrors({ form: e.message || 'Sign in failed' });
+    }
   };
 
   return (
     <form onSubmit={submit} className="space-y-5" noValidate>
+      {errors.form && (
+        <p className="border border-red-700/30 bg-red-50 px-4 py-3 text-xs text-red-700">
+          {errors.form}
+        </p>
+      )}
       {isSignup && (
         <div>
           <label className="mb-1.5 block text-xs uppercase tracking-[0.2em] text-graphite">
@@ -92,7 +106,7 @@ function AuthForm({ mode }) {
             />
             Remember me
           </label>
-          <Link to="/contact-us" className="text-goldDark underline underline-offset-2">
+          <Link to="/forgot-password" className="text-goldDark underline underline-offset-2">
             Forgot password?
           </Link>
         </div>

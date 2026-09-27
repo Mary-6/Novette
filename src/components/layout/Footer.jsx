@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Mail, Phone } from 'lucide-react';
 import Logo from '../ui/Logo';
+import { api } from '../../lib/api';
 
 const COLUMNS = [
   {
@@ -90,9 +91,15 @@ export default function Footer() {
               <p className="text-sm text-gold">Thank you — you are on the list.</p>
             ) : (
               <form
-                onSubmit={(e) => {
+                onSubmit={async (e) => {
                   e.preventDefault();
-                  if (email.includes('@')) setDone(true);
+                  if (!email.includes('@')) return;
+                  try {
+                    await api.newsletter(email);
+                  } catch {
+                    /* offline */
+                  }
+                  setDone(true);
                 }}
                 className="flex border border-graphite"
               >

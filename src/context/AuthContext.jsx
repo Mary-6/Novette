@@ -1,8 +1,10 @@
 /* eslint-disable react-refresh/only-export-components */
 import { createContext, useContext, useMemo, useState } from 'react';
+import { api } from '../lib/api';
 
 const AuthContext = createContext(null);
 const KEY = 'aw-auth';
+const AUTH_EVENT = 'aw-auth-changed';
 
 function nameFromEmail(email) {
   const local = (email || '').split('@')[0] || '';
@@ -34,6 +36,10 @@ function persist(user) {
   }
 }
 
+function announce() {
+  window.dispatchEvent(new Event(AUTH_EVENT));
+}
+
 export function AuthProvider({ children }) {
   const [user, setUser] = useState(readStored);
 
@@ -41,19 +47,58 @@ export function AuthProvider({ children }) {
     () => ({
       user,
       isAuthed: Boolean(user),
-      login({ name, email, remember = true }) {
-        const u = { name: (name || '').trim() || nameFromEmail(email), email, remember };
+      async login({ name, email, password, remember = true }) {
+        try {
+          const { user: u } = await api.login({ email, password, remember });
+          setUser({ ...u, remember });
+          persist({ ...u, remember });
+          announce();
+          return { user: u };
+        } catch (e) {
+          if (e.status) throw e; // real auth error — show it
+        }
+        // API unreachable → browser-only demo session
+        const u = {
+          name: (name || '').trim() || nameFromEmail(email),
+          email,
+          remember,
+          demo: true,
+        };
         setUser(u);
         persist(u);
+        announce();
+        return { user: u, demo: true };
       },
-      signup({ name, email, remember = true }) {
-        const u = { name: (name || '').trim() || nameFromEmail(email), email, remember };
+      async signup({ name, email, password, remember = true }) {
+        try {
+          const { user: u } = await api.signup({ name, email, password, remember });
+          setUser({ ...u, remember });
+          persist({ ...u, remember });
+          announce();
+          return { user: u };
+        } catch (e) {
+          if (e.status) throw e;
+        }
+        const u = {
+          name: (name || '').trim() || nameFromEmail(email),
+          email,
+          remember,
+          demo: true,
+        };
         setUser(u);
         persist(u);
+        announce();
+        return { user: u, demo: true };
       },
-      logout() {
+      async logout() {
+        try {
+          await api.logout();
+        } catch {
+          /* offline */
+        }
         setUser(null);
         persist(null);
+        announce();
       },
     }),
     [user]
