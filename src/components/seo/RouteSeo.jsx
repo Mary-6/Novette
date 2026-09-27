@@ -38,7 +38,7 @@ export default function RouteSeo() {
     else if (parts[0] === 'login' || parts[0] === 'signup') title = 'Your Account';
     else if (parts[0] === 'admin') title = 'Admin';
     else {
-      const page = pages.find((p) => p.slug === parts[0]);
+      const page = pages[parts[0]];
       if (page) title = page.title;
     }
     document.title = title ? `${title} — ${BASE}` : `${BASE} — Fine Timepieces`;
