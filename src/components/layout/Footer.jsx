@@ -77,10 +77,10 @@ export default function Footer() {
               <li className="flex items-center gap-2">
                 <Mail size={14} className="text-gold" />
                 <a
-                  href="mailto:concierge@aurelianwatches.com"
+                  href="mailto:aurelianwatches@gmail.com"
                   className="transition hover:text-gold"
                 >
-                  concierge@aurelianwatches.com
+                  aurelianwatches@gmail.com
                 </a>
               </li>
               <li className="text-ivory/50">Mon–Sat · 10:00–18:00 local</li>

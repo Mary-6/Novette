@@ -422,7 +422,7 @@ app.post(
     if (!parsed.success) return res.status(400).json({ error: 'Invalid input' });
     const msg = await prisma.contactMessage.create({ data: parsed.data });
     await sendMail({
-      to: 'concierge@aurelianwatches.com',
+      to: 'aurelianwatches@gmail.com',
       subject: `Contact: ${parsed.data.subject || 'General enquiry'}`,
       html: `<p>From ${parsed.data.name} &lt;${parsed.data.email}&gt;</p><p>${parsed.data.message}</p>`,
     });

@@ -339,7 +339,7 @@ export default function LiveChat() {
               </button>
             </div>
             <p className="mt-2 text-center text-[10px] text-stone">
-              A live concierge answers here 9am–9pm ET · concierge@aurelianwatches.com
+              A live concierge answers here 9am–9pm ET · aurelianwatches@gmail.com
             </p>
           </div>
         </div>

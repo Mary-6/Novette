@@ -50,7 +50,7 @@ export async function sendMail({ to, subject, html }) {
     return { delivered: false, logged: true };
   }
   await transport.sendMail({
-    from: process.env.MAIL_FROM || 'Aurelian Watches <concierge@aurelianwatches.com>',
+    from: process.env.MAIL_FROM || 'Aurelian Watches <aurelianwatches@gmail.com>',
     to,
     subject,
     html,
