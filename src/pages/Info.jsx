@@ -15,12 +15,12 @@ const LEADERSHIP = [
   {
     name: 'Eleanor Whitcombe',
     role: 'Founder & Chairwoman',
-    bio: 'Founded the Mayfair atelier in 1987; still chooses every master watchmaker personally.',
+    bio: 'Founded the atelier in 1987; still chooses every master watchmaker personally.',
   },
   {
     name: 'Marcus Feld',
     role: 'Chief Executive',
-    bio: 'Led the 2004 move online and opened the New York boutique; keeps pricing tied to the Index.',
+    bio: 'Led the 2004 move online and the expansion across the United States; keeps pricing tied to the Index.',
   },
   {
     name: 'Dr. Ingrid Laurent',
@@ -35,7 +35,7 @@ const LEADERSHIP = [
   {
     name: 'Priya Nair',
     role: 'Head of Client Services',
-    bio: 'Runs the concierge desk across London and New York — one specialist per client.',
+    bio: 'Runs the concierge desk for clients nationwide — one specialist per client.',
   },
   {
     name: 'Daniel Osei',
@@ -67,39 +67,23 @@ const PROMISE = [
   },
 ];
 
-const LOCATIONS = [
-  {
-    city: 'London',
-    name: 'Mayfair Atelier & Salon',
-    address: '14 Mount Street, Mayfair, London W1K 2RJ',
-    hours: 'Mon–Sat 10:00–18:00 · by appointment',
-  },
-  {
-    city: 'New York',
-    name: 'Madison Avenue Boutique',
-    address: '745 Madison Avenue, New York, NY 10065',
-    hours: 'Mon–Sat 11:00–19:00 · Sun 12:00–17:00',
-  },
-];
-
 function AboutBody() {
   return (
     <>
       <section className="py-20 lg:py-28">
         <div className="container-x grid gap-16 lg:grid-cols-2">
           <div className="reveal">
-            <SectionHeading eyebrow="Our Story" title="From a Mayfair bench to two cities." />
+            <SectionHeading eyebrow="Our Story" title="From a restoration bench to nationwide." />
             <div className="space-y-5 text-sm leading-relaxed text-graphite">
               <p>
-                Aurelian Watches was founded in 1987 as a two-bench atelier in Mayfair restoring
-                earlier Rolex references — the watches dealers had written off. Clients began asking
-                the workshop to find pieces for them, and then to stand behind them.
+                Aurelian Watches was founded in 1987 as a two-bench atelier restoring earlier Rolex
+                references — the watches dealers had written off. Clients began asking the workshop
+                to find pieces for them, and then to stand behind them.
               </p>
               <p>
                 In 2004 the atelier moved online, carrying its rule with it: nothing is offered that
-                our own watchmakers have not opened, inspected and certified. In 2015 we opened the
-                Madison Avenue boutique, and today more than 25,000 clients buy from the same
-                benches that started it all.
+                our own watchmakers have not opened, inspected and certified. Today we serve more
+                than 25,000 clients throughout the United States, entirely online and by concierge.
               </p>
             </div>
           </div>
@@ -112,7 +96,7 @@ function AboutBody() {
               </p>
               <p>
                 Service here is not a queue. Every client is assigned a dedicated specialist for
-                sourcing, sizing, aftercare and private viewings, for as long as they own the watch.
+                sourcing, sizing, aftercare and advice, for as long as they own the watch.
               </p>
             </div>
           </div>
@@ -156,20 +140,29 @@ function AboutBody() {
       </section>
       <section className="bg-ink py-20 text-ivory lg:py-28">
         <div className="container-x">
-          <SectionHeading eyebrow="Visit Us" title="Locations" light />
+          <SectionHeading eyebrow="Where We Serve" title="Nationwide, Online First" light />
           <div className="grid gap-10 md:grid-cols-2">
-            {LOCATIONS.map((l) => (
-              <div key={l.city} className="reveal border border-graphite p-8">
-                <p className="eyebrow">{l.city}</p>
-                <p className="heading-display mt-2 text-2xl">{l.name}</p>
-                <p className="mt-4 flex items-start gap-2 text-sm text-ivory/70">
-                  <MapPin size={15} className="mt-0.5 shrink-0 text-gold" /> {l.address}
-                </p>
-                <p className="mt-2 flex items-start gap-2 text-sm text-ivory/70">
-                  <Phone size={15} className="mt-0.5 shrink-0 text-gold" /> {l.hours}
-                </p>
-              </div>
-            ))}
+            <div className="reveal border border-graphite p-8">
+              <p className="eyebrow">United States</p>
+              <p className="heading-display mt-2 text-2xl">Serving all 50 states</p>
+              <p className="mt-4 flex items-start gap-2 text-sm text-ivory/70">
+                <Truck size={15} className="mt-0.5 shrink-0 text-gold" /> Free insured overnight
+                delivery, signature required
+              </p>
+              <p className="mt-2 flex items-start gap-2 text-sm text-ivory/70">
+                <Phone size={15} className="mt-0.5 shrink-0 text-gold" /> Concierge 9am–9pm ET,
+                seven days a week
+              </p>
+            </div>
+            <div className="reveal border border-graphite p-8">
+              <p className="eyebrow">Headquarters</p>
+              <p className="heading-display mt-2 text-2xl">New York — online only</p>
+              <p className="mt-4 flex items-start gap-2 text-sm text-ivory/70">
+                <MapPin size={15} className="mt-0.5 shrink-0 text-gold" /> Our watchmakers and
+                concierge work from our U.S. headquarters; we do not currently operate a walk-in
+                showroom.
+              </p>
+            </div>
           </div>
           <div className="mt-12 text-center">
             <Button to="/contact-us" variant="gold" className="rounded-full">
@@ -184,27 +177,57 @@ function AboutBody() {
 
 function LocationsBody() {
   return (
-    <section className="py-20 lg:py-28">
-      <div className="container-x grid gap-10 md:grid-cols-2">
-        {LOCATIONS.map((l) => (
-          <div key={l.city} className="reveal border border-stone/25 p-10">
-            <p className="eyebrow">{l.city}</p>
-            <p className="heading-display mt-2 text-3xl">{l.name}</p>
-            <p className="mt-4 flex items-start gap-2 text-sm text-graphite">
-              <MapPin size={15} className="mt-0.5 shrink-0 text-gold" /> {l.address}
-            </p>
-            <p className="mt-2 flex items-start gap-2 text-sm text-graphite">
-              <Phone size={15} className="mt-0.5 shrink-0 text-gold" /> {l.hours}
+    <>
+      <section className="py-20 lg:py-28">
+        <div className="container-x max-w-3xl text-center">
+          <SectionHeading eyebrow="Where We Serve" title="Serving Customers Nationwide" />
+          <p className="mt-8 text-base leading-relaxed text-graphite">
+            Aurelian Watches serves customers throughout the United States. We specialize in selling
+            Rolex watches and other luxury timepieces — serving customers nationwide through our
+            online boutique and concierge service.
+          </p>
+          <p className="mt-5 text-sm leading-relaxed text-graphite">
+            We do not currently operate a walk-in showroom. Every watch is held in our U.S.
+            headquarters, inspected and certified by our master watchmakers, then shipped to you by
+            insured overnight courier with signature required — free on every order.
+          </p>
+        </div>
+      </section>
+      <section className="bg-sand py-20 lg:py-24">
+        <div className="container-x grid gap-10 md:grid-cols-3">
+          <div className="reveal text-center">
+            <Truck size={28} className="mx-auto text-gold" strokeWidth={1.5} />
+            <p className="mt-4 text-sm font-medium uppercase tracking-[0.2em]">Insured Overnight</p>
+            <p className="mt-3 text-sm leading-relaxed text-graphite">
+              Complimentary on every order, to all 50 states.
             </p>
           </div>
-        ))}
-      </div>
-      <div className="container-x mt-12 text-center">
-        <Button to="/contact-us" className="rounded-full">
-          Contact the concierge
-        </Button>
-      </div>
-    </section>
+          <div className="reveal text-center">
+            <Phone size={28} className="mx-auto text-gold" strokeWidth={1.5} />
+            <p className="mt-4 text-sm font-medium uppercase tracking-[0.2em]">
+              Personal Concierge
+            </p>
+            <p className="mt-3 text-sm leading-relaxed text-graphite">
+              A dedicated specialist by phone, chat or email — 9am–9pm ET, seven days a week.
+            </p>
+          </div>
+          <div className="reveal text-center">
+            <ShieldCheck size={28} className="mx-auto text-gold" strokeWidth={1.5} />
+            <p className="mt-4 text-sm font-medium uppercase tracking-[0.2em]">
+              Certified &amp; Warranted
+            </p>
+            <p className="mt-3 text-sm leading-relaxed text-graphite">
+              Every watch authenticated by our watchmakers and covered by a two-year warranty.
+            </p>
+          </div>
+        </div>
+        <div className="container-x mt-12 text-center">
+          <Button to="/contact-us" className="rounded-full">
+            Contact the concierge
+          </Button>
+        </div>
+      </section>
+    </>
   );
 }
 

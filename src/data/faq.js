@@ -27,7 +27,7 @@ const faqs = [
   {
     category: 'Shipping',
     q: 'Can I collect in person?',
-    a: 'Of course. In-boutique collection is complimentary at our London atelier or New York boutique. We prepare the watch, sized, with refreshments on the house.',
+    a: 'We are an online boutique — we do not currently operate a walk-in showroom. Your watch is shipped to you insured overnight with signature required, free on every order; our concierge can arrange a video consultation before you buy.',
   },
   {
     category: 'Returns',

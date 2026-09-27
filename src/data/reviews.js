@@ -3,7 +3,7 @@ const reviews = [
     name: 'Jonathan Meyers',
     location: 'New York, NY',
     rating: 5,
-    text: 'Purchased a Submariner from the New York boutique. The condition report was exact to the last hairline, and the watch arrived insured and sized within three days.',
+    text: 'Purchased a Submariner through the online boutique. The condition report was exact to the last hairline, and the watch arrived insured and sized within three days.',
   },
   {
     name: 'Amelia Hart',

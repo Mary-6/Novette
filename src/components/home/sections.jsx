@@ -452,12 +452,12 @@ export function AboutBlock() {
           </h2>
           <div className="mt-6 space-y-4 text-sm leading-relaxed text-graphite">
             <p>
-              Founded in 1987 as a Mayfair atelier restoring earlier Rolex references, Aurelian
+              Founded in 1987 as a small atelier restoring earlier Rolex references, Aurelian
               Watches grew from a two-bench workshop into a destination trusted by more than 25,000
-              clients.
+              clients across the United States.
             </p>
             <p>
-              We moved online in 2004 and opened our Madison Avenue boutique in 2015, but the rule
+              We moved online in 2004 and have served clients nationwide ever since, but the rule
               has never changed: nothing is offered that our own watchmakers haven&apos;t opened,
               inspected and certified.
             </p>

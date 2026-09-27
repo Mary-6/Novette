@@ -1,6 +1,6 @@
 const pages = {
   'about-us': {
-    eyebrow: 'Est. 1987 · London & New York',
+    eyebrow: 'Est. 1987 · Serving Nationwide',
     title: 'Our Story',
     type: 'about',
   },
@@ -10,7 +10,7 @@ const pages = {
     sections: [
       {
         heading: 'Prices set by data, not theatre',
-        body: 'Every listing is priced against the Aurelian Market Index — our internal measure of real, completed transactions. The same watch carries the same price whether you browse at midnight or walk into the boutique.',
+        body: 'Every listing is priced against the Aurelian Market Index — our internal measure of real, completed transactions. The same watch carries the same price for every client, everywhere in the country.',
       },
       {
         heading: 'Real-time inventory',
@@ -22,7 +22,7 @@ const pages = {
       },
       {
         heading: 'People, not queues',
-        body: 'A dedicated specialist answers every enquiry personally — sourcing, sizing, aftercare and private viewings are all part of the service.',
+        body: 'A dedicated specialist answers every enquiry personally — sourcing, sizing, aftercare and consultation are all part of the service.',
       },
     ],
   },
@@ -75,8 +75,8 @@ const pages = {
         body: 'Orders placed before 2pm ET ship the same business day once payment clears. You receive a tracking number and insurance certificate by email the moment the parcel leaves the vault.',
       },
       {
-        heading: 'Collection',
-        body: 'In-boutique collection is complimentary at our London atelier and New York boutique — the watch arrives sized, with refreshments on us.',
+        heading: 'Delivery',
+        body: 'We ship to all 50 states and internationally. Every parcel is covered from our vault to your door; nothing leaves us without a tracking number and an insurance certificate.',
       },
     ],
   },

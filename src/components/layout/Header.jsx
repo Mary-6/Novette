@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { ChevronDown, Heart, MapPin, Menu, Phone, Search, ShoppingBag, X } from 'lucide-react';
 import brands from '../../data/brands';
@@ -23,6 +23,8 @@ const RESOURCES = [
 export default function Header() {
   const [drawer, setDrawer] = useState(false);
   const [openGroup, setOpenGroup] = useState(null);
+  const [openMenu, setOpenMenu] = useState(null);
+  const navRef = useRef(null);
   const [q, setQ] = useState('');
   const { count } = useCart();
   const { user, isAuthed, logout } = useAuth();
@@ -36,8 +38,26 @@ export default function Header() {
     setDrawer(false);
   };
 
+  useEffect(() => {
+    const close = (e) => {
+      if (navRef.current && !navRef.current.contains(e.target)) setOpenMenu(null);
+    };
+    const esc = (e) => {
+      if (e.key === 'Escape') setOpenMenu(null);
+    };
+    document.addEventListener('mousedown', close);
+    document.addEventListener('keydown', esc);
+    return () => {
+      document.removeEventListener('mousedown', close);
+      document.removeEventListener('keydown', esc);
+    };
+  }, []);
+
+  const toggleMenu = (name) => setOpenMenu((m) => (m === name ? null : name));
+
   const linkCls = ({ isActive }) =>
     `text-xs uppercase tracking-[0.18em] transition hover:text-gold ${isActive ? 'text-gold' : ''}`;
+  const navCls = 'text-xs uppercase tracking-[0.18em] transition hover:text-gold';
 
   const searchInput = (
     <form
@@ -102,12 +122,26 @@ export default function Header() {
           <Menu size={22} />
         </button>
         <Logo />
-        <nav className="hidden items-center gap-7 lg:flex">
-          <div className="group relative">
-            <NavLink to="/rolex" className={linkCls}>
-              Rolex
-            </NavLink>
-            <div className="invisible absolute left-0 top-full z-50 mt-4 w-[560px] bg-charcoal p-6 opacity-0 shadow-2xl transition group-hover:visible group-hover:opacity-100">
+        <nav ref={navRef} className="hidden items-center gap-7 lg:flex">
+          <div className="relative">
+            <button
+              type="button"
+              onClick={() => toggleMenu('rolex')}
+              aria-expanded={openMenu === 'rolex'}
+              className={`${navCls} flex items-center gap-1 ${openMenu === 'rolex' ? 'text-gold' : ''}`}
+            >
+              Rolex{' '}
+              <ChevronDown
+                size={12}
+                className={`transition ${openMenu === 'rolex' ? 'rotate-180' : ''}`}
+              />
+            </button>
+            <div
+              className={`absolute left-0 top-full z-50 mt-4 w-[560px] bg-charcoal p-6 shadow-2xl transition ${openMenu === 'rolex' ? 'visible opacity-100' : 'invisible opacity-0'}`}
+              onClick={(e) => {
+                if (e.target.closest('a')) setOpenMenu(null);
+              }}
+            >
               <div className="grid grid-cols-[1fr_1fr_150px] gap-6">
                 <div>
                   <p className="eyebrow mb-3">Model Families</p>
@@ -154,11 +188,25 @@ export default function Header() {
               </div>
             </div>
           </div>
-          <div className="group relative">
-            <NavLink to="/shop" className={linkCls}>
-              Luxury Watches
-            </NavLink>
-            <div className="invisible absolute left-0 top-full z-50 mt-4 w-[560px] bg-charcoal p-6 opacity-0 shadow-2xl transition group-hover:visible group-hover:opacity-100">
+          <div className="relative">
+            <button
+              type="button"
+              onClick={() => toggleMenu('watches')}
+              aria-expanded={openMenu === 'watches'}
+              className={`${navCls} flex items-center gap-1 ${openMenu === 'watches' ? 'text-gold' : ''}`}
+            >
+              Luxury Watches{' '}
+              <ChevronDown
+                size={12}
+                className={`transition ${openMenu === 'watches' ? 'rotate-180' : ''}`}
+              />
+            </button>
+            <div
+              className={`absolute left-0 top-full z-50 mt-4 w-[560px] bg-charcoal p-6 shadow-2xl transition ${openMenu === 'watches' ? 'visible opacity-100' : 'invisible opacity-0'}`}
+              onClick={(e) => {
+                if (e.target.closest('a')) setOpenMenu(null);
+              }}
+            >
               <div className="grid grid-cols-2 gap-6">
                 <div>
                   <p className="eyebrow mb-3">Brands</p>
@@ -194,13 +242,25 @@ export default function Header() {
           <NavLink to="/shop?sort=newest" className={linkCls}>
             New Arrivals
           </NavLink>
-          <div className="group relative">
-            <span
-              className={`flex cursor-default items-center gap-1 text-xs uppercase tracking-[0.18em] transition group-hover:text-gold`}
+          <div className="relative">
+            <button
+              type="button"
+              onClick={() => toggleMenu('resources')}
+              aria-expanded={openMenu === 'resources'}
+              className={`${navCls} flex items-center gap-1 ${openMenu === 'resources' ? 'text-gold' : ''}`}
             >
-              Resources <ChevronDown size={12} />
-            </span>
-            <div className="invisible absolute left-0 top-full z-50 mt-4 w-56 bg-charcoal p-5 opacity-0 shadow-2xl transition group-hover:visible group-hover:opacity-100">
+              Resources{' '}
+              <ChevronDown
+                size={12}
+                className={`transition ${openMenu === 'resources' ? 'rotate-180' : ''}`}
+              />
+            </button>
+            <div
+              className={`absolute left-0 top-full z-50 mt-4 w-56 bg-charcoal p-5 shadow-2xl transition ${openMenu === 'resources' ? 'visible opacity-100' : 'invisible opacity-0'}`}
+              onClick={(e) => {
+                if (e.target.closest('a')) setOpenMenu(null);
+              }}
+            >
               <div className="flex flex-col gap-3">
                 {RESOURCES.map((r) => (
                   <Link

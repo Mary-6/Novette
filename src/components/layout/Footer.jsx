@@ -119,8 +119,8 @@ export default function Footer() {
               Fine Timepieces · Est. 1987
             </p>
             <p className="mt-5 text-sm leading-relaxed text-ivory/60">
-              London & New York. New and unworn luxury watches, authenticated and warranted for two
-              years.
+              Serving clients across the United States, entirely online. New and unworn luxury
+              watches, authenticated and warranted for two years.
             </p>
           </div>
         </div>

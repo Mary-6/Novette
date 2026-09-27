@@ -122,7 +122,7 @@ export default function Contact() {
               <ul className="space-y-4 text-sm text-graphite">
                 <li className="flex items-start gap-3">
                   <Phone size={16} className="mt-0.5 text-gold" />
-                  <span>+44 20 7946 0958 · +1 212 555 0187</span>
+                  <span>+1 212 555 0187</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <Mail size={16} className="mt-0.5 text-gold" />
@@ -130,27 +130,27 @@ export default function Contact() {
                 </li>
                 <li className="flex items-start gap-3">
                   <Clock size={16} className="mt-0.5 text-gold" />
-                  <span>Monday–Saturday, 10:00–18:00 local</span>
+                  <span>Monday–Saturday, 9:00–21:00 ET</span>
                 </li>
               </ul>
             </div>
             <div>
-              <p className="eyebrow mb-4">Boutiques</p>
+              <p className="eyebrow mb-4">Where We Serve</p>
               <ul className="space-y-4 text-sm text-graphite">
                 <li className="flex items-start gap-3">
                   <MapPin size={16} className="mt-0.5 text-gold" />
                   <span>
-                    14 Old Bond Street
+                    Serving customers throughout
                     <br />
-                    Mayfair, London W1S 4PP
+                    the United States — online
                   </span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <MapPin size={16} className="mt-0.5 text-gold" />
+                  <Clock size={16} className="mt-0.5 text-gold" />
                   <span>
-                    712 Madison Avenue
+                    No walk-in showroom yet —
                     <br />
-                    New York, NY 10065
+                    video consultations available
                   </span>
                 </li>
               </ul>

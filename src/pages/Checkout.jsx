@@ -13,7 +13,6 @@ const errCls = 'mt-1 text-xs text-red-700';
 const DELIVERY = [
   { id: 'courier', label: 'Insured Courier', hint: '3–5 business days', price: 0 },
   { id: 'express', label: 'Express Overnight', hint: 'Next business day', price: 250 },
-  { id: 'boutique', label: 'In-Boutique Collection', hint: 'London or New York', price: 0 },
 ];
 
 function Field({ label, error, ...rest }) {
@@ -70,7 +69,7 @@ export default function Checkout() {
       if (!info.first.trim()) e.first = 'Required';
       if (!info.last.trim()) e.last = 'Required';
     }
-    if (step === 2 && ship.method !== 'boutique') {
+    if (step === 2) {
       if (!ship.address.trim()) e.address = 'Required';
       if (!ship.city.trim()) e.city = 'Required';
       if (!ship.zip.trim()) e.zip = 'Required';
@@ -176,7 +175,6 @@ export default function Checkout() {
                       value={ship.address}
                       onChange={(e) => setShip({ ...ship, address: e.target.value })}
                       error={errors.address}
-                      disabled={ship.method === 'boutique'}
                     />
                   </div>
                   <Field
@@ -184,14 +182,12 @@ export default function Checkout() {
                     value={ship.city}
                     onChange={(e) => setShip({ ...ship, city: e.target.value })}
                     error={errors.city}
-                    disabled={ship.method === 'boutique'}
                   />
                   <Field
                     label="Postal code"
                     value={ship.zip}
                     onChange={(e) => setShip({ ...ship, zip: e.target.value })}
                     error={errors.zip}
-                    disabled={ship.method === 'boutique'}
                   />
                   <div className="sm:col-span-2">
                     <Field
@@ -199,7 +195,6 @@ export default function Checkout() {
                       value={ship.country}
                       onChange={(e) => setShip({ ...ship, country: e.target.value })}
                       error={errors.country}
-                      disabled={ship.method === 'boutique'}
                     />
                   </div>
                 </div>

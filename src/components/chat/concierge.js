@@ -77,14 +77,14 @@ export function reply(text, ctx = {}) {
 
   if (has('human', 'agent', 'person', 'call', 'phone')) {
     return {
-      text: 'Of course — a specialist will join shortly. You can also call us on +44 20 7946 0000 during boutique hours.',
+      text: 'Of course — a specialist will join shortly. You can also call us on +1 212 555 0187 during concierge hours.',
       links: [{ label: 'Contact us', to: '/contact-us' }],
     };
   }
 
-  if (has('viewing', 'appointment', 'visit', 'boutique', 'showroom')) {
+  if (has('viewing', 'appointment', 'visit', 'boutique', 'showroom', 'location')) {
     return {
-      text: "We'd be delighted. Our Mayfair and New York boutiques host private viewings by appointment — tell me which references you'd like to see and we'll prepare them on the bench.",
+      text: "We're an online boutique serving clients nationwide — we don't currently have a walk-in showroom, but our concierge can arrange a private video consultation and walk you through any watch live.",
       links: [
         { label: 'Our locations', to: '/locations' },
         { label: 'Contact us', to: '/contact-us' },
