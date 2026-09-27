@@ -5,19 +5,19 @@ const transport = process.env.SMTP_URL ? nodemailer.createTransport(process.env.
 
 export const DEFAULT_TEMPLATES = {
   order_confirm: {
-    subject: 'Order {{order.number}} confirmed — Lumont Watches',
+    subject: 'Order {{order.number}} confirmed — Novette Watches',
     html: '<p>Thank you, {{order.customerName}}.</p><p>Your order <b>{{order.number}}</b> totalling ${{order.total}} is confirmed. We will email tracking once your timepiece ships fully insured.</p>',
   },
   verify_email: {
-    subject: 'Verify your Lumont Watches account',
-    html: '<p>Welcome to Lumont Watches, {{user.name}}.</p><p>Verify your email: <a href="{{link}}">Confirm account</a></p>',
+    subject: 'Verify your Novette Watches account',
+    html: '<p>Welcome to Novette Watches, {{user.name}}.</p><p>Verify your email: <a href="{{link}}">Confirm account</a></p>',
   },
   reset_password: {
-    subject: 'Reset your Lumont Watches password',
+    subject: 'Reset your Novette Watches password',
     html: '<p>Reset link (valid one hour): <a href="{{link}}">Reset password</a></p>',
   },
   order_shipped: {
-    subject: 'Your order {{order.number}} has shipped — Lumont Watches',
+    subject: 'Your order {{order.number}} has shipped — Novette Watches',
     html: '<p>Dear {{order.customerName}},</p><p>Your order <b>{{order.number}}</b> has been dispatched fully insured. Tracking reference: <b>{{order.trackingNumber}}</b>.</p><p>A concierge remains at your service.</p>',
   },
 };
@@ -50,7 +50,7 @@ export async function sendMail({ to, subject, html }) {
     return { delivered: false, logged: true };
   }
   await transport.sendMail({
-    from: process.env.MAIL_FROM || 'Lumont Watches <lumontwatches@gmail.com>',
+    from: process.env.MAIL_FROM || 'Novette Watches <novettewatches@gmail.com>',
     to,
     subject,
     html,

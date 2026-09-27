@@ -80,8 +80,8 @@ export default function Footer() {
               </li>
               <li className="flex items-center gap-2">
                 <Mail size={14} className="text-gold" />
-                <a href="mailto:lumontwatches@gmail.com" className="transition hover:text-gold">
-                  lumontwatches@gmail.com
+                <a href="mailto:novettewatches@gmail.com" className="transition hover:text-gold">
+                  novettewatches@gmail.com
                 </a>
               </li>
               <li className="text-ivory/50">Mon–Sat, 10am–6pm ET</li>
@@ -132,7 +132,7 @@ export default function Footer() {
           </div>
         </div>
         <div className="mt-14 flex flex-col items-center justify-between gap-4 border-t border-graphite pt-8 text-xs text-ivory/40 sm:flex-row">
-          <p>© {new Date().getFullYear()} Lumont Watches Ltd. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} Novette Watches Ltd. All rights reserved.</p>
           <nav className="flex gap-6">
             <Link to="/privacy-policy" className="transition hover:text-gold">
               Privacy

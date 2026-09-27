@@ -131,13 +131,13 @@ export function HeritageIntro() {
     <section className="py-20 lg:py-28">
       <div className="container-x grid items-center gap-12 lg:grid-cols-2">
         <div className="reveal">
-          <p className="eyebrow mb-3">The Lumont Standard</p>
+          <p className="eyebrow mb-3">The Novette Standard</p>
           <h2 className="heading-display text-3xl font-medium sm:text-4xl lg:text-5xl">
             Where Heritage Meets Modern Elegance
           </h2>
           <div className="mt-6 space-y-4 text-sm leading-relaxed text-graphite">
             <p>
-              For nearly four decades Lumont Watches has brought together the world&apos;s most
+              For nearly four decades Novette Watches has brought together the world&apos;s most
               legendary watches for collectors who value precision, heritage and lasting value, each
               reference chosen for the story it will carry onto the next wrist.
             </p>
@@ -337,7 +337,7 @@ export function MarketIndex() {
         <div>
           <p className="eyebrow mb-3">Pricing Intelligence</p>
           <h2 className="heading-display text-3xl font-medium sm:text-4xl">
-            The Lumont Market Index
+            The Novette Market Index
           </h2>
           <p className="mt-4 max-w-2xl text-sm leading-relaxed text-ivory/70">
             Each quarter our analysts publish an internal measure of the certified market for new
@@ -350,7 +350,7 @@ export function MarketIndex() {
             midnight, and why our listings move with the market rather than against it.
           </p>
         </div>
-        <Button to="/journal/lumont-market-index" variant="gold" className="rounded-full">
+        <Button to="/journal/novette-market-index" variant="gold" className="rounded-full">
           View Report
         </Button>
       </div>
@@ -399,7 +399,7 @@ export function PromiseSection() {
     {
       icon: LineChart,
       title: 'Pricing Transparency',
-      text: 'Every price is set against the Lumont Market Index, measured, transparent and fair.',
+      text: 'Every price is set against the Novette Market Index, measured, transparent and fair.',
     },
     {
       icon: Watch,
@@ -450,13 +450,13 @@ export function AboutBlock() {
     <section className="py-20 lg:py-28">
       <div className="container-x grid gap-12 lg:grid-cols-2">
         <div className="reveal">
-          <p className="eyebrow mb-3">About Lumont Watches</p>
+          <p className="eyebrow mb-3">About Novette Watches</p>
           <h2 className="heading-display text-3xl font-medium sm:text-4xl lg:text-5xl">
             Our Story
           </h2>
           <div className="mt-6 space-y-4 text-sm leading-relaxed text-graphite">
             <p>
-              Founded in 1987 as a small atelier restoring earlier Rolex references, Lumont Watches
+              Founded in 1987 as a small atelier restoring earlier Rolex references, Novette Watches
               grew from a two-bench workshop into a destination trusted by more than 25,000 clients
               across the United States.
             </p>
@@ -466,7 +466,7 @@ export function AboutBlock() {
               inspected and certified.
             </p>
             <p>
-              Every listing is priced against the Lumont Market Index, shipped fully insured, and
+              Every listing is priced against the Novette Market Index, shipped fully insured, and
               covered by a two-year warranty, because a fine watch should be the safest purchase you
               make all year.
             </p>
@@ -520,7 +520,7 @@ export function Reviews() {
 export function WhyShop() {
   const points = [
     'Every watch authenticated by master watchmakers, in-house',
-    'Pricing set by the Lumont Market Index, real transaction data',
+    'Pricing set by the Novette Market Index, real transaction data',
     'Real-time inventory: listed means in our vault and ready',
     'Free insured overnight shipping, signature on delivery',
     'Two-year warranty serviced on our own benches',
@@ -591,7 +591,7 @@ export function Newsletter() {
   return (
     <section className="bg-ink py-20 text-ivory lg:py-28">
       <div className="container-x max-w-2xl text-center">
-        <p className="eyebrow mb-4">The Lumont List</p>
+        <p className="eyebrow mb-4">The Novette List</p>
         <h2 className="heading-display text-4xl font-medium sm:text-5xl">
           Timeless Style, Delivered.
         </h2>

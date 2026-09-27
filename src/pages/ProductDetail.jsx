@@ -275,7 +275,7 @@ export default function ProductDetail() {
                 </AccordionItem>
                 <AccordionItem title="Authentication">
                   <p>
-                    Every timepiece passes a 40-point inspection by our master watchmakers,                     movement, dial, case geometry and bracelet verified against factory records,                     and ships with a signed Lumont Watches Certificate of Authenticity.{' '}
+                    Every timepiece passes a 40-point inspection by our master watchmakers,                     movement, dial, case geometry and bracelet verified against factory records,                     and ships with a signed Novette Watches Certificate of Authenticity.{' '}
                     <Link to="/authenticity-pledge" className="text-goldDark underline">
                       Read our pledge
                     </Link>

@@ -2,7 +2,7 @@ const faqs = [
   {
     category: 'Authenticity',
     q: 'How is every watch authenticated?',
-    a: 'Every timepiece passes a 40-point inspection by our master watchmakers: movement verification against serial records, dial and hand originality, case geometry, bracelet and clasp integrity, and timing tests across positions. Each watch ships with a signed Lumont Watches Certificate of Authenticity.',
+    a: 'Every timepiece passes a 40-point inspection by our master watchmakers: movement verification against serial records, dial and hand originality, case geometry, bracelet and clasp integrity, and timing tests across positions. Each watch ships with a signed Novette Watches Certificate of Authenticity.',
   },
   {
     category: 'Authenticity',

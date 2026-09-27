@@ -5,7 +5,7 @@ import collections from '../../data/collections';
 import watches from '../../data/watches';
 import pages from '../../data/pages';
 
-const BASE = 'Lumont Watches';
+const BASE = 'Novette Watches';
 
 export default function RouteSeo() {
   const { pathname } = useLocation();
@@ -19,11 +19,11 @@ export default function RouteSeo() {
       const w = watches.find((x) => x.slug === parts[1]);
       title = w ? `${w.model} ${w.reference}` : 'Watch';
       if (w)
-        description = `${w.model} ${w.reference}, ${w.condition}, ${formatYear(w.year)}, ${w.price ? 'available now at Lumont Watches' : ''} with insured overnight shipping.`;
+        description = `${w.model} ${w.reference}, ${w.condition}, ${formatYear(w.year)}, ${w.price ? 'available now at Novette Watches' : ''} with insured overnight shipping.`;
     } else if (parts[0] === 'brands' && parts[1]) {
       const b = brands.find((x) => x.slug === parts[1]);
       title = b ? b.name : 'Brands';
-      if (b) description = `Browse new and unworn ${b.name} watches at Lumont Watches.`;
+      if (b) description = `Browse new and unworn ${b.name} watches at Novette Watches.`;
     } else if (parts[0] === 'brands') title = 'Brands';
     else if (parts[0] === 'rolex') title = 'Rolex Watches';
     else if (parts[0] === 'collections' && parts[1]) {

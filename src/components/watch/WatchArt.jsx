@@ -335,7 +335,7 @@ function Indices({ type, cx, cy, r, color, bezel }) {
 export default function WatchArt({
   art = {},
   view = 'front',
-  engraving = 'LUMONT',
+  engraving = 'NOVETTE',
   className = '',
   label = 'Watch illustration',
 }) {

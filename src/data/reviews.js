@@ -33,7 +33,7 @@ const reviews = [
     name: 'Isabella Romano',
     location: 'Milan, IT',
     rating: 5,
-    text: 'Second purchase from Lumont Watches and the standard has not slipped. Their warranty service on my first watch was handled in days, not months.',
+    text: 'Second purchase from Novette Watches and the standard has not slipped. Their warranty service on my first watch was handled in days, not months.',
   },
   {
     name: 'Tom Beckett',

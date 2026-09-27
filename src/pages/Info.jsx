@@ -76,7 +76,7 @@ function AboutBody() {
             <SectionHeading eyebrow="Our Story" title="From a restoration bench to nationwide." />
             <div className="space-y-5 text-sm leading-relaxed text-graphite">
               <p>
-                Lumont Watches was founded in 1987 as a two-bench atelier restoring earlier Rolex
+                Novette Watches was founded in 1987 as a two-bench atelier restoring earlier Rolex
                 references, the watches dealers had written off. Clients began asking the workshop
                 to find pieces for them, and then to stand behind them.
               </p>
@@ -181,7 +181,7 @@ function LocationsBody() {
         <div className="container-x max-w-3xl text-center">
           <SectionHeading eyebrow="Where We Serve" title="Serving Customers Nationwide" />
           <p className="mt-8 text-base leading-relaxed text-graphite">
-            Lumont Watches serves customers throughout the United States. We specialize in selling
+            Novette Watches serves customers throughout the United States. We specialize in selling
             Rolex watches and other luxury timepieces, serving customers nationwide through our
             online boutique and concierge service.
           </p>
@@ -245,7 +245,7 @@ const GUIDE = [
   ],
   [
     'Check provenance',
-    'Every Lumont Watches listing is registry-checked and provenance-verified before it reaches the site.',
+    'Every Novette Watches listing is registry-checked and provenance-verified before it reaches the site.',
   ],
   [
     'Wear it first',
@@ -375,7 +375,7 @@ export default function InfoPage({ slug }) {
   const intro = {
     'why-buy-from-us': 'Four principles that separate a trustworthy exchange from a listing board.',
     'authenticity-pledge':
-      'What it means, precisely, when we say a watch is Lumont Watches certified.',
+      'What it means, precisely, when we say a watch is Novette Watches certified.',
     'buyers-protection-plan':
       'Every order is covered from payment to the first day on your wrist, and beyond.',
     'shipping-info': 'Discreet, insured and fast, how every watch reaches its wrist.',
