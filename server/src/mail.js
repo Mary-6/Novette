@@ -1,7 +1,16 @@
 import nodemailer from 'nodemailer';
 import { prisma } from './db.js';
 
-const transport = process.env.SMTP_URL ? nodemailer.createTransport(process.env.SMTP_URL) : null;
+const transport = process.env.SMTP_URL
+  ? nodemailer.createTransport(process.env.SMTP_URL)
+  : process.env.SMTP_USER && process.env.SMTP_PASS
+    ? nodemailer.createTransport({
+        host: process.env.SMTP_HOST || 'smtp.gmail.com',
+        port: Number(process.env.SMTP_PORT || 465),
+        secure: process.env.SMTP_SECURE !== 'false',
+        auth: { user: process.env.SMTP_USER, pass: process.env.SMTP_PASS },
+      })
+    : null;
 
 export const DEFAULT_TEMPLATES = {
   order_confirm: {
