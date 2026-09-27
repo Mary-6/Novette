@@ -77,10 +77,10 @@ export default function Footer() {
               <li className="flex items-center gap-2">
                 <Mail size={14} className="text-gold" />
                 <a
-                  href="mailto:aurelianwatches@gmail.com"
+                  href="mailto:avelorwatches@gmail.com"
                   className="transition hover:text-gold"
                 >
-                  aurelianwatches@gmail.com
+                  avelorwatches@gmail.com
                 </a>
               </li>
               <li className="text-ivory/50">Mon–Sat · 10:00–18:00 local</li>
@@ -131,7 +131,7 @@ export default function Footer() {
           </div>
         </div>
         <div className="mt-14 flex flex-col items-center justify-between gap-4 border-t border-graphite pt-8 text-xs text-ivory/40 sm:flex-row">
-          <p>© {new Date().getFullYear()} Aurelian Watches Ltd. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} Avelor Watches Ltd. All rights reserved.</p>
           <nav className="flex gap-6">
             <Link to="/privacy-policy" className="transition hover:text-gold">
               Privacy

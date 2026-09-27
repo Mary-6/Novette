@@ -2434,7 +2434,7 @@ function dialPalette(detail) {
 
 const BOX_DIST = [
   ...Array(15).fill('Box and Papers'),
-  ...Array(5).fill('Aurelian Presentation Box'),
+  ...Array(5).fill('Avelor Presentation Box'),
   ...Array(3).fill('Box Only'),
   ...Array(2).fill('Papers Only'),
 ];

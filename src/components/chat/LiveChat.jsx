@@ -256,7 +256,7 @@ export default function LiveChat() {
           <div className="flex items-center gap-3 bg-ink p-4 text-ivory">
             <LogoMark className="h-8 w-8 shrink-0" />
             <div className="min-w-0 flex-1">
-              <p className="heading-display text-lg leading-tight">Aurelian Concierge</p>
+              <p className="heading-display text-lg leading-tight">Avelor Concierge</p>
               <p className="flex items-center gap-1.5 text-[11px] text-ivory/60">
                 <span className="inline-block h-1.5 w-1.5 rounded-full bg-emerald-400" />
                 Typically replies in under a minute
@@ -339,7 +339,7 @@ export default function LiveChat() {
               </button>
             </div>
             <p className="mt-2 text-center text-[10px] text-stone">
-              A live concierge answers here 9am–9pm ET · aurelianwatches@gmail.com
+              A live concierge answers here 9am–9pm ET · avelorwatches@gmail.com
             </p>
           </div>
         </div>

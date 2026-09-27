@@ -277,7 +277,7 @@ export default function ProductDetail() {
                   <p>
                     Every timepiece passes a 40-point inspection by our master watchmakers —
                     movement, dial, case geometry and bracelet verified against factory records —
-                    and ships with a signed Aurelian Watches Certificate of Authenticity.{' '}
+                    and ships with a signed Avelor Watches Certificate of Authenticity.{' '}
                     <Link to="/authenticity-pledge" className="text-goldDark underline">
                       Read our pledge
                     </Link>

@@ -199,7 +199,7 @@ export function Login() {
             </>
           )}
           <p className="mt-6 text-center text-sm text-graphite">
-            New to Aurelian Watches?{' '}
+            New to Avelor Watches?{' '}
             <Link to="/signup" className="text-goldDark underline underline-offset-2">
               Create an account
             </Link>
@@ -214,7 +214,7 @@ export function Signup() {
   useReveal([]);
   return (
     <>
-      <PageHero eyebrow="Your Account" title="Join the Aurelian List.">
+      <PageHero eyebrow="Your Account" title="Join the Avelor List.">
         <p>Create an account to save watches, manage alerts and check out faster.</p>
       </PageHero>
       <section className="py-20">

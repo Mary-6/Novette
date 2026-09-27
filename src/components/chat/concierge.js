@@ -17,7 +17,7 @@ export function greeting(user) {
   const part = h < 12 ? 'morning' : h < 17 ? 'afternoon' : 'evening';
   const first = (user?.name || 'there').split(' ')[0];
   return {
-    text: `Good ${part}, ${first} — welcome to Aurelian. I'm your personal concierge. How may I assist today?`,
+    text: `Good ${part}, ${first} — welcome to Avelor. I'm your personal concierge. How may I assist today?`,
     options: GREETING_OPTIONS,
   };
 }
@@ -94,7 +94,7 @@ export function reply(text, ctx = {}) {
 
   if (has('authentic', 'warranty', 'genuine', 'real', 'fake', 'certif')) {
     return {
-      text: 'Every watch passes a 40-point bench inspection by our master horologists — serial, movement and provenance verified — and is covered by a two-year Aurelian warranty beyond manufacturer terms.',
+      text: 'Every watch passes a 40-point bench inspection by our master horologists — serial, movement and provenance verified — and is covered by a two-year Avelor warranty beyond manufacturer terms.',
       links: [
         { label: 'Authenticity pledge', to: '/authenticity-pledge' },
         { label: 'Warranty', to: '/warranty' },

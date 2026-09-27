@@ -3,7 +3,7 @@ const brandContent = {
     history: [
       "Hans Wilsdorf registered the Rolex name in 1908, betting that the wristwatch — then dismissed as a ladies' trinket — would replace the pocket watch. Within two decades his waterproof Oyster case and self-winding Perpetual rotor made the bet look inevitable.",
       'The golden run of tool watches followed: the Submariner, GMT-Master, Explorer, Day-Date and Daytona each defined a category and then refused to leave it. Rolex became the brand that equips expeditions and then commemorates them.',
-      'Today a certified Rolex from Aurelian Watches is the most liquid asset in watchmaking — recognisable in every airport on earth, and the anchor of nearly every serious collection. It is where most collectors begin and, quietly, where many end.',
+      'Today a certified Rolex from Avelor Watches is the most liquid asset in watchmaking — recognisable in every airport on earth, and the anchor of nearly every serious collection. It is where most collectors begin and, quietly, where many end.',
     ],
     keyTerms: [
       {
@@ -31,7 +31,7 @@ const brandContent = {
       },
       {
         q: 'Why do some Rolex sell above retail?',
-        a: 'Boutique allocation creates scarcity for certain steel sports references. Our prices are set by the Aurelian Market Index — real transaction data, not hype.',
+        a: 'Boutique allocation creates scarcity for certain steel sports references. Our prices are set by the Avelor Market Index — real transaction data, not hype.',
       },
       {
         q: 'Which Rolex holds value best?',

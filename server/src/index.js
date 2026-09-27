@@ -428,7 +428,7 @@ app.post(
     if (!parsed.success) return res.status(400).json({ error: 'Invalid input' });
     const msg = await prisma.contactMessage.create({ data: parsed.data });
     await sendMail({
-      to: 'aurelianwatches@gmail.com',
+      to: 'avelorwatches@gmail.com',
       subject: `Contact: ${parsed.data.subject || 'General enquiry'}`,
       html: `<p>From ${parsed.data.name} &lt;${parsed.data.email}&gt;</p><p>${parsed.data.message}</p>`,
     });
@@ -809,5 +809,5 @@ async function ensureAdmin() {
 
 const port = Number(process.env.PORT || 4000);
 ensureAdmin().then(() =>
-  app.listen(port, () => console.log(`Aurelian API on http://localhost:${port}`))
+  app.listen(port, () => console.log(`Avelor API on http://localhost:${port}`))
 );

@@ -4,7 +4,7 @@ const collections = [
     name: 'Luxury Watches',
     eyebrow: 'The Collection',
     description:
-      'Our complete offering of fine timepieces — every watch authenticated, serviced and warranted by Aurelian Watches.',
+      'Our complete offering of fine timepieces — every watch authenticated, serviced and warranted by Avelor Watches.',
     filter: () => true,
   },
   {

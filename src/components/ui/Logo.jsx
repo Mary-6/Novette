@@ -26,7 +26,7 @@ export default function Logo({ size = 'md', className = '' }) {
     <div className={`flex shrink-0 select-none items-center gap-2.5 ${className}`}>
       <LogoMark className={mark} />
       <span className={`heading-display tracking-wide ${text}`}>
-        Aurelian <span className="text-gold">Watches</span>
+        Avelor <span className="text-gold">Watches</span>
       </span>
     </div>
   );

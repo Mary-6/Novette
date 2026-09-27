@@ -131,13 +131,13 @@ export function HeritageIntro() {
     <section className="py-20 lg:py-28">
       <div className="container-x grid items-center gap-12 lg:grid-cols-2">
         <div className="reveal">
-          <p className="eyebrow mb-3">The Aurelian Standard</p>
+          <p className="eyebrow mb-3">The Avelor Standard</p>
           <h2 className="heading-display text-3xl font-medium sm:text-4xl lg:text-5xl">
             Where Heritage Meets Modern Elegance
           </h2>
           <div className="mt-6 space-y-4 text-sm leading-relaxed text-graphite">
             <p>
-              For nearly four decades Aurelian Watches has brought together the world&apos;s most
+              For nearly four decades Avelor Watches has brought together the world&apos;s most
               legendary watches for collectors who value precision, heritage and lasting value —
               each reference chosen for the story it will carry onto the next wrist.
             </p>
@@ -333,7 +333,7 @@ export function MarketIndex() {
         <div>
           <p className="eyebrow mb-3">Pricing Intelligence</p>
           <h2 className="heading-display text-3xl font-medium sm:text-4xl">
-            The Aurelian Market Index
+            The Avelor Market Index
           </h2>
           <p className="mt-4 max-w-2xl text-sm leading-relaxed text-ivory/70">
             Each quarter our analysts publish an internal measure of the certified market for new
@@ -346,7 +346,7 @@ export function MarketIndex() {
             midnight — and why our listings move with the market rather than against it.
           </p>
         </div>
-        <Button to="/journal/aurelian-market-index" variant="gold" className="rounded-full">
+        <Button to="/journal/avelor-market-index" variant="gold" className="rounded-full">
           View Report
         </Button>
       </div>
@@ -395,7 +395,7 @@ export function PromiseSection() {
     {
       icon: LineChart,
       title: 'Pricing Transparency',
-      text: 'Every price is set against the Aurelian Market Index — measured, transparent and fair.',
+      text: 'Every price is set against the Avelor Market Index — measured, transparent and fair.',
     },
     {
       icon: Watch,
@@ -446,13 +446,13 @@ export function AboutBlock() {
     <section className="py-20 lg:py-28">
       <div className="container-x grid gap-12 lg:grid-cols-2">
         <div className="reveal">
-          <p className="eyebrow mb-3">About Aurelian Watches</p>
+          <p className="eyebrow mb-3">About Avelor Watches</p>
           <h2 className="heading-display text-3xl font-medium sm:text-4xl lg:text-5xl">
             Our Story
           </h2>
           <div className="mt-6 space-y-4 text-sm leading-relaxed text-graphite">
             <p>
-              Founded in 1987 as a small atelier restoring earlier Rolex references, Aurelian
+              Founded in 1987 as a small atelier restoring earlier Rolex references, Avelor
               Watches grew from a two-bench workshop into a destination trusted by more than 25,000
               clients across the United States.
             </p>
@@ -462,7 +462,7 @@ export function AboutBlock() {
               inspected and certified.
             </p>
             <p>
-              Every listing is priced against the Aurelian Market Index, shipped fully insured, and
+              Every listing is priced against the Avelor Market Index, shipped fully insured, and
               covered by a two-year warranty — because a fine watch should be the safest purchase
               you make all year.
             </p>
@@ -516,7 +516,7 @@ export function Reviews() {
 export function WhyShop() {
   const points = [
     'Every watch authenticated by master watchmakers, in-house',
-    'Pricing set by the Aurelian Market Index — real transaction data',
+    'Pricing set by the Avelor Market Index — real transaction data',
     'Real-time inventory: listed means in our vault and ready',
     'Free insured overnight shipping, signature on delivery',
     'Two-year warranty serviced on our own benches',
@@ -587,7 +587,7 @@ export function Newsletter() {
   return (
     <section className="bg-ink py-20 text-ivory lg:py-28">
       <div className="container-x max-w-2xl text-center">
-        <p className="eyebrow mb-4">The Aurelian List</p>
+        <p className="eyebrow mb-4">The Avelor List</p>
         <h2 className="heading-display text-4xl font-medium sm:text-5xl">
           Timeless Style, Delivered.
         </h2>
