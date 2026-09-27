@@ -638,7 +638,7 @@ export default function Admin() {
                 <label className="eyebrow mb-1 block">Store name</label>
                 <input
                   name="storeName"
-                  defaultValue={settings.storeName || 'Avelor Watches'}
+                  defaultValue={settings.storeName || 'Veymont Watches'}
                   className={inputCls}
                 />
               </div>
@@ -646,7 +646,7 @@ export default function Admin() {
                 <label className="eyebrow mb-1 block">Contact email</label>
                 <input
                   name="contactEmail"
-                  defaultValue={settings.contactEmail || 'avelorwatches@gmail.com'}
+                  defaultValue={settings.contactEmail || 'veymontwatches@gmail.com'}
                   className={inputCls}
                 />
               </div>

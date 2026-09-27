@@ -1,4 +1,4 @@
-# Avelor Watches — backend
+# Veymont Watches — backend
 
 Express + Prisma + Postgres API in `server/`.
 
@@ -20,7 +20,7 @@ npm run dev                   # Vite on :5173, proxies /api → :4000
 - Orders: `POST /api/orders` (validates stock, decrements, emails confirmation), `GET /api/orders`, `GET /api/orders/:number?email=…`.
 - `POST /api/contact`, `POST /api/newsletter`, `GET /api/shipping-rates`.
 - Admin (role=admin): stats, watch price/inventory/featured edit, order status, messages — UI at `/admin`.
-- Admin seed account: `admin@aurelianwatches.com` / `Avelor#Admin1` (change for production).
+- Admin seed account: `admin@aurelianwatches.com` / `Veymont#Admin1` (change for production).
 - Frontend falls back to localStorage/demo mode when the API is unreachable.
 
 ### Also added

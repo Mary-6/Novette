@@ -335,7 +335,7 @@ function Indices({ type, cx, cy, r, color, bezel }) {
 export default function WatchArt({
   art = {},
   view = 'front',
-  engraving = 'AVELOR',
+  engraving = 'VEYMONT',
   className = '',
   label = 'Watch illustration',
 }) {

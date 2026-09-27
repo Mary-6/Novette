@@ -10,7 +10,7 @@ const articles = [
       'Every collector remembers the fork in the road: the warm, slightly faded dial of a 1970s piece that has lived a life, or the crisp certainty of a current-production watch with a full warranty. Neither is the correct answer — they simply reward different temperaments. Vintage rewards patience and study; modern rewards decisiveness.',
       'A vintage watch asks more of its owner. Lume has aged, parts have been replaced, and two identical references can tell completely different stories. That is precisely the appeal: you are buying a survivor, not a product. Modern pieces, by contrast, deliver tolerances and water resistance that 1968 could only dream of — and a service network that will exist decades from now.',
       'Our honest advice for a first purchase: buy the best example you can afford of whichever makes you check your wrist a second time. Condition outweighs rarity for a watch you will actually wear, and a strong box-and-papers set protects resale better than an exotic reference with a tired case.',
-      'Whichever you choose, insist on documentation of what was inspected and when. At Avelor Watches every watch — 1965 or 2025 — passes the same 40-point bench examination, because a first serious watch deserves a serious look before it reaches yours.',
+      'Whichever you choose, insist on documentation of what was inspected and when. At Veymont Watches every watch — 1965 or 2025 — passes the same 40-point bench examination, because a first serious watch deserves a serious look before it reaches yours.',
     ],
   },
   {
@@ -35,7 +35,7 @@ const articles = [
     readTime: '7 min read',
     date: '2025-11-02',
     body: [
-      'Every watch that arrives at Avelor Watches is opened — literally. The first checkpoints happen on the bench: case and serial numbers against factory records, movement calibre against the reference, and finish quality under a 10x loupe. A counterfeit can survive a glance; it does not survive a loupe and a reference table.',
+      'Every watch that arrives at Veymont Watches is opened — literally. The first checkpoints happen on the bench: case and serial numbers against factory records, movement calibre against the reference, and finish quality under a 10x loupe. A counterfeit can survive a glance; it does not survive a loupe and a reference table.',
       'From there we move to originality. Dial printing, lume composition, hand sets, crown and bezel inserts are compared against period-correct examples. A refinished dial is not a dealbreaker — but it is always disclosed, because honesty about restoration is the entire point of a certificate.',
       'The final stage is performance: timing across positions, power-reserve measurement, and a pressure test where the reference calls for it. Watches that pass leave the bench with a signed certificate, fresh service records and our two-year warranty; those that fail are returned or broken down for parts.',
       'It is deliberately unglamorous work — forty small checks that add up to the only thing a buyer cannot photograph for themselves: certainty.',
@@ -98,14 +98,14 @@ const articles = [
     ],
   },
   {
-    slug: 'avelor-market-index',
+    slug: 'veymont-market-index',
     category: 'Market',
-    title: 'The Avelor Market Index: What Moved This Quarter',
+    title: 'The Veymont Market Index: What Moved This Quarter',
     dek: 'Our internal pricing index reads thousands of transactions so you do not have to.',
     readTime: '6 min read',
     date: '2025-11-10',
     body: [
-      'Every quarter our analysts publish the Avelor Market Index — an internal measure of the certified market built from our own completed sales, verified dealer transactions and observed auction results. It is not sentiment and it is not asking prices; it is what watches actually changed hands for.',
+      'Every quarter our analysts publish the Veymont Market Index — an internal measure of the certified market built from our own completed sales, verified dealer transactions and observed auction results. It is not sentiment and it is not asking prices; it is what watches actually changed hands for.',
       'This quarter the Index tells a familiar story: the speculative premium on the most-hyped steel sports references continues to compress toward retail, while the strongest performers were the quiet categories — two-tone dress watches, mid-size cases under 36mm, and vintage pieces with exceptional provenance.',
       'Gold watches in particular outperformed the Index average for the fourth consecutive quarter, tracking both bullion prices and a broader taste shift toward warmth on the wrist. Meanwhile, well-documented vintage divers with original dials remain genuinely scarce — supply, not demand, is their constraint.',
       'We publish the Index because an informed buyer is a better client. Every price on this site is set against it, which is why our listings carry the same figure whether you call, visit, or checkout at midnight.',

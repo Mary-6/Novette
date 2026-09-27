@@ -177,7 +177,7 @@ export default function Shop() {
     <ShopLayout
       eyebrow="The Collection"
       title="Shop Luxury Watches"
-      intro="Every watch below has been authenticated, inspected and warranted by Avelor Watches. Browse by maison, or search by model and reference."
+      intro="Every watch below has been authenticated, inspected and warranted by Veymont Watches. Browse by maison, or search by model and reference."
       source={watches}
     />
   );

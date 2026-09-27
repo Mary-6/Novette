@@ -133,7 +133,7 @@ export default function Contact() {
                 </li>
                 <li className="flex items-start gap-3">
                   <Mail size={16} className="mt-0.5 text-gold" />
-                  <span>avelorwatches@gmail.com</span>
+                  <span>veymontwatches@gmail.com</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <Clock size={16} className="mt-0.5 text-gold" />
