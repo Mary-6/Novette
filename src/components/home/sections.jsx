@@ -138,7 +138,8 @@ export function HeritageIntro() {
           <div className="mt-6 space-y-4 text-sm leading-relaxed text-graphite">
             <p>
               For nearly four decades Lumont Watches has brought together the world&apos;s most
-              legendary watches for collectors who value precision, heritage and lasting value,               each reference chosen for the story it will carry onto the next wrist.
+              legendary watches for collectors who value precision, heritage and lasting value, each
+              reference chosen for the story it will carry onto the next wrist.
             </p>
             <p>
               Every watch undergoes a multi-point inspection by our certified horologists: serial
@@ -212,7 +213,11 @@ export function RolexFamiliesSection() {
         />
         <div className="grid grid-cols-2 gap-6 sm:grid-cols-3 lg:grid-cols-6">
           {rolexFamilies.slice(0, 6).map((f) => {
-            const rep = watches.find((w) => w.family === f.name);
+            const rep =
+              watches.find((w) => w.family === f.name) ||
+              watches.find((w) =>
+                (w.model || '').toLowerCase().includes(f.slug.replaceAll('-', ' '))
+              );
             return (
               <Link key={f.slug} to={`/rolex/${f.slug}`} className="group block text-center">
                 <div className="overflow-hidden bg-sand">
@@ -451,9 +456,9 @@ export function AboutBlock() {
           </h2>
           <div className="mt-6 space-y-4 text-sm leading-relaxed text-graphite">
             <p>
-              Founded in 1987 as a small atelier restoring earlier Rolex references, Lumont
-              Watches grew from a two-bench workshop into a destination trusted by more than 25,000
-              clients across the United States.
+              Founded in 1987 as a small atelier restoring earlier Rolex references, Lumont Watches
+              grew from a two-bench workshop into a destination trusted by more than 25,000 clients
+              across the United States.
             </p>
             <p>
               We moved online in 2004 and have served clients nationwide ever since, but the rule
@@ -462,8 +467,8 @@ export function AboutBlock() {
             </p>
             <p>
               Every listing is priced against the Lumont Market Index, shipped fully insured, and
-              covered by a two-year warranty, because a fine watch should be the safest purchase
-              you make all year.
+              covered by a two-year warranty, because a fine watch should be the safest purchase you
+              make all year.
             </p>
           </div>
           <Button to="/about-us" variant="outline" className="mt-8 rounded-full">
