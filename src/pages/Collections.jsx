@@ -14,7 +14,7 @@ export function CollectionsIndex() {
     <>
       <PageHero eyebrow="Curated Edits" title="Collections">
         <p>
-          Eight edits of the collection — by style, by wrist, by metal — each one a different way
+          Eight edits of the collection, by style, by wrist, by metal, each one a different way
           into the catalogue.
         </p>
       </PageHero>

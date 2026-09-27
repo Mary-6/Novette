@@ -50,7 +50,7 @@ function AskModal({ watch, onClose }) {
         </p>
         {sent ? (
           <p className="mt-6 text-sm text-graphite">
-            Thank you — a specialist will reply to {form.email} within one business day.
+            Thank you, a specialist will reply to {form.email} within one business day.
           </p>
         ) : (
           <form onSubmit={submit} className="mt-6 space-y-4" noValidate>
@@ -235,7 +235,7 @@ export default function ProductDetail() {
               </div>
               {!canBuy && (
                 <p className="mt-3 text-xs text-stone">
-                  This piece is currently reserved — contact our concierge to join the waitlist.
+                  This piece is currently reserved, contact our concierge to join the waitlist.
                 </p>
               )}
               <div className="mt-8 flex flex-wrap gap-x-6 gap-y-2 border-y border-stone/25 py-4 text-[11px] uppercase tracking-[0.18em] text-graphite">
@@ -275,9 +275,7 @@ export default function ProductDetail() {
                 </AccordionItem>
                 <AccordionItem title="Authentication">
                   <p>
-                    Every timepiece passes a 40-point inspection by our master watchmakers —
-                    movement, dial, case geometry and bracelet verified against factory records —
-                    and ships with a signed Veymont Watches Certificate of Authenticity.{' '}
+                    Every timepiece passes a 40-point inspection by our master watchmakers,                     movement, dial, case geometry and bracelet verified against factory records,                     and ships with a signed Lumont Watches Certificate of Authenticity.{' '}
                     <Link to="/authenticity-pledge" className="text-goldDark underline">
                       Read our pledge
                     </Link>
@@ -286,7 +284,7 @@ export default function ProductDetail() {
                 </AccordionItem>
                 <AccordionItem title="Shipping & Returns">
                   <p>
-                    Fully insured, discreet packaging with signature delivery — complimentary
+                    Fully insured, discreet packaging with signature delivery, complimentary
                     overnight on every order. Fourteen-day returns for a full refund;{' '}
                     <Link to="/return-policy" className="text-goldDark underline">
                       read the policy

@@ -8,7 +8,7 @@ const brands = [
     founded: 1905,
     tagline: 'A crown for every achievement.',
     intro:
-      'Founded in London before finding its permanent home in Geneva, Rolex defined the modern wristwatch with waterproof cases and perpetual movements. Its tool watches — the Submariner, GMT-Master and Daytona among them — have become the reference points against which all luxury sport watches are measured.',
+      'Founded in London before finding its permanent home in Geneva, Rolex defined the modern wristwatch with waterproof cases and perpetual movements. Its tool watches, the Submariner, GMT-Master and Daytona among them, have become the reference points against which all luxury sport watches are measured.',
     heroTone: 'dark',
   },
   {
@@ -38,7 +38,7 @@ const brands = [
     founded: 2001,
     tagline: 'A racing machine on the wrist.',
     intro:
-      'Richard Mille arrived in 2001 with a single idea: apply the materials and engineering of Formula 1 to watchmaking. Tonneau cases, skeletonised movements and extreme lightness have made the marque the most recognisable — and most exclusive — of the modern era.',
+      'Richard Mille arrived in 2001 with a single idea: apply the materials and engineering of Formula 1 to watchmaking. Tonneau cases, skeletonised movements and extreme lightness have made the marque the most recognisable, and most exclusive, of the modern era.',
     heroTone: 'dark',
   },
   {
@@ -48,7 +48,7 @@ const brands = [
     founded: 1848,
     tagline: 'Exact time for life.',
     intro:
-      'Omega supplied watches to Olympic timers, combat divers and NASA astronauts — the Speedmaster remains the only watch worn on the Moon. Today the Biel manufacture pairs that heritage with industry-leading Master Chronometer movements.',
+      'Omega supplied watches to Olympic timers, combat divers and NASA astronauts, the Speedmaster remains the only watch worn on the Moon. Today the Biel manufacture pairs that heritage with industry-leading Master Chronometer movements.',
     heroTone: 'dark',
   },
   {
@@ -68,7 +68,7 @@ const brands = [
     founded: 1884,
     tagline: 'Instruments for professionals.',
     intro:
-      "Breitling built its reputation on the chronograph and on aviation — the Navitimer's circular slide rule made it the pilot's companion of the jet age. Robust, legible and unapologetically technical, the manufacture's watches are built to be used.",
+      "Breitling built its reputation on the chronograph and on aviation, the Navitimer's circular slide rule made it the pilot's companion of the jet age. Robust, legible and unapologetically technical, the manufacture's watches are built to be used.",
     heroTone: 'dark',
   },
   {
@@ -88,7 +88,7 @@ const brands = [
     founded: 1926,
     tagline: 'Born to dare.',
     intro:
-      'Created by Rolex founder Hans Wilsdorf, Tudor offered professional-grade tool watches at an attainable price — and the French and US navies took notice. The modern Black Bay line distils that heritage into some of the best value in Swiss watchmaking.',
+      'Created by Rolex founder Hans Wilsdorf, Tudor offered professional-grade tool watches at an attainable price, and the French and US navies took notice. The modern Black Bay line distils that heritage into some of the best value in Swiss watchmaking.',
     heroTone: 'dark',
   },
   {
@@ -98,7 +98,7 @@ const brands = [
     founded: 1980,
     tagline: 'The art of fusion.',
     intro:
-      "Hublot made its name pairing a gold case with a rubber strap — a scandal in 1980, a signature ever since. The Big Bang's bold construction and exotic materials embody the manufacture's philosophy of fusion between tradition and innovation.",
+      "Hublot made its name pairing a gold case with a rubber strap, a scandal in 1980, a signature ever since. The Big Bang's bold construction and exotic materials embody the manufacture's philosophy of fusion between tradition and innovation.",
     heroTone: 'dark',
   },
   {
@@ -128,7 +128,7 @@ const brands = [
     founded: 1833,
     tagline: 'The watchmaker of watchmakers.',
     intro:
-      "The Vallée de Joux's great movement factory has produced over a thousand calibres and supplied many of the finest maisons. Its own creations — the reversible Reverso and the elegant Master line — marry technical depth with quiet refinement.",
+      "The Vallée de Joux's great movement factory has produced over a thousand calibres and supplied many of the finest maisons. Its own creations, the reversible Reverso and the elegant Master line, marry technical depth with quiet refinement.",
     heroTone: 'light',
   },
   {
@@ -148,7 +148,7 @@ const brands = [
     founded: 1960,
     tagline: 'The nature of time.',
     intro:
-      'Grand Seiko pursues a Japanese ideal of precision, legibility and quiet beauty. Its Spring Drive movements and hand-finished cases — exemplified by the celebrated Snowflake — rival anything produced in Switzerland.',
+      'Grand Seiko pursues a Japanese ideal of precision, legibility and quiet beauty. Its Spring Drive movements and hand-finished cases, exemplified by the celebrated Snowflake, rival anything produced in Switzerland.',
     heroTone: 'light',
   },
 ];

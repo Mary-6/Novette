@@ -66,7 +66,7 @@ export default function ProductGallery({ watch, art, engraving }) {
             aria-label={
               s.type === 'art'
                 ? `${s.label} view`
-                : `${watch?.model || 'Watch'} — ${VIEWS[s.index]?.label || `View ${s.index + 1}`}`
+                : `${watch?.model || 'Watch'}, ${VIEWS[s.index]?.label || `View ${s.index + 1}`}`
             }
           >
             {s.type === 'photo' || s.type === 'visualization' ? (
@@ -115,7 +115,7 @@ export default function ProductGallery({ watch, art, engraving }) {
       )}
       {creds.length > 0 && (
         <p className="mt-2 text-[11px] text-stone">
-          Photos via Wikimedia Commons — representative of the model shown.
+          Photos via Wikimedia Commons, representative of the model shown.
         </p>
       )}
     </div>

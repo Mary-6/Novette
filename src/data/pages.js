@@ -10,7 +10,7 @@ const pages = {
     sections: [
       {
         heading: 'Prices set by data, not theatre',
-        body: 'Every listing is priced against the Veymont Market Index — our internal measure of real, completed transactions. The same watch carries the same price for every client, everywhere in the country.',
+        body: 'Every listing is priced against the Lumont Market Index, our internal measure of real, completed transactions. The same watch carries the same price for every client, everywhere in the country.',
       },
       {
         heading: 'Real-time inventory',
@@ -18,11 +18,11 @@ const pages = {
       },
       {
         heading: 'A warranty that means something',
-        body: 'Every purchase carries a two-year warranty serviced in our own workshop — the same benches that authenticated the watch in the first place.',
+        body: 'Every purchase carries a two-year warranty serviced in our own workshop, the same benches that authenticated the watch in the first place.',
       },
       {
         heading: 'People, not queues',
-        body: 'A dedicated specialist answers every enquiry personally — sourcing, sizing, aftercare and consultation are all part of the service.',
+        body: 'A dedicated specialist answers every enquiry personally, sourcing, sizing, aftercare and consultation are all part of the service.',
       },
     ],
   },
@@ -40,7 +40,7 @@ const pages = {
       },
       {
         heading: 'Backed for two years',
-        body: 'Every certified watch ships with a signed Veymont Watches Certificate of Authenticity and a two-year warranty on the movement and its functions — serviced in-house, not outsourced.',
+        body: 'Every certified watch ships with a signed Lumont Watches Certificate of Authenticity and a two-year warranty on the movement and its functions, serviced in-house, not outsourced.',
       },
     ],
   },
@@ -54,7 +54,7 @@ const pages = {
       },
       {
         heading: 'Authentication guarantee',
-        body: 'If any watch we sell is ever shown not to be genuine — at any point, forever — we will refund the full purchase price. That pledge has held since 1987 and is part of your certificate.',
+        body: 'If any watch we sell is ever shown not to be genuine, at any point, forever, we will refund the full purchase price. That pledge has held since 1987 and is part of your certificate.',
       },
       {
         heading: 'If something goes wrong',
@@ -94,7 +94,7 @@ const pages = {
       },
       {
         heading: 'Remote locations',
-        body: 'For destinations outside standard courier coverage we arrange specialist high-value transport — ask your specialist for a quote.',
+        body: 'For destinations outside standard courier coverage we arrange specialist high-value transport, ask your specialist for a quote.',
       },
     ],
   },
@@ -104,11 +104,11 @@ const pages = {
     sections: [
       {
         heading: 'The window',
-        body: 'You have 14 days from delivery to return a watch for a full refund, provided it comes back in the condition it left — unworn beyond reasonable inspection, with all links, accessories, certificates and packaging.',
+        body: 'You have 14 days from delivery to return a watch for a full refund, provided it comes back in the condition it left, unworn beyond reasonable inspection, with all links, accessories, certificates and packaging.',
       },
       {
         heading: 'How to return',
-        body: 'Contact your specialist for an insured, prepaid return label. Once the watch clears bench inspection — typically within two business days — the refund is issued within five business days.',
+        body: 'Contact your specialist for an insured, prepaid return label. Once the watch clears bench inspection, typically within two business days, the refund is issued within five business days.',
       },
       {
         heading: 'Exclusions',
@@ -118,11 +118,11 @@ const pages = {
   },
   warranty: {
     eyebrow: 'Two Years',
-    title: 'Veymont Watches Warranty',
+    title: 'Lumont Watches Warranty',
     sections: [
       {
         heading: 'Coverage',
-        body: 'Every watch carries a two-year warranty covering the movement and its functions — accuracy, winding, and complication operation under normal use.',
+        body: 'Every watch carries a two-year warranty covering the movement and its functions, accuracy, winding, and complication operation under normal use.',
       },
       {
         heading: 'What is not covered',
@@ -130,7 +130,7 @@ const pages = {
       },
       {
         heading: 'How warranty service works',
-        body: 'Our own watchmakers perform all warranty work. Contact your specialist, ship with our insured label, and most services return within ten business days — never outsourced.',
+        body: 'Our own watchmakers perform all warranty work. Contact your specialist, ship with our insured label, and most services return within ten business days, never outsourced.',
       },
     ],
   },
@@ -150,11 +150,11 @@ const pages = {
     sections: [
       {
         heading: 'Verification of everything we sell',
-        body: 'We verify the provenance of every piece we acquire — purchase history, service records and registry checks against global stolen-watch databases. Pieces with gaps in provenance are declined.',
+        body: 'We verify the provenance of every piece we acquire, purchase history, service records and registry checks against global stolen-watch databases. Pieces with gaps in provenance are declined.',
       },
       {
         heading: 'AML & KYC',
-        body: 'Veymont Watches complies with anti-money-laundering regulations in every jurisdiction we serve. High-value transactions may require identity verification before release.',
+        body: 'Lumont Watches complies with anti-money-laundering regulations in every jurisdiction we serve. High-value transactions may require identity verification before release.',
       },
       {
         heading: 'Data & privacy',
@@ -172,11 +172,11 @@ const pages = {
       },
       {
         heading: 'How we use it',
-        body: 'Your information is used to fulfil orders, provide concierge service, and — only with consent — send the Veymont List newsletter. We never sell client data.',
+        body: 'Your information is used to fulfil orders, provide concierge service, and, only with consent, send the Lumont List newsletter. We never sell client data.',
       },
       {
         heading: 'Your rights',
-        body: 'You may request a copy, correction, or deletion of your personal data at any time by writing to privacy@veymontwatches.com.',
+        body: 'You may request a copy, correction, or deletion of your personal data at any time by writing to privacy@lumontwatches.com.',
       },
     ],
   },
@@ -224,7 +224,7 @@ const pages = {
     sections: [
       {
         heading: 'Standards',
-        body: 'We aim to meet WCAG 2.1 AA across this site — sufficient contrast, keyboard navigability, focus visibility and text alternatives for non-text content.',
+        body: 'We aim to meet WCAG 2.1 AA across this site, sufficient contrast, keyboard navigability, focus visibility and text alternatives for non-text content.',
       },
       {
         heading: 'Continuous work',
@@ -232,7 +232,7 @@ const pages = {
       },
       {
         heading: 'Feedback',
-        body: 'If you encounter a barrier, write to accessibility@veymontwatches.com or call the concierge — we will respond within two business days and offer an accessible alternative.',
+        body: 'If you encounter a barrier, write to accessibility@lumontwatches.com or call the concierge, we will respond within two business days and offer an accessible alternative.',
       },
     ],
   },

@@ -6,8 +6,8 @@ export default function WatchImage({ watch, index = 0, className = '', view, alt
   const [failed, setFailed] = useState(false);
   const src = watch?.images?.[index];
   const brand = brandBySlug(watch?.brandSlug);
-  const name = `${brand?.name || ''} ${watch?.model || ''} — ${watch?.reference || ''}`
-    .replace(/ — $/, '')
+  const name = `${brand?.name || ''} ${watch?.model || ''}, ${watch?.reference || ''}`
+    .replace(/, $/, '')
     .trim();
   if (!src || failed) {
     return (
@@ -22,7 +22,7 @@ export default function WatchImage({ watch, index = 0, className = '', view, alt
   return (
     <img
       src={src}
-      alt={alt || (view ? `${name} — ${view}` : name)}
+      alt={alt || (view ? `${name}, ${view}` : name)}
       decoding="async"
       loading={eager ? 'eager' : 'lazy'}
       fetchpriority={eager ? 'high' : undefined}

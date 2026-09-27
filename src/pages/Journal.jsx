@@ -11,7 +11,7 @@ export function JournalIndex() {
     <>
       <PageHero eyebrow="Editorial" title="The Journal">
         <p>
-          Original essays and market notes from our specialists — written for people who wear what
+          Original essays and market notes from our specialists, written for people who wear what
           they collect.
         </p>
       </PageHero>

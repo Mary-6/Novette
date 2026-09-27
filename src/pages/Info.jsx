@@ -35,7 +35,7 @@ const LEADERSHIP = [
   {
     name: 'Priya Nair',
     role: 'Head of Client Services',
-    bio: 'Runs the concierge desk for clients nationwide — one specialist per client.',
+    bio: 'Runs the concierge desk for clients nationwide, one specialist per client.',
   },
   {
     name: 'Daniel Osei',
@@ -48,7 +48,7 @@ const PROMISE = [
   {
     icon: BadgeCheck,
     title: '100% Authentic',
-    text: 'Certified by our own bench — never photographed proxies.',
+    text: 'Certified by our own bench, never photographed proxies.',
   },
   {
     icon: LineChart,
@@ -76,8 +76,8 @@ function AboutBody() {
             <SectionHeading eyebrow="Our Story" title="From a restoration bench to nationwide." />
             <div className="space-y-5 text-sm leading-relaxed text-graphite">
               <p>
-                Veymont Watches was founded in 1987 as a two-bench atelier restoring earlier Rolex
-                references — the watches dealers had written off. Clients began asking the workshop
+                Lumont Watches was founded in 1987 as a two-bench atelier restoring earlier Rolex
+                references, the watches dealers had written off. Clients began asking the workshop
                 to find pieces for them, and then to stand behind them.
               </p>
               <p>
@@ -91,8 +91,7 @@ function AboutBody() {
             <SectionHeading eyebrow="Mission" title="Mission Statement & Service Culture" />
             <div className="space-y-5 text-sm leading-relaxed text-graphite">
               <p>
-                Our mission is to make buying a fine watch as trustworthy as the watch itself —
-                honest pricing, verified inventory, and a specialist who knows your name.
+                Our mission is to make buying a fine watch as trustworthy as the watch itself,                 honest pricing, verified inventory, and a specialist who knows your name.
               </p>
               <p>
                 Service here is not a queue. Every client is assigned a dedicated specialist for
@@ -156,7 +155,7 @@ function AboutBody() {
             </div>
             <div className="reveal border border-graphite p-8">
               <p className="eyebrow">Headquarters</p>
-              <p className="heading-display mt-2 text-2xl">New York — online only</p>
+              <p className="heading-display mt-2 text-2xl">New York, online only</p>
               <p className="mt-4 flex items-start gap-2 text-sm text-ivory/70">
                 <MapPin size={15} className="mt-0.5 shrink-0 text-gold" /> Our watchmakers and
                 concierge work from our U.S. headquarters; we do not currently operate a walk-in
@@ -182,14 +181,14 @@ function LocationsBody() {
         <div className="container-x max-w-3xl text-center">
           <SectionHeading eyebrow="Where We Serve" title="Serving Customers Nationwide" />
           <p className="mt-8 text-base leading-relaxed text-graphite">
-            Veymont Watches serves customers throughout the United States. We specialize in selling
-            Rolex watches and other luxury timepieces — serving customers nationwide through our
+            Lumont Watches serves customers throughout the United States. We specialize in selling
+            Rolex watches and other luxury timepieces, serving customers nationwide through our
             online boutique and concierge service.
           </p>
           <p className="mt-5 text-sm leading-relaxed text-graphite">
             We do not currently operate a walk-in showroom. Every watch is held in our U.S.
             headquarters, inspected and certified by our master watchmakers, then shipped to you by
-            insured overnight courier with signature required — free on every order.
+            insured overnight courier with signature required, free on every order.
           </p>
         </div>
       </section>
@@ -208,7 +207,7 @@ function LocationsBody() {
               Personal Concierge
             </p>
             <p className="mt-3 text-sm leading-relaxed text-graphite">
-              A dedicated specialist by phone, chat or email — 9am–9pm ET, seven days a week.
+              A dedicated specialist by phone, chat or email, 9am–9pm ET, seven days a week.
             </p>
           </div>
           <div className="reveal text-center">
@@ -238,7 +237,7 @@ const GUIDE = [
   ],
   [
     'Choose the metal',
-    'Steel is versatile and holds value; gold dresses up and wears warmer; two-tone splits the difference — and prices follow.',
+    'Steel is versatile and holds value; gold dresses up and wears warmer; two-tone splits the difference, and prices follow.',
   ],
   [
     'Box and papers',
@@ -246,18 +245,18 @@ const GUIDE = [
   ],
   [
     'Check provenance',
-    'Every Veymont Watches listing is registry-checked and provenance-verified before it reaches the site.',
+    'Every Lumont Watches listing is registry-checked and provenance-verified before it reaches the site.',
   ],
   [
     'Wear it first',
-    'The best watch is the one that suits your week — not the one that sits in a safe.',
+    'The best watch is the one that suits your week, not the one that sits in a safe.',
   ],
 ];
 
 const CARE = [
   [
     'Winding',
-    'Hand-wound pieces enjoy a gentle daily wind; automatics wind with wear. Stop when you feel resistance — never force the crown.',
+    'Hand-wound pieces enjoy a gentle daily wind; automatics wind with wear. Stop when you feel resistance, never force the crown.',
   ],
   [
     'Water',
@@ -269,7 +268,7 @@ const CARE = [
   ],
   [
     'Service',
-    'A mechanical movement wants servicing every five to seven years — ours are done in-house and covered under warranty.',
+    'A mechanical movement wants servicing every five to seven years, ours are done in-house and covered under warranty.',
   ],
 ];
 
@@ -376,18 +375,18 @@ export default function InfoPage({ slug }) {
   const intro = {
     'why-buy-from-us': 'Four principles that separate a trustworthy exchange from a listing board.',
     'authenticity-pledge':
-      'What it means, precisely, when we say a watch is Veymont Watches certified.',
+      'What it means, precisely, when we say a watch is Lumont Watches certified.',
     'buyers-protection-plan':
-      'Every order is covered from payment to the first day on your wrist — and beyond.',
-    'shipping-info': 'Discreet, insured and fast — how every watch reaches its wrist.',
+      'Every order is covered from payment to the first day on your wrist, and beyond.',
+    'shipping-info': 'Discreet, insured and fast, how every watch reaches its wrist.',
     'international-shipping': 'We deliver fully insured to more than forty countries.',
-    'return-policy': 'Fourteen days to be sure — with a prepaid insured label and a fast refund.',
+    'return-policy': 'Fourteen days to be sure, with a prepaid insured label and a fast refund.',
     warranty: 'Two years of coverage, serviced by the same watchmakers who certified the piece.',
-    'payment-methods': 'Cards, wire and twelve-month plans — the terms in plain language.',
+    'payment-methods': 'Cards, wire and twelve-month plans, the terms in plain language.',
     'trust-and-compliance': 'Provenance verification, registry checks and compliance, in writing.',
     'privacy-policy': 'What we collect, why, and how to reach us about your data.',
     'terms-and-conditions': 'The terms of every sale, in plain language.',
-    accessibility: 'Fine watches are for everyone — so is this website.',
+    accessibility: 'Fine watches are for everyone, so is this website.',
   }[slug];
 
   return (

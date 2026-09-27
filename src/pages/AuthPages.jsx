@@ -13,7 +13,7 @@ export function VerifyEmail() {
   useEffect(() => {
     api
       .verifyEmail(params.get('token'))
-      .then(() => setState('Email verified — welcome aboard.'))
+      .then(() => setState('Email verified, welcome aboard.'))
       .catch((e) => setState(e.message || 'Verification failed'));
   }, [params]);
   return (
@@ -79,7 +79,7 @@ export function ForgotPassword() {
     try {
       await api.forgotPassword(email);
     } catch {
-      /* still show confirmation — no email enumeration */
+      /* still show confirmation, no email enumeration */
     }
     setSent(true);
   };

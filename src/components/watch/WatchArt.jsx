@@ -335,7 +335,7 @@ function Indices({ type, cx, cy, r, color, bezel }) {
 export default function WatchArt({
   art = {},
   view = 'front',
-  engraving = 'VEYMONT',
+  engraving = 'LUMONT',
   className = '',
   label = 'Watch illustration',
 }) {
@@ -618,7 +618,7 @@ export default function WatchArt({
               </text>
             </g>
           )}
-          {/* hands at 10:08 — drop edge then body */}
+          {/* hands at 10:08, drop edge then body */}
           <g strokeLinecap="round">
             <line
               x1={cx + 1}

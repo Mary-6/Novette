@@ -17,7 +17,7 @@ export function greeting(user) {
   const part = h < 12 ? 'morning' : h < 17 ? 'afternoon' : 'evening';
   const first = (user?.name || 'there').split(' ')[0];
   return {
-    text: `Good ${part}, ${first} — welcome to Veymont. I'm your personal concierge. How may I assist today?`,
+    text: `Good ${part}, ${first}, welcome to Lumont. I'm your personal concierge. How may I assist today?`,
     options: GREETING_OPTIONS,
   };
 }
@@ -72,19 +72,19 @@ export function reply(text, ctx = {}) {
   }
 
   if (has('bye', 'goodbye', 'good night', 'see you')) {
-    return { text: `It was a pleasure, ${first}. We're here whenever you need us — good day.` };
+    return { text: `It was a pleasure, ${first}. We're here whenever you need us, good day.` };
   }
 
   if (has('human', 'agent', 'person', 'call', 'phone')) {
     return {
-      text: 'Of course — a specialist will join shortly. You can also call us on +1 212 555 0187 during concierge hours.',
+      text: 'Of course, a specialist will join shortly. You can also call us on +1 212 555 0187 during concierge hours.',
       links: [{ label: 'Contact us', to: '/contact-us' }],
     };
   }
 
   if (has('viewing', 'appointment', 'visit', 'boutique', 'showroom', 'location')) {
     return {
-      text: "We're an online boutique serving clients nationwide — we don't currently have a walk-in showroom, but our concierge can arrange a private video consultation and walk you through any watch live.",
+      text: "We're an online boutique serving clients nationwide, we don't currently have a walk-in showroom, but our concierge can arrange a private video consultation and walk you through any watch live.",
       links: [
         { label: 'Our locations', to: '/locations' },
         { label: 'Contact us', to: '/contact-us' },
@@ -94,7 +94,7 @@ export function reply(text, ctx = {}) {
 
   if (has('authentic', 'warranty', 'genuine', 'real', 'fake', 'certif')) {
     return {
-      text: 'Every watch passes a 40-point bench inspection by our master horologists — serial, movement and provenance verified — and is covered by a two-year Veymont warranty beyond manufacturer terms.',
+      text: 'Every watch passes a 40-point bench inspection by our master horologists, serial, movement and provenance verified, and is covered by a two-year Lumont warranty beyond manufacturer terms.',
       links: [
         { label: 'Authenticity pledge', to: '/authenticity-pledge' },
         { label: 'Warranty', to: '/warranty' },
@@ -104,7 +104,7 @@ export function reply(text, ctx = {}) {
 
   if (has('ship', 'deliver', 'return', 'refund', 'exchange')) {
     return {
-      text: 'Shipping is complimentary, insured overnight and signature-required on every order. Returns are free within 14 days — we send a prepaid insured label.',
+      text: 'Shipping is complimentary, insured overnight and signature-required on every order. Returns are free within 14 days, we send a prepaid insured label.',
       links: [
         { label: 'Shipping info', to: '/shipping-info' },
         { label: 'Return policy', to: '/return-policy' },
@@ -128,7 +128,7 @@ export function reply(text, ctx = {}) {
       };
     }
     return {
-      text: `You have ${n} ${n === 1 ? 'watch' : 'watches'} in your cart, ${formatPrice(cart.subtotal)} before shipping — which is complimentary on this order.`,
+      text: `You have ${n} ${n === 1 ? 'watch' : 'watches'} in your cart, ${formatPrice(cart.subtotal)} before shipping, which is complimentary on this order.`,
       links: [{ label: 'View cart', to: '/cart' }],
     };
   }
@@ -137,7 +137,7 @@ export function reply(text, ctx = {}) {
     const n = wishlist?.count || 0;
     return {
       text: n
-        ? `You have ${n} ${n === 1 ? 'watch' : 'watches'} saved to your wishlist — shall I arrange a private viewing of any of them?`
+        ? `You have ${n} ${n === 1 ? 'watch' : 'watches'} saved to your wishlist, shall I arrange a private viewing of any of them?`
         : 'Your wishlist is empty at the moment. Tap the heart on any watch to save it here.',
       links: [{ label: 'View wishlist', to: '/wishlist' }],
     };
@@ -158,7 +158,7 @@ export function reply(text, ctx = {}) {
     if (cap && cap < 1000) cap *= 1000;
     if (!cap) {
       return {
-        text: 'Happy to work to a budget — what ceiling should I keep to? For example "under $15,000".',
+        text: 'Happy to work to a budget, what ceiling should I keep to? For example "under $15,000".',
       };
     }
     const list = pool.filter((w) => w.price <= cap).sort((a, b) => b.price - a.price);
@@ -169,7 +169,7 @@ export function reply(text, ctx = {}) {
       };
     }
     return {
-      text: `Here are the finest ${scope}pieces we hold under ${formatPrice(cap)} — tap one to view.`,
+      text: `Here are the finest ${scope}pieces we hold under ${formatPrice(cap)}, tap one to view.`,
       products: slugs(list.slice(0, 3)),
     };
   }
@@ -178,7 +178,7 @@ export function reply(text, ctx = {}) {
     const list = pick(pool);
     if (list.length) {
       return {
-        text: `Here are ${scope}${typeHit[1].toLowerCase()} watches from our current holding — tap one to view.`,
+        text: `Here are ${scope}${typeHit[1].toLowerCase()} watches from our current holding, tap one to view.`,
         products: slugs(list),
       };
     }
@@ -187,14 +187,14 @@ export function reply(text, ctx = {}) {
   if (matched.length) {
     const b0 = brands.find((b) => b.slug === matched[0].brandSlug)?.name || 'these';
     return {
-      text: `We currently hold ${matched.length} ${b0} ${matched.length === 1 ? 'piece' : 'pieces'}. Here are a few you may like — tap one to view.`,
+      text: `We currently hold ${matched.length} ${b0} ${matched.length === 1 ? 'piece' : 'pieces'}. Here are a few you may like, tap one to view.`,
       products: slugs(pick(matched)),
     };
   }
 
   if (has('find', 'recommend', 'looking', 'search', 'watch', 'suggest', 'gift', 'buy')) {
     return {
-      text: 'Certainly. Which maison or style do you have in mind — for example Rolex, Patek Philippe, a dive watch, or a dress watch?',
+      text: 'Certainly. Which maison or style do you have in mind, for example Rolex, Patek Philippe, a dive watch, or a dress watch?',
       options: ['Rolex', 'Patek Philippe', 'Dive watches', 'Dress watches', 'Under $10,000'],
     };
   }
@@ -204,7 +204,7 @@ export function reply(text, ctx = {}) {
   }
 
   return {
-    text: 'I want to be sure I help properly — could you tell me a little more? I can help with finding a watch, orders, shipping, authenticity or private viewings.',
+    text: 'I want to be sure I help properly, could you tell me a little more? I can help with finding a watch, orders, shipping, authenticity or private viewings.',
     options: GREETING_OPTIONS,
   };
 }

@@ -5,25 +5,25 @@ import collections from '../../data/collections';
 import watches from '../../data/watches';
 import pages from '../../data/pages';
 
-const BASE = 'Veymont Watches';
+const BASE = 'Lumont Watches';
 
 export default function RouteSeo() {
   const { pathname } = useLocation();
   useEffect(() => {
     let title = '';
     let description =
-      'New and unworn luxury watches — Rolex, Patek Philippe, Audemars Piguet and more, authenticated and shipped fully insured.';
+      'New and unworn luxury watches, Rolex, Patek Philippe, Audemars Piguet and more, authenticated and shipped fully insured.';
     const parts = pathname.split('/').filter(Boolean);
     if (parts[0] === 'shop') title = 'Shop Watches';
     else if (parts[0] === 'watches' && parts[1]) {
       const w = watches.find((x) => x.slug === parts[1]);
       title = w ? `${w.model} ${w.reference}` : 'Watch';
       if (w)
-        description = `${w.model} ${w.reference} — ${w.condition}, ${formatYear(w.year)}, ${w.price ? 'available now at Veymont Watches' : ''} with insured overnight shipping.`;
+        description = `${w.model} ${w.reference}, ${w.condition}, ${formatYear(w.year)}, ${w.price ? 'available now at Lumont Watches' : ''} with insured overnight shipping.`;
     } else if (parts[0] === 'brands' && parts[1]) {
       const b = brands.find((x) => x.slug === parts[1]);
       title = b ? b.name : 'Brands';
-      if (b) description = `Browse new and unworn ${b.name} watches at Veymont Watches.`;
+      if (b) description = `Browse new and unworn ${b.name} watches at Lumont Watches.`;
     } else if (parts[0] === 'brands') title = 'Brands';
     else if (parts[0] === 'rolex') title = 'Rolex Watches';
     else if (parts[0] === 'collections' && parts[1]) {
@@ -41,7 +41,7 @@ export default function RouteSeo() {
       const page = pages[parts[0]];
       if (page) title = page.title;
     }
-    document.title = title ? `${title} — ${BASE}` : `${BASE} — Fine Timepieces`;
+    document.title = title ? `${title}, ${BASE}` : `${BASE}, Fine Timepieces`;
     let meta = document.querySelector('meta[name="description"]');
     if (!meta) {
       meta = document.createElement('meta');

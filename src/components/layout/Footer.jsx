@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Mail, Phone } from 'lucide-react';
 import Logo from '../ui/Logo';
@@ -40,6 +40,13 @@ const COLUMNS = [
 export default function Footer() {
   const [email, setEmail] = useState('');
   const [done, setDone] = useState(false);
+  const [phone, setPhone] = useState('+1 800 555 0148');
+  useEffect(() => {
+    fetch('/api/site-settings')
+      .then((r) => (r.ok ? r.json() : {}))
+      .then((s) => s.supportPhone && setPhone(s.supportPhone))
+      .catch(() => {});
+  }, []);
 
   return (
     <footer className="bg-ink text-ivory">
@@ -64,30 +71,24 @@ export default function Footer() {
             <ul className="space-y-3 text-sm text-ivory/70">
               <li className="flex items-center gap-2">
                 <Phone size={14} className="text-gold" />
-                <a href="tel:+442079460000" className="transition hover:text-gold">
-                  +44 20 7946 0000
-                </a>
-              </li>
-              <li className="flex items-center gap-2">
-                <Phone size={14} className="text-gold" />
-                <a href="tel:+12125550148" className="transition hover:text-gold">
-                  +1 212 555 0148
+                <a
+                  href={`tel:${phone.replace(/[^+0-9]/g, '')}`}
+                  className="transition hover:text-gold"
+                >
+                  {phone}
                 </a>
               </li>
               <li className="flex items-center gap-2">
                 <Mail size={14} className="text-gold" />
-                <a
-                  href="mailto:veymontwatches@gmail.com"
-                  className="transition hover:text-gold"
-                >
-                  veymontwatches@gmail.com
+                <a href="mailto:lumontwatches@gmail.com" className="transition hover:text-gold">
+                  lumontwatches@gmail.com
                 </a>
               </li>
-              <li className="text-ivory/50">Mon–Sat · 10:00–18:00 local</li>
+              <li className="text-ivory/50">Mon–Sat, 10am–6pm ET</li>
             </ul>
             <p className="eyebrow mb-3 mt-8">Newsletter</p>
             {done ? (
-              <p className="text-sm text-gold">Thank you — you are on the list.</p>
+              <p className="text-sm text-gold">Thank you, you are on the list.</p>
             ) : (
               <form
                 onSubmit={async (e) => {
@@ -131,7 +132,7 @@ export default function Footer() {
           </div>
         </div>
         <div className="mt-14 flex flex-col items-center justify-between gap-4 border-t border-graphite pt-8 text-xs text-ivory/40 sm:flex-row">
-          <p>© {new Date().getFullYear()} Veymont Watches Ltd. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} Lumont Watches Ltd. All rights reserved.</p>
           <nav className="flex gap-6">
             <Link to="/privacy-policy" className="transition hover:text-gold">
               Privacy

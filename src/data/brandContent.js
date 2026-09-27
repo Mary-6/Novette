@@ -1,9 +1,9 @@
 const brandContent = {
   rolex: {
     history: [
-      "Hans Wilsdorf registered the Rolex name in 1908, betting that the wristwatch — then dismissed as a ladies' trinket — would replace the pocket watch. Within two decades his waterproof Oyster case and self-winding Perpetual rotor made the bet look inevitable.",
+      "Hans Wilsdorf registered the Rolex name in 1908, betting that the wristwatch, then dismissed as a ladies' trinket, would replace the pocket watch. Within two decades his waterproof Oyster case and self-winding Perpetual rotor made the bet look inevitable.",
       'The golden run of tool watches followed: the Submariner, GMT-Master, Explorer, Day-Date and Daytona each defined a category and then refused to leave it. Rolex became the brand that equips expeditions and then commemorates them.',
-      'Today a certified Rolex from Veymont Watches is the most liquid asset in watchmaking — recognisable in every airport on earth, and the anchor of nearly every serious collection. It is where most collectors begin and, quietly, where many end.',
+      'Today a certified Rolex from Lumont Watches is the most liquid asset in watchmaking, recognisable in every airport on earth, and the anchor of nearly every serious collection. It is where most collectors begin and, quietly, where many end.',
     ],
     keyTerms: [
       {
@@ -16,7 +16,7 @@ const brandContent = {
       },
       {
         term: 'Cerachrom',
-        def: 'The proprietary ceramic bezel material — scratch-proof and fade-proof.',
+        def: 'The proprietary ceramic bezel material, scratch-proof and fade-proof.',
       },
       { term: 'Rolesor', def: "Rolex's term for two-tone steel-and-gold construction." },
       {
@@ -31,11 +31,11 @@ const brandContent = {
       },
       {
         q: 'Why do some Rolex sell above retail?',
-        a: 'Boutique allocation creates scarcity for certain steel sports references. Our prices are set by the Veymont Market Index — real transaction data, not hype.',
+        a: 'Boutique allocation creates scarcity for certain steel sports references. Our prices are set by the Lumont Market Index, real transaction data, not hype.',
       },
       {
         q: 'Which Rolex holds value best?',
-        a: 'Steel sports models — Submariner, Daytona, GMT-Master II — lead resale historically, followed by precious-metal Day-Dates. Condition and complete sets matter most.',
+        a: 'Steel sports models, Submariner, Daytona, GMT-Master II, lead resale historically, followed by precious-metal Day-Dates. Condition and complete sets matter most.',
       },
       {
         q: 'Do vintage Rolex need special care?',
@@ -45,7 +45,7 @@ const brandContent = {
     whyChoose: [
       {
         title: 'Rolex specialists since 1987',
-        text: 'Our atelier began restoring vintage Rolex nearly forty years ago — the bench depth shows in every certificate.',
+        text: 'Our atelier began restoring vintage Rolex nearly forty years ago, the bench depth shows in every certificate.',
       },
       {
         title: 'Verified serials & service',
@@ -53,15 +53,15 @@ const brandContent = {
       },
       {
         title: 'Every family covered',
-        text: 'From a 1968 Pepsi GMT to an unworn 2024 Batman — the full catalogue, priced by market data.',
+        text: 'From a 1968 Pepsi GMT to an unworn 2024 Batman, the full catalogue, priced by market data.',
       },
     ],
   },
   'patek-philippe': {
     history: [
-      'Founded in Geneva in 1839 by Antoine Norbert de Patek and Adrien Philippe, the manufacture invented the keyless winding crown and has been independent and family-owned — by the Sterns since 1932 — ever since.',
+      'Founded in Geneva in 1839 by Antoine Norbert de Patek and Adrien Philippe, the manufacture invented the keyless winding crown and has been independent and family-owned, by the Sterns since 1932, ever since.',
       'Its grand complications have set auction records for generations, while the Calatrava defined the dress watch and the Nautilus, drawn by Gérald Genta in 1976, became the most coveted steel watch in the world.',
-      'A certified Patek Philippe represents the summit of collecting — pieces that appreciate in meaning as much as in value.',
+      'A certified Patek Philippe represents the summit of collecting, pieces that appreciate in meaning as much as in value.',
     ],
     keyTerms: [
       {
@@ -71,7 +71,7 @@ const brandContent = {
       { term: 'Nautilus', def: "Genta's porthole-shaped luxury sports watch, launched 1976." },
       {
         term: 'Aquanaut',
-        def: "The Nautilus' younger sibling — embossed dial on a composite Tropical strap.",
+        def: "The Nautilus' younger sibling, embossed dial on a composite Tropical strap.",
       },
       {
         term: 'Geneva Seal',
@@ -79,13 +79,13 @@ const brandContent = {
       },
       {
         term: 'Grand Complication',
-        def: 'A watch combining several major complications — perpetual calendar, minute repeater, split chronograph.',
+        def: 'A watch combining several major complications, perpetual calendar, minute repeater, split chronograph.',
       },
     ],
     faq: [
       {
         q: 'Do your Patek Philippe come with archives extracts?',
-        a: 'Where available, yes — we order Extracts from the Archives for eligible pieces and always disclose what documentation exists.',
+        a: 'Where available, yes, we order Extracts from the Archives for eligible pieces and always disclose what documentation exists.',
       },
       {
         q: 'Is the Nautilus 5711 still a good buy?',
@@ -97,7 +97,7 @@ const brandContent = {
       },
       {
         q: "What about ladies' Patek models?",
-        a: "We stock Twenty~4 and ladies' Nautilus pieces regularly — browse the women's filter on this page.",
+        a: "We stock Twenty~4 and ladies' Nautilus pieces regularly, browse the women's filter on this page.",
       },
     ],
     whyChoose: [
@@ -117,9 +117,9 @@ const brandContent = {
   },
   'audemars-piguet': {
     history: [
-      'Jules Louis Audemars and Edward Auguste Piguet founded their atelier in the Vallée de Joux in 1875, and the founding families still own the manufacture — a rarity among the great houses.',
+      'Jules Louis Audemars and Edward Auguste Piguet founded their atelier in the Vallée de Joux in 1875, and the founding families still own the manufacture, a rarity among the great houses.',
       "AP pioneered the minute-repeater wristwatch and the first skeleton movement, but its immortality arrived in 1972: Gérald Genta's Royal Oak invented the luxury steel sports watch overnight.",
-      'Today the Royal Oak family — from the 39mm Jumbo to the Offshore — is one of the most collected lines in the world.',
+      'Today the Royal Oak family, from the 39mm Jumbo to the Offshore, is one of the most collected lines in the world.',
     ],
     keyTerms: [
       {
@@ -131,7 +131,7 @@ const brandContent = {
         def: 'The hobnail guilloché dial texture cut on century-old pantograph machines.',
       },
       { term: 'Offshore', def: 'The bigger, bolder 1993 evolution of the Royal Oak.' },
-      { term: 'Jumbo', def: "The 39mm extra-thin Royal Oak — the connoisseur's reference." },
+      { term: 'Jumbo', def: "The 39mm extra-thin Royal Oak, the connoisseur's reference." },
       {
         term: 'Code 11.59',
         def: "AP's round-case modern line with an octagonal case middle hidden inside.",
@@ -148,7 +148,7 @@ const brandContent = {
       },
       {
         q: "Do you stock ladies' Royal Oaks?",
-        a: 'Yes — 33mm and 37mm references come through regularly. Ask the concierge to be alerted.',
+        a: 'Yes, 33mm and 37mm references come through regularly. Ask the concierge to be alerted.',
       },
       {
         q: 'What makes the Jumbo special?',
@@ -162,7 +162,7 @@ const brandContent = {
       },
       {
         title: 'Full-set focus',
-        text: 'We prioritise complete sets with archives paperwork — the pieces that appreciate.',
+        text: 'We prioritise complete sets with archives paperwork, the pieces that appreciate.',
       },
       {
         title: 'Honest polish grading',
@@ -172,19 +172,19 @@ const brandContent = {
   },
   'richard-mille': {
     history: [
-      'Richard Mille launched his eponymous marque in 2001 with one conviction: a wristwatch could be engineered like a racing car — titanium, carbon composites and movements suspended against shock.',
+      'Richard Mille launched his eponymous marque in 2001 with one conviction: a wristwatch could be engineered like a racing car, titanium, carbon composites and movements suspended against shock.',
       "Partnerships with Rafael Nadal, Felipe Massa and the world's fastest drivers turned the tonneau silhouette into the signature of a new generation of collectors.",
       'Production remains measured in the low thousands, making the certified market the primary route in.',
     ],
     keyTerms: [
       {
         term: 'TPT',
-        def: 'Thin Ply Technology — layered carbon or quartz composite with a marbled grain, unique to each case.',
+        def: 'Thin Ply Technology, layered carbon or quartz composite with a marbled grain, unique to each case.',
       },
       { term: 'Tonneau', def: 'The barrel-shaped case profile that defines the brand.' },
       {
         term: 'Skeletonised',
-        def: 'Movements machined open to bare architecture — structural, not decorative.',
+        def: 'Movements machined open to bare architecture, structural, not decorative.',
       },
       { term: 'Flyback', def: 'A chronograph that resets and restarts in a single press.' },
       {
@@ -195,7 +195,7 @@ const brandContent = {
     faq: [
       {
         q: 'Are Richard Mille movements shock-proof?',
-        a: 'They are rated for extreme impacts — the RM 27 series survives Grand Slam rallies — but ratings assume correct operation and seals.',
+        a: 'They are rated for extreme impacts, the RM 27 series survives Grand Slam rallies, but ratings assume correct operation and seals.',
       },
       {
         q: 'Why are prices so far above retail?',
@@ -203,7 +203,7 @@ const brandContent = {
       },
       {
         q: 'How are TPT cases graded?',
-        a: 'Composite cases cannot be refinished, so condition is largely what it left the factory with — we photograph edges at magnification.',
+        a: 'Composite cases cannot be refinished, so condition is largely what it left the factory with, we photograph edges at magnification.',
       },
       {
         q: 'Do you service Richard Mille?',
@@ -213,7 +213,7 @@ const brandContent = {
     whyChoose: [
       {
         title: 'Complex-case expertise',
-        text: 'Spline screws, torque values and composite grading require specialists — ours handle RM pieces weekly.',
+        text: 'Spline screws, torque values and composite grading require specialists, ours handle RM pieces weekly.',
       },
       {
         title: 'Verified limited editions',
@@ -227,14 +227,14 @@ const brandContent = {
   },
   omega: {
     history: [
-      'Founded in 1848, Omega built its name on precision — winning observatory trials and timing every Olympic Games since 1932.',
+      'Founded in 1848, Omega built its name on precision, winning observatory trials and timing every Olympic Games since 1932.',
       "The Speedmaster survived NASA's torture tests in 1965 and was strapped to Buzz Aldrin's wrist on the Moon in 1969; the Seamaster has served combat divers and Bond alike.",
       'Today the Master Chronometer programme certifies each movement to anti-magnetic and accuracy standards beyond any rival at the price.',
     ],
     keyTerms: [
       {
         term: 'Moonwatch',
-        def: 'The hand-wound Speedmaster Professional — the watch qualified for spaceflight.',
+        def: 'The hand-wound Speedmaster Professional, the watch qualified for spaceflight.',
       },
       {
         term: 'Co-Axial',
@@ -246,7 +246,7 @@ const brandContent = {
       },
       {
         term: 'Seamaster',
-        def: 'The dive line launched in 1948 — from the 300 to the Planet Ocean.',
+        def: 'The dive line launched in 1948, from the 300 to the Planet Ocean.',
       },
       {
         term: 'Constellation',
@@ -268,13 +268,13 @@ const brandContent = {
       },
       {
         q: 'What size Constellation suits a smaller wrist?',
-        a: "The 29mm and 34mm references are the classics — browse the women's filter for current stock.",
+        a: "The 29mm and 34mm references are the classics, browse the women's filter for current stock.",
       },
     ],
     whyChoose: [
       {
         title: 'Moonwatch specialists',
-        text: 'From cal. 321 vintage to the 3861 — we grade bezel, dial and DON dot details that move value.',
+        text: 'From cal. 321 vintage to the 3861, we grade bezel, dial and DON dot details that move value.',
       },
       {
         title: 'Pressure-tested divers',
@@ -282,15 +282,15 @@ const brandContent = {
       },
       {
         title: 'Fair market pricing',
-        text: 'Omega trades rationally — our Index ensures you pay the market, not the hype.',
+        text: 'Omega trades rationally, our Index ensures you pay the market, not the hype.',
       },
     ],
   },
   cartier: {
     history: [
-      'Louis-François Cartier founded his Paris maison in 1847 and became jeweller to the crowned heads of Europe; in 1904 grandson Louis made the Santos for aviator Alberto Santos-Dumont — arguably the first purpose-built wristwatch.',
-      'The Tank followed in 1917, the Panthère in the eighties — designs so resolved they have needed no change since.',
-      'A certified Cartier is a design object first and a timepiece second — which is precisely why it never goes out of style.',
+      'Louis-François Cartier founded his Paris maison in 1847 and became jeweller to the crowned heads of Europe; in 1904 grandson Louis made the Santos for aviator Alberto Santos-Dumont, arguably the first purpose-built wristwatch.',
+      'The Tank followed in 1917, the Panthère in the eighties, designs so resolved they have needed no change since.',
+      'A certified Cartier is a design object first and a timepiece second, which is precisely why it never goes out of style.',
     ],
     keyTerms: [
       {
@@ -304,7 +304,7 @@ const brandContent = {
       },
       {
         term: 'Cabochon',
-        def: "The domed blue synthetic spinel in the crown — Cartier's signature.",
+        def: "The domed blue synthetic spinel in the crown, Cartier's signature.",
       },
       {
         term: 'Guilloché',
@@ -314,7 +314,7 @@ const brandContent = {
     faq: [
       {
         q: 'Are quartz Cartier watches worth buying?',
-        a: 'For design-led pieces like the Tank Must and Panthère, quartz is period-correct and reliable — and priced accordingly.',
+        a: 'For design-led pieces like the Tank Must and Panthère, quartz is period-correct and reliable, and priced accordingly.',
       },
       {
         q: 'Do vintage Cartier come with papers?',
@@ -322,11 +322,11 @@ const brandContent = {
       },
       {
         q: 'Can a Panthère bracelet be sized?',
-        a: 'Yes — links are removable and our workshop sizes every bracelet before dispatch.',
+        a: 'Yes, links are removable and our workshop sizes every bracelet before dispatch.',
       },
       {
         q: 'Is a Santos too dressy for daily wear?',
-        a: 'The modern Santos is a 100m sports watch with QuickSwitch straps — wear it anywhere.',
+        a: 'The modern Santos is a 100m sports watch with QuickSwitch straps, wear it anywhere.',
       },
     ],
     whyChoose: [
@@ -336,7 +336,7 @@ const brandContent = {
       },
       {
         title: 'Vintage expertise',
-        text: 'We distinguish factory-original vintage dials from later replacements — the difference is five figures.',
+        text: 'We distinguish factory-original vintage dials from later replacements, the difference is five figures.',
       },
       {
         title: 'Sized before it ships',
@@ -346,7 +346,7 @@ const brandContent = {
   },
   breitling: {
     history: [
-      'Léon Breitling founded his manufacture in 1884 and specialised in chronographs from the start — timing instruments for industry, sport and soon the sky.',
+      'Léon Breitling founded his manufacture in 1884 and specialised in chronographs from the start, timing instruments for industry, sport and soon the sky.',
       "The Navitimer's circular slide rule made it the pilot's computer of the jet age; the Superocean served professional divers; the Chronomat became the badge of the eighties jet set.",
       "Independent for most of its history, Breitling remains the connoisseur's tool watch: technical, robust and unapologetic.",
     ],
@@ -369,7 +369,7 @@ const brandContent = {
     faq: [
       {
         q: 'Is the B01 movement reliable?',
-        a: "Extensively — it's Breitling's workhorse manufacture chronograph with a 70-hour reserve; ours are timing-checked on the bench.",
+        a: "Extensively, it's Breitling's workhorse manufacture chronograph with a 70-hour reserve; ours are timing-checked on the bench.",
       },
       {
         q: 'Are older Navitimers fragile?',
@@ -377,11 +377,11 @@ const brandContent = {
       },
       {
         q: "Do you carry women's Breitling?",
-        a: 'Yes — 35mm Chronomats and smaller Navitimers come through regularly.',
+        a: 'Yes, 35mm Chronomats and smaller Navitimers come through regularly.',
       },
       {
         q: 'What is a "rider tab" bezel?',
-        a: 'The raised quarter-hour tabs on the Chronomat — a signature meant for gloved timing.',
+        a: 'The raised quarter-hour tabs on the Chronomat, a signature meant for gloved timing.',
       },
     ],
     whyChoose: [
@@ -395,15 +395,15 @@ const brandContent = {
       },
       {
         title: 'Clear condition grading',
-        text: 'Bracelet wear and case edges graded conservatively — no surprises on arrival.',
+        text: 'Bracelet wear and case edges graded conservatively, no surprises on arrival.',
       },
     ],
   },
   'tag-heuer': {
     history: [
-      'Edouard Heuer founded the atelier in 1860 and built its name on timing — the Mikrograph of 1916 measured hundredths of a second.',
+      'Edouard Heuer founded the atelier in 1860 and built its name on timing, the Mikrograph of 1916 measured hundredths of a second.',
       "The Carrera and Monaco carried motorsport timing onto the wrist; the Monaco, square and blue on Steve McQueen's arm in Le Mans, became the icon of the era.",
-      'Today TAG Heuer sits at the approachable end of Swiss luxury — genuine manufacture calibres and genuine racing heritage.',
+      'Today TAG Heuer sits at the approachable end of Swiss luxury, genuine manufacture calibres and genuine racing heritage.',
     ],
     keyTerms: [
       {
@@ -424,7 +424,7 @@ const brandContent = {
     faq: [
       {
         q: 'Is the Monaco left-hand crown correct?',
-        a: "Yes — the Calibre 11 crown sits at nine o'clock, as it has since 1969.",
+        a: "Yes, the Calibre 11 crown sits at nine o'clock, as it has since 1969.",
       },
       {
         q: 'How water resistant is the Aquaracer?',
@@ -432,7 +432,7 @@ const brandContent = {
       },
       {
         q: 'Do you stock vintage Heuer?',
-        a: 'Periodically — vintage Heuer moves fast. Ask the concierge for sourcing.',
+        a: 'Periodically, vintage Heuer moves fast. Ask the concierge for sourcing.',
       },
       {
         q: 'What is the TH20-00 movement?',
@@ -442,7 +442,7 @@ const brandContent = {
     whyChoose: [
       {
         title: 'Motorsport provenance',
-        text: 'We grade racing-era pieces with particular care — correct hands, correct dials, correct crowns.',
+        text: 'We grade racing-era pieces with particular care, correct hands, correct dials, correct crowns.',
       },
       {
         title: 'Accessible entry point',
@@ -456,7 +456,7 @@ const brandContent = {
   },
   tudor: {
     history: [
-      "Hans Wilsdorf founded Tudor in 1926 as Rolex's more attainable sibling — same cases, same crowns, a bought-in movement — and the French and US navies made it their tool watch of choice.",
+      "Hans Wilsdorf founded Tudor in 1926 as Rolex's more attainable sibling, same cases, same crowns, a bought-in movement, and the French and US navies made it their tool watch of choice.",
       "The Black Bay's 2012 relaunch turned the brand into a phenomenon, pairing gilt-dial vintage warmth with in-house movements at honest prices.",
       'For value-conscious collectors, a modern Tudor is the safest first mechanical watch; a vintage one is a hidden gem.',
     ],
@@ -473,13 +473,13 @@ const brandContent = {
       { term: 'MT56', def: 'The in-house calibre family with 70-hour reserves.' },
       {
         term: 'Gilt dial',
-        def: 'Gold-toned printing on matte black — the vintage Tudor signature.',
+        def: 'Gold-toned printing on matte black, the vintage Tudor signature.',
       },
     ],
     faq: [
       {
         q: 'Is Tudor made by Rolex?',
-        a: 'Same founder, shared case construction heritage — modern Tudors use manufacture movements made in-house.',
+        a: 'Same founder, shared case construction heritage, modern Tudors use manufacture movements made in-house.',
       },
       {
         q: 'Do Tudor hold their value?',
@@ -497,18 +497,18 @@ const brandContent = {
     whyChoose: [
       {
         title: 'Vintage Tudor specialists',
-        text: 'Snowflake hands, service dials and insert colours — the details that matter are checked.',
+        text: 'Snowflake hands, service dials and insert colours, the details that matter are checked.',
       },
       { title: 'In-house warranty', text: 'Two years of coverage on every Tudor, vintage or new.' },
       {
         title: 'Honest market pricing',
-        text: 'No waiting-list theatre — fair price, full disclosure, next-day shipping.',
+        text: 'No waiting-list theatre, fair price, full disclosure, next-day shipping.',
       },
     ],
   },
   hublot: {
     history: [
-      'Hublot shocked the establishment in 1980 by mounting a gold watch on a rubber strap — the "Art of Fusion" that became its creed.',
+      'Hublot shocked the establishment in 1980 by mounting a gold watch on a rubber strap, the "Art of Fusion" that became its creed.',
       "The 2005 Big Bang codified the brand's maximalist aesthetic: layered cases, openworked dials and in-house Unico chronograph calibres.",
       'For collectors who want modernity over heritage, Hublot is the definitive statement.',
     ],
@@ -521,7 +521,7 @@ const brandContent = {
       { term: 'King Gold', def: "Hublot's proprietary warm 18k red-gold alloy." },
       {
         term: 'Fusion',
-        def: 'The brand philosophy of pairing unlikely materials — gold and rubber, ceramic and sapphire.',
+        def: 'The brand philosophy of pairing unlikely materials, gold and rubber, ceramic and sapphire.',
       },
       { term: 'Spirit of Big Bang', def: 'The tonneau-shaped sibling line to the flagship.' },
     ],
@@ -532,7 +532,7 @@ const brandContent = {
       },
       {
         q: 'How do you grade ceramic cases?',
-        a: 'Ceramic cannot be refinished — chips and marks are photographed at magnification and graded honestly.',
+        a: 'Ceramic cannot be refinished, chips and marks are photographed at magnification and graded honestly.',
       },
       {
         q: 'Is a Hublot a good daily watch?',
@@ -546,7 +546,7 @@ const brandContent = {
     whyChoose: [
       {
         title: 'Material specialists',
-        text: 'Ceramic, sapphire, King Gold — exotic cases graded by people who handle them weekly.',
+        text: 'Ceramic, sapphire, King Gold, exotic cases graded by people who handle them weekly.',
       },
       {
         title: 'Edition verification',
@@ -560,9 +560,9 @@ const brandContent = {
   },
   iwc: {
     history: [
-      'American engineer Florentine Ariosto Jones founded IWC in Schaffhausen in 1868 to bring industrial precision to Swiss craft — the only great manufacture east of the Rhine.',
+      'American engineer Florentine Ariosto Jones founded IWC in Schaffhausen in 1868 to bring industrial precision to Swiss craft, the only great manufacture east of the Rhine.',
       "The Portugieser of 1939 married marine-chronometer accuracy to wristwatch elegance; the Mark XI pilot's watch of 1948 defined military horology.",
-      "Today the Pilot's and Portugieser lines offer quiet, engineering-led luxury — watches for people who know.",
+      "Today the Pilot's and Portugieser lines offer quiet, engineering-led luxury, watches for people who know.",
     ],
     keyTerms: [
       {
@@ -592,7 +592,7 @@ const brandContent = {
       },
       {
         q: 'What does the fish crown mean?',
-        a: "IWC's symbol for water-resistant cases — a small detail our bench checks for era-correctness.",
+        a: "IWC's symbol for water-resistant cases, a small detail our bench checks for era-correctness.",
       },
     ],
     whyChoose: [
@@ -606,14 +606,14 @@ const brandContent = {
       },
       {
         title: 'Understated value',
-        text: 'IWC prices are rational — great watches at fair prices.',
+        text: 'IWC prices are rational, great watches at fair prices.',
       },
     ],
   },
   panerai: {
     history: [
-      'Giovanni Panerai opened his Florence workshop in 1860, supplying precision instruments to the Royal Italian Navy — and, from 1936, the Radiomir dive watch to its frogmen.',
-      "The Luminor's crown-protecting lever bridge and sandwich dial made the watches unmistakable — industrial design of the highest order.",
+      'Giovanni Panerai opened his Florence workshop in 1860, supplying precision instruments to the Royal Italian Navy, and, from 1936, the Radiomir dive watch to its frogmen.',
+      "The Luminor's crown-protecting lever bridge and sandwich dial made the watches unmistakable, industrial design of the highest order.",
       'When the civilian market discovered Panerai in the nineties, an icon was born; vintage pieces with military provenance are now museum-grade.',
     ],
     keyTerms: [
@@ -627,7 +627,7 @@ const brandContent = {
       },
       {
         term: 'Sandwich dial',
-        def: 'Two-layer dial construction — cut-out upper plate over luminous substrate.',
+        def: 'Two-layer dial construction, cut-out upper plate over luminous substrate.',
       },
       { term: 'Submersible', def: 'The modern rotating-bezel dive line.' },
       {
@@ -638,7 +638,7 @@ const brandContent = {
     faq: [
       {
         q: 'Is the crown bridge easy to use?',
-        a: 'Push the lever, set, snap shut — simpler than it looks and very secure.',
+        a: 'Push the lever, set, snap shut, simpler than it looks and very secure.',
       },
       {
         q: 'Do vintage Panerai pieces have papers?',
@@ -650,7 +650,7 @@ const brandContent = {
       },
       {
         q: 'How is lume condition graded?',
-        a: 'Luminous mass colour and stability are assessed and photographed — aging is part of vintage value.',
+        a: 'Luminous mass colour and stability are assessed and photographed, aging is part of vintage value.',
       },
     ],
     whyChoose: [
@@ -660,26 +660,26 @@ const brandContent = {
       },
       {
         title: 'Case-shape grading',
-        text: 'Cushion cases are measured for polish symmetry — the detail that defines value.',
+        text: 'Cushion cases are measured for polish symmetry, the detail that defines value.',
       },
       { title: 'Strap flexibility', text: 'We fit and include the straps suited to each piece.' },
     ],
   },
   'jaeger-lecoultre': {
     history: [
-      'The Vallée de Joux\'s great movement factory has produced over a thousand calibres since 1833 — the "watchmaker\'s watchmaker" that supplied Patek, Vacheron and Cartier.',
+      'The Vallée de Joux\'s great movement factory has produced over a thousand calibres since 1833, the "watchmaker\'s watchmaker" that supplied Patek, Vacheron and Cartier.',
       'Its own creations are equally storied: the reversible Reverso of 1931, born for polo; the thin Master line; the Polaris alarm diver.',
       'For collectors who prize mechanics over hype, JLC is the deepest catalogue in Swiss watchmaking.',
     ],
     keyTerms: [
       {
         term: 'Reverso',
-        def: "The 1931 case that flips to protect the dial — art-deco's greatest watch.",
+        def: "The 1931 case that flips to protect the dial, art-deco's greatest watch.",
       },
       { term: 'Master Control', def: 'The slim dress line subjected to the 1000-hour test.' },
       { term: 'Polaris', def: 'The 1968 alarm diver revived as the modern sports line.' },
       { term: 'Calibre 899', def: 'The slim automatic at the heart of the Master line.' },
-      { term: 'Atmos', def: "The atmosphere-powered clock — proof of the manufacture's range." },
+      { term: 'Atmos', def: "The atmosphere-powered clock, proof of the manufacture's range." },
     ],
     faq: [
       {
@@ -688,7 +688,7 @@ const brandContent = {
       },
       {
         q: 'Are JLC movements easy to service?',
-        a: 'Among the best-engineered in Switzerland — our warranty covers them fully.',
+        a: 'Among the best-engineered in Switzerland, our warranty covers them fully.',
       },
       {
         q: 'What is the 1000-hour test?',
@@ -696,7 +696,7 @@ const brandContent = {
       },
       {
         q: "Do you stock ladies' Reversos?",
-        a: "Yes — mid-size and ladies' Reverso models are a specialty.",
+        a: "Yes, mid-size and ladies' Reverso models are a specialty.",
       },
     ],
     whyChoose: [
@@ -710,19 +710,19 @@ const brandContent = {
       },
       {
         title: 'Quiet value',
-        text: 'JLC prices reward knowledge — we price to market, not legend.',
+        text: 'JLC prices reward knowledge, we price to market, not legend.',
       },
     ],
   },
   'vacheron-constantin': {
     history: [
-      'In continuous operation since 1755, Vacheron Constantin is the oldest watch manufacture in the world — through revolution, war and quartz crisis, the Geneva bench never stopped.',
+      'In continuous operation since 1755, Vacheron Constantin is the oldest watch manufacture in the world, through revolution, war and quartz crisis, the Geneva bench never stopped.',
       "The Patrimony embodies the maison's classicism; the Overseas, with its Maltese-cross bezel, is its modern integrated-bracelet flagship; the Historiques revive the greatest hits.",
       'A certified Vacheron offers the entry to Genevan haute horlogerie at prices the boutiques cannot touch.',
     ],
     keyTerms: [
       { term: 'Overseas', def: 'The integrated-bracelet sports line with Maltese-cross bezel.' },
-      { term: 'Patrimony', def: "The convex-dial dress watch — the maison's purest design." },
+      { term: 'Patrimony', def: "The convex-dial dress watch, the maison's purest design." },
       { term: 'Historiques', def: 'Faithful revivals of archive references, like the 1977 222.' },
       {
         term: 'Geneva Seal',
@@ -741,7 +741,7 @@ const brandContent = {
       },
       {
         q: 'Are vintage Vacheron dress watches wearable?',
-        a: 'Absolutely — thin cases suit cuffs; we service every piece before listing.',
+        a: 'Absolutely, thin cases suit cuffs; we service every piece before listing.',
       },
       {
         q: 'Which Vacheron for a first luxury watch?',
@@ -765,8 +765,8 @@ const brandContent = {
   },
   'grand-seiko': {
     history: [
-      'Grand Seiko was created in 1960 to build, in Japan, a watch that could beat the Swiss at their own game — precision, legibility and quiet beauty, without compromise.',
-      "Its Spring Drive movement, quartz-regulated but mechanically driven, delivers a seconds hand that glides rather than ticks — horology's most poetic complication.",
+      'Grand Seiko was created in 1960 to build, in Japan, a watch that could beat the Swiss at their own game, precision, legibility and quiet beauty, without compromise.',
+      "Its Spring Drive movement, quartz-regulated but mechanically driven, delivers a seconds hand that glides rather than ticks, horology's most poetic complication.",
       'Today collectors prize Grand Seiko for finishing that rivals any manufacture on earth at a fraction of the price.',
     ],
     keyTerms: [
@@ -785,7 +785,7 @@ const brandContent = {
     faq: [
       {
         q: 'Is Spring Drive automatic or quartz?',
-        a: 'Neither and both — mechanical power, quartz regulation, one-second-per-day accuracy.',
+        a: 'Neither and both, mechanical power, quartz regulation, one-second-per-day accuracy.',
       },
       {
         q: 'How does Grand Seiko compare to Swiss brands?',
@@ -797,7 +797,7 @@ const brandContent = {
       },
       {
         q: 'Are GS watches heavy?',
-        a: 'Many use high-intensity titanium — the Snowflake is famously light.',
+        a: 'Many use high-intensity titanium, the Snowflake is famously light.',
       },
     ],
     whyChoose: [

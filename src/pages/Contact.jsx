@@ -33,7 +33,7 @@ export default function Contact() {
     try {
       await api.contact(form);
     } catch {
-      /* API offline — show confirmation anyway so the demo still works */
+      /* API offline, show confirmation anyway so the demo still works */
     }
     setSent(true);
   };
@@ -42,7 +42,7 @@ export default function Contact() {
     <>
       <PageHero eyebrow="Concierge" title="Speak With Us">
         <p>
-          Sourcing a reference, valuing an heirloom or arranging a private viewing — our specialists
+          Sourcing a reference, valuing an heirloom or arranging a private viewing, our specialists
           reply within one business day.
         </p>
       </PageHero>
@@ -133,7 +133,7 @@ export default function Contact() {
                 </li>
                 <li className="flex items-start gap-3">
                   <Mail size={16} className="mt-0.5 text-gold" />
-                  <span>veymontwatches@gmail.com</span>
+                  <span>lumontwatches@gmail.com</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <Clock size={16} className="mt-0.5 text-gold" />
@@ -149,14 +149,13 @@ export default function Contact() {
                   <span>
                     Serving customers throughout
                     <br />
-                    the United States — online
+                    the United States, online
                   </span>
                 </li>
                 <li className="flex items-start gap-3">
                   <Clock size={16} className="mt-0.5 text-gold" />
                   <span>
-                    No walk-in showroom yet —
-                    <br />
+                    No walk-in showroom yet,                     <br />
                     video consultations available
                   </span>
                 </li>
@@ -165,7 +164,7 @@ export default function Contact() {
             <div id="shipping">
               <p className="eyebrow mb-4">Shipping</p>
               <p className="text-sm leading-relaxed text-graphite">
-                Fully insured, discreet worldwide delivery — complimentary over $5,000, express
+                Fully insured, discreet worldwide delivery, complimentary over $5,000, express
                 overnight available. Signature required on every parcel.
               </p>
             </div>

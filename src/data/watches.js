@@ -78,7 +78,7 @@ const watches = [
     popularity: 94,
     addedAt: d(2025, 8, 14),
     description:
-      'The blue-and-red Cerachrom GMT-Master II on the Jubilee bracelet — the configuration collectors chased from its 2018 return. The calibre 3285 tracks a second time zone with an independently adjustable hour hand.\n\nPresented in unworn condition with crisp case lines, complete set dated 2022.',
+      'The blue-and-red Cerachrom GMT-Master II on the Jubilee bracelet, the configuration collectors chased from its 2018 return. The calibre 3285 tracks a second time zone with an independently adjustable hour hand.\n\nPresented in unworn condition with crisp case lines, complete set dated 2022.',
     specs: {
       caseDiameter: '40mm',
       caseMaterial: 'Oystersteel',
@@ -134,7 +134,7 @@ const watches = [
     popularity: 88,
     addedAt: d(2025, 6, 20),
     description:
-      'The "Zenith" Daytona — powered by the heavily reworked El Primero calibre 4030 — is the bridge between vintage charm and the modern in-house era. This 1997 example bears the coveted inverted-6 dial configuration.\n\nUnpolished case edges, original tritium-lume plots aged to a warm ivory, and its punched guarantee papers.',
+      'The "Zenith" Daytona, powered by the heavily reworked El Primero calibre 4030, is the bridge between vintage charm and the modern in-house era. This 1997 example bears the coveted inverted-6 dial configuration.\n\nUnpolished case edges, original tritium-lume plots aged to a warm ivory, and its punched guarantee papers.',
     specs: {
       caseDiameter: '40mm',
       caseMaterial: 'Oystersteel',
@@ -161,7 +161,7 @@ const watches = [
     popularity: 90,
     addedAt: d(2025, 9, 27),
     description:
-      'The 50th-anniversary Submariner — green aluminium bezel over a maxi dial — earned its Kermit nickname instantly and its classic status since.\n\nA 2004 example with a richly faded insert, solid case and full set.',
+      'The 50th-anniversary Submariner, green aluminium bezel over a maxi dial, earned its Kermit nickname instantly and its classic status since.\n\nA 2004 example with a richly faded insert, solid case and full set.',
     specs: {
       caseDiameter: '40mm',
       caseMaterial: 'Oystersteel',
@@ -189,7 +189,7 @@ const watches = [
     popularity: 85,
     addedAt: d(2025, 3, 30),
     description:
-      'The reference 5513 carried the Submariner through three decades — this 1972 example wears a gorgeous matte dial with tritium plots aged to pumpkin.\n\nFreshly serviced movement, period-correct bezel insert, and a folded Oyster bracelet.',
+      'The reference 5513 carried the Submariner through three decades, this 1972 example wears a gorgeous matte dial with tritium plots aged to pumpkin.\n\nFreshly serviced movement, period-correct bezel insert, and a folded Oyster bracelet.',
     specs: {
       caseDiameter: '40mm',
       caseMaterial: 'Oystersteel',
@@ -218,7 +218,7 @@ const watches = [
     popularity: 87,
     addedAt: d(2025, 2, 25),
     description:
-      'The jet-age original — a 1968 GMT-Master with the iconic blue-and-red insert, aged lume and the honest wear of a watch that crossed oceans for a living.\n\nUnpolished case, correct small-hand configuration, service complete.',
+      'The jet-age original, a 1968 GMT-Master with the iconic blue-and-red insert, aged lume and the honest wear of a watch that crossed oceans for a living.\n\nUnpolished case, correct small-hand configuration, service complete.',
     specs: {
       caseDiameter: '40mm',
       caseMaterial: 'Oystersteel',
@@ -247,7 +247,7 @@ const watches = [
     popularity: 96,
     addedAt: d(2025, 11, 3),
     description:
-      'The blue-and-black ceramic GMT on Jubilee — the reference every modern traveller wants. Calibre 3285, jumping local hour, seventy-hour reserve.\n\nUnworn 2024 full set with card, hangtags and both links of bracelet sizing.',
+      'The blue-and-black ceramic GMT on Jubilee, the reference every modern traveller wants. Calibre 3285, jumping local hour, seventy-hour reserve.\n\nUnworn 2024 full set with card, hangtags and both links of bracelet sizing.',
     specs: {
       caseDiameter: '40mm',
       caseMaterial: 'Oystersteel',
@@ -301,7 +301,7 @@ const watches = [
     popularity: 73,
     addedAt: d(2025, 4, 17),
     description:
-      'The quintessential nineties Datejust — champagne tapestry dial, fluted yellow-gold bezel, and a tight Jubilee bracelet in two-tone.\n\n1993 example, freshly serviced, with its original punched papers.',
+      'The quintessential nineties Datejust, champagne tapestry dial, fluted yellow-gold bezel, and a tight Jubilee bracelet in two-tone.\n\n1993 example, freshly serviced, with its original punched papers.',
     specs: {
       caseDiameter: '36mm',
       caseMaterial: 'Yellow gold & Oystersteel',
@@ -334,7 +334,7 @@ const watches = [
     popularity: 76,
     addedAt: d(2025, 5, 9),
     description:
-      'The smooth-bezel Datejust 41 is the quiet daily wearer of the line — mint-green dial, oyster bracelet, calibre 3235.\n\n2021 example with box, papers and very light wear.',
+      'The smooth-bezel Datejust 41 is the quiet daily wearer of the line, mint-green dial, oyster bracelet, calibre 3235.\n\n2021 example with box, papers and very light wear.',
     specs: {
       caseDiameter: '41mm',
       caseMaterial: 'Oystersteel',
@@ -361,7 +361,7 @@ const watches = [
     popularity: 77,
     addedAt: d(2025, 8, 19),
     description:
-      'The Lady-Datejust in its most versatile spec — 28mm steel case, fluted white-gold bezel, silver sunray dial on Jubilee.\n\nUnworn 2023 full set, unsized bracelet.',
+      'The Lady-Datejust in its most versatile spec, 28mm steel case, fluted white-gold bezel, silver sunray dial on Jubilee.\n\nUnworn 2023 full set, unsized bracelet.',
     specs: {
       caseDiameter: '28mm',
       caseMaterial: 'White gold & Oystersteel',
@@ -388,7 +388,7 @@ const watches = [
     popularity: 99,
     addedAt: d(2025, 10, 9),
     description:
-      'The white-dial ceramic Daytona — the most demanded reference in the modern catalogue, period. Calibre 4130, Cerachrom bezel, panda registers.\n\n2022 full set in collector-grade condition.',
+      'The white-dial ceramic Daytona, the most demanded reference in the modern catalogue, period. Calibre 4130, Cerachrom bezel, panda registers.\n\n2022 full set in collector-grade condition.',
     specs: {
       caseDiameter: '40mm',
       caseMaterial: 'Oystersteel',
@@ -414,7 +414,7 @@ const watches = [
     popularity: 83,
     addedAt: d(2025, 6, 26),
     description:
-      'The two-tone Daytona remains the smartest route into the reference — same 4130 calibre, champagne dial, and genuine presence on the wrist.\n\n2019 example, unpolished, complete set.',
+      'The two-tone Daytona remains the smartest route into the reference, same 4130 calibre, champagne dial, and genuine presence on the wrist.\n\n2019 example, unpolished, complete set.',
     specs: {
       caseDiameter: '40mm',
       caseMaterial: 'Yellow gold & Oystersteel',
@@ -442,7 +442,7 @@ const watches = [
     popularity: 89,
     addedAt: d(2025, 10, 23),
     description:
-      'The President in solid yellow gold — fluted bezel, champagne dial, the day spelled in full at twelve and the heft only a gold Rolex delivers.\n\nUnworn 2023 set on the concealed-clasp President bracelet.',
+      'The President in solid yellow gold, fluted bezel, champagne dial, the day spelled in full at twelve and the heft only a gold Rolex delivers.\n\nUnworn 2023 set on the concealed-clasp President bracelet.',
     specs: {
       caseDiameter: '40mm',
       caseMaterial: '18k yellow gold',
@@ -474,7 +474,7 @@ const watches = [
     popularity: 74,
     addedAt: d(2025, 7, 11),
     description:
-      'Everose gold and a chocolate dial — the warmest, most discreet Day-Date of the modern line.\n\n2022 example on President bracelet, full set.',
+      'Everose gold and a chocolate dial, the warmest, most discreet Day-Date of the modern line.\n\n2022 example on President bracelet, full set.',
     specs: {
       caseDiameter: '36mm',
       caseMaterial: '18k Everose gold',
@@ -507,7 +507,7 @@ const watches = [
     popularity: 86,
     addedAt: d(2025, 11, 6),
     description:
-      'Back to the original 36mm — the Explorer is the purest sports watch Rolex makes: 3-6-9 numerals, no date, nothing to hide behind.\n\nUnworn 2024 full set.',
+      'Back to the original 36mm, the Explorer is the purest sports watch Rolex makes: 3-6-9 numerals, no date, nothing to hide behind.\n\nUnworn 2024 full set.',
     specs: {
       caseDiameter: '36mm',
       caseMaterial: 'Oystersteel',
@@ -532,7 +532,7 @@ const watches = [
     popularity: 81,
     addedAt: d(2025, 8, 5),
     description:
-      'The polar-dial Explorer II — fixed 24-hour bezel, orange GMT hand and cavern-ready legibility since 1971.\n\n2023 example, very light wear, full set.',
+      'The polar-dial Explorer II, fixed 24-hour bezel, orange GMT hand and cavern-ready legibility since 1971.\n\n2023 example, very light wear, full set.',
     specs: {
       caseDiameter: '42mm',
       caseMaterial: 'Oystersteel',
@@ -557,7 +557,7 @@ const watches = [
     popularity: 75,
     addedAt: d(2025, 5, 26),
     description:
-      'The Rolesium Yacht-Master pairs a steel case with a solid platinum bezel — the slate dial catches light like nothing else in the line.\n\n2022 example, complete set.',
+      'The Rolesium Yacht-Master pairs a steel case with a solid platinum bezel, the slate dial catches light like nothing else in the line.\n\n2022 example, complete set.',
     specs: {
       caseDiameter: '40mm',
       caseMaterial: 'Platinum & Oystersteel',
@@ -582,7 +582,7 @@ const watches = [
     popularity: 71,
     addedAt: d(2025, 4, 6),
     description:
-      "1,220 metres, helium valve and the red Sea-Dweller signature — the anniversary 43mm that restored the model's proper proportions.\n\n2021 example, full set.",
+      "1,220 metres, helium valve and the red Sea-Dweller signature, the anniversary 43mm that restored the model's proper proportions.\n\n2021 example, full set.",
     specs: {
       caseDiameter: '43mm',
       caseMaterial: 'Oystersteel',
@@ -608,7 +608,7 @@ const watches = [
     popularity: 82,
     addedAt: d(2025, 9, 3),
     description:
-      "Rolex's most complicated watch — annual calendar and dual time zones driven by the Ring Command bezel. Blue dial, the collector's pick.\n\nUnworn 2023 full set.",
+      "Rolex's most complicated watch, annual calendar and dual time zones driven by the Ring Command bezel. Blue dial, the collector's pick.\n\nUnworn 2023 full set.",
     specs: {
       caseDiameter: '42mm',
       caseMaterial: 'White gold & Oystersteel',
@@ -637,7 +637,7 @@ const watches = [
     popularity: 84,
     addedAt: d(2025, 11, 9),
     description:
-      'The OP in the coveted turquoise-blue — three hands, no date, and the most copied dial of the decade.\n\nNew and unsized, 2024 full set.',
+      'The OP in the coveted turquoise-blue, three hands, no date, and the most copied dial of the decade.\n\nNew and unsized, 2024 full set.',
     specs: {
       caseDiameter: '41mm',
       caseMaterial: 'Oystersteel',
@@ -662,7 +662,7 @@ const watches = [
     popularity: 68,
     addedAt: d(2025, 6, 15),
     description:
-      'The redesigned Air-King — crown guards, luminous 3-6-9, and the bold minute track lifted straight from a cockpit dial.\n\n2023 example with the full set.',
+      'The redesigned Air-King, crown guards, luminous 3-6-9, and the bold minute track lifted straight from a cockpit dial.\n\n2023 example with the full set.',
     specs: {
       caseDiameter: '40mm',
       caseMaterial: 'Oystersteel',
@@ -687,7 +687,7 @@ const watches = [
     popularity: 70,
     addedAt: d(2025, 3, 12),
     description:
-      "The scientist's Rolex — anti-magnetic shielding to a thousand gauss, the green Glace Verte crystal and the lightning-bolt seconds hand.\n\nDiscontinued 2020 example, full set, excellent condition.",
+      "The scientist's Rolex, anti-magnetic shielding to a thousand gauss, the green Glace Verte crystal and the lightning-bolt seconds hand.\n\nDiscontinued 2020 example, full set, excellent condition.",
     specs: {
       caseDiameter: '40mm',
       caseMaterial: 'Oystersteel',
@@ -716,7 +716,7 @@ const watches = [
     popularity: 97,
     addedAt: d(2025, 9, 5),
     description:
-      "Discontinued in 2021, the blue-dial 5711/1A became the single most sought-after steel sports watch of its generation. Gérald Genta's porthole silhouette and the horizontally embossed dial need no introduction.\n\nA 2019 full set in superb condition — the centrepiece of any serious collection.",
+      "Discontinued in 2021, the blue-dial 5711/1A became the single most sought-after steel sports watch of its generation. Gérald Genta's porthole silhouette and the horizontally embossed dial need no introduction.\n\nA 2019 full set in superb condition, the centrepiece of any serious collection.",
     specs: {
       caseDiameter: '40mm',
       caseMaterial: 'Stainless steel',
@@ -742,7 +742,7 @@ const watches = [
     popularity: 90,
     addedAt: d(2025, 7, 30),
     description:
-      'The Aquanaut distilled the Nautilus idea into a younger, sportier register — embossed black dial, luminous Arabic numerals and the "Tropical" composite strap that shrugs off water and heat.\n\nThis 2021 example presents close to new with complete accessories.',
+      'The Aquanaut distilled the Nautilus idea into a younger, sportier register, embossed black dial, luminous Arabic numerals and the "Tropical" composite strap that shrugs off water and heat.\n\nThis 2021 example presents close to new with complete accessories.',
     specs: {
       caseDiameter: '40.8mm',
       caseMaterial: 'Stainless steel',
@@ -770,7 +770,7 @@ const watches = [
     popularity: 74,
     addedAt: d(2025, 10, 25),
     description:
-      'The quintessential dress watch. The 6119R revives the Clous de Paris hobnail bezel in rose gold around a silvery grained dial — a direct line to the Calatravas of 1932.\n\nUnworn, complete set, dated 2023.',
+      'The quintessential dress watch. The 6119R revives the Clous de Paris hobnail bezel in rose gold around a silvery grained dial, a direct line to the Calatravas of 1932.\n\nUnworn, complete set, dated 2023.',
     specs: {
       caseDiameter: '39mm',
       caseMaterial: 'Rose gold',
@@ -804,7 +804,7 @@ const watches = [
     popularity: 62,
     addedAt: d(2025, 5, 11),
     description:
-      "The Twenty~4 manchette has been Patek's definitive ladies' piece for two decades — a diamond-set steel cuff that reads as jewellery first and timepiece second.\n\nThis 2020 quartz example is offered with box, papers and a fresh service seal.",
+      "The Twenty~4 manchette has been Patek's definitive ladies' piece for two decades, a diamond-set steel cuff that reads as jewellery first and timepiece second.\n\nThis 2020 quartz example is offered with box, papers and a fresh service seal.",
     specs: {
       caseDiameter: '25.1 × 30mm',
       caseMaterial: 'Stainless steel, diamond-set',
@@ -833,7 +833,7 @@ const watches = [
     popularity: 93,
     addedAt: d(2025, 9, 18),
     description:
-      'The 15500ST is the Royal Oak at its purest: 41mm of brushed steel, the octagonal bezel with its eight white-gold screws, and the slate-grey Grande Tapisserie dial.\n\nSharp, unpolished and complete with its 2020 warranty — the integrated-bracelet icon in its definitive modern form.',
+      'The 15500ST is the Royal Oak at its purest: 41mm of brushed steel, the octagonal bezel with its eight white-gold screws, and the slate-grey Grande Tapisserie dial.\n\nSharp, unpolished and complete with its 2020 warranty, the integrated-bracelet icon in its definitive modern form.',
     specs: {
       caseDiameter: '41mm',
       caseMaterial: 'Stainless steel',
@@ -858,7 +858,7 @@ const watches = [
     popularity: 80,
     addedAt: d(2025, 4, 8),
     description:
-      'The Offshore took Genta\'s design and turned the volume up — 42mm, ceramic pushers, and a Méga Tapisserie dial built for the wrist of a racing driver.\n\nThis 2018 "Safari" variant pairs the ivory dial with a brown hornback alligator strap.',
+      'The Offshore took Genta\'s design and turned the volume up, 42mm, ceramic pushers, and a Méga Tapisserie dial built for the wrist of a racing driver.\n\nThis 2018 "Safari" variant pairs the ivory dial with a brown hornback alligator strap.',
     specs: {
       caseDiameter: '42mm',
       caseMaterial: 'Stainless steel',
@@ -893,7 +893,7 @@ const watches = [
     popularity: 91,
     addedAt: d(2025, 10, 30),
     description:
-      "The watch Genta drew in one night, rendered 8.1mm thin. The 15202's Petite Tapisserie blue dial and hand-finished calibre 2121 make it the connoisseur's Royal Oak.\n\nArriving shortly — register your interest with our concierge team.",
+      "The watch Genta drew in one night, rendered 8.1mm thin. The 15202's Petite Tapisserie blue dial and hand-finished calibre 2121 make it the connoisseur's Royal Oak.\n\nArriving shortly, register your interest with our concierge team.",
     specs: {
       caseDiameter: '39mm',
       caseMaterial: 'Stainless steel',
@@ -919,7 +919,7 @@ const watches = [
     popularity: 55,
     addedAt: d(2025, 3, 19),
     description:
-      "Code 11.59 is AP's architectural counterpoint to the Royal Oak — a round white-gold case hiding an octagonal middle, under a double-curved sapphire.\n\nThis smoked grey lacquer dial example is one of the most wearable executions, offered with its 2022 set.",
+      "Code 11.59 is AP's architectural counterpoint to the Royal Oak, a round white-gold case hiding an octagonal middle, under a double-curved sapphire.\n\nThis smoked grey lacquer dial example is one of the most wearable executions, offered with its 2022 set.",
     specs: {
       caseDiameter: '41mm',
       caseMaterial: 'White gold',
@@ -952,7 +952,7 @@ const watches = [
     popularity: 89,
     addedAt: d(2025, 8, 22),
     description:
-      'The Felipe Massa flyback that put Richard Mille on the map — a skeletonised annual-calendar chronograph inside a curved tonneau titanium case weighing almost nothing.\n\nFull 2016 set with service records; inspected and pressure-tested by our watchmakers.',
+      'The Felipe Massa flyback that put Richard Mille on the map, a skeletonised annual-calendar chronograph inside a curved tonneau titanium case weighing almost nothing.\n\nFull 2016 set with service records; inspected and pressure-tested by our watchmakers.',
     specs: {
       caseDiameter: '50 × 40mm',
       caseMaterial: 'Grade 5 titanium',
@@ -986,7 +986,7 @@ const watches = [
     popularity: 84,
     addedAt: d(2025, 6, 12),
     description:
-      "Built to survive Rafael Nadal's forehand, the RM 035 shrugs off shocks above 5,000 g in an ALUSIC case that registers barely 4.3 grams of movement.\n\nAn exceptionally clean 2015 example — among the lightest mechanical watches ever produced at scale.",
+      "Built to survive Rafael Nadal's forehand, the RM 035 shrugs off shocks above 5,000 g in an ALUSIC case that registers barely 4.3 grams of movement.\n\nAn exceptionally clean 2015 example, among the lightest mechanical watches ever produced at scale.",
     specs: {
       caseDiameter: '48 × 39.7mm',
       caseMaterial: 'ALUSIC',
@@ -1013,7 +1013,7 @@ const watches = [
     popularity: 82,
     addedAt: d(2025, 9, 28),
     description:
-      "The Bubba Watson edition pairs a grade-5 titanium case with a skeletonised movement suspended on a shock-resistant baseplate — engineering born of golf swings, not jewellers' benches.\n\nOffered with certificate and presentation box, 2019.",
+      "The Bubba Watson edition pairs a grade-5 titanium case with a skeletonised movement suspended on a shock-resistant baseplate, engineering born of golf swings, not jewellers' benches.\n\nOffered with certificate and presentation box, 2019.",
     specs: {
       caseDiameter: '49.9 × 42.7mm',
       caseMaterial: 'Titanium',
@@ -1049,7 +1049,7 @@ const watches = [
     popularity: 79,
     addedAt: d(2025, 11, 5),
     description:
-      'At 32 grams on its seamless elastic strap, the RM 67-02 is a watch you forget you are wearing — until the marbled Carbon TPT catches the light.\n\nIncoming unworn example; concierge allocation by enquiry.',
+      'At 32 grams on its seamless elastic strap, the RM 67-02 is a watch you forget you are wearing, until the marbled Carbon TPT catches the light.\n\nIncoming unworn example; concierge allocation by enquiry.',
     specs: {
       caseDiameter: '47.25 × 38.7mm',
       caseMaterial: 'Carbon TPT',
@@ -1086,7 +1086,7 @@ const watches = [
     popularity: 95,
     addedAt: d(2025, 10, 8),
     description:
-      'The Moonwatch — flight-qualified by NASA and still the only watch worn on the lunar surface. This current-production example carries the Co-Axial Master Chronometer calibre 3861.\n\nUnworn on its flat-link bracelet with the full 2024 set.',
+      'The Moonwatch, flight-qualified by NASA and still the only watch worn on the lunar surface. This current-production example carries the Co-Axial Master Chronometer calibre 3861.\n\nUnworn on its flat-link bracelet with the full 2024 set.',
     specs: {
       caseDiameter: '42mm',
       caseMaterial: 'Stainless steel',
@@ -1113,7 +1113,7 @@ const watches = [
     popularity: 86,
     addedAt: d(2025, 5, 27),
     description:
-      'The wave-dial Seamaster — 25 years of 007 pedigree in a watch that simply refuses to age. Blue ceramic bezel, laser-engraved dial and the Master Chronometer 8800.\n\nLight wear consistent with occasional use; complete set.',
+      'The wave-dial Seamaster, 25 years of 007 pedigree in a watch that simply refuses to age. Blue ceramic bezel, laser-engraved dial and the Master Chronometer 8800.\n\nLight wear consistent with occasional use; complete set.',
     specs: {
       caseDiameter: '42mm',
       caseMaterial: 'Stainless steel',
@@ -1142,7 +1142,7 @@ const watches = [
     popularity: 60,
     addedAt: d(2025, 10, 19),
     description:
-      "The 29mm Constellation frames a mother-of-pearl dial within the collection's signature polished claws — an elegant daily watch with genuine mechanical depth via the calibre 8700.\n\nNew and unworn, full 2023 warranty.",
+      "The 29mm Constellation frames a mother-of-pearl dial within the collection's signature polished claws, an elegant daily watch with genuine mechanical depth via the calibre 8700.\n\nNew and unworn, full 2023 warranty.",
     specs: {
       caseDiameter: '29mm',
       caseMaterial: 'Stainless steel',
@@ -1169,7 +1169,7 @@ const watches = [
     popularity: 72,
     addedAt: d(2025, 2, 14),
     description:
-      'The military-issue Seamaster 300 — broad-arrow hands, bakelite-style bezel and the luminous dial once strapped to Royal Navy divers. A cornerstone of vintage Omega collecting.\n\nHonest 1968 example with original dial, service history and extract from the archives.',
+      'The military-issue Seamaster 300, broad-arrow hands, bakelite-style bezel and the luminous dial once strapped to Royal Navy divers. A cornerstone of vintage Omega collecting.\n\nHonest 1968 example with original dial, service history and extract from the archives.',
     specs: {
       caseDiameter: '41.5mm',
       caseMaterial: 'Stainless steel',
@@ -1233,7 +1233,7 @@ const watches = [
     popularity: 81,
     addedAt: d(2025, 10, 12),
     description:
-      'The Tank has barely changed since 1917 because it never needed to. The large Tank Must distils the design to its essence — silvered dial, blued sword hands, beaded crown with blue cabochon.\n\nBrand new on black grained calfskin with the full Cartier set.',
+      'The Tank has barely changed since 1917 because it never needed to. The large Tank Must distils the design to its essence, silvered dial, blued sword hands, beaded crown with blue cabochon.\n\nBrand new on black grained calfskin with the full Cartier set.',
     specs: {
       caseDiameter: '33.7 × 25.5mm',
       caseMaterial: 'Stainless steel',
@@ -1269,7 +1269,7 @@ const watches = [
     popularity: 76,
     addedAt: d(2025, 4, 29),
     description:
-      "Supple as jewellery, unmistakable as a Tank's cousin — the Panthère in 18k yellow gold moves like liquid on the wrist.\n\nA small-model example from 2021, fully serviced and presented with its Cartier pouch and papers.",
+      "Supple as jewellery, unmistakable as a Tank's cousin, the Panthère in 18k yellow gold moves like liquid on the wrist.\n\nA small-model example from 2021, fully serviced and presented with its Cartier pouch and papers.",
     specs: {
       caseDiameter: '22mm',
       caseMaterial: '18k yellow gold',
@@ -1304,7 +1304,7 @@ const watches = [
     popularity: 66,
     addedAt: d(2025, 1, 30),
     description:
-      'An ultra-thin yellow gold Santos-Dumont from the late nineties — the dressiest expression of the aviation original, barely 5mm at the case.\n\nCrisp guilloché dial, correct cabochon crown, and a fresh Cartier service.',
+      'An ultra-thin yellow gold Santos-Dumont from the late nineties, the dressiest expression of the aviation original, barely 5mm at the case.\n\nCrisp guilloché dial, correct cabochon crown, and a fresh Cartier service.',
     specs: {
       caseDiameter: '27 × 36mm',
       caseMaterial: '18k yellow gold',
@@ -1340,7 +1340,7 @@ const watches = [
     popularity: 78,
     addedAt: d(2025, 8, 3),
     description:
-      "The pilot's chronograph that started it all — circular slide rule, in-house B01 movement, and the emerald green dial of the 2022 redesign.\n\nNear-new 2023 example on the seven-row bracelet.",
+      "The pilot's chronograph that started it all, circular slide rule, in-house B01 movement, and the emerald green dial of the 2022 redesign.\n\nNear-new 2023 example on the seven-row bracelet.",
     specs: {
       caseDiameter: '41mm',
       caseMaterial: 'Stainless steel',
@@ -1365,7 +1365,7 @@ const watches = [
     popularity: 68,
     addedAt: d(2025, 3, 9),
     description:
-      'A faithful nod to the original 1957 Superocean — concave bezel, oversized indices and sea-blue dial in a slim 42mm case.\n\nExcellent 2021 example on the mesh Ocean Classic bracelet.',
+      'A faithful nod to the original 1957 Superocean, concave bezel, oversized indices and sea-blue dial in a slim 42mm case.\n\nExcellent 2021 example on the mesh Ocean Classic bracelet.',
     specs: {
       caseDiameter: '42mm',
       caseMaterial: 'Stainless steel',
@@ -1418,7 +1418,7 @@ const watches = [
     popularity: 58,
     addedAt: d(2025, 11, 2),
     description:
-      "The Premier's pistachio-green dial is one of the great quiet flexes of modern watchmaking — a hand-wound 1940s-style chronograph for people who notice details.\n\nNew on brown alligator with the full 2024 warranty.",
+      "The Premier's pistachio-green dial is one of the great quiet flexes of modern watchmaking, a hand-wound 1940s-style chronograph for people who notice details.\n\nNew on brown alligator with the full 2024 warranty.",
     specs: {
       caseDiameter: '40mm',
       caseMaterial: 'Stainless steel',
@@ -1454,7 +1454,7 @@ const watches = [
     popularity: 77,
     addedAt: d(2025, 10, 28),
     description:
-      'The Glassbox reissue nails the 1963 Carrera — domed sapphire flowing over a panda dial with the flange-mounted tachymeter, powered by the in-house TH20-00.\n\nUnworn 2024 example on perforated black leather.',
+      'The Glassbox reissue nails the 1963 Carrera, domed sapphire flowing over a panda dial with the flange-mounted tachymeter, powered by the in-house TH20-00.\n\nUnworn 2024 example on perforated black leather.',
     specs: {
       caseDiameter: '39mm',
       caseMaterial: 'Stainless steel',
@@ -1485,7 +1485,7 @@ const watches = [
     popularity: 82,
     addedAt: d(2025, 5, 16),
     description:
-      'The square watch that Steve McQueen made immortal — left-hand crown, metallic blue dial, and the Calibre 11 descended from the first automatic chronograph.\n\nA 2021 example on its perforated rally strap, complete set.',
+      'The square watch that Steve McQueen made immortal, left-hand crown, metallic blue dial, and the Calibre 11 descended from the first automatic chronograph.\n\nA 2021 example on its perforated rally strap, complete set.',
     specs: {
       caseDiameter: '39mm',
       caseMaterial: 'Stainless steel',
@@ -1517,7 +1517,7 @@ const watches = [
     popularity: 64,
     addedAt: d(2025, 7, 22),
     description:
-      'The modern Aquaracer is a serious tool watch — 300 metres, ceramic 12-sided bezel, and the orange-accented seconds hand recalling the original 844.\n\nGreen sunray dial, 2023, very light wear.',
+      'The modern Aquaracer is a serious tool watch, 300 metres, ceramic 12-sided bezel, and the orange-accented seconds hand recalling the original 844.\n\nGreen sunray dial, 2023, very light wear.',
     specs: {
       caseDiameter: '43mm',
       caseMaterial: 'Stainless steel',
@@ -1544,7 +1544,7 @@ const watches = [
     popularity: 52,
     addedAt: d(2025, 2, 27),
     description:
-      "The 36mm Carrera Date brings the racing collection's clean legibility to a smaller wrist — silver dial, applied indices, effortless daily versatility.\n\nPresented in unworn condition, timed and sealed by our watchmakers.",
+      "The 36mm Carrera Date brings the racing collection's clean legibility to a smaller wrist, silver dial, applied indices, effortless daily versatility.\n\nPresented in unworn condition, timed and sealed by our watchmakers.",
     specs: {
       caseDiameter: '36mm',
       caseMaterial: 'Stainless steel',
@@ -1572,7 +1572,7 @@ const watches = [
     popularity: 88,
     addedAt: d(2025, 9, 9),
     description:
-      "A love letter to Tudor's 1958 divers — gilt accents, red-tipped bezel and a 39mm case that fits like a vintage original, powered by the in-house MT5402.\n\nComplete 2023 set, presented unworn.",
+      "A love letter to Tudor's 1958 divers, gilt accents, red-tipped bezel and a 39mm case that fits like a vintage original, powered by the in-house MT5402.\n\nComplete 2023 set, presented unworn.",
     specs: {
       caseDiameter: '39mm',
       caseMaterial: 'Stainless steel',
@@ -1597,7 +1597,7 @@ const watches = [
     popularity: 80,
     addedAt: d(2025, 6, 18),
     description:
-      "Tudor's burgundy-and-blue GMT offers the Rolex-family travel watch at a fraction of the price — with a true jumping local hour and 70-hour reserve.\n\nWell-kept 2022 example on its riveted steel bracelet.",
+      "Tudor's burgundy-and-blue GMT offers the Rolex-family travel watch at a fraction of the price, with a true jumping local hour and 70-hour reserve.\n\nWell-kept 2022 example on its riveted steel bracelet.",
     specs: {
       caseDiameter: '41mm',
       caseMaterial: 'Stainless steel',
@@ -1650,7 +1650,7 @@ const watches = [
     popularity: 49,
     addedAt: d(2025, 1, 22),
     description:
-      'A mid-nineties Prince Oysterdate — Rolex-built case, self-winding ETA heart, and the quiet charm of a watch that simply does everything right.\n\nOriginal silver dial, service crown and a fresh overhaul; a charming entry into vintage Tudor.',
+      'A mid-nineties Prince Oysterdate, Rolex-built case, self-winding ETA heart, and the quiet charm of a watch that simply does everything right.\n\nOriginal silver dial, service crown and a fresh overhaul; a charming entry into vintage Tudor.',
     specs: {
       caseDiameter: '34mm',
       caseMaterial: 'Stainless steel',
@@ -1677,7 +1677,7 @@ const watches = [
     popularity: 71,
     addedAt: d(2025, 7, 15),
     description:
-      "The Big Bang Unico puts its flyback chronograph calibre on full display through an openworked dial — Hublot's fusion philosophy rendered in titanium.\n\nCrisp 2021 example on the structured rubber strap.",
+      "The Big Bang Unico puts its flyback chronograph calibre on full display through an openworked dial, Hublot's fusion philosophy rendered in titanium.\n\nCrisp 2021 example on the structured rubber strap.",
     specs: {
       caseDiameter: '42mm',
       caseMaterial: 'Titanium',
@@ -1703,7 +1703,7 @@ const watches = [
     popularity: 57,
     addedAt: d(2025, 4, 2),
     description:
-      'The Classic Fusion pares the porthole design back to an elegant 45mm daily watch — satin titanium case over a black sunray dial, rubber-lined leather strap.\n\nWell-kept 2020 example with box and papers.',
+      'The Classic Fusion pares the porthole design back to an elegant 45mm daily watch, satin titanium case over a black sunray dial, rubber-lined leather strap.\n\nWell-kept 2020 example with box and papers.',
     specs: {
       caseDiameter: '45mm',
       caseMaterial: 'Titanium',
@@ -1729,7 +1729,7 @@ const watches = [
     popularity: 63,
     addedAt: d(2025, 3, 25),
     description:
-      "The tonneau-shaped Spirit takes the Big Bang's architecture and stretches it into a bolder silhouette — ceramic bezel, skeleton dial and Unico-derived chronograph.\n\nA strong 2019 example; case and crystal in excellent order.",
+      "The tonneau-shaped Spirit takes the Big Bang's architecture and stretches it into a bolder silhouette, ceramic bezel, skeleton dial and Unico-derived chronograph.\n\nA strong 2019 example; case and crystal in excellent order.",
     specs: {
       caseDiameter: '45mm',
       caseMaterial: 'Titanium & black ceramic',
@@ -1763,7 +1763,7 @@ const watches = [
     popularity: 60,
     addedAt: d(2025, 2, 8),
     description:
-      "Hublot's proprietary King Gold — richer than standard 5N — gives the 41mm Big Bang genuine warmth against its black ceramic bezel.\n\nFully serviced 2018 example with a recent pressure test and paperwork.",
+      "Hublot's proprietary King Gold, richer than standard 5N, gives the 41mm Big Bang genuine warmth against its black ceramic bezel.\n\nFully serviced 2018 example with a recent pressure test and paperwork.",
     specs: {
       caseDiameter: '41mm',
       caseMaterial: '18k King Gold',
@@ -1791,7 +1791,7 @@ const watches = [
     popularity: 83,
     addedAt: d(2025, 8, 27),
     description:
-      'The vertical two-register Portugieser — arguably the most handsome production chronograph made — now with the in-house 69355 visible through the sapphire back.\n\nBlue-on-silver dial, 2022, complete set.',
+      'The vertical two-register Portugieser, arguably the most handsome production chronograph made, now with the in-house 69355 visible through the sapphire back.\n\nBlue-on-silver dial, 2022, complete set.',
     specs: {
       caseDiameter: '41mm',
       caseMaterial: 'Stainless steel',
@@ -1823,7 +1823,7 @@ const watches = [
     popularity: 79,
     addedAt: d(2025, 9, 14),
     description:
-      "The direct descendant of the 1948 Mark 11 navigators' watch — soft-iron cage, anti-reflective crystal secured against pressure drop, now with 120-hour calibre 32111.\n\nBlack dial on EasX-CHANGE bracelet, 2023 set.",
+      "The direct descendant of the 1948 Mark 11 navigators' watch, soft-iron cage, anti-reflective crystal secured against pressure drop, now with 120-hour calibre 32111.\n\nBlack dial on EasX-CHANGE bracelet, 2023 set.",
     specs: {
       caseDiameter: '40mm',
       caseMaterial: 'Stainless steel',
@@ -1849,7 +1849,7 @@ const watches = [
     popularity: 61,
     addedAt: d(2025, 5, 4),
     description:
-      "The Portofino's round, leaf-handed simplicity channels the dolce vita of the Italian Riviera — a dress watch that never tries too hard.\n\nSilver dial on black Santoni alligator; presented unworn with a fresh service seal.",
+      "The Portofino's round, leaf-handed simplicity channels the dolce vita of the Italian Riviera, a dress watch that never tries too hard.\n\nSilver dial on black Santoni alligator; presented unworn with a fresh service seal.",
     specs: {
       caseDiameter: '40mm',
       caseMaterial: 'Stainless steel',
@@ -1875,7 +1875,7 @@ const watches = [
     popularity: 65,
     addedAt: d(2025, 6, 29),
     description:
-      'A 40mm Portugieser with small seconds at six — the marine-chronometer layout of the 1939 original in a case sized for modern wrists.\n\nSalmon-toned dial, 2021, excellent throughout.',
+      'A 40mm Portugieser with small seconds at six, the marine-chronometer layout of the 1939 original in a case sized for modern wrists.\n\nSalmon-toned dial, 2021, excellent throughout.',
     specs: {
       caseDiameter: '40.4mm',
       caseMaterial: 'Stainless steel',
@@ -1907,7 +1907,7 @@ const watches = [
     popularity: 75,
     addedAt: d(2025, 7, 2),
     description:
-      'The crown-protecting bridge, the cushion case, the sandwich dial — everything Panerai in 44mm, powered by the in-house P.9010 with twin barrels.\n\nComplete 2021 set on the black calf strap with spare rubber.',
+      'The crown-protecting bridge, the cushion case, the sandwich dial, everything Panerai in 44mm, powered by the in-house P.9010 with twin barrels.\n\nComplete 2021 set on the black calf strap with spare rubber.',
     specs: {
       caseDiameter: '44mm',
       caseMaterial: 'AISI 316L steel',
@@ -1940,7 +1940,7 @@ const watches = [
     popularity: 58,
     addedAt: d(2025, 4, 21),
     description:
-      "The Luminor Due translates Panerai's instrument-watch DNA into a slim, polished 38mm that slips under a cuff — the marque's most versatile line.\n\nIvory dial, gold hands, 2022 full set.",
+      "The Luminor Due translates Panerai's instrument-watch DNA into a slim, polished 38mm that slips under a cuff, the marque's most versatile line.\n\nIvory dial, gold hands, 2022 full set.",
     specs: {
       caseDiameter: '38mm',
       caseMaterial: 'Polished steel',
@@ -1972,7 +1972,7 @@ const watches = [
     popularity: 66,
     addedAt: d(2025, 3, 15),
     description:
-      'The proper dive Panerai — unidirectional ceramic bezel, 300-metre rating and the op-blue ceramic dial shifting between navy and near-black.\n\n2020 example on Caoutchouc rubber, serviced.',
+      'The proper dive Panerai, unidirectional ceramic bezel, 300-metre rating and the op-blue ceramic dial shifting between navy and near-black.\n\n2020 example on Caoutchouc rubber, serviced.',
     specs: {
       caseDiameter: '42mm',
       caseMaterial: 'AISI 316L steel',
@@ -2006,7 +2006,7 @@ const watches = [
     popularity: 54,
     addedAt: d(2025, 1, 12),
     description:
-      "The wire-lugged Radiomir in its purest form — hand-wound, no seconds, the double-torch OP logo at six. A purist's Panerai.\n\n2012 example, fully serviced with two-year warranty.",
+      "The wire-lugged Radiomir in its purest form, hand-wound, no seconds, the double-torch OP logo at six. A purist's Panerai.\n\n2012 example, fully serviced with two-year warranty.",
     specs: {
       caseDiameter: '45mm',
       caseMaterial: 'Polished steel',
@@ -2042,7 +2042,7 @@ const watches = [
     popularity: 81,
     addedAt: d(2025, 9, 20),
     description:
-      'Flip the case and the 1931 art-deco icon reveals its blank canvas — the Reverso remains the most elegant idea in watch design. This Tribute wears the deep blue dial of the modern classic.\n\nComplete 2023 set on Casa Fagliano-style strap.',
+      'Flip the case and the 1931 art-deco icon reveals its blank canvas, the Reverso remains the most elegant idea in watch design. This Tribute wears the deep blue dial of the modern classic.\n\nComplete 2023 set on Casa Fagliano-style strap.',
     specs: {
       caseDiameter: '45.6 × 27.4mm',
       caseMaterial: 'Stainless steel',
@@ -2102,7 +2102,7 @@ const watches = [
     popularity: 59,
     addedAt: d(2025, 6, 8),
     description:
-      "The Polaris revives JLC's 1968 diver-alarm line as a refined daily sports watch — rotating inner bezel, twin crowns, and a vanilla-tinted lume nod to the original.\n\nBlue gradient dial, 2021, complete.",
+      "The Polaris revives JLC's 1968 diver-alarm line as a refined daily sports watch, rotating inner bezel, twin crowns, and a vanilla-tinted lume nod to the original.\n\nBlue gradient dial, 2021, complete.",
     specs: {
       caseDiameter: '42mm',
       caseMaterial: 'Stainless steel',
@@ -2129,7 +2129,7 @@ const watches = [
     popularity: 56,
     addedAt: d(2025, 2, 1),
     description:
-      'A mid-size Reverso Classique from 2003 — the proportions collectors prize, with a silvered guilloché dial and blued hands.\n\nFreshly serviced in-house with two-year warranty; a graceful piece on any wrist.',
+      'A mid-size Reverso Classique from 2003, the proportions collectors prize, with a silvered guilloché dial and blued hands.\n\nFreshly serviced in-house with two-year warranty; a graceful piece on any wrist.',
     specs: {
       caseDiameter: '38 × 23mm',
       caseMaterial: 'Stainless steel',
@@ -2165,7 +2165,7 @@ const watches = [
     popularity: 87,
     addedAt: d(2025, 10, 5),
     description:
-      "The Overseas blue dial is the thinking collector's luxury sports watch — Geneva-seal finishing, Maltese-cross bezel, and three quick-release strap options.\n\n2021 example with bracelet, rubber and leather straps, all included.",
+      "The Overseas blue dial is the thinking collector's luxury sports watch, Geneva-seal finishing, Maltese-cross bezel, and three quick-release strap options.\n\n2021 example with bracelet, rubber and leather straps, all included.",
     specs: {
       caseDiameter: '41mm',
       caseMaterial: 'Stainless steel',
@@ -2191,7 +2191,7 @@ const watches = [
     popularity: 71,
     addedAt: d(2025, 4, 14),
     description:
-      "The Patrimony's convex dial and slender rose-gold case distil Genevan classicism into its purest modern form — a perpetual reference among dress watches.\n\nComplete 2020 set; unworn since a full manufacture service.",
+      "The Patrimony's convex dial and slender rose-gold case distil Genevan classicism into its purest modern form, a perpetual reference among dress watches.\n\nComplete 2020 set; unworn since a full manufacture service.",
     specs: {
       caseDiameter: '40mm',
       caseMaterial: '18k rose gold',
@@ -2217,7 +2217,7 @@ const watches = [
     popularity: 69,
     addedAt: d(2025, 7, 26),
     description:
-      "The Fiftysix channels a 1956 Vacheron reference — box crystal, sector dial, Arabic-and-baton alternation — into the maison's most accessible line.\n\nSepia-toned dial, 2022, near new.",
+      "The Fiftysix channels a 1956 Vacheron reference, box crystal, sector dial, Arabic-and-baton alternation, into the maison's most accessible line.\n\nSepia-toned dial, 2022, near new.",
     specs: {
       caseDiameter: '40mm',
       caseMaterial: 'Stainless steel',
@@ -2245,7 +2245,7 @@ const watches = [
     popularity: 86,
     addedAt: d(2025, 11, 8),
     description:
-      "Vacheron's faithful revival of its 1977 integrated-bracelet 222 — the maison's answer to the Genta era, in solid yellow gold with the tonneau-link bracelet.\n\nUnworn 2024 example; a modern classic already trading above retail.",
+      "Vacheron's faithful revival of its 1977 integrated-bracelet 222, the maison's answer to the Genta era, in solid yellow gold with the tonneau-link bracelet.\n\nUnworn 2024 example; a modern classic already trading above retail.",
     specs: {
       caseDiameter: '37mm',
       caseMaterial: '18k yellow gold',
@@ -2273,7 +2273,7 @@ const watches = [
     popularity: 84,
     addedAt: d(2025, 8, 11),
     description:
-      "The watch that made the world take Grand Seiko seriously — a white dial textured like wind-blown snow over the Spring Drive's perfectly smooth glide seconds.\n\nHigh-intensity titanium, 2022, complete set.",
+      "The watch that made the world take Grand Seiko seriously, a white dial textured like wind-blown snow over the Spring Drive's perfectly smooth glide seconds.\n\nHigh-intensity titanium, 2022, complete set.",
     specs: {
       caseDiameter: '41mm',
       caseMaterial: 'High-intensity titanium',
@@ -2299,7 +2299,7 @@ const watches = [
     popularity: 62,
     addedAt: d(2025, 5, 22),
     description:
-      "A limited Hi-Beat with a dial the colour of turning maple leaves — Grand Seiko's texture work at its most poetic.\n\n2019 limited edition, full set, superb condition.",
+      "A limited Hi-Beat with a dial the colour of turning maple leaves, Grand Seiko's texture work at its most poetic.\n\n2019 limited edition, full set, superb condition.",
     specs: {
       caseDiameter: '39.5mm',
       caseMaterial: 'Stainless steel',
@@ -2325,7 +2325,7 @@ const watches = [
     popularity: 57,
     addedAt: d(2025, 3, 3),
     description:
-      'A 39.5mm ivory-dial GMT with a box sapphire crystal and the most elegant blue GMT hand in the business — vintage proportions, modern movement.\n\nOn brown crocodile, 2021, excellent.',
+      'A 39.5mm ivory-dial GMT with a box sapphire crystal and the most elegant blue GMT hand in the business, vintage proportions, modern movement.\n\nOn brown crocodile, 2021, excellent.',
     specs: {
       caseDiameter: '39.5mm',
       caseMaterial: 'Stainless steel',
@@ -2353,7 +2353,7 @@ const watches = [
     popularity: 66,
     addedAt: d(2025, 10, 21),
     description:
-      'The Taisetsu — "deep snow" — dial renders a winter forest in layered greys, paired with Spring Drive\'s signature sweep.\n\nUnworn 2023 boutique edition with complete set.',
+      'The Taisetsu, "deep snow", dial renders a winter forest in layered greys, paired with Spring Drive\'s signature sweep.\n\nUnworn 2023 boutique edition with complete set.',
     specs: {
       caseDiameter: '40mm',
       caseMaterial: 'Stainless steel',
@@ -2434,7 +2434,7 @@ function dialPalette(detail) {
 
 const BOX_DIST = [
   ...Array(15).fill('Box and Papers'),
-  ...Array(5).fill('Veymont Presentation Box'),
+  ...Array(5).fill('Lumont Presentation Box'),
   ...Array(3).fill('Box Only'),
   ...Array(2).fill('Papers Only'),
 ];

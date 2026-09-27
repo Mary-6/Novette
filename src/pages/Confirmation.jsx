@@ -28,7 +28,7 @@ export default function Confirmation() {
         <p className="eyebrow mt-6">Order confirmed</p>
         <h1 className="heading-display mt-2 text-4xl font-medium sm:text-5xl">Thank you.</h1>
         <p className="mt-4 text-sm text-graphite">
-          Order <span className="font-medium text-ink">{order.number}</span> — a confirmation has
+          Order <span className="font-medium text-ink">{order.number}</span>, a confirmation has
           been sent to {order.email}. Your timepiece will be prepared by our atelier and shipped
           fully insured.
         </p>

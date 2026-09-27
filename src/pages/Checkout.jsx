@@ -248,7 +248,7 @@ export default function Checkout() {
             {step === 3 && (
               <div className="space-y-6">
                 <p className="text-sm leading-relaxed text-graphite">
-                  Review your details and place your order. No payment is taken online — a concierge
+                  Review your details and place your order. No payment is taken online, a concierge
                   will confirm availability and contact you to complete your order personally.
                 </p>
                 <div className="bg-sand p-6 text-sm">

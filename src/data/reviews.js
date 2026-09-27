@@ -9,7 +9,7 @@ const reviews = [
     name: 'Amelia Hart',
     location: 'London, UK',
     rating: 5,
-    text: 'The team sourced a Cartier Panthère for my anniversary. Authentication paperwork, service record, beautiful presentation — flawless from first call to delivery.',
+    text: 'The team sourced a Cartier Panthère for my anniversary. Authentication paperwork, service record, beautiful presentation, flawless from first call to delivery.',
   },
   {
     name: 'Daniel Okafor',
@@ -27,13 +27,13 @@ const reviews = [
     name: 'Marcus Chen',
     location: 'San Francisco, CA',
     rating: 5,
-    text: 'Fair pricing and zero pressure. The concierge held a Tudor Black Bay while I compared options — a rare courtesy in this market.',
+    text: 'Fair pricing and zero pressure. The concierge held a Tudor Black Bay while I compared options, a rare courtesy in this market.',
   },
   {
     name: 'Isabella Romano',
     location: 'Milan, IT',
     rating: 5,
-    text: 'Second purchase from Veymont Watches and the standard has not slipped. Their warranty service on my first watch was handled in days, not months.',
+    text: 'Second purchase from Lumont Watches and the standard has not slipped. Their warranty service on my first watch was handled in days, not months.',
   },
   {
     name: 'Tom Beckett',
@@ -51,7 +51,7 @@ const reviews = [
     name: 'Henrik Dahl',
     location: 'Copenhagen, DK',
     rating: 5,
-    text: 'Transparent pricing and honest grading. The heritage GMT I received had every detail disclosed in advance — there were none left to discover.',
+    text: 'Transparent pricing and honest grading. The heritage GMT I received had every detail disclosed in advance, there were none left to discover.',
   },
 ];
 

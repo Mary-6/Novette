@@ -55,7 +55,7 @@ export function AuthProvider({ children }) {
           announce();
           return { user: u };
         } catch (e) {
-          if (e.status) throw e; // real auth error — show it
+          if (e.status) throw e; // real auth error, show it
         }
         // API unreachable → browser-only demo session
         const u = {

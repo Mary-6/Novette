@@ -123,6 +123,9 @@ export default function Header() {
         </button>
         <Logo />
         <nav ref={navRef} className="hidden items-center gap-7 lg:flex">
+          <NavLink to="/" className={linkCls}>
+            Home
+          </NavLink>
           <div className="relative">
             <button
               type="button"

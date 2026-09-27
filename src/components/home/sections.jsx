@@ -95,7 +95,7 @@ export function Hero() {
           Timeless Luxury. <span className="italic text-gold">Iconic Timepieces.</span>
         </h1>
         <p className="mt-5 max-w-[560px] text-base leading-relaxed text-ivory/85">
-          New and unworn watches from the world&apos;s great maisons — every piece inspected, timed
+          New and unworn watches from the world&apos;s great maisons, every piece inspected, timed
           and certified by our master horologists.
         </p>
         <div className="mt-8 flex w-full flex-col gap-4 sm:w-auto sm:flex-row sm:justify-center">
@@ -131,20 +131,19 @@ export function HeritageIntro() {
     <section className="py-20 lg:py-28">
       <div className="container-x grid items-center gap-12 lg:grid-cols-2">
         <div className="reveal">
-          <p className="eyebrow mb-3">The Veymont Standard</p>
+          <p className="eyebrow mb-3">The Lumont Standard</p>
           <h2 className="heading-display text-3xl font-medium sm:text-4xl lg:text-5xl">
             Where Heritage Meets Modern Elegance
           </h2>
           <div className="mt-6 space-y-4 text-sm leading-relaxed text-graphite">
             <p>
-              For nearly four decades Veymont Watches has brought together the world&apos;s most
-              legendary watches for collectors who value precision, heritage and lasting value —
-              each reference chosen for the story it will carry onto the next wrist.
+              For nearly four decades Lumont Watches has brought together the world&apos;s most
+              legendary watches for collectors who value precision, heritage and lasting value,               each reference chosen for the story it will carry onto the next wrist.
             </p>
             <p>
               Every watch undergoes a multi-point inspection by our certified horologists: serial
               numbers, movement and provenance verified against our records before listing. One
-              hundred percent certified authentic — always.
+              hundred percent certified authentic, always.
             </p>
           </div>
           <ul className="mt-8 space-y-3">
@@ -333,20 +332,20 @@ export function MarketIndex() {
         <div>
           <p className="eyebrow mb-3">Pricing Intelligence</p>
           <h2 className="heading-display text-3xl font-medium sm:text-4xl">
-            The Veymont Market Index
+            The Lumont Market Index
           </h2>
           <p className="mt-4 max-w-2xl text-sm leading-relaxed text-ivory/70">
             Each quarter our analysts publish an internal measure of the certified market for new
-            and unworn watches — built from our completed sales, verified dealer transactions and
+            and unworn watches, built from our completed sales, verified dealer transactions and
             observed auction results. It reads what watches actually change hands for, not what
             sellers ask.
           </p>
           <p className="mt-3 max-w-2xl text-sm leading-relaxed text-ivory/70">
             It is why every price on this site is the same whether you call, visit, or check out at
-            midnight — and why our listings move with the market rather than against it.
+            midnight, and why our listings move with the market rather than against it.
           </p>
         </div>
-        <Button to="/journal/veymont-market-index" variant="gold" className="rounded-full">
+        <Button to="/journal/lumont-market-index" variant="gold" className="rounded-full">
           View Report
         </Button>
       </div>
@@ -395,17 +394,17 @@ export function PromiseSection() {
     {
       icon: LineChart,
       title: 'Pricing Transparency',
-      text: 'Every price is set against the Veymont Market Index — measured, transparent and fair.',
+      text: 'Every price is set against the Lumont Market Index, measured, transparent and fair.',
     },
     {
       icon: Watch,
       title: 'Real-Time Inventory',
-      text: 'Every listing is physically in our vault — inspected, timed and ready to ship today.',
+      text: 'Every listing is physically in our vault, inspected, timed and ready to ship today.',
     },
     {
       icon: Truck,
       title: 'Free Overnight Shipping',
-      text: 'Insured, discreet and signature-required — complimentary overnight delivery on us.',
+      text: 'Insured, discreet and signature-required, complimentary overnight delivery on us.',
       to: '/shipping-info',
     },
     {
@@ -446,13 +445,13 @@ export function AboutBlock() {
     <section className="py-20 lg:py-28">
       <div className="container-x grid gap-12 lg:grid-cols-2">
         <div className="reveal">
-          <p className="eyebrow mb-3">About Veymont Watches</p>
+          <p className="eyebrow mb-3">About Lumont Watches</p>
           <h2 className="heading-display text-3xl font-medium sm:text-4xl lg:text-5xl">
             Our Story
           </h2>
           <div className="mt-6 space-y-4 text-sm leading-relaxed text-graphite">
             <p>
-              Founded in 1987 as a small atelier restoring earlier Rolex references, Veymont
+              Founded in 1987 as a small atelier restoring earlier Rolex references, Lumont
               Watches grew from a two-bench workshop into a destination trusted by more than 25,000
               clients across the United States.
             </p>
@@ -462,8 +461,8 @@ export function AboutBlock() {
               inspected and certified.
             </p>
             <p>
-              Every listing is priced against the Veymont Market Index, shipped fully insured, and
-              covered by a two-year warranty — because a fine watch should be the safest purchase
+              Every listing is priced against the Lumont Market Index, shipped fully insured, and
+              covered by a two-year warranty, because a fine watch should be the safest purchase
               you make all year.
             </p>
           </div>
@@ -516,7 +515,7 @@ export function Reviews() {
 export function WhyShop() {
   const points = [
     'Every watch authenticated by master watchmakers, in-house',
-    'Pricing set by the Veymont Market Index — real transaction data',
+    'Pricing set by the Lumont Market Index, real transaction data',
     'Real-time inventory: listed means in our vault and ready',
     'Free insured overnight shipping, signature on delivery',
     'Two-year warranty serviced on our own benches',
@@ -587,15 +586,15 @@ export function Newsletter() {
   return (
     <section className="bg-ink py-20 text-ivory lg:py-28">
       <div className="container-x max-w-2xl text-center">
-        <p className="eyebrow mb-4">The Veymont List</p>
+        <p className="eyebrow mb-4">The Lumont List</p>
         <h2 className="heading-display text-4xl font-medium sm:text-5xl">
           Timeless Style, Delivered.
         </h2>
         <p className="mt-4 text-sm text-ivory/60">
-          New arrivals, private offerings and market notes — once a month, never more.
+          New arrivals, private offerings and market notes, once a month, never more.
         </p>
         {done ? (
-          <p className="mt-8 text-sm text-gold">Welcome aboard — check your inbox.</p>
+          <p className="mt-8 text-sm text-gold">Welcome aboard, check your inbox.</p>
         ) : (
           <form
             onSubmit={(e) => {

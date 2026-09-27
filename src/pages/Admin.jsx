@@ -611,6 +611,7 @@ export default function Admin() {
                   .adminSaveSettings({
                     storeName: fd.get('storeName'),
                     contactEmail: fd.get('contactEmail'),
+                    supportPhone: fd.get('supportPhone'),
                     announcement: fd.get('announcement'),
                     shipping: settings.shipping || [
                       {
@@ -638,7 +639,7 @@ export default function Admin() {
                 <label className="eyebrow mb-1 block">Store name</label>
                 <input
                   name="storeName"
-                  defaultValue={settings.storeName || 'Veymont Watches'}
+                  defaultValue={settings.storeName || 'Lumont Watches'}
                   className={inputCls}
                 />
               </div>
@@ -646,7 +647,15 @@ export default function Admin() {
                 <label className="eyebrow mb-1 block">Contact email</label>
                 <input
                   name="contactEmail"
-                  defaultValue={settings.contactEmail || 'veymontwatches@gmail.com'}
+                  defaultValue={settings.contactEmail || 'lumontwatches@gmail.com'}
+                  className={inputCls}
+                />
+              </div>
+              <div>
+                <label className="eyebrow mb-1 block">Support phone</label>
+                <input
+                  name="supportPhone"
+                  defaultValue={settings.supportPhone || '+1 800 555 0148'}
                   className={inputCls}
                 />
               </div>

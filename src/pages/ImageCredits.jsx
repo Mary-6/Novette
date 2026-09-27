@@ -12,8 +12,8 @@ export default function ImageCredits() {
     <>
       <PageHero eyebrow="Attribution" title="Image Credits">
         <p>
-          Product imagery is original Veymont Watches studio photography; licensed source
-          photographs retained in the project are credited below — each image is credited to its
+          Product imagery is original Lumont Watches studio photography; licensed source
+          photographs retained in the project are credited below, each image is credited to its
           author and linked to its file page.
         </p>
       </PageHero>
@@ -45,7 +45,7 @@ export default function ImageCredits() {
                     </a>
                     <span className="text-stone">
                       {' '}
-                      — {c.author} · {c.license}
+                     , {c.author} · {c.license}
                     </span>
                   </li>
                 ))}
