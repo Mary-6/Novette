@@ -73,9 +73,10 @@ Route::get('/collections/{slug}', function (string $slug) {
 });
 
 Route::get('/super-clone', function () {
-    return view('super-clone', [
-        'watches' => Catalog::watches(['brand' => 'super-clone']),
-    ]);
+    $watches = DB::table('Watch')->where('active', 1)->where('inventory', '>', 0)
+        ->where('reference', 'like', 'SC-%')->orderByDesc('popularity')->get()
+        ->map(fn ($w) => Catalog::decorate($w))->all();
+    return view('super-clone', ['watches' => $watches]);
 });
 
 Route::get('/rolex', function () {
