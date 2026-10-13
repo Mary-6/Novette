@@ -28,3 +28,14 @@ dist-ssr
 .env.*
 !.env.example
 !.env.production.example
+
+# Laravel
+/vendor
+/.phpunit.cache
+/public/build
+/public/hot
+/public/storage
+/storage/*.key
+.phpunit.result.cache
+Homestead.*
+auth.json
