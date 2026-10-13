@@ -20,9 +20,7 @@
 -- Current Database: `novette`
 --
 
-CREATE DATABASE /*!32312 IF NOT EXISTS*/ `novette` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci */;
 
-USE `novette`;
 
 --
 -- Table structure for table `AuthToken`
