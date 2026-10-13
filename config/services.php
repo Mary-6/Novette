@@ -32,7 +32,7 @@ return [
     ],
 
     'smartsupp' => [
-        'key' => env('SMARTSUPP_KEY'),
+        'key' => env('SMARTSUPP_KEY', 'c6b42274d55ac5920f7598659fd223a227c43e7c'),
         'dashboard_url' => 'https://app.smartsupp.com/app/inbox',
     ],
 
