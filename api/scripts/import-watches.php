@@ -1,0 +1,199 @@
+<?php
+// Usage: php scripts/import-watches.php
+// Adds catalogue models with freely licensed photos from Wikimedia Commons,
+// and replaces studio renders with real photos for the listed existing watches.
+
+require __DIR__ . '/../vendor/autoload.php';
+$app = require __DIR__ . '/../bootstrap/app.php';
+$app->make(Illuminate\Contracts\Console\Kernel::class)->bootstrap();
+
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
+
+const UA = 'NovetteWatches/1.0 (catalogue import; novettewatches@gmail.com)';
+const API = 'https://commons.wikimedia.org/w/api.php';
+const BAD_LICENSE = '/(NC|ND|Non-free|Fair use|noncommercial)/i';
+const BAD_NAME = '/logo|drawing|\.svg|diagram|advert|poster|sketch|stamp|coin|boutique|store|shop|building|facade|statue|clock|tower|boat|yacht|aircraft|plane|car\b|racing|horse|chart|painting|portrait|document|patent|window|museum|exhibit|display case|showcase|catalog|movement only|caliber|calibre/i';
+
+$PUBLIC = realpath(__DIR__ . '/../public');
+
+function http(string $url): ?string
+{
+    $ctx = stream_context_create(['http' => ['header' => 'User-Agent: ' . UA, 'timeout' => 30]]);
+    for ($i = 0; $i < 3; $i++) {
+        $r = @file_get_contents($url, false, $ctx);
+        if ($r !== false) return $r;
+        sleep(2);
+    }
+    return null;
+}
+
+function search(string $q): array
+{
+    $url = API . '?' . http_build_query([
+        'action' => 'query', 'generator' => 'search', 'gsrsearch' => $q . ' filetype:bitmap',
+        'gsrnamespace' => 6, 'gsrlimit' => 30, 'prop' => 'imageinfo',
+        'iiprop' => 'url|extmetadata|size', 'iiurlwidth' => 1200, 'format' => 'json',
+    ]);
+    $j = json_decode(http($url) ?? '{}', true);
+    $out = [];
+    foreach (($j['query']['pages'] ?? []) as $p) {
+        $ii = $p['imageinfo'][0] ?? [];
+        $lic = $ii['extmetadata']['LicenseShortName']['value'] ?? '';
+        $out[] = ['title' => $p['title'], 'thumb' => $ii['thumburl'] ?? null, 'w' => $ii['width'] ?? 0, 'h' => $ii['height'] ?? 0, 'license' => $lic, 'index' => $p['index'] ?? 99];
+    }
+    usort($out, fn($a, $b) => $a['index'] <=> $b['index']);
+    return $out;
+}
+
+function norm(string $s): string { return preg_replace('/[^a-z0-9]/', '', strtolower($s)); }
+
+/** @param string[] $must tokens of which at least one must appear in the file name */
+function findPhotos(array $queries, array $must, string $brandToken, int $max = 3): array
+{
+    $picked = [];
+    foreach ($queries as $q) {
+        foreach (search($q) as $c) {
+            if (!$c['thumb'] || $c['w'] < 500 || $c['h'] < 400) continue;
+            if ($c['license'] === '' || preg_match(BAD_LICENSE, $c['license'])) continue;
+            if (preg_match(BAD_NAME, $c['title'])) continue;
+            $t = norm($c['title']);
+            if (!str_contains($t, norm($brandToken))) continue;
+            $ok = false;
+            foreach ($must as $m) if (str_contains($t, norm($m))) { $ok = true; break; }
+            if (!$ok) continue;
+            $picked[$c['title']] = $c;
+            if (count($picked) >= $max) return array_values($picked);
+        }
+        usleep(400000);
+    }
+    return array_values($picked);
+}
+
+function download(array $photos, string $slug): array
+{
+    global $PUBLIC;
+    $dir = "$PUBLIC/images/watches/$slug";
+    @mkdir($dir, 0775, true);
+    $paths = [];
+    foreach ($photos as $i => $p) {
+        $bin = http($p['thumb']);
+        if (!$bin || strlen($bin) < 15000) continue;
+        $name = 'photo-' . ($i + 1) . '.jpg';
+        file_put_contents("$dir/$name", $bin);
+        $paths[] = "/images/watches/$slug/$name";
+        usleep(300000);
+    }
+    return $paths;
+}
+
+/*
+ * [brand, model, reference, nickname, price, year, type, material, gender, category, queries[], must[], specs]
+ */
+$W = [
+    // Omega
+    ['omega', 'Speedmaster "Silver Snoopy Award" 50th Anniversary', '310.32.42.50.02.001', 'Silver Snoopy', 9600, 2023, 'Chronograph', 'Stainless steel', 'Men', 'sports-watches', ['Omega Speedmaster Snoopy', 'Speedmaster Silver Snoopy'], ['snoopy'], ['caliber' => 'Omega 3861', 'caseDiameter' => '42mm', 'dialColor' => 'Silver with blue enamel', 'waterResistance' => '50m', 'functions' => 'Hours, minutes, small seconds, chronograph', 'caseMaterial' => 'Stainless steel', 'bracelet' => 'Blue NATO strap']],
+    ['omega', 'Seamaster Aqua Terra 150M', '220.10.41.21.03.004', null, 6100, 2023, 'Sport', 'Stainless steel', 'Men', 'sports-watches', ['Omega Aqua Terra', 'Omega Seamaster Aqua Terra'], ['aquaterra'], ['caliber' => 'Omega 8900', 'caseDiameter' => '41mm', 'dialColor' => 'Blue teak', 'waterResistance' => '150m', 'functions' => 'Hours, minutes, seconds, date', 'caseMaterial' => 'Stainless steel']],
+    ['omega', 'Seamaster Planet Ocean 600M', '215.30.44.21.01.001', null, 6900, 2022, 'Dive', 'Stainless steel', 'Men', 'sports-watches', ['Omega Planet Ocean'], ['planetocean'], ['caliber' => 'Omega 8900', 'caseDiameter' => '43.5mm', 'dialColor' => 'Black', 'waterResistance' => '600m', 'functions' => 'Hours, minutes, seconds, date', 'caseMaterial' => 'Stainless steel']],
+    ['omega', 'De Ville Prestige', '424.10.40.20.02.001', null, 3200, 2022, 'Dress', 'Stainless steel', 'Men', 'dress-watches', ['Omega De Ville'], ['deville'], ['caliber' => 'Omega 2500', 'caseDiameter' => '39.5mm', 'dialColor' => 'Silver', 'waterResistance' => '30m', 'functions' => 'Hours, minutes, seconds, date', 'caseMaterial' => 'Stainless steel']],
+    // Rolex
+    ['rolex', 'Sky-Dweller', '336934', null, 21500, 2023, 'GMT', 'Oystersteel and white gold', 'Men', 'luxury-watches', ['Rolex Sky-Dweller', 'Rolex Sky Dweller'], ['skydweller'], ['caliber' => 'Rolex 9002', 'caseDiameter' => '42mm', 'dialColor' => 'Blue', 'waterResistance' => '100m', 'functions' => 'Hours, minutes, seconds, annual calendar, dual time zone']],
+    ['rolex', 'Yacht-Master 40', '126622', null, 14900, 2023, 'Sport', 'Rolesium', 'Men', 'sports-watches', ['Rolex Yacht-Master', 'Rolex Yachtmaster'], ['yachtmaster'], ['caliber' => 'Rolex 3235', 'caseDiameter' => '40mm', 'dialColor' => 'Slate', 'waterResistance' => '100m', 'functions' => 'Hours, minutes, seconds, date']],
+    ['rolex', 'Sea-Dweller', '126600', null, 15800, 2022, 'Dive', 'Oystersteel', 'Men', 'sports-watches', ['Rolex Sea-Dweller', 'Rolex Sea Dweller'], ['seadweller'], ['caliber' => 'Rolex 3235', 'caseDiameter' => '43mm', 'dialColor' => 'Black', 'waterResistance' => '1,220m', 'functions' => 'Hours, minutes, seconds, date, helium escape valve']],
+    ['rolex', 'Milgauss', '116400GV', null, 13500, 2021, 'Sport', 'Oystersteel', 'Men', 'sports-watches', ['Rolex Milgauss'], ['milgauss'], ['caliber' => 'Rolex 3131', 'caseDiameter' => '40mm', 'dialColor' => 'Z-blue', 'waterResistance' => '100m', 'functions' => 'Hours, minutes, seconds, antimagnetic']],
+    ['rolex', 'Air-King', '126900', null, 9900, 2023, 'Pilot', 'Oystersteel', 'Men', 'mens-watches', ['Rolex Air-King', 'Rolex Air King'], ['airking'], ['caliber' => 'Rolex 3230', 'caseDiameter' => '40mm', 'dialColor' => 'Black', 'waterResistance' => '100m', 'functions' => 'Hours, minutes, seconds']],
+    ['rolex', 'Cellini Time', '50509', null, 16500, 2020, 'Dress', '18k white gold', 'Men', 'dress-watches', ['Rolex Cellini'], ['cellini'], ['caliber' => 'Rolex 3132', 'caseDiameter' => '39mm', 'dialColor' => 'Black lacquer', 'waterResistance' => '50m', 'functions' => 'Hours, minutes, seconds']],
+    // Patek
+    ['patek-philippe', 'Aquanaut Chronograph', '5968A-001', null, 245000, 2022, 'Chronograph', 'Stainless steel', 'Men', 'luxury-watches', ['Patek Philippe Aquanaut'], ['aquanaut'], ['caliber' => 'CH 28-520 C', 'caseDiameter' => '42.2mm', 'dialColor' => 'Black gradient', 'waterResistance' => '120m', 'functions' => 'Flyback chronograph, date']],
+    ['patek-philippe', 'Grand Complications Perpetual Calendar', '5327G-001', null, 118000, 2021, 'Complication', '18k white gold', 'Men', 'luxury-watches', ['Patek Philippe perpetual calendar', 'Patek Philippe Grand Complications'], ['perpetual', 'complication'], ['caliber' => '240 Q', 'caseDiameter' => '39mm', 'dialColor' => 'Blue lacquer', 'waterResistance' => '30m', 'functions' => 'Perpetual calendar, moon phase, 24-hour']],
+    ['patek-philippe', 'Gondolo', '5124G-001', null, 34500, 2019, 'Dress', '18k white gold', 'Men', 'dress-watches', ['Patek Philippe Gondolo'], ['gondolo'], ['caliber' => '215 PS', 'caseDiameter' => '33 x 46.9mm', 'dialColor' => 'Silvery opaline', 'waterResistance' => '30m', 'functions' => 'Hours, minutes, small seconds']],
+    // Audemars Piguet
+    ['audemars-piguet', 'Royal Oak Chronograph', '26240ST.OO.1320ST.02', null, 52000, 2022, 'Chronograph', 'Stainless steel', 'Men', 'luxury-watches', ['Audemars Piguet Royal Oak Chronograph'], ['chronograph', 'chrono'], ['caliber' => 'AP 4401', 'caseDiameter' => '41mm', 'dialColor' => 'Blue Grande Tapisserie', 'waterResistance' => '50m', 'functions' => 'Flyback chronograph, date']],
+    ['audemars-piguet', 'Royal Oak Offshore Diver', '15720ST.OO.A027CA.01', null, 34500, 2021, 'Dive', 'Stainless steel', 'Men', 'sports-watches', ['Audemars Piguet Offshore Diver', 'Royal Oak Offshore Diver'], ['diver'], ['caliber' => 'AP 4308', 'caseDiameter' => '42mm', 'dialColor' => 'Black Méga Tapisserie', 'waterResistance' => '300m', 'functions' => 'Hours, minutes, seconds, date, inner rotating bezel']],
+    ['audemars-piguet', 'Millenary', '15350ST.OO.D002CR.01', null, 21500, 2018, 'Dress', 'Stainless steel', 'Men', 'dress-watches', ['Audemars Piguet Millenary'], ['millenary'], ['caliber' => 'AP 3120', 'caseDiameter' => '47 x 42mm', 'dialColor' => 'Silver', 'waterResistance' => '20m', 'functions' => 'Hours, minutes, small seconds']],
+    // Cartier
+    ['cartier', 'Ballon Bleu de Cartier', 'WSBB0040', null, 7350, 2023, 'Dress', 'Stainless steel', 'Unisex', 'dress-watches', ['Cartier Ballon Bleu'], ['ballonbleu', 'ballon'], ['caliber' => '1847 MC', 'caseDiameter' => '40mm', 'dialColor' => 'Silver guilloché', 'waterResistance' => '30m', 'functions' => 'Hours, minutes, seconds, date']],
+    ['cartier', 'Pasha de Cartier', 'WSPA0009', null, 7100, 2022, 'Sport', 'Stainless steel', 'Unisex', 'luxury-watches', ['Cartier Pasha'], ['pasha'], ['caliber' => '1847 MC', 'caseDiameter' => '41mm', 'dialColor' => 'Silver', 'waterResistance' => '100m', 'functions' => 'Hours, minutes, seconds, date']],
+    ['cartier', 'Roadster', 'W62025V3', null, 4900, 2010, 'Sport', 'Stainless steel', 'Men', 'mens-watches', ['Cartier Roadster'], ['roadster'], ['caliber' => 'Cartier 3110', 'caseDiameter' => '37 x 43mm', 'dialColor' => 'Silver', 'waterResistance' => '100m', 'functions' => 'Hours, minutes, seconds, date']],
+    // Breitling
+    ['breitling', 'Avenger Chronograph', 'A13317101B1X1', null, 6200, 2022, 'Chronograph', 'Stainless steel', 'Men', 'sports-watches', ['Breitling Avenger'], ['avenger'], ['caliber' => 'Breitling 13', 'caseDiameter' => '45mm', 'dialColor' => 'Black', 'waterResistance' => '300m', 'functions' => 'Chronograph, date']],
+    ['breitling', 'Emergency', 'E76325', null, 15500, 2015, 'Pilot', 'Titanium', 'Men', 'sports-watches', ['Breitling Emergency'], ['emergency'], ['caliber' => 'Breitling 76', 'caseDiameter' => '51mm', 'dialColor' => 'Orange', 'waterResistance' => '50m', 'functions' => 'Dual-frequency distress beacon, multifunction']],
+    ['breitling', 'Colt Automatic', 'A17388', null, 3400, 2016, 'Sport', 'Stainless steel', 'Men', 'mens-watches', ['Breitling Colt'], ['colt'], ['caliber' => 'Breitling 17', 'caseDiameter' => '44mm', 'dialColor' => 'Blue', 'waterResistance' => '500m', 'functions' => 'Hours, minutes, seconds, date']],
+    // TAG Heuer
+    ['tag-heuer', 'Monaco Calibre 11', 'CAW211P.FC6356', null, 6900, 2022, 'Chronograph', 'Stainless steel', 'Men', 'sports-watches', ['TAG Heuer Monaco', 'Heuer Monaco'], ['monaco'], ['caliber' => 'Heuer 11', 'caseDiameter' => '39mm', 'dialColor' => 'Blue sunray', 'waterResistance' => '100m', 'functions' => 'Chronograph, date']],
+    ['tag-heuer', 'Aquaracer Professional 300', 'WBP201A.BA0632', null, 3300, 2023, 'Dive', 'Stainless steel', 'Men', 'sports-watches', ['TAG Heuer Aquaracer'], ['aquaracer'], ['caliber' => 'Calibre 5', 'caseDiameter' => '43mm', 'dialColor' => 'Blue', 'waterResistance' => '300m', 'functions' => 'Hours, minutes, seconds, date']],
+    ['tag-heuer', 'Formula 1', 'WAZ1110.BA0875', null, 1650, 2022, 'Sport', 'Stainless steel', 'Men', 'sports-watches', ['TAG Heuer Formula 1'], ['formula'], ['caliber' => 'Quartz', 'caseDiameter' => '41mm', 'dialColor' => 'Black', 'waterResistance' => '200m', 'functions' => 'Hours, minutes, seconds, date']],
+    ['tag-heuer', 'Autavia', 'CBE2110.BA0687', null, 5300, 2019, 'Chronograph', 'Stainless steel', 'Men', 'mens-watches', ['Heuer Autavia', 'TAG Heuer Autavia'], ['autavia'], ['caliber' => 'Heuer 02', 'caseDiameter' => '42mm', 'dialColor' => 'Black', 'waterResistance' => '100m', 'functions' => 'Chronograph, date']],
+    // Tudor
+    ['tudor', 'Black Bay Fifty-Eight', '79030N-0001', null, 4100, 2023, 'Dive', 'Stainless steel', 'Men', 'sports-watches', ['Tudor Black Bay 58', 'Tudor Black Bay Fifty-Eight'], ['58', 'fiftyeight'], ['caliber' => 'MT5402', 'caseDiameter' => '39mm', 'dialColor' => 'Black', 'waterResistance' => '200m', 'functions' => 'Hours, minutes, seconds']],
+    ['tudor', 'Heritage Ranger', '79910', null, 2900, 2016, 'Sport', 'Stainless steel', 'Men', 'mens-watches', ['Tudor Ranger'], ['ranger'], ['caliber' => 'ETA 2824', 'caseDiameter' => '41mm', 'dialColor' => 'Black', 'waterResistance' => '150m', 'functions' => 'Hours, minutes, seconds']],
+    ['tudor', 'Submariner Snowflake', '9411/0', null, 9800, 1978, 'Dive', 'Stainless steel', 'Men', 'sports-watches', ['Tudor Submariner'], ['submariner'], ['caliber' => 'ETA 2784', 'caseDiameter' => '40mm', 'dialColor' => 'Blue', 'waterResistance' => '200m', 'functions' => 'Hours, minutes, seconds, date']],
+    // Hublot
+    ['hublot', 'Big Bang Unico Titanium', '421.NX.1170.RX', null, 19500, 2022, 'Chronograph', 'Titanium', 'Men', 'luxury-watches', ['Hublot Big Bang'], ['bigbang'], ['caliber' => 'HUB1280 Unico', 'caseDiameter' => '42mm', 'dialColor' => 'Skeleton', 'waterResistance' => '100m', 'functions' => 'Flyback chronograph, date']],
+    ['hublot', 'Classic Fusion Titanium', '542.NX.1171.RX', null, 8200, 2022, 'Dress', 'Titanium', 'Men', 'dress-watches', ['Hublot Classic Fusion'], ['classicfusion', 'fusion'], ['caliber' => 'HUB1110', 'caseDiameter' => '42mm', 'dialColor' => 'Black', 'waterResistance' => '50m', 'functions' => 'Hours, minutes, seconds']],
+    ['hublot', 'MP-05 LaFerrari', '905.ND.0001.RX', null, 310000, 2014, 'Complication', 'Titanium', 'Men', 'luxury-watches', ['Hublot LaFerrari', 'Hublot MP-05'], ['laferrari', 'mp05'], ['caliber' => 'HUB9005.H1.PN.1', 'caseDiameter' => '45.8 x 52.6mm', 'dialColor' => 'Skeleton', 'waterResistance' => '30m', 'functions' => 'Tourbillon, 50-day power reserve']],
+    // IWC
+    ['iwc', 'Pilot\'s Watch Mark XVIII', 'IW327001', null, 4300, 2021, 'Pilot', 'Stainless steel', 'Men', 'mens-watches', ['IWC Mark XVIII', 'IWC Pilot Mark'], ['mark', 'pilot'], ['caliber' => '35111', 'caseDiameter' => '40mm', 'dialColor' => 'Black', 'waterResistance' => '60m', 'functions' => 'Hours, minutes, seconds, date']],
+    ['iwc', 'Big Pilot\'s Watch', 'IW501001', null, 14500, 2020, 'Pilot', 'Stainless steel', 'Men', 'luxury-watches', ['IWC Big Pilot'], ['bigpilot', 'pilot'], ['caliber' => '52010', 'caseDiameter' => '46.2mm', 'dialColor' => 'Black', 'waterResistance' => '60m', 'functions' => 'Hours, minutes, seconds, date, 7-day power reserve']],
+    ['iwc', 'Aquatimer Automatic', 'IW328802', null, 4700, 2019, 'Dive', 'Stainless steel', 'Men', 'sports-watches', ['IWC Aquatimer'], ['aquatimer'], ['caliber' => '30120', 'caseDiameter' => '42mm', 'dialColor' => 'Blue', 'waterResistance' => '300m', 'functions' => 'Hours, minutes, seconds, date']],
+    ['iwc', 'Ingenieur', 'IW328903', null, 11500, 2023, 'Sport', 'Stainless steel', 'Men', 'sports-watches', ['IWC Ingenieur'], ['ingenieur'], ['caliber' => '32111', 'caseDiameter' => '40mm', 'dialColor' => 'Aqua', 'waterResistance' => '100m', 'functions' => 'Hours, minutes, seconds, date']],
+    // Panerai
+    ['panerai', 'Luminor GMT', 'PAM01535', null, 9300, 2021, 'GMT', 'Stainless steel', 'Men', 'sports-watches', ['Panerai Luminor GMT'], ['gmt'], ['caliber' => 'P.9010', 'caseDiameter' => '44mm', 'dialColor' => 'Black', 'waterResistance' => '300m', 'functions' => 'Hours, minutes, small seconds, date, GMT']],
+    ['panerai', 'Luminor Base Logo', 'PAM00000', null, 4900, 2015, 'Sport', 'Stainless steel', 'Men', 'mens-watches', ['Panerai Luminor Base', 'Panerai PAM'], ['luminor', 'pam'], ['caliber' => 'OP X', 'caseDiameter' => '44mm', 'dialColor' => 'Black', 'waterResistance' => '300m', 'functions' => 'Hours, minutes']],
+    // Jaeger-LeCoultre
+    ['jaeger-lecoultre', 'Reverso Classic', 'Q3858520', null, 7900, 2022, 'Dress', 'Stainless steel', 'Unisex', 'dress-watches', ['Jaeger-LeCoultre Reverso', 'Reverso watch'], ['reverso'], ['caliber' => 'JLC 822', 'caseDiameter' => '45.6 x 27.4mm', 'dialColor' => 'Silver', 'waterResistance' => '30m', 'functions' => 'Hours, minutes, reversible case']],
+    ['jaeger-lecoultre', 'Master Ultra Thin Moon', 'Q1368420', null, 10500, 2021, 'Dress', 'Stainless steel', 'Men', 'dress-watches', ['Jaeger-LeCoultre Master', 'Jaeger LeCoultre Master Control'], ['master'], ['caliber' => 'JLC 925', 'caseDiameter' => '39mm', 'dialColor' => 'Silver', 'waterResistance' => '50m', 'functions' => 'Hours, minutes, seconds, date, moon phase']],
+    ['jaeger-lecoultre', 'Memovox', 'Q141842A', null, 12800, 1970, 'Complication', 'Stainless steel', 'Men', 'mens-watches', ['Jaeger-LeCoultre Memovox', 'LeCoultre Memovox'], ['memovox'], ['caliber' => 'JLC 916', 'caseDiameter' => '37mm', 'dialColor' => 'Silver', 'waterResistance' => '30m', 'functions' => 'Hours, minutes, seconds, alarm']],
+    // Vacheron
+    ['vacheron-constantin', 'Patrimony', '81180/000G-9117', null, 23500, 2021, 'Dress', '18k white gold', 'Men', 'dress-watches', ['Vacheron Constantin Patrimony'], ['patrimony'], ['caliber' => '1400', 'caseDiameter' => '40mm', 'dialColor' => 'Silver opaline', 'waterResistance' => '30m', 'functions' => 'Hours, minutes']],
+    ['vacheron-constantin', 'Traditionnelle', '82172/000R-9382', null, 27500, 2020, 'Dress', '18k pink gold', 'Men', 'luxury-watches', ['Vacheron Constantin Traditionnelle'], ['traditionnelle'], ['caliber' => '2450 Q6', 'caseDiameter' => '38mm', 'dialColor' => 'Silver opaline', 'waterResistance' => '30m', 'functions' => 'Hours, minutes, small seconds, date']],
+    ['vacheron-constantin', 'Fiftysix', '4600E/000A-B442', null, 13900, 2022, 'Dress', 'Stainless steel', 'Men', 'dress-watches', ['Vacheron Constantin Fiftysix', 'Vacheron Constantin 56'], ['fiftysix', '56'], ['caliber' => '1326', 'caseDiameter' => '40mm', 'dialColor' => 'Blue', 'waterResistance' => '30m', 'functions' => 'Hours, minutes, seconds, date']],
+    // Grand Seiko
+    ['grand-seiko', 'Spring Drive "White Birch"', 'SLGA009', 'White Birch', 9100, 2022, 'Dress', 'High-intensity titanium', 'Men', 'luxury-watches', ['Grand Seiko Spring Drive', 'Grand Seiko SLGA'], ['springdrive', 'slga', 'birch'], ['caliber' => '9RA2', 'caseDiameter' => '40mm', 'dialColor' => 'White birch texture', 'waterResistance' => '100m', 'functions' => 'Hours, minutes, seconds, date, power reserve']],
+    ['grand-seiko', 'Evolution 9 Hi-Beat', 'SLGH005', null, 9100, 2021, 'Sport', 'Stainless steel', 'Men', 'sports-watches', ['Grand Seiko Hi-Beat', 'Grand Seiko SLGH'], ['hibeat', 'slgh', 'evolution'], ['caliber' => '9SA5', 'caseDiameter' => '40mm', 'dialColor' => 'White birch', 'waterResistance' => '100m', 'functions' => 'Hours, minutes, seconds, date']],
+    // Richard Mille
+    ['richard-mille', 'RM 027 Tourbillon Rafael Nadal', 'RM 027', null, 950000, 2018, 'Complication', 'Carbon TPT', 'Men', 'luxury-watches', ['Richard Mille RM 027', 'Richard Mille Nadal'], ['027', 'nadal'], ['caliber' => 'RM27-03', 'caseDiameter' => '47.8 x 38.8mm', 'dialColor' => 'Skeleton', 'waterResistance' => '50m', 'functions' => 'Tourbillon, hours, minutes']],
+    ['richard-mille', 'RM 010 Automatic', 'RM 010', null, 115000, 2014, 'Sport', '18k red gold', 'Men', 'luxury-watches', ['Richard Mille RM 010', 'Richard Mille RM010'], ['010', 'rm10'], ['caliber' => 'RMAS7', 'caseDiameter' => '48 x 39.3mm', 'dialColor' => 'Skeleton', 'waterResistance' => '50m', 'functions' => 'Hours, minutes, seconds, date']],
+];
+
+// Existing watches whose renders should be replaced by real photos
+$REPLACE = [
+    'omega-constellation-13110292055001' => [['Omega Constellation', 'Omega Constellation watch'], ['constellation'], 'omega'],
+];
+
+$brandToken = fn($slug) => ['patek-philippe' => 'patek', 'audemars-piguet' => 'audemars', 'richard-mille' => 'mille', 'tag-heuer' => 'heuer', 'jaeger-lecoultre' => 'lecoultre', 'vacheron-constantin' => 'vacheron', 'grand-seiko' => 'seiko'][$slug] ?? $slug;
+$prefix = ['rolex' => 'rlx', 'omega' => 'om', 'patek-philippe' => 'pp', 'audemars-piguet' => 'ap', 'cartier' => 'ca', 'breitling' => 'br', 'tag-heuer' => 'tag', 'tudor' => 'tud', 'hublot' => 'hub', 'iwc' => 'iwc', 'panerai' => 'pan', 'jaeger-lecoultre' => 'jlc', 'vacheron-constantin' => 'vc', 'grand-seiko' => 'gs', 'richard-mille' => 'rm'];
+
+foreach ($REPLACE as $slug => [$q, $must, $brand]) {
+    $photos = findPhotos($q, $must, $brandToken($brand), 4);
+    $paths = download($photos, $slug);
+    if (!$paths) { echo "REPLACE FAIL  $slug\n"; continue; }
+    DB::table('Watch')->where('slug', $slug)->update(['images' => json_encode($paths), 'updatedAt' => now()]);
+    echo "REPLACED      $slug (" . count($paths) . " photos)\n";
+}
+
+$added = 0; $skipped = [];
+foreach ($W as [$brand, $model, $ref, $nick, $price, $year, $type, $mat, $gender, $cat, $queries, $must, $specs]) {
+    $slug = Str::slug("$brand $model $ref");
+    if (DB::table('Watch')->where('slug', $slug)->orWhere(fn($q) => $q->where('brandSlug', $brand)->where('reference', $ref))->exists()) { echo "EXISTS        $slug\n"; continue; }
+    $photos = findPhotos($queries, $must, $brandToken($brand), 3);
+    $paths = download($photos, $slug);
+    if (!$paths) { $skipped[] = "$brand $model"; echo "NO PHOTO      $brand $model\n"; continue; }
+    $n = DB::table('Watch')->where('brandSlug', $brand)->count() + 1;
+    $id = $prefix[$brand] . '-' . str_pad((string) $n, 2, '0', STR_PAD_LEFT);
+    while (DB::table('Watch')->where('id', $id)->exists()) { $n++; $id = $prefix[$brand] . '-' . str_pad((string) $n, 2, '0', STR_PAD_LEFT); }
+    $specs['caseMaterial'] ??= $mat;
+    DB::table('Watch')->insert([
+        'id' => $id, 'slug' => $slug, 'brandSlug' => $brand, 'model' => $model, 'reference' => $ref, 'nickname' => $nick,
+        'price' => $price, 'year' => $year, 'type' => $type, 'material' => $mat, 'condition' => $year >= 2020 ? 'Unworn' : 'Excellent',
+        'gender' => $gender, 'boxPapers' => 1, 'isNew' => $year >= 2023 ? 1 : 0, 'isFeatured' => 0, 'isBestSeller' => 0,
+        'popularity' => 50, 'addedAt' => now(), 'updatedAt' => now(),
+        'description' => "The {$model} (ref. {$ref}), inspected, timed and certified by our horologists before shipping fully insured.",
+        'specs' => json_encode($specs), 'inventory' => 2, 'lowStockAt' => 1, 'salePrice' => null,
+        'categorySlug' => $cat, 'active' => 1, 'images' => json_encode($paths),
+        'sku' => 'NV-' . strtoupper(substr(preg_replace('/[^a-z]/', '', $brand), 0, 3)) . '-' . strtoupper(preg_replace('/\s+/', '', $ref)),
+    ]);
+    $added++;
+    echo "ADDED  $id  $brand $model (" . count($paths) . " photos)\n";
+}
+echo "\nAdded $added watches. Skipped (no licensed photo): " . (implode('; ', $skipped) ?: 'none') . "\n";
