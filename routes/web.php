@@ -72,6 +72,12 @@ Route::get('/collections/{slug}', function (string $slug) {
     ]);
 });
 
+Route::get('/super-clone', function () {
+    return view('super-clone', [
+        'watches' => Catalog::watches(['brand' => 'super-clone']),
+    ]);
+});
+
 Route::get('/rolex', function () {
     return view('rolex', [
         'watches' => Catalog::watches(['brand' => 'rolex']),
@@ -118,7 +124,7 @@ Route::get('/confirmation/{number}', fn (string $n) => view('confirmation', ['nu
 
 Route::get('/sitemap.xml', function () {
     $urls = [['/', null, '1.0'], ['/shop', null, '0.9'], ['/brands', null, '0.8'], ['/collections', null, '0.8'],
-        ['/rolex', null, '0.8'], ['/journal', null, '0.6'], ['/contact-us', null, '0.5']];
+        ['/rolex', null, '0.8'], ['/super-clone', null, '0.8'], ['/journal', null, '0.6'], ['/contact-us', null, '0.5']];
     foreach (Catalog::data('brands') as $b) $urls[] = ['/brands/' . $b['slug'], null, '0.8'];
     foreach (Catalog::data('collections') as $c) $urls[] = ['/collections/' . $c['slug'], null, '0.7'];
     foreach (Catalog::data('rolexFamilies') as $f) $urls[] = ['/rolex/' . $f['slug'], null, '0.7'];

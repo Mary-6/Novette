@@ -95,21 +95,58 @@
   window.NV.updateBadges = updateBadges;
 
   /* ---------- dropdown nav ---------- */
+  const finePointer = matchMedia('(pointer: fine)');
+  function setMenu(btn, panel, open) {
+    panel.classList.toggle('invisible', !open);
+    panel.classList.toggle('opacity-0', !open);
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    if (open) keepInViewport(panel);
+  }
+  function keepInViewport(panel) {
+    panel.style.marginLeft = '';
+    const r = panel.getBoundingClientRect();
+    let shift = 0;
+    if (r.right > window.innerWidth - 8) shift = window.innerWidth - 8 - r.right;
+    if (r.left + shift < 8) shift = 8 - r.left;
+    if (shift) panel.style.marginLeft = shift + 'px';
+  }
+  function closeMenus() {
+    document.querySelectorAll('.nav-toggle').forEach((b) => {
+      const p = document.querySelector(`[data-panel="${b.dataset.menu}"]`);
+      if (p) setMenu(b, p, false);
+    });
+  }
   document.querySelectorAll('.nav-toggle').forEach((btn) => {
+    const panel = document.querySelector(`[data-panel="${btn.dataset.menu}"]`);
+    if (!panel) return;
+    btn.setAttribute('aria-haspopup', 'true');
+    btn.setAttribute('aria-expanded', 'false');
+    const openPanel = () => { closeMenus(); setMenu(btn, panel, true); };
     btn.addEventListener('click', (e) => {
       e.stopPropagation();
-      const name = btn.dataset.menu;
-      const panel = document.querySelector(`[data-panel="${name}"]`);
       const open = !panel.classList.contains('invisible');
+      if (finePointer.matches) { closeMenus(); setMenu(btn, panel, true); return; }
       closeMenus();
-      if (!open) { panel.classList.remove('invisible', 'opacity-0'); }
+      if (!open) setMenu(btn, panel, true);
     });
+    btn.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
+        e.preventDefault();
+        openPanel();
+        const links = panel.querySelectorAll('a');
+        (e.key === 'ArrowDown' ? links[0] : links[links.length - 1])?.focus();
+      }
+    });
+    const wrap = btn.closest('.nav-item');
+    if (wrap) {
+      wrap.addEventListener('mouseenter', () => { if (finePointer.matches) openPanel(); });
+      wrap.addEventListener('mouseleave', () => { if (finePointer.matches) setMenu(btn, panel, false); });
+    }
+    panel.addEventListener('click', (e) => { e.stopPropagation(); if (e.target.closest('a')) setMenu(btn, panel, false); });
+    panel.addEventListener('keydown', (e) => { if (e.key === 'Escape') { setMenu(btn, panel, false); btn.focus(); } });
   });
   document.addEventListener('click', closeMenus);
   document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeMenus(); });
-  function closeMenus() {
-    document.querySelectorAll('.nav-panel').forEach((p) => p.classList.add('invisible', 'opacity-0'));
-  }
 
   /* ---------- newsletter ---------- */
   const nf = document.getElementById('newsletter-form');

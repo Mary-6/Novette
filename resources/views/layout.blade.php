@@ -7,9 +7,6 @@ $cc['email'] = Admin::setting('contactEmail', $cc['email']);
 $socials = array_filter(Admin::setting('socials', []) ?: []);
 $brands = Catalog::data('brands');
 $collections = Catalog::data('collections');
-$rolexFamilies = Catalog::data('rolexFamilies');
-$featuredRolex = \Illuminate\Support\Facades\DB::table('Watch')->where('slug','rolex-submariner-date-126610ln')->first();
-$featuredImg = Catalog::cover($featuredRolex);
 $gaId = Admin::setting('gaMeasurementId');
 $gscCode = Admin::setting('searchConsoleCode');
 $resources = [
@@ -58,35 +55,8 @@ $resources = [
     <span class="flex items-center gap-2.5">{!! Catalog::logoSvg('h-9 w-9') !!}<span class="text-sm uppercase tracking-[0.24em]">Novette <span class="text-gold">Watches</span></span></span>
     <nav id="mainnav" class="hidden items-center gap-7 lg:flex">
       <a href="/" class="text-xs uppercase tracking-[0.18em] transition hover:text-gold">Home</a>
-      <div class="relative">
-        <button type="button" data-menu="rolex" class="nav-toggle text-xs uppercase tracking-[0.18em] transition hover:text-gold flex items-center gap-1">Rolex
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></button>
-        <div data-panel="rolex" class="nav-panel absolute left-0 top-full z-50 mt-4 w-[560px] bg-charcoal p-6 shadow-2xl transition invisible opacity-0">
-          <div class="grid grid-cols-[1fr_1fr_150px] gap-6">
-            <div>
-              <p class="eyebrow mb-3">Model Families</p>
-              <div class="grid grid-cols-1 gap-2">
-                @foreach($rolexFamilies as $f)
-                <a href="/rolex/{{ $f['slug'] }}" class="text-sm text-ivory/80 transition hover:text-gold">{{ $f['name'] }}</a>
-                @endforeach
-              </div>
-            </div>
-            <div>
-              <p class="eyebrow mb-3">Shop Rolex</p>
-              <div class="flex flex-col gap-2 text-sm text-ivory/80">
-                <a href="/shop?brand=rolex&gender=Men" class="transition hover:text-gold">Shop Men's Rolex</a>
-                <a href="/shop?brand=rolex&gender=Women" class="transition hover:text-gold">Shop Women's Rolex</a>
-                <a href="/shop?brand=rolex" class="transition hover:text-gold">Shop Heritage Rolex</a>
-                <a href="/rolex" class="mt-2 text-gold transition hover:text-goldLight">View All Rolex</a>
-              </div>
-            </div>
-            @if($featuredImg)
-            <a href="/watches/rolex-submariner-date-126610ln" class="block"><img src="{{ $featuredImg }}" alt="Rolex Submariner" class="w-full"></a>
-            @endif
-          </div>
-        </div>
-      </div>
-      <div class="relative">
+      <a href="/super-clone" class="text-xs uppercase tracking-[0.18em] transition hover:text-gold">Super Clone</a>
+      <div class="nav-item relative">
         <button type="button" data-menu="watches" class="nav-toggle text-xs uppercase tracking-[0.18em] transition hover:text-gold flex items-center gap-1">Luxury Watches
           <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></button>
         <div data-panel="watches" class="nav-panel absolute left-0 top-full z-50 mt-4 w-[560px] bg-charcoal p-6 shadow-2xl transition invisible opacity-0">
@@ -111,7 +81,7 @@ $resources = [
         </div>
       </div>
       <a href="/shop?sort=newest" class="text-xs uppercase tracking-[0.18em] transition hover:text-gold">New Arrivals</a>
-      <div class="relative">
+      <div class="nav-item relative">
         <button type="button" data-menu="resources" class="nav-toggle text-xs uppercase tracking-[0.18em] transition hover:text-gold flex items-center gap-1">Resources
           <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></button>
         <div data-panel="resources" class="nav-panel absolute left-0 top-full z-50 mt-4 w-56 bg-charcoal p-5 shadow-2xl transition invisible opacity-0">
@@ -154,11 +124,30 @@ $resources = [
       </form>
       <div class="flex flex-col gap-3 text-sm uppercase tracking-[0.2em]">
         <a href="/">Home</a>
-        <a href="/shop">All Watches</a>
-        <a href="/rolex">Rolex</a>
-        <a href="/brands">Brands</a>
-        <a href="/collections">Collections</a>
+        <a href="/super-clone">Super Clone</a>
+        <div class="nav-item relative">
+          <button type="button" data-menu="m-watches" class="nav-toggle flex items-center gap-1 uppercase tracking-[0.2em]">Luxury Watches
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></button>
+          <div data-panel="m-watches" class="nav-panel invisible absolute left-0 top-full z-[60] mt-2 w-56 bg-ink p-4 normal-case tracking-normal opacity-0 shadow-2xl ring-1 ring-graphite transition">
+            <div class="flex flex-col gap-2.5 text-sm">
+              <a href="/shop" class="text-ivory/80 transition hover:text-gold">All Watches</a>
+              <a href="/brands" class="text-ivory/80 transition hover:text-gold">Brands</a>
+              <a href="/collections" class="text-ivory/80 transition hover:text-gold">Collections</a>
+            </div>
+          </div>
+        </div>
         <a href="/shop?sort=newest">New Arrivals</a>
+        <div class="nav-item relative">
+          <button type="button" data-menu="m-resources" class="nav-toggle flex items-center gap-1 uppercase tracking-[0.2em]">Resources
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></button>
+          <div data-panel="m-resources" class="nav-panel invisible absolute left-0 top-full z-[60] mt-2 w-56 bg-ink p-4 normal-case tracking-normal opacity-0 shadow-2xl ring-1 ring-graphite transition">
+            <div class="flex flex-col gap-2.5 text-sm">
+              @foreach($resources as [$label,$to])
+              <a href="{{ $to }}" class="text-ivory/80 transition hover:text-gold">{{ $label }}</a>
+              @endforeach
+            </div>
+          </div>
+        </div>
         <a href="/wishlist">Wishlist</a>
         <a href="/cart">Cart</a>
         <a href="/contact-us">Contact Us</a>
