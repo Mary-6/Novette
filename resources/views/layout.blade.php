@@ -217,16 +217,14 @@ $resources = [
 </footer>
 
 <script src="/app.js"></script>
-@if(config('services.smartsupp.key'))
 <script>
 var _smartsupp = _smartsupp || {};
-_smartsupp.key = @json(config('services.smartsupp.key'));
+_smartsupp.key = @json(config('services.smartsupp.key') ?: 'c6b42274d55ac5920f7598659fd223a227c43e7c');
 window.smartsupp || (function(d){var s,c,o=smartsupp=function(){o._.push(arguments)};o._=[];
 s=d.getElementsByTagName('script')[0];c=d.createElement('script');
 c.type='text/javascript';c.charset='utf-8';c.async=true;
 c.src='https://www.smartsuppchat.com/loader.js?';s.parentNode.insertBefore(c,s);})(document);
 </script>
-@endif
 @yield('scripts')
 </body>
 </html>
